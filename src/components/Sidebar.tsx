@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HomeIcon, StoreIcon, UsersIcon, XIcon } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: 'home' | 'kiosk' | 'referral';
-  onNavigate: (view: 'home' | 'kiosk' | 'referral') => void;
+  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace';
+  onNavigate: (view: 'home' | 'kiosk' | 'referral' | 'marketplace') => void;
 }
 const navItems = [{
   id: 'home',
@@ -13,15 +13,20 @@ const navItems = [{
   icon: HomeIcon,
   color: '#00ffcc'
 }, {
+  id: 'marketplace',
+  label: 'Marketplace',
+  icon: ShoppingBagIcon,
+  color: '#00d9ff'
+}, {
   id: 'kiosk',
   label: 'Kiosk Dashboard',
   icon: StoreIcon,
-  color: '#00d9ff'
+  color: '#ff00ff'
 }, {
   id: 'referral',
   label: 'Referral Quest',
   icon: UsersIcon,
-  color: '#ff00ff'
+  color: '#ffb800'
 }];
 export function Sidebar({
   isOpen,
@@ -29,7 +34,7 @@ export function Sidebar({
   activeView,
   onNavigate
 }: SidebarProps) {
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace') => {
     onNavigate(view);
     onClose();
   };
@@ -103,7 +108,7 @@ export function Sidebar({
                 {navItems.map((item, index) => {
               const Icon = item.icon;
               const isActive = activeView === item.id;
-              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral')} initial={{
+              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral' | 'marketplace')} initial={{
                 opacity: 0,
                 x: -20
               }} animate={{

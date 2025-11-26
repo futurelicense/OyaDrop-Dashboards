@@ -3,11 +3,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { HomeDashboardPage } from './pages/HomeDashboardPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { ReferralDashboardPage } from './pages/ReferralDashboardPage';
+import { MarketplacePage } from './pages/MarketplacePage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace'>('marketplace');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace') => {
     setActiveView(view);
   };
   const toggleSidebar = () => {
@@ -43,7 +44,7 @@ export function App() {
         duration: 0.3
       }}>
             <DashboardPage onMenuClick={toggleSidebar} />
-          </motion.div> : <motion.div key="referral" initial={{
+          </motion.div> : activeView === 'referral' ? <motion.div key="referral" initial={{
         opacity: 0,
         x: 20
       }} animate={{
@@ -56,6 +57,19 @@ export function App() {
         duration: 0.3
       }}>
             <ReferralDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : <motion.div key="marketplace" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <MarketplacePage onMenuClick={toggleSidebar} />
           </motion.div>}
       </AnimatePresence>
     </>;
