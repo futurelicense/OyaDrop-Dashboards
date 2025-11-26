@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, ArrowDownToLine, RefreshCw, Lock, Sparkles } from 'lucide-react';
+import { Plus, Lock, Sparkles, Eye, EyeOff } from 'lucide-react';
 export function AnimatedBalanceCard() {
+  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const balance = 1782216.65;
   const cashbackCoins = 38249.27;
   const nextRewardAt = 50000;
@@ -59,19 +60,25 @@ export function AnimatedBalanceCard() {
           <p className="text-gray-400 text-xs mb-2 uppercase tracking-wider">
             Wallet Balance
           </p>
-          <motion.h1 className="text-5xl font-bold text-white mb-2 tracking-tight" initial={{
-          scale: 0.9
-        }} animate={{
-          scale: 1
-        }} transition={{
-          duration: 0.3,
-          delay: 0.2
-        }}>
-            ₦
-            {balance.toLocaleString('en-NG', {
-            minimumFractionDigits: 2
-          })}
-          </motion.h1>
+          <div className="flex items-center gap-3">
+            <motion.h1 className="text-3xl font-bold text-white tracking-tight" initial={{
+            scale: 0.9
+          }} animate={{
+            scale: 1
+          }} transition={{
+            duration: 0.3,
+            delay: 0.2
+          }}>
+              {isBalanceVisible ? `₦${balance.toLocaleString('en-NG', {
+              minimumFractionDigits: 2
+            })}` : '₦••••••••'}
+            </motion.h1>
+            <motion.button onClick={() => setIsBalanceVisible(!isBalanceVisible)} className="p-2 rounded-lg hover:bg-white/5 transition-colors" whileTap={{
+            scale: 0.95
+          }}>
+              {isBalanceVisible ? <Eye className="w-5 h-5 text-gray-400" /> : <EyeOff className="w-5 h-5 text-gray-400" />}
+            </motion.button>
+          </div>
         </div>
 
         {/* OyaCoin Cashback with Rotating Coin */}
@@ -114,35 +121,15 @@ export function AnimatedBalanceCard() {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="grid grid-cols-3 gap-2">
-          <motion.button whileHover={{
-          scale: 1.02
-        }} whileTap={{
-          scale: 0.98
-        }} className="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow">
-            <Plus className="w-5 h-5" />
-            <span className="text-xs">Add Fund</span>
-          </motion.button>
-
-          <motion.button whileHover={{
-          scale: 1.02
-        }} whileTap={{
-          scale: 0.98
-        }} className="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-white/5 backdrop-blur-sm text-white font-semibold border border-white/10 hover:bg-white/10 transition-colors">
-            <ArrowDownToLine className="w-5 h-5" />
-            <span className="text-xs">Withdraw</span>
-          </motion.button>
-
-          <motion.button whileHover={{
-          scale: 1.02
-        }} whileTap={{
-          scale: 0.98
-        }} className="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white font-semibold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-shadow">
-            <RefreshCw className="w-5 h-5" />
-            <span className="text-xs">Convert</span>
-          </motion.button>
-        </div>
+        {/* Action Button - Add Fund Only */}
+        <motion.button whileHover={{
+        scale: 1.02
+      }} whileTap={{
+        scale: 0.98
+      }} className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow">
+          <Plus className="w-5 h-5" />
+          <span>Add Fund</span>
+        </motion.button>
       </div>
     </motion.div>;
 }

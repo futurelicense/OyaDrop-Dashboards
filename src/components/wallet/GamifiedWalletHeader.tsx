@@ -1,7 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Menu, Bell, Flame, Zap } from 'lucide-react';
-export function GamifiedWalletHeader() {
+interface GamifiedWalletHeaderProps {
+  onMenuClick?: () => void;
+}
+export function GamifiedWalletHeader({
+  onMenuClick
+}: GamifiedWalletHeaderProps) {
   const currentXP = 1450;
   const nextLevelXP = 2000;
   const xpProgress = currentXP / nextLevelXP * 100;
@@ -22,7 +27,7 @@ export function GamifiedWalletHeader() {
         <div className="flex items-center justify-between mb-4">
           <motion.button className="p-2 rounded-xl hover:bg-white/5 transition-colors" whileTap={{
           scale: 0.95
-        }}>
+        }} onClick={onMenuClick}>
             <Menu className="w-6 h-6 text-white" />
           </motion.button>
 
