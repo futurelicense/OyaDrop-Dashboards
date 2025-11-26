@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -17,6 +17,11 @@ const navItems = [{
   label: 'Marketplace',
   icon: ShoppingBagIcon,
   color: '#00d9ff'
+}, {
+  id: 'wallet',
+  label: 'Wallet Quest',
+  icon: WalletIcon,
+  color: '#B026FF'
 }, {
   id: 'kiosk',
   label: 'Kiosk Dashboard',

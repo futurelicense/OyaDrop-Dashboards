@@ -4,11 +4,12 @@ import { HomeDashboardPage } from './pages/HomeDashboardPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { ReferralDashboardPage } from './pages/ReferralDashboardPage';
 import { MarketplacePage } from './pages/MarketplacePage';
+import { WalletDashboardPage } from './pages/WalletDashboardPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace'>('marketplace');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet'>('wallet');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet') => {
     setActiveView(view);
   };
   const toggleSidebar = () => {
@@ -31,6 +32,19 @@ export function App() {
         duration: 0.3
       }}>
             <HomeDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'wallet' ? <motion.div key="wallet" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <WalletDashboardPage />
           </motion.div> : activeView === 'kiosk' ? <motion.div key="kiosk" initial={{
         opacity: 0,
         x: -20
