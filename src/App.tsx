@@ -7,11 +7,14 @@ import { MarketplacePage } from './pages/MarketplacePage';
 import { WalletDashboardPage } from './pages/WalletDashboardPage';
 import { FastFoodPage } from './pages/FastFoodPage';
 import { MerchantDashboardPage } from './pages/MerchantDashboardPage';
+import { TransportBookingPage } from './pages/TransportBookingPage';
+import { AccommodationPage } from './pages/AccommodationPage';
+import { KioskStorefrontPage } from './pages/KioskStorefrontPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant'>('merchant');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore'>('kioskstore');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore') => {
     setActiveView(view);
   };
   const toggleSidebar = () => {
@@ -73,6 +76,45 @@ export function App() {
         duration: 0.3
       }}>
             <MerchantDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'transport' ? <motion.div key="transport" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <TransportBookingPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'accommodation' ? <motion.div key="accommodation" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <AccommodationPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'kioskstore' ? <motion.div key="kioskstore" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <KioskStorefrontPage />
           </motion.div> : activeView === 'kiosk' ? <motion.div key="kiosk" initial={{
         opacity: 0,
         x: -20

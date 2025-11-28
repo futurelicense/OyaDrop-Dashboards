@@ -1,17 +1,27 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant';
-  onNavigate: (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant') => void;
+  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation';
+  onNavigate: (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation') => void;
 }
 const navItems = [{
   id: 'home',
   label: 'Home',
   icon: HomeIcon,
   color: '#00ffcc'
+}, {
+  id: 'accommodation',
+  label: 'Stays',
+  icon: BedIcon,
+  color: '#A855F7'
+}, {
+  id: 'transport',
+  label: 'Transport',
+  icon: CarIcon,
+  color: '#00F0FF'
 }, {
   id: 'merchant',
   label: 'Merchant PRO',
@@ -49,7 +59,7 @@ export function Sidebar({
   activeView,
   onNavigate
 }: SidebarProps) {
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation') => {
     onNavigate(view);
     onClose();
   };
@@ -65,7 +75,7 @@ export function Sidebar({
       }} onClick={onClose} />
 
           {/* Sidebar */}
-          <motion.div className="fixed top-0 left-0 bottom-0 w-72 bg-gradient-to-b from-[#0a1a1f] via-[#0f2027] to-[#0a1a1f] border-r border-white/10 z-[70] shadow-2xl" initial={{
+          <motion.div className="fixed top-0 left-0 bottom-0 w-72 bg-gradient-to-b from-[#0a1a1f] via-[#0f2027] to-[#0a1a1f] border-r border-white/10 z-[70] shadow-2xl overflow-y-auto" initial={{
         x: '-100%'
       }} animate={{
         x: 0
@@ -123,7 +133,7 @@ export function Sidebar({
                 {navItems.map((item, index) => {
               const Icon = item.icon;
               const isActive = activeView === item.id;
-              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant')} initial={{
+              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation')} initial={{
                 opacity: 0,
                 x: -20
               }} animate={{
@@ -160,7 +170,7 @@ export function Sidebar({
             </nav>
 
             {/* Footer Info */}
-            <motion.div className="absolute bottom-0 left-0 right-0 p-5 border-t border-white/10" initial={{
+            <motion.div className="p-5 border-t border-white/10 mt-4" initial={{
           opacity: 0,
           y: 20
         }} animate={{
