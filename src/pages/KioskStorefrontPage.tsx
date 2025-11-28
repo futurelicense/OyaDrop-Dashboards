@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Menu } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { KioskStorefrontHeader } from '../components/kiosk/KioskStorefrontHeader';
 import { CategoryNavigationBar } from '../components/kiosk/CategoryNavigationBar';
 import { KioskProductGrid } from '../components/kiosk/KioskProductGrid';
@@ -17,9 +19,21 @@ const mockVendor = {
     youtube: '#'
   }
 };
-export function KioskStorefrontPage() {
+interface KioskStorefrontPageProps {
+  onMenuClick: () => void;
+}
+export function KioskStorefrontPage({
+  onMenuClick
+}: KioskStorefrontPageProps) {
   const [filterOpen, setFilterOpen] = useState(false);
   return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
+      {/* Menu Button */}
+      <motion.button className="fixed top-4 left-4 z-50 p-3 bg-[#131B2E] rounded-xl border border-white/10 hover:bg-white/5 transition-colors" onClick={onMenuClick} whileTap={{
+      scale: 0.95
+    }}>
+        <Menu className="w-6 h-6 text-white" />
+      </motion.button>
+
       <KioskStorefrontHeader vendor={mockVendor} />
       <CategoryNavigationBar onFilterClick={() => setFilterOpen(true)} />
       <KioskProductGrid />
