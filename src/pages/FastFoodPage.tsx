@@ -2,136 +2,102 @@ import React, { useState } from 'react';
 import { FastFoodHeader } from '../components/fastfood/FastFoodHeader';
 import { FastFoodCategoryNav } from '../components/fastfood/FastFoodCategoryNav';
 import { FastFoodPromoCarousel } from '../components/fastfood/FastFoodPromoCarousel';
-import { SmartRecommendations } from '../components/fastfood/SmartRecommendations';
-import { FastFoodCard, FastFoodItem } from '../components/fastfood/FastFoodCard';
 import { FastFoodMissions } from '../components/fastfood/FastFoodMissions';
 import { FastFoodBadges } from '../components/fastfood/FastFoodBadges';
+import { SmartRecommendations } from '../components/fastfood/SmartRecommendations';
+import { FastFoodCard } from '../components/fastfood/FastFoodCard';
 import { StickyCartFooter } from '../components/fastfood/StickyCartFooter';
+import { ChatButton } from '../components/messaging/ChatButton';
+import { FloatingChatIcon } from '../components/messaging/FloatingChatIcon';
+import { motion } from 'framer-motion';
 interface FastFoodPageProps {
   onMenuClick: () => void;
+  onOpenChat?: () => void;
 }
-// Mock fast-food data
-const fastFoodItems: FastFoodItem[] = [{
-  id: '1',
-  name: 'Classic Beef Burger with Cheese',
-  price: 3500,
-  originalPrice: 4200,
-  image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop',
-  rating: 4.8,
-  reviews: 1234,
-  restaurant: "Joe's Burger Joint",
-  xpReward: 25,
-  deliveryTime: '15 min',
-  badges: ['hot', 'bestseller', 'fast'],
-  spiceLevel: 1,
-  calories: 650,
-  collected: true
-}, {
-  id: '2',
-  name: 'Crispy Fried Chicken Bucket (8pc)',
-  price: 5800,
-  image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=450&fit=crop',
-  rating: 4.9,
-  reviews: 2156,
-  restaurant: 'Chicken Republic',
-  xpReward: 40,
-  deliveryTime: '20 min',
-  badges: ['bestseller', 'fast'],
-  spiceLevel: 2,
-  calories: 1200
-}, {
-  id: '3',
-  name: 'Spicy Shawarma Wrap',
-  price: 2800,
-  originalPrice: 3200,
-  image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&h=450&fit=crop',
-  rating: 4.7,
-  reviews: 892,
-  restaurant: 'Shawarma Express',
-  xpReward: 20,
-  deliveryTime: '12 min',
-  badges: ['hot', 'fast'],
-  spiceLevel: 3,
-  calories: 480
-}, {
-  id: '4',
-  name: 'Loaded Cheese Fries',
-  price: 1500,
-  image: 'https://images.unsplash.com/photo-1630431341973-02e1b1d6e5ad?w=600&h=450&fit=crop',
-  rating: 4.6,
-  reviews: 567,
-  restaurant: "Joe's Burger Joint",
-  xpReward: 15,
-  deliveryTime: '10 min',
-  badges: ['new', 'fast'],
-  calories: 520
-}, {
-  id: '5',
-  name: 'Double Patty Mega Burger',
-  price: 4800,
-  image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=450&fit=crop',
-  rating: 4.9,
-  reviews: 1567,
-  restaurant: 'Burger King',
-  xpReward: 35,
-  deliveryTime: '18 min',
-  badges: ['bestseller'],
-  spiceLevel: 2,
-  calories: 890,
-  collected: true
-}, {
-  id: '6',
-  name: 'Grilled Chicken Shawarma',
-  price: 3200,
-  image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=450&fit=crop',
-  rating: 4.8,
-  reviews: 1023,
-  restaurant: 'Shawarma Express',
-  xpReward: 22,
-  deliveryTime: '15 min',
-  badges: ['hot'],
-  spiceLevel: 2,
-  calories: 420
-}];
 export function FastFoodPage({
-  onMenuClick
+  onMenuClick,
+  onOpenChat
 }: FastFoodPageProps) {
-  const [cartItems, setCartItems] = useState<string[]>([]);
-  const handleAddToCart = (itemId: string) => {
-    setCartItems([...cartItems, itemId]);
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const handlePlaceOrder = () => {
+    setOrderPlaced(true);
   };
-  const cartItemCount = cartItems.length;
-  const subtotal = cartItems.reduce((sum, itemId) => {
-    const item = fastFoodItems.find(i => i.id === itemId);
-    return sum + (item?.price || 0);
-  }, 0);
-  const xpToEarn = cartItems.reduce((sum, itemId) => {
-    const item = fastFoodItems.find(i => i.id === itemId);
-    return sum + (item?.xpReward || 0);
-  }, 0);
-  const coinsToEarn = Math.floor(subtotal * 0.05);
   return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A] pb-32">
       <FastFoodHeader onMenuClick={onMenuClick} />
 
       <main>
         <FastFoodCategoryNav />
         <FastFoodPromoCarousel />
+        <FastFoodMissions />
+        <FastFoodBadges />
         <SmartRecommendations />
 
-        {/* Food Grid */}
-        <div className="px-4 py-4">
-          <h2 className="text-sm font-bold text-white mb-4">
-            Popular Right Now
-          </h2>
-          <div className="grid grid-cols-2 gap-3">
-            {fastFoodItems.map((item, index) => <FastFoodCard key={item.id} item={item} onAddToCart={() => handleAddToCart(item.id)} index={index} />)}
+        {/* Food Items Grid */}
+        <div className="px-4 py-6">
+          <h2 className="text-lg font-bold text-white mb-4">Popular Items</h2>
+          <div className="grid grid-cols-2 gap-4">
+            <FastFoodCard name="Jollof Rice Combo" restaurant="B-square Restaurant" price={2500} rating={4.8} image="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" />
+            <FastFoodCard name="Chicken & Chips" restaurant="Mama Put" price={3200} rating={4.6} image="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&h=400&fit=crop" />
           </div>
         </div>
 
-        <FastFoodMissions />
-        <FastFoodBadges />
+        {/* Order Placed Success State */}
+        {orderPlaced && <motion.div className="mx-4 mb-6 bg-gradient-to-br from-green-500/20 to-teal-500/20 border-2 border-green-500/50 rounded-2xl p-6" initial={{
+        opacity: 0,
+        scale: 0.9
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} transition={{
+        type: 'spring',
+        damping: 20
+      }}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                <span className="text-2xl">✓</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white">Order Placed!</h3>
+                <p className="text-sm text-gray-400">
+                  B-square is preparing your food
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 mb-4">
+              <div className="flex items-center gap-3 p-3 bg-[#0A0E1A]/50 rounded-xl">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop" alt="B-square Restaurant" className="w-12 h-12 rounded-full object-cover" />
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-white">
+                    B-square Restaurant
+                  </p>
+                  <p className="text-xs text-gray-400">Preparing your order</p>
+                  <div className="flex items-center gap-1 mt-1">
+                    <span className="text-xs text-yellow-400">★ 4.8</span>
+                    <span className="text-xs text-gray-500">
+                      • Fast delivery
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <ChatButton contactName="B-square Restaurant" contactType="Restaurant" variant="secondary" size="md" onClick={onOpenChat} />
+            </div>
+
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-xs text-gray-400 mb-2">
+                Delivery Rider will be assigned soon
+              </p>
+              <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                Estimated time: 25-30 mins
+              </div>
+            </div>
+          </motion.div>}
       </main>
 
-      <StickyCartFooter itemCount={cartItemCount} subtotal={subtotal} xpToEarn={xpToEarn} coinsToEarn={coinsToEarn} onCheckout={() => console.log('Checkout')} />
+      <StickyCartFooter onPlaceOrder={handlePlaceOrder} />
+
+      {onOpenChat && <FloatingChatIcon unreadCount={3} onOpenChat={onOpenChat} />}
     </div>;
 }

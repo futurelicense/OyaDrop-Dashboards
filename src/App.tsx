@@ -11,15 +11,19 @@ import { TransportBookingPage } from './pages/TransportBookingPage';
 import { AccommodationPage } from './pages/AccommodationPage';
 import { KioskStorefrontPage } from './pages/KioskStorefrontPage';
 import { UniversalProviderDashboardPage } from './pages/UniversalProviderDashboardPage';
+import { MessagingPage } from './pages/MessagingPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider'>('provider');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging'>('transport');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging') => {
     setActiveView(view);
   };
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+  const handleOpenChat = () => {
+    setActiveView('messaging');
   };
   return <>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeView={activeView} onNavigate={handleNavigate} />
@@ -63,7 +67,7 @@ export function App() {
       }} transition={{
         duration: 0.3
       }}>
-            <FastFoodPage onMenuClick={toggleSidebar} />
+            <FastFoodPage onMenuClick={toggleSidebar} onOpenChat={handleOpenChat} />
           </motion.div> : activeView === 'merchant' ? <motion.div key="merchant" initial={{
         opacity: 0,
         scale: 0.95
@@ -89,7 +93,7 @@ export function App() {
       }} transition={{
         duration: 0.3
       }}>
-            <TransportBookingPage onMenuClick={toggleSidebar} />
+            <TransportBookingPage onMenuClick={toggleSidebar} onOpenChat={handleOpenChat} />
           </motion.div> : activeView === 'accommodation' ? <motion.div key="accommodation" initial={{
         opacity: 0,
         scale: 0.95
@@ -129,6 +133,19 @@ export function App() {
         duration: 0.3
       }}>
             <UniversalProviderDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'messaging' ? <motion.div key="messaging" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <MessagingPage onMenuClick={toggleSidebar} />
           </motion.div> : activeView === 'kiosk' ? <motion.div key="kiosk" initial={{
         opacity: 0,
         x: -20

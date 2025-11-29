@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider';
-  onNavigate: (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider') => void;
+  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging';
+  onNavigate: (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging') => void;
 }
 const navItems = [{
   id: 'home',
@@ -13,10 +13,15 @@ const navItems = [{
   icon: HomeIcon,
   color: '#00ffcc'
 }, {
+  id: 'messaging',
+  label: 'Messages',
+  icon: MessageCircleIcon,
+  color: '#00D9C0'
+}, {
   id: 'provider',
   label: 'Provider Dashboard',
   icon: BriefcaseIcon,
-  color: '#00D9C0'
+  color: '#00F0FF'
 }, {
   id: 'accommodation',
   label: 'Stays',
@@ -69,7 +74,7 @@ export function Sidebar({
   activeView,
   onNavigate
 }: SidebarProps) {
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging') => {
     onNavigate(view);
     onClose();
   };
@@ -143,7 +148,7 @@ export function Sidebar({
                 {navItems.map((item, index) => {
               const Icon = item.icon;
               const isActive = activeView === item.id;
-              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider')} initial={{
+              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging')} initial={{
                 opacity: 0,
                 x: -20
               }} animate={{

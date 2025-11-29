@@ -67,7 +67,12 @@ const typeColors: Record<string, string> = {
   'Shortlet Agency': '#00F0FF',
   'Shared Living': '#B026FF'
 };
-export function FeaturedPartners() {
+interface FeaturedPartnersProps {
+  onPartnerSelect?: (partner: Partner) => void;
+}
+export function FeaturedPartners({
+  onPartnerSelect
+}: FeaturedPartnersProps) {
   return <div className="px-4 py-6">
       <div className="mb-4">
         <h2 className="text-lg font-bold text-white mb-1">Featured Partners</h2>
@@ -75,7 +80,7 @@ export function FeaturedPartners() {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        {partners.map((partner, index) => <motion.div key={partner.id} className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10 relative overflow-hidden" initial={{
+        {partners.map((partner, index) => <motion.button key={partner.id} className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10 relative overflow-hidden text-left" initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -86,7 +91,9 @@ export function FeaturedPartners() {
       }} whileHover={{
         y: -4,
         borderColor: '#00D9C040'
-      }}>
+      }} whileTap={{
+        scale: 0.98
+      }} onClick={() => onPartnerSelect?.(partner)}>
             {/* Featured Badge */}
             {partner.featured && <div className="absolute top-2 right-2">
                 <motion.div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-1.5 rounded-lg shadow-lg" animate={{
@@ -133,7 +140,7 @@ export function FeaturedPartners() {
                 {partner.properties} properties
               </span>
             </div>
-          </motion.div>)}
+          </motion.button>)}
       </div>
     </div>;
 }
