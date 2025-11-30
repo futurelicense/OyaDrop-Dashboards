@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon, ShoppingCartIcon, PillIcon, WashingMachineIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging';
-  onNavigate: (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging') => void;
+  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry';
+  onNavigate: (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry') => void;
 }
 const navItems = [{
   id: 'home',
@@ -16,6 +16,21 @@ const navItems = [{
   id: 'messaging',
   label: 'Messages',
   icon: MessageCircleIcon,
+  color: '#00D9C0'
+}, {
+  id: 'laundry',
+  label: 'Laundry Dashboard',
+  icon: WashingMachineIcon,
+  color: '#00D9C0'
+}, {
+  id: 'pharmacy',
+  label: 'Pharmacy Dashboard',
+  icon: PillIcon,
+  color: '#10B981'
+}, {
+  id: 'supermarket',
+  label: 'Supermarket Dashboard',
+  icon: ShoppingCartIcon,
   color: '#00D9C0'
 }, {
   id: 'provider',
@@ -74,7 +89,7 @@ export function Sidebar({
   activeView,
   onNavigate
 }: SidebarProps) {
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry') => {
     onNavigate(view);
     onClose();
   };
@@ -148,7 +163,7 @@ export function Sidebar({
                 {navItems.map((item, index) => {
               const Icon = item.icon;
               const isActive = activeView === item.id;
-              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging')} initial={{
+              return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id as 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry')} initial={{
                 opacity: 0,
                 x: -20
               }} animate={{

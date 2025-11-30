@@ -1,7 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Navigation, Clock, Search } from 'lucide-react';
-export function LocationInputCards() {
+interface LocationInputCardsProps {
+  pickup: string;
+  destination: string;
+  onPickupChange: (value: string) => void;
+  onDestinationChange: (value: string) => void;
+}
+export function LocationInputCards({
+  pickup,
+  destination,
+  onPickupChange,
+  onDestinationChange
+}: LocationInputCardsProps) {
   return <div className="px-4 py-4 space-y-3">
       {/* Pickup Card */}
       <motion.div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-green-500/30" initial={{
@@ -19,7 +30,7 @@ export function LocationInputCards() {
           </div>
           <div className="flex-1">
             <p className="text-xs text-gray-400 mb-1">Pickup Location</p>
-            <input type="text" placeholder="Enter pickup address" className="w-full bg-transparent text-white text-sm placeholder:text-gray-500 focus:outline-none" />
+            <input type="text" placeholder="Enter pickup address" value={pickup} onChange={e => onPickupChange(e.target.value)} className="w-full bg-transparent text-white text-sm placeholder:text-gray-500 focus:outline-none" />
           </div>
           <Search className="w-5 h-5 text-gray-400" />
         </div>
@@ -57,7 +68,7 @@ export function LocationInputCards() {
           </div>
           <div className="flex-1">
             <p className="text-xs text-gray-400 mb-1">Destination</p>
-            <input type="text" placeholder="Enter destination address" className="w-full bg-transparent text-white text-sm placeholder:text-gray-500 focus:outline-none" />
+            <input type="text" placeholder="Enter destination address" value={destination} onChange={e => onDestinationChange(e.target.value)} className="w-full bg-transparent text-white text-sm placeholder:text-gray-500 focus:outline-none" />
           </div>
           <Search className="w-5 h-5 text-gray-400" />
         </div>

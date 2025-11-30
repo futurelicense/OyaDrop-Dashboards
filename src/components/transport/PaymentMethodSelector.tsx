@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Wallet, CreditCard, Coins, Banknote } from 'lucide-react';
 const paymentMethods = [{
@@ -22,8 +22,14 @@ const paymentMethods = [{
   icon: Coins,
   color: '#FFB800'
 }];
-export function PaymentMethodSelector() {
-  const [selectedMethod, setSelectedMethod] = useState('cash');
+interface PaymentMethodSelectorProps {
+  selectedMethod: string;
+  onMethodChange: (methodId: string) => void;
+}
+export function PaymentMethodSelector({
+  selectedMethod,
+  onMethodChange
+}: PaymentMethodSelectorProps) {
   return <div className="px-4 py-4">
       <h3 className="text-sm font-bold text-white mb-3">Payment Method</h3>
 
@@ -31,7 +37,7 @@ export function PaymentMethodSelector() {
         {paymentMethods.map((method, index) => {
         const Icon = method.icon;
         const isSelected = selectedMethod === method.id;
-        return <motion.button key={method.id} className={`bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 transition-all ${isSelected ? 'border-cyan-500 shadow-lg shadow-cyan-500/30' : 'border-white/10'}`} onClick={() => setSelectedMethod(method.id)} initial={{
+        return <motion.button key={method.id} className={`bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 transition-all ${isSelected ? 'border-cyan-500 shadow-lg shadow-cyan-500/30' : 'border-white/10'}`} onClick={() => onMethodChange(method.id)} initial={{
           opacity: 0,
           y: 20
         }} animate={{

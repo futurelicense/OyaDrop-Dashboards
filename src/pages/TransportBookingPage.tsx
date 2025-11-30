@@ -19,24 +19,40 @@ export function TransportBookingPage({
   onOpenChat
 }: TransportBookingPageProps) {
   const [pricingMode, setPricingMode] = useState<'regular' | 'negotiate'>('regular');
+  const [pickup, setPickup] = useState('');
+  const [destination, setDestination] = useState('');
+  const [selectedVehicle, setSelectedVehicle] = useState('bike');
+  const [paymentMethod, setPaymentMethod] = useState('cash');
   const [rideBooked, setRideBooked] = useState(false);
   const handleBookRide = () => {
     setRideBooked(true);
   };
+  // Calculate fare based on selected vehicle
+  const getFare = () => {
+    const fares: Record<string, string> = {
+      bike: '₦800',
+      mini: '₦1,200',
+      sedan: '₦1,800',
+      xl: '₦2,500'
+    };
+    return fares[selectedVehicle] || '₦800';
+  };
   return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A] pb-32">
       <TransportHeader onMenuClick={onMenuClick} />
 
-      <main className="px-4 py-6 space-y-6">
-        <RideModeSelector />
-        <LocationInputCards />
+      <main className="space-y-6">
+        <RideModeSelector mode={pricingMode} onModeChange={setPricingMode} />
+
+        <LocationInputCards pickup={pickup} destination={destination} onPickupChange={setPickup} onDestinationChange={setDestination} />
+
         <LiveMapPanel />
 
-        {pricingMode === 'regular' ? <RegularPricingPanel onSwitchToNegotiate={() => setPricingMode('negotiate')} /> : <NegotiatePricingPanel onSwitchToRegular={() => setPricingMode('regular')} />}
+        {pricingMode === 'regular' ? <RegularPricingPanel selectedVehicle={selectedVehicle} onVehicleChange={setSelectedVehicle} /> : <NegotiatePricingPanel />}
 
-        <PaymentMethodSelector />
+        <PaymentMethodSelector selectedMethod={paymentMethod} onMethodChange={setPaymentMethod} />
 
         {/* Ride Booked Success State */}
-        {rideBooked && <motion.div className="bg-gradient-to-br from-green-500/20 to-teal-500/20 border-2 border-green-500/50 rounded-2xl p-6" initial={{
+        {rideBooked && <motion.div className="mx-4 bg-gradient-to-br from-green-500/20 to-teal-500/20 border-2 border-green-500/50 rounded-2xl p-6" initial={{
         opacity: 0,
         scale: 0.9
       }} animate={{
@@ -70,11 +86,11 @@ export function TransportBookingPage({
               </div>
             </div>
 
-            <ChatButton contactName="Tunde" contactType="Rider" variant="primary" size="lg" onClick={onOpenChat} />
+            {onOpenChat && <ChatButton contactName="Tunde" contactType="Rider" variant="primary" size="lg" onClick={onOpenChat} />}
           </motion.div>}
       </main>
 
-      <FareSummaryFooter onBookRide={handleBookRide} />
+      <FareSummaryFooter mode={pricingMode} fare={getFare()} pickup={pickup} destination={destination} onBookRide={handleBookRide} />
 
       {onOpenChat && <FloatingChatIcon unreadCount={2} onOpenChat={onOpenChat} />}
     </div>;

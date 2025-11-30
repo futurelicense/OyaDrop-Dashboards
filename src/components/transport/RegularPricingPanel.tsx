@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Clock, MapPin, RefreshCw } from 'lucide-react';
+import { TrendingUp, Clock, RefreshCw } from 'lucide-react';
 const vehicleCategories = [{
   id: 'bike',
   name: 'Bike',
@@ -30,7 +30,14 @@ const vehicleCategories = [{
   eta: '10 min',
   color: '#B026FF'
 }];
-export function RegularPricingPanel() {
+interface RegularPricingPanelProps {
+  selectedVehicle: string;
+  onVehicleChange: (vehicleId: string) => void;
+}
+export function RegularPricingPanel({
+  selectedVehicle,
+  onVehicleChange
+}: RegularPricingPanelProps) {
   return <div className="px-4 py-4">
       {/* Fare Estimate Card */}
       <motion.div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-cyan-500/30 mb-4" initial={{
@@ -84,36 +91,41 @@ export function RegularPricingPanel() {
       <div>
         <h3 className="text-sm font-bold text-white mb-3">Select Vehicle</h3>
         <div className="grid grid-cols-2 gap-3">
-          {vehicleCategories.map((vehicle, index) => <motion.button key={vehicle.id} className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10 hover:border-cyan-500/50 transition-colors text-left" initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.5 + index * 0.1
-        }} whileHover={{
-          y: -2
-        }} whileTap={{
-          scale: 0.98
-        }}>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{
-              backgroundColor: vehicle.color + '20'
+          {vehicleCategories.map((vehicle, index) => {
+          const isSelected = selectedVehicle === vehicle.id;
+          return <motion.button key={vehicle.id} className={`bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 transition-colors text-left ${isSelected ? 'border-cyan-500 shadow-lg shadow-cyan-500/30' : 'border-white/10 hover:border-cyan-500/50'}`} initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            delay: 0.5 + index * 0.1
+          }} whileHover={{
+            y: -2
+          }} whileTap={{
+            scale: 0.98
+          }} onClick={() => onVehicleChange(vehicle.id)}>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{
+                backgroundColor: vehicle.color + '20'
+              }}>
+                    {vehicle.icon}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">
+                      {vehicle.name}
+                    </p>
+                    <p className="text-xs text-gray-400">{vehicle.eta}</p>
+                  </div>
+                </div>
+                <p className="text-lg font-bold" style={{
+              color: vehicle.color
             }}>
-                  {vehicle.icon}
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-white">{vehicle.name}</p>
-                  <p className="text-xs text-gray-400">{vehicle.eta}</p>
-                </div>
-              </div>
-              <p className="text-lg font-bold" style={{
-            color: vehicle.color
-          }}>
-                {vehicle.fare}
-              </p>
-            </motion.button>)}
+                  {vehicle.fare}
+                </p>
+              </motion.button>;
+        })}
         </div>
       </div>
     </div>;

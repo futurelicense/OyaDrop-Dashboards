@@ -12,11 +12,14 @@ import { AccommodationPage } from './pages/AccommodationPage';
 import { KioskStorefrontPage } from './pages/KioskStorefrontPage';
 import { UniversalProviderDashboardPage } from './pages/UniversalProviderDashboardPage';
 import { MessagingPage } from './pages/MessagingPage';
+import { SupermarketDashboardPage } from './pages/SupermarketDashboardPage';
+import { PharmacyDashboardPage } from './pages/PharmacyDashboardPage';
+import { LaundryDashboardPage } from './pages/LaundryDashboardPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging'>('transport');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry'>('laundry');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry') => {
     setActiveView(view);
   };
   const toggleSidebar = () => {
@@ -29,7 +32,46 @@ export function App() {
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeView={activeView} onNavigate={handleNavigate} />
 
       <AnimatePresence mode="wait">
-        {activeView === 'home' ? <motion.div key="home" initial={{
+        {activeView === 'laundry' ? <motion.div key="laundry" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <LaundryDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'pharmacy' ? <motion.div key="pharmacy" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <PharmacyDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'supermarket' ? <motion.div key="supermarket" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <SupermarketDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'home' ? <motion.div key="home" initial={{
         opacity: 0,
         y: 20
       }} animate={{

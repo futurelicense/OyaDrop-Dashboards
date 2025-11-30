@@ -6,12 +6,14 @@ interface FareSummaryFooterProps {
   fare: string;
   pickup: string;
   destination: string;
+  onBookRide: () => void;
 }
 export function FareSummaryFooter({
   mode,
   fare,
   pickup,
-  destination
+  destination,
+  onBookRide
 }: FareSummaryFooterProps) {
   return <motion.div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-[#0A0E1A] via-[#0F1520] to-transparent backdrop-blur-xl border-t border-cyan-500/20 p-4" initial={{
     y: 100
@@ -53,7 +55,7 @@ export function FareSummaryFooter({
       scale: 1.02
     }} whileTap={{
       scale: 0.98
-    }}>
+    }} onClick={onBookRide}>
         {mode === 'regular' ? '🚗 Book Ride Now' : '💰 Send Offer to Drivers'}
       </motion.button>
     </motion.div>;
