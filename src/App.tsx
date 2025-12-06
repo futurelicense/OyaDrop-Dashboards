@@ -14,13 +14,16 @@ import { UniversalProviderDashboardPage } from './pages/UniversalProviderDashboa
 import { MessagingPage } from './pages/MessagingPage';
 import { SupermarketDashboardPage } from './pages/SupermarketDashboardPage';
 import { PharmacyDashboardPage } from './pages/PharmacyDashboardPage';
+import { PharmacyCustomerPage } from './pages/PharmacyCustomerPage';
+import { BeautyCustomerPage } from './pages/BeautyCustomerPage';
 import { LaundryDashboardPage } from './pages/LaundryDashboardPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry'>('laundry');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry'>('home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry') => {
     setActiveView(view);
+    setSidebarOpen(false);
   };
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -32,7 +35,46 @@ export function App() {
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeView={activeView} onNavigate={handleNavigate} />
 
       <AnimatePresence mode="wait">
-        {activeView === 'laundry' ? <motion.div key="laundry" initial={{
+        {activeView === 'home' ? <motion.div key="home" initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} exit={{
+        opacity: 0,
+        y: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <HomeDashboardPage onMenuClick={toggleSidebar} onNavigate={handleNavigate} />
+          </motion.div> : activeView === 'pharmacy-customer' ? <motion.div key="pharmacy-customer" initial={{
+        opacity: 0,
+        x: 20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <PharmacyCustomerPage onBack={() => handleNavigate('home')} />
+          </motion.div> : activeView === 'beauty-customer' ? <motion.div key="beauty-customer" initial={{
+        opacity: 0,
+        x: 20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <BeautyCustomerPage onBack={() => handleNavigate('home')} />
+          </motion.div> : activeView === 'laundry' ? <motion.div key="laundry" initial={{
         opacity: 0,
         scale: 0.95
       }} animate={{
@@ -71,19 +113,6 @@ export function App() {
         duration: 0.3
       }}>
             <SupermarketDashboardPage onMenuClick={toggleSidebar} />
-          </motion.div> : activeView === 'home' ? <motion.div key="home" initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} exit={{
-        opacity: 0,
-        y: -20
-      }} transition={{
-        duration: 0.3
-      }}>
-            <HomeDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> : activeView === 'wallet' ? <motion.div key="wallet" initial={{
         opacity: 0,
         scale: 0.95
