@@ -13,15 +13,17 @@ import { KioskStorefrontPage } from './pages/KioskStorefrontPage';
 import { UniversalProviderDashboardPage } from './pages/UniversalProviderDashboardPage';
 import { MessagingPage } from './pages/MessagingPage';
 import { SupermarketDashboardPage } from './pages/SupermarketDashboardPage';
+import { SupermarketCustomerPage } from './pages/SupermarketCustomerPage';
 import { PharmacyDashboardPage } from './pages/PharmacyDashboardPage';
 import { PharmacyCustomerPage } from './pages/PharmacyCustomerPage';
 import { BeautyCustomerPage } from './pages/BeautyCustomerPage';
 import { LaundryDashboardPage } from './pages/LaundryDashboardPage';
+import { LaundryCustomerPage } from './pages/LaundryCustomerPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry' | 'laundry-customer'>('home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry' | 'laundry-customer') => {
     setActiveView(view);
     setSidebarOpen(false);
   };
@@ -74,6 +76,32 @@ export function App() {
         duration: 0.3
       }}>
             <BeautyCustomerPage onBack={() => handleNavigate('home')} />
+          </motion.div> : activeView === 'supermarket-customer' ? <motion.div key="supermarket-customer" initial={{
+        opacity: 0,
+        x: 20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <SupermarketCustomerPage onBack={() => handleNavigate('home')} />
+          </motion.div> : activeView === 'laundry-customer' ? <motion.div key="laundry-customer" initial={{
+        opacity: 0,
+        x: 20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <LaundryCustomerPage onBack={() => handleNavigate('home')} />
           </motion.div> : activeView === 'laundry' ? <motion.div key="laundry" initial={{
         opacity: 0,
         scale: 0.95

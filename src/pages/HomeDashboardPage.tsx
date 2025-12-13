@@ -51,10 +51,10 @@ export function HomeDashboardPage({
     setActiveSheet(null);
     setSuccessConfig({
       title: 'Shopping List Saved!',
-      message: 'Your shopping list is ready. Browse supermarkets to start adding items to your cart.',
-      actionLabel: 'Browse Supermarkets',
+      message: 'Your shopping list is ready. Browse fresh groceries and add items to your cart.',
+      actionLabel: 'Start Shopping',
       color: '#10B981',
-      navigateTo: 'supermarket'
+      navigateTo: 'supermarket-customer'
     });
   };
   const handleBeautySubmit = (data: any) => {
@@ -94,11 +94,11 @@ export function HomeDashboardPage({
     console.log('Laundry request:', data);
     setActiveSheet(null);
     setSuccessConfig({
-      title: 'Pickup Scheduled!',
-      message: `We'll pick up your laundry ${data.when} during ${data.time}. You'll receive a confirmation call 30 minutes before.`,
-      actionLabel: 'View Laundry Details',
+      title: 'Request Received!',
+      message: 'Browse laundry services and schedule your pickup.',
+      actionLabel: 'View Laundry Services',
       color: '#14B8A6',
-      navigateTo: 'laundry'
+      navigateTo: 'laundry-customer'
     });
   };
   const handleSuccessAction = () => {
