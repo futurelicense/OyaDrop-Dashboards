@@ -17,13 +17,14 @@ import { SupermarketCustomerPage } from './pages/SupermarketCustomerPage';
 import { PharmacyDashboardPage } from './pages/PharmacyDashboardPage';
 import { PharmacyCustomerPage } from './pages/PharmacyCustomerPage';
 import { BeautyCustomerPage } from './pages/BeautyCustomerPage';
+import { BeautyProviderDashboardPage } from './pages/BeautyProviderDashboardPage';
 import { LaundryDashboardPage } from './pages/LaundryDashboardPage';
 import { LaundryCustomerPage } from './pages/LaundryCustomerPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry' | 'laundry-customer'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer'>('home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'laundry' | 'laundry-customer') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer') => {
     setActiveView(view);
     setSidebarOpen(false);
   };
@@ -76,6 +77,19 @@ export function App() {
         duration: 0.3
       }}>
             <BeautyCustomerPage onBack={() => handleNavigate('home')} />
+          </motion.div> : activeView === 'beauty-provider' ? <motion.div key="beauty-provider" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <BeautyProviderDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> : activeView === 'supermarket-customer' ? <motion.div key="supermarket-customer" initial={{
         opacity: 0,
         x: 20
