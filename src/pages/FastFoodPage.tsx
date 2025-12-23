@@ -5,23 +5,82 @@ import { FastFoodPromoCarousel } from '../components/fastfood/FastFoodPromoCarou
 import { FastFoodMissions } from '../components/fastfood/FastFoodMissions';
 import { FastFoodBadges } from '../components/fastfood/FastFoodBadges';
 import { SmartRecommendations } from '../components/fastfood/SmartRecommendations';
-import { FastFoodCard } from '../components/fastfood/FastFoodCard';
+import { FastFoodCard, FastFoodItem } from '../components/fastfood/FastFoodCard';
 import { StickyCartFooter } from '../components/fastfood/StickyCartFooter';
-import { ChatButton } from '../components/messaging/ChatButton';
 import { FloatingChatIcon } from '../components/messaging/FloatingChatIcon';
 import { motion } from 'framer-motion';
 interface FastFoodPageProps {
   onMenuClick: () => void;
   onOpenChat?: () => void;
 }
+const mockFoodItems: FastFoodItem[] = [{
+  id: '1',
+  name: 'Jollof Rice Combo',
+  price: 2500,
+  originalPrice: 3000,
+  image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop',
+  rating: 4.8,
+  reviews: 234,
+  restaurant: 'B-square Restaurant',
+  xpReward: 25,
+  deliveryTime: '20-30 min',
+  badges: ['hot', 'bestseller'],
+  spiceLevel: 2,
+  calories: 650
+}, {
+  id: '2',
+  name: 'Chicken & Chips',
+  price: 3200,
+  image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&h=400&fit=crop',
+  rating: 4.6,
+  reviews: 189,
+  restaurant: 'Mama Put',
+  xpReward: 20,
+  deliveryTime: '15-25 min',
+  badges: ['fast'],
+  calories: 580
+}, {
+  id: '3',
+  name: 'Suya Platter',
+  price: 2800,
+  originalPrice: 3500,
+  image: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400&h=400&fit=crop',
+  rating: 4.9,
+  reviews: 312,
+  restaurant: 'Abuja Suya Spot',
+  xpReward: 30,
+  deliveryTime: '25-35 min',
+  badges: ['hot', 'new'],
+  spiceLevel: 3,
+  calories: 420
+}, {
+  id: '4',
+  name: 'Fried Rice Special',
+  price: 2200,
+  image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=400&fit=crop',
+  rating: 4.7,
+  reviews: 156,
+  restaurant: 'Rice & More',
+  xpReward: 22,
+  deliveryTime: '20-30 min',
+  badges: ['bestseller'],
+  spiceLevel: 1,
+  calories: 590
+}];
 export function FastFoodPage({
   onMenuClick,
   onOpenChat
 }: FastFoodPageProps) {
-  const [orderPlaced, setOrderPlaced] = useState(false);
-  const handlePlaceOrder = () => {
-    setOrderPlaced(true);
+  const [cartItems, setCartItems] = useState<FastFoodItem[]>([]);
+  const handleAddToCart = (item: FastFoodItem) => {
+    setCartItems(prev => [...prev, item]);
   };
+  const handleCheckout = () => {
+    console.log('Checkout with items:', cartItems);
+  };
+  const totalXP = cartItems.reduce((sum, item) => sum + item.xpReward, 0);
+  const totalCoins = Math.floor(cartItems.reduce((sum, item) => sum + item.price, 0) / 100);
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
   return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A] pb-32">
       <FastFoodHeader onMenuClick={onMenuClick} />
 
@@ -36,67 +95,12 @@ export function FastFoodPage({
         <div className="px-4 py-6">
           <h2 className="text-lg font-bold text-white mb-4">Popular Items</h2>
           <div className="grid grid-cols-2 gap-4">
-            <FastFoodCard name="Jollof Rice Combo" restaurant="B-square Restaurant" price={2500} rating={4.8} image="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" />
-            <FastFoodCard name="Chicken & Chips" restaurant="Mama Put" price={3200} rating={4.6} image="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&h=400&fit=crop" />
+            {mockFoodItems.map((item, index) => <FastFoodCard key={item.id} item={item} onAddToCart={() => handleAddToCart(item)} index={index} />)}
           </div>
         </div>
-
-        {/* Order Placed Success State */}
-        {orderPlaced && <motion.div className="mx-4 mb-6 bg-gradient-to-br from-green-500/20 to-teal-500/20 border-2 border-green-500/50 rounded-2xl p-6" initial={{
-        opacity: 0,
-        scale: 0.9
-      }} animate={{
-        opacity: 1,
-        scale: 1
-      }} transition={{
-        type: 'spring',
-        damping: 20
-      }}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                <span className="text-2xl">✓</span>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">Order Placed!</h3>
-                <p className="text-sm text-gray-400">
-                  B-square is preparing your food
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-3 mb-4">
-              <div className="flex items-center gap-3 p-3 bg-[#0A0E1A]/50 rounded-xl">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop" alt="B-square Restaurant" className="w-12 h-12 rounded-full object-cover" />
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-white">
-                    B-square Restaurant
-                  </p>
-                  <p className="text-xs text-gray-400">Preparing your order</p>
-                  <div className="flex items-center gap-1 mt-1">
-                    <span className="text-xs text-yellow-400">★ 4.8</span>
-                    <span className="text-xs text-gray-500">
-                      • Fast delivery
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <ChatButton contactName="B-square Restaurant" contactType="Restaurant" variant="secondary" size="md" onClick={onOpenChat} />
-            </div>
-
-            <div className="pt-4 border-t border-white/10">
-              <p className="text-xs text-gray-400 mb-2">
-                Delivery Rider will be assigned soon
-              </p>
-              <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                Estimated time: 25-30 mins
-              </div>
-            </div>
-          </motion.div>}
       </main>
 
-      <StickyCartFooter onPlaceOrder={handlePlaceOrder} />
+      {cartItems.length > 0 && <StickyCartFooter itemCount={cartItems.length} subtotal={subtotal} xpToEarn={totalXP} coinsToEarn={totalCoins} onCheckout={handleCheckout} />}
 
       {onOpenChat && <FloatingChatIcon unreadCount={3} onOpenChat={onOpenChat} />}
     </div>;

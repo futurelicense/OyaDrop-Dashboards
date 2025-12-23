@@ -1,215 +1,453 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Shirt, Calendar, Clock, MapPin, CheckCircle, X, Plus, Minus, Package, Sparkles, Zap, Star, Phone } from 'lucide-react';
+import { ArrowLeft, Shirt, Clock, MapPin, Calendar, ChevronRight, Plus, Minus, Check, Sparkles, Droplets, Wind, Package, Star, Phone, MessageCircle, X } from 'lucide-react';
+interface LaundryCustomerPageProps {
+  onBack: () => void;
+}
+type FlowStep = 'services' | 'items' | 'schedule' | 'review' | 'tracking';
 interface LaundryService {
   id: string;
   name: string;
-  icon: string;
+  icon: any;
   description: string;
-  price: number;
-  unit: string;
-  duration: string;
-  badge?: 'Popular' | 'Express' | 'Premium';
+  pricePerKg: number;
+  color: string;
 }
-interface LaundryProvider {
+interface LaundryItem {
   id: string;
   name: string;
-  logo: string;
-  rating: number;
-  reviews: number;
-  distance: string;
-  pickupTime: string;
-  verified: boolean;
-}
-interface ServiceItem extends LaundryService {
+  icon: string;
   quantity: number;
+  estimatedKg: number;
 }
-const laundryServices: LaundryService[] = [{
-  id: '1',
+interface ScheduleSlot {
+  id: string;
+  date: string;
+  time: string;
+  available: boolean;
+}
+const services: LaundryService[] = [{
+  id: 'wash-iron',
+  name: 'Wash & Iron',
+  icon: Sparkles,
+  description: 'Complete wash and iron service',
+  pricePerKg: 800,
+  color: '#00D9C0'
+}, {
+  id: 'wash-only',
   name: 'Wash Only',
-  icon: '💧',
-  description: 'Basic washing service',
-  price: 500,
-  unit: 'per kg',
-  duration: '24 hours'
+  icon: Droplets,
+  description: 'Professional washing service',
+  pricePerKg: 500,
+  color: '#3B82F6'
+}, {
+  id: 'iron-only',
+  name: 'Iron Only',
+  icon: Sparkles,
+  description: 'Expert ironing service',
+  pricePerKg: 400,
+  color: '#F59E0B'
+}, {
+  id: 'dry-clean',
+  name: 'Dry Cleaning',
+  icon: Wind,
+  description: 'Premium dry cleaning',
+  pricePerKg: 1500,
+  color: '#A855F7'
+}];
+const itemTemplates = [{
+  id: 'shirts',
+  name: 'Shirts',
+  icon: '👔',
+  estimatedKg: 0.2
+}, {
+  id: 'trousers',
+  name: 'Trousers',
+  icon: '👖',
+  estimatedKg: 0.3
+}, {
+  id: 'dresses',
+  name: 'Dresses',
+  icon: '👗',
+  estimatedKg: 0.4
+}, {
+  id: 'bedsheets',
+  name: 'Bed Sheets',
+  icon: '🛏️',
+  estimatedKg: 1.0
+}, {
+  id: 'towels',
+  name: 'Towels',
+  icon: '🧺',
+  estimatedKg: 0.5
+}, {
+  id: 'jeans',
+  name: 'Jeans',
+  icon: '👕',
+  estimatedKg: 0.6
+}];
+const scheduleSlots: ScheduleSlot[] = [{
+  id: '1',
+  date: 'Today',
+  time: '2:00 PM - 4:00 PM',
+  available: true
 }, {
   id: '2',
-  name: 'Wash & Iron',
-  icon: '👔',
-  description: 'Wash and iron service',
-  price: 800,
-  unit: 'per kg',
-  duration: '24 hours',
-  badge: 'Popular'
+  date: 'Today',
+  time: '4:00 PM - 6:00 PM',
+  available: true
 }, {
   id: '3',
-  name: 'Dry Clean',
-  icon: '✨',
-  description: 'Professional dry cleaning',
-  price: 1500,
-  unit: 'per item',
-  duration: '48 hours',
-  badge: 'Premium'
+  date: 'Tomorrow',
+  time: '10:00 AM - 12:00 PM',
+  available: true
 }, {
   id: '4',
-  name: 'Express Service',
-  icon: '⚡',
-  description: 'Same day service',
-  price: 1200,
-  unit: 'per kg',
-  duration: '6 hours',
-  badge: 'Express'
+  date: 'Tomorrow',
+  time: '2:00 PM - 4:00 PM',
+  available: true
 }, {
   id: '5',
-  name: 'Ironing Only',
-  icon: '🔥',
-  description: 'Professional ironing',
-  price: 400,
-  unit: 'per kg',
-  duration: '12 hours'
-}, {
-  id: '6',
-  name: 'Stain Removal',
-  icon: '🧼',
-  description: 'Specialized stain treatment',
-  price: 1000,
-  unit: 'per item',
-  duration: '24 hours'
+  date: 'Tomorrow',
+  time: '4:00 PM - 6:00 PM',
+  available: false
 }];
-const mockProviders: LaundryProvider[] = [{
-  id: '1',
-  name: 'CleanPro Laundry',
-  logo: 'https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=200&h=200&fit=crop',
-  rating: 4.9,
-  reviews: 456,
-  distance: '1.2 km',
-  pickupTime: 'Today at 3:00 PM',
-  verified: true
-}, {
-  id: '2',
-  name: 'Fresh & Clean',
-  logo: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=200&h=200&fit=crop',
-  rating: 4.8,
-  reviews: 312,
-  distance: '0.8 km',
-  pickupTime: 'Today at 2:00 PM',
-  verified: true
-}, {
-  id: '3',
-  name: 'Express Wash',
-  logo: 'https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=200&h=200&fit=crop',
-  rating: 4.7,
-  reviews: 234,
-  distance: '2.1 km',
-  pickupTime: 'Tomorrow at 10:00 AM',
-  verified: true
-}];
-const badgeConfig = {
-  Popular: {
-    color: '#FFB800',
-    bg: '#FFB80020',
-    label: '🔥 Popular'
-  },
-  Express: {
-    color: '#00D9C0',
-    bg: '#00D9C020',
-    label: '⚡ Express'
-  },
-  Premium: {
-    color: '#B026FF',
-    bg: '#B026FF20',
-    label: '✨ Premium'
-  }
-};
-interface LaundryCustomerPageProps {
-  onBack: () => void;
-  initialRequest?: any;
-}
 export function LaundryCustomerPage({
-  onBack,
-  initialRequest
+  onBack
 }: LaundryCustomerPageProps) {
-  const [selectedServices, setSelectedServices] = useState<ServiceItem[]>([]);
-  const [selectedProvider, setSelectedProvider] = useState<LaundryProvider | null>(null);
-  const [pickupAddress, setPickupAddress] = useState('');
-  const [pickupDate, setPickupDate] = useState('today');
-  const [pickupTime, setPickupTime] = useState('morning');
-  const [specialInstructions, setSpecialInstructions] = useState('');
-  const [showProviders, setShowProviders] = useState(false);
-  const [showCheckout, setShowCheckout] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const addService = (service: LaundryService) => {
-    const existing = selectedServices.find(item => item.id === service.id);
+  const [currentStep, setCurrentStep] = useState<FlowStep>('services');
+  const [selectedService, setSelectedService] = useState<LaundryService | null>(null);
+  const [items, setItems] = useState<LaundryItem[]>([]);
+  const [selectedSlot, setSelectedSlot] = useState<ScheduleSlot | null>(null);
+  const [pickupAddress, setPickupAddress] = useState('123 Victoria Island, Lagos');
+  const [deliveryAddress, setDeliveryAddress] = useState('123 Victoria Island, Lagos');
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const totalKg = items.reduce((sum, item) => sum + item.estimatedKg * item.quantity, 0);
+  const totalPrice = selectedService ? totalKg * selectedService.pricePerKg : 0;
+  const handleServiceSelect = (service: LaundryService) => {
+    setSelectedService(service);
+    setCurrentStep('items');
+  };
+  const handleAddItem = (template: (typeof itemTemplates)[0]) => {
+    const existing = items.find(i => i.id === template.id);
     if (existing) {
-      setSelectedServices(selectedServices.map(item => item.id === service.id ? {
-        ...item,
-        quantity: item.quantity + 1
-      } : item));
+      setItems(items.map(i => i.id === template.id ? {
+        ...i,
+        quantity: i.quantity + 1
+      } : i));
     } else {
-      setSelectedServices([...selectedServices, {
-        ...service,
+      setItems([...items, {
+        ...template,
         quantity: 1
       }]);
     }
   };
-  const updateQuantity = (id: string, delta: number) => {
-    setSelectedServices(selectedServices.map(item => {
-      if (item.id === id) {
-        const newQuantity = item.quantity + delta;
-        return newQuantity > 0 ? {
-          ...item,
-          quantity: newQuantity
-        } : item;
-      }
-      return item;
-    }).filter(item => item.quantity > 0));
+  const handleRemoveItem = (id: string) => {
+    const item = items.find(i => i.id === id);
+    if (item && item.quantity > 1) {
+      setItems(items.map(i => i.id === id ? {
+        ...i,
+        quantity: i.quantity - 1
+      } : i));
+    } else {
+      setItems(items.filter(i => i.id !== id));
+    }
   };
-  const totalPrice = selectedServices.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const pickupFee = 300;
-  const handleContinue = () => {
-    setShowProviders(true);
+  const handleContinueToSchedule = () => {
+    if (items.length > 0) {
+      setCurrentStep('schedule');
+    }
   };
-  const handleSelectProvider = (provider: LaundryProvider) => {
-    setSelectedProvider(provider);
-    setShowProviders(false);
-    setShowCheckout(true);
+  const handleScheduleSelect = (slot: ScheduleSlot) => {
+    if (slot.available) {
+      setSelectedSlot(slot);
+      setCurrentStep('review');
+    }
   };
   const handlePlaceOrder = () => {
-    setShowCheckout(false);
-    setShowConfirmation(true);
+    setOrderPlaced(true);
+    setCurrentStep('tracking');
+  };
+  const handleBack = () => {
+    if (currentStep === 'services') {
+      onBack();
+    } else if (currentStep === 'items') {
+      setCurrentStep('services');
+    } else if (currentStep === 'schedule') {
+      setCurrentStep('items');
+    } else if (currentStep === 'review') {
+      setCurrentStep('schedule');
+    }
   };
   return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
       {/* Header */}
-      <div className="sticky top-0 z-40 bg-[#0A0E1A]/95 backdrop-blur-lg border-b border-white/10">
-        <div className="flex items-center justify-between p-4">
-          <div className="flex items-center gap-3">
-            <motion.button className="p-2 rounded-xl hover:bg-white/5 transition-colors" onClick={onBack} whileTap={{
-            scale: 0.95
-          }}>
-              <ArrowLeft className="w-6 h-6 text-white" />
-            </motion.button>
-            <div>
-              <h1 className="text-xl font-bold text-white">Laundry Service</h1>
-              <p className="text-xs text-gray-400">
-                We pick up, clean & deliver
-              </p>
-            </div>
+      <div className="sticky top-0 z-50 bg-[#0A0E1A]/95 backdrop-blur-xl border-b border-teal-500/20">
+        <div className="flex items-center justify-between px-4 py-4">
+          <motion.button className="p-2 rounded-xl hover:bg-white/5 transition-colors" onClick={handleBack} whileTap={{
+          scale: 0.95
+        }}>
+            <ArrowLeft className="w-6 h-6 text-white" />
+          </motion.button>
+
+          <div className="text-center">
+            <h1 className="text-lg font-bold text-white">Laundry Service</h1>
+            <p className="text-xs text-gray-400">
+              {currentStep === 'services' && 'Choose your service'}
+              {currentStep === 'items' && 'Add your items'}
+              {currentStep === 'schedule' && 'Schedule pickup'}
+              {currentStep === 'review' && 'Review order'}
+              {currentStep === 'tracking' && 'Track your order'}
+            </p>
           </div>
+
+          <div className="w-10" />
         </div>
+
+        {/* Progress Bar */}
+        {currentStep !== 'tracking' && <div className="px-4 pb-3">
+            <div className="flex items-center gap-2">
+              {['services', 'items', 'schedule', 'review'].map((step, index) => <div key={step} className={`flex-1 h-1 rounded-full transition-all ${['services', 'items', 'schedule', 'review'].indexOf(currentStep) >= index ? 'bg-teal-500' : 'bg-white/10'}`} />)}
+            </div>
+          </div>}
       </div>
 
-      {/* Services Selection */}
-      <div className="p-4 pb-32">
-        <div className="mb-6">
-          <h2 className="text-lg font-bold text-white mb-2">Select Services</h2>
-          <p className="text-sm text-gray-400">Choose the services you need</p>
-        </div>
+      {/* Content */}
+      <AnimatePresence mode="wait">
+        {currentStep === 'services' && <motion.div key="services" className="p-4 pb-24" initial={{
+        opacity: 0,
+        x: -20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: 20
+      }}>
+            <h2 className="text-xl font-bold text-white mb-2">
+              Select Service Type
+            </h2>
+            <p className="text-sm text-gray-400 mb-6">
+              Choose the service that fits your needs
+            </p>
 
-        <div className="grid grid-cols-2 gap-3 mb-6">
-          {laundryServices.map((service, index) => {
-          const badge = service.badge ? badgeConfig[service.badge] : null;
-          const isSelected = selectedServices.find(s => s.id === service.id);
-          return <motion.button key={service.id} className={`bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 transition-all text-left ${isSelected ? 'border-teal-500 bg-teal-500/10' : 'border-white/10'}`} initial={{
+            <div className="space-y-3">
+              {services.map((service, index) => {
+            const Icon = service.icon;
+            return <motion.button key={service.id} className="w-full bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-5 border border-white/10 text-left" initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: index * 0.1
+            }} onClick={() => handleServiceSelect(service)} whileHover={{
+              y: -4,
+              borderColor: service.color + '40'
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-xl flex items-center justify-center" style={{
+                  backgroundColor: service.color + '20'
+                }}>
+                        <Icon className="w-7 h-7" style={{
+                    color: service.color
+                  }} />
+                      </div>
+
+                      <div className="flex-1">
+                        <h3 className="text-base font-bold text-white mb-1">
+                          {service.name}
+                        </h3>
+                        <p className="text-sm text-gray-400 mb-2">
+                          {service.description}
+                        </p>
+                        <p className="text-lg font-bold" style={{
+                    color: service.color
+                  }}>
+                          ₦{service.pricePerKg}/kg
+                        </p>
+                      </div>
+
+                      <ChevronRight className="w-6 h-6 text-gray-400" />
+                    </div>
+                  </motion.button>;
+          })}
+            </div>
+          </motion.div>}
+
+        {currentStep === 'items' && selectedService && <motion.div key="items" className="p-4 pb-32" initial={{
+        opacity: 0,
+        x: -20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: 20
+      }}>
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{
+              backgroundColor: selectedService.color + '20'
+            }}>
+                  <selectedService.icon className="w-6 h-6" style={{
+                color: selectedService.color
+              }} />
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-white">
+                    {selectedService.name}
+                  </h2>
+                  <p className="text-sm text-gray-400">
+                    ₦{selectedService.pricePerKg}/kg
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h3 className="text-base font-bold text-white mb-4">
+              Add Your Items
+            </h3>
+
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {itemTemplates.map((template, index) => {
+            const item = items.find(i => i.id === template.id);
+            return <motion.div key={template.id} className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10" initial={{
+              opacity: 0,
+              scale: 0.9
+            }} animate={{
+              opacity: 1,
+              scale: 1
+            }} transition={{
+              delay: index * 0.05
+            }}>
+                    <div className="text-center mb-3">
+                      <div className="text-3xl mb-2">{template.icon}</div>
+                      <p className="text-sm font-semibold text-white mb-1">
+                        {template.name}
+                      </p>
+                      <p className="text-xs text-gray-400">
+                        ~{template.estimatedKg}kg each
+                      </p>
+                    </div>
+
+                    {item ? <div className="flex items-center justify-between bg-teal-500/20 rounded-xl p-2">
+                        <motion.button className="w-8 h-8 bg-teal-500/30 rounded-lg flex items-center justify-center" onClick={() => handleRemoveItem(template.id)} whileTap={{
+                  scale: 0.9
+                }}>
+                          <Minus className="w-4 h-4 text-teal-400" />
+                        </motion.button>
+                        <span className="text-lg font-bold text-white">
+                          {item.quantity}
+                        </span>
+                        <motion.button className="w-8 h-8 bg-teal-500/30 rounded-lg flex items-center justify-center" onClick={() => handleAddItem(template)} whileTap={{
+                  scale: 0.9
+                }}>
+                          <Plus className="w-4 h-4 text-teal-400" />
+                        </motion.button>
+                      </div> : <motion.button className="w-full py-2 bg-white/5 border border-white/10 rounded-xl text-white text-sm font-semibold hover:bg-white/10 transition-colors" onClick={() => handleAddItem(template)} whileTap={{
+                scale: 0.95
+              }}>
+                        Add
+                      </motion.button>}
+                  </motion.div>;
+          })}
+            </div>
+
+            {items.length > 0 && <motion.div className="bg-gradient-to-br from-teal-500/20 to-green-500/10 border border-teal-500/30 rounded-2xl p-4 mb-6" initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }}>
+                <h4 className="text-sm font-bold text-white mb-3">
+                  Your Items
+                </h4>
+                <div className="space-y-2 mb-4">
+                  {items.map(item => <div key={item.id} className="flex items-center justify-between text-sm">
+                      <span className="text-gray-300">
+                        {item.icon} {item.name} x{item.quantity}
+                      </span>
+                      <span className="text-teal-400 font-semibold">
+                        ~{(item.estimatedKg * item.quantity).toFixed(1)}kg
+                      </span>
+                    </div>)}
+                </div>
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-white">
+                    Estimated Total
+                  </span>
+                  <div className="text-right">
+                    <p className="text-lg font-bold text-teal-400">
+                      ₦{totalPrice.toLocaleString()}
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      ~{totalKg.toFixed(1)}kg
+                    </p>
+                  </div>
+                </div>
+              </motion.div>}
+
+            <motion.button className={`w-full py-4 rounded-xl font-bold text-white ${items.length > 0 ? 'bg-gradient-to-r from-teal-500 to-green-500' : 'bg-white/10 cursor-not-allowed'}`} onClick={handleContinueToSchedule} disabled={items.length === 0} whileTap={items.length > 0 ? {
+          scale: 0.98
+        } : {}}>
+              Continue to Schedule
+            </motion.button>
+          </motion.div>}
+
+        {currentStep === 'schedule' && <motion.div key="schedule" className="p-4 pb-24" initial={{
+        opacity: 0,
+        x: -20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: 20
+      }}>
+            <h2 className="text-xl font-bold text-white mb-6">
+              Schedule Pickup
+            </h2>
+
+            {/* Pickup Address */}
+            <div className="mb-6">
+              <label className="text-sm font-semibold text-gray-400 mb-2 block">
+                Pickup Address
+              </label>
+              <div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-teal-400 mt-0.5" />
+                  <div className="flex-1">
+                    <input type="text" value={pickupAddress} onChange={e => setPickupAddress(e.target.value)} className="w-full bg-transparent text-white text-sm focus:outline-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Delivery Address */}
+            <div className="mb-6">
+              <label className="text-sm font-semibold text-gray-400 mb-2 block">
+                Delivery Address
+              </label>
+              <div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-green-400 mt-0.5" />
+                  <div className="flex-1">
+                    <input type="text" value={deliveryAddress} onChange={e => setDeliveryAddress(e.target.value)} className="w-full bg-transparent text-white text-sm focus:outline-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Time Slots */}
+            <h3 className="text-base font-bold text-white mb-4">
+              Select Pickup Time
+            </h3>
+            <div className="space-y-3">
+              {scheduleSlots.map((slot, index) => <motion.button key={slot.id} className={`w-full bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border transition-all ${slot.available ? selectedSlot?.id === slot.id ? 'border-teal-500 bg-teal-500/10' : 'border-white/10 hover:border-teal-500/50' : 'border-white/10 opacity-50 cursor-not-allowed'}`} onClick={() => handleScheduleSelect(slot)} disabled={!slot.available} initial={{
             opacity: 0,
             y: 20
           }} animate={{
@@ -217,467 +455,293 @@ export function LaundryCustomerPage({
             y: 0
           }} transition={{
             delay: index * 0.05
-          }} onClick={() => addService(service)} whileTap={{
+          }} whileTap={slot.available ? {
             scale: 0.98
-          }}>
-                {badge && <div className="text-xs font-bold px-2 py-1 rounded-lg mb-2 inline-block" style={{
-              backgroundColor: badge.bg,
-              color: badge.color
-            }}>
-                    {badge.label}
-                  </div>}
-
-                <div className="text-3xl mb-2">{service.icon}</div>
-                <h3 className="text-sm font-bold text-white mb-1">
-                  {service.name}
-                </h3>
-                <p className="text-xs text-gray-400 mb-2 line-clamp-2">
-                  {service.description}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-lg font-bold text-teal-400">
-                      ₦{service.price.toLocaleString()}
-                    </p>
-                    <p className="text-xs text-gray-500">{service.unit}</p>
+          } : {}}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${slot.available ? 'bg-teal-500/20' : 'bg-white/5'}`}>
+                        <Clock className={`w-5 h-5 ${slot.available ? 'text-teal-400' : 'text-gray-500'}`} />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-sm font-bold text-white">
+                          {slot.date}
+                        </p>
+                        <p className="text-xs text-gray-400">{slot.time}</p>
+                      </div>
+                    </div>
+                    {slot.available ? selectedSlot?.id === slot.id ? <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center">
+                          <Check className="w-4 h-4 text-white" />
+                        </div> : <div className="w-6 h-6 border-2 border-white/20 rounded-full" /> : <span className="text-xs text-gray-500">Unavailable</span>}
                   </div>
-                  {isSelected && <motion.div className="flex items-center gap-2" initial={{
-                scale: 0
-              }} animate={{
-                scale: 1
-              }} transition={{
-                type: 'spring',
-                damping: 15
-              }}>
-                      <motion.button className="p-1 bg-white/10 rounded-lg" onClick={e => {
-                  e.stopPropagation();
-                  updateQuantity(service.id, -1);
-                }} whileTap={{
-                  scale: 0.9
-                }}>
-                        <Minus className="w-3 h-3 text-white" />
-                      </motion.button>
-                      <span className="text-white font-bold w-6 text-center">
-                        {isSelected.quantity}
-                      </span>
-                      <motion.button className="p-1 bg-white/10 rounded-lg" onClick={e => {
-                  e.stopPropagation();
-                  updateQuantity(service.id, 1);
-                }} whileTap={{
-                  scale: 0.9
-                }}>
-                        <Plus className="w-3 h-3 text-white" />
-                      </motion.button>
-                    </motion.div>}
-                </div>
-              </motion.button>;
-        })}
-        </div>
-
-        {/* Selected Services Summary */}
-        {selectedServices.length > 0 && <motion.div className="bg-teal-500/10 border border-teal-500/30 rounded-xl p-4 mb-6" initial={{
-        opacity: 0,
-        y: 10
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }}>
-            <p className="text-sm font-bold text-teal-400 mb-3">
-              Selected Services ({selectedServices.length})
-            </p>
-            <div className="space-y-2 mb-4">
-              {selectedServices.map(service => <div key={service.id} className="flex justify-between text-sm">
-                  <span className="text-gray-300">
-                    {service.icon} {service.name} x{service.quantity}
-                  </span>
-                  <span className="text-white font-semibold">
-                    ₦{(service.price * service.quantity).toLocaleString()}
-                  </span>
-                </div>)}
-            </div>
-            <div className="pt-3 border-t border-teal-500/30 flex justify-between">
-              <span className="font-bold text-white">Subtotal</span>
-              <span className="font-bold text-teal-400">
-                ₦{totalPrice.toLocaleString()}
-              </span>
+                </motion.button>)}
             </div>
           </motion.div>}
-      </div>
 
-      {/* Fixed Bottom CTA */}
-      {selectedServices.length > 0 && <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#0A0E1A] border-t border-white/10">
-          <motion.button className="w-full py-4 bg-gradient-to-r from-teal-500 to-green-500 rounded-xl text-white font-bold shadow-lg" onClick={handleContinue} whileTap={{
-        scale: 0.98
+        {currentStep === 'review' && selectedService && selectedSlot && <motion.div key="review" className="p-4 pb-24" initial={{
+        opacity: 0,
+        x: -20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: 20
       }}>
-            Continue to Provider Selection
-          </motion.button>
-        </div>}
+            <h2 className="text-xl font-bold text-white mb-6">
+              Review Your Order
+            </h2>
 
-      {/* Providers Sheet */}
-      <AnimatePresence>
-        {showProviders && <>
-            <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" initial={{
-          opacity: 0
+            {/* Service Summary */}
+            <div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10 mb-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{
+              backgroundColor: selectedService.color + '20'
+            }}>
+                  <selectedService.icon className="w-6 h-6" style={{
+                color: selectedService.color
+              }} />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-white">
+                    {selectedService.name}
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    ₦{selectedService.pricePerKg}/kg
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                {items.map(item => <div key={item.id} className="flex items-center justify-between text-sm">
+                    <span className="text-gray-300">
+                      {item.icon} {item.name} x{item.quantity}
+                    </span>
+                    <span className="text-teal-400">
+                      ~{(item.estimatedKg * item.quantity).toFixed(1)}kg
+                    </span>
+                  </div>)}
+              </div>
+            </div>
+
+            {/* Schedule Summary */}
+            <div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10 mb-4">
+              <h3 className="text-sm font-bold text-white mb-3">
+                Pickup Schedule
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <Calendar className="w-5 h-5 text-teal-400 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-white font-semibold">
+                      {selectedSlot.date}
+                    </p>
+                    <p className="text-xs text-gray-400">{selectedSlot.time}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-teal-400 mt-0.5" />
+                  <div>
+                    <p className="text-xs text-gray-400 mb-1">Pickup</p>
+                    <p className="text-sm text-white">{pickupAddress}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-green-400 mt-0.5" />
+                  <div>
+                    <p className="text-xs text-gray-400 mb-1">Delivery</p>
+                    <p className="text-sm text-white">{deliveryAddress}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Price Breakdown */}
+            <div className="bg-gradient-to-br from-teal-500/20 to-green-500/10 border border-teal-500/30 rounded-2xl p-4 mb-6">
+              <h3 className="text-sm font-bold text-white mb-3">
+                Price Breakdown
+              </h3>
+              <div className="space-y-2 mb-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">
+                    Laundry Service (~{totalKg.toFixed(1)}kg)
+                  </span>
+                  <span className="text-white">
+                    ₦{totalPrice.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-300">Pickup & Delivery</span>
+                  <span className="text-green-400">Free</span>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                <span className="text-base font-bold text-white">Total</span>
+                <span className="text-2xl font-bold text-teal-400">
+                  ₦{totalPrice.toLocaleString()}
+                </span>
+              </div>
+            </div>
+
+            <motion.button className="w-full py-4 bg-gradient-to-r from-teal-500 to-green-500 rounded-xl font-bold text-white" onClick={handlePlaceOrder} whileTap={{
+          scale: 0.98
+        }}>
+              Place Order
+            </motion.button>
+          </motion.div>}
+
+        {currentStep === 'tracking' && orderPlaced && selectedService && selectedSlot && <motion.div key="tracking" className="p-4 pb-24" initial={{
+        opacity: 0,
+        scale: 0.9
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }}>
+              {/* Success Message */}
+              <motion.div className="bg-gradient-to-br from-green-500/20 to-teal-500/20 border-2 border-green-500/50 rounded-2xl p-6 mb-6" initial={{
+          scale: 0.9
         }} animate={{
-          opacity: 1
-        }} exit={{
-          opacity: 0
-        }} onClick={() => setShowProviders(false)} />
-            <motion.div className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[80vh] flex flex-col" initial={{
-          y: '100%'
-        }} animate={{
-          y: 0
-        }} exit={{
-          y: '100%'
+          scale: 1
         }} transition={{
           type: 'spring',
-          damping: 30,
-          stiffness: 300
+          damping: 20
         }}>
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-12 h-1 bg-gray-600 rounded-full" />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white">
+                      Order Confirmed!
+                    </h3>
+                    <p className="text-sm text-gray-400">
+                      Order #LAU-{Math.floor(Math.random() * 10000)}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-300">
+                  Your laundry pickup has been scheduled. We'll send a rider to
+                  collect your items.
+                </p>
+              </motion.div>
+
+              {/* Order Status */}
+              <div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-5 border border-white/10 mb-4">
+                <h3 className="text-base font-bold text-white mb-4">
+                  Order Status
+                </h3>
+
+                <div className="space-y-4">
+                  {[{
+              label: 'Order Confirmed',
+              status: 'completed',
+              time: 'Just now'
+            }, {
+              label: 'Rider Assigned',
+              status: 'completed',
+              time: '2 mins ago'
+            }, {
+              label: 'Pickup Scheduled',
+              status: 'active',
+              time: selectedSlot.time
+            }, {
+              label: 'Items Collected',
+              status: 'pending',
+              time: 'Pending'
+            }, {
+              label: 'In Progress',
+              status: 'pending',
+              time: 'Pending'
+            }, {
+              label: 'Ready for Delivery',
+              status: 'pending',
+              time: 'Pending'
+            }].map((step, index) => <div key={index} className="flex items-start gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${step.status === 'completed' ? 'bg-green-500' : step.status === 'active' ? 'bg-teal-500 animate-pulse' : 'bg-white/10'}`}>
+                        {step.status === 'completed' ? <Check className="w-4 h-4 text-white" /> : step.status === 'active' ? <div className="w-3 h-3 bg-white rounded-full" /> : <div className="w-3 h-3 border-2 border-white/30 rounded-full" />}
+                      </div>
+                      <div className="flex-1">
+                        <p className={`text-sm font-semibold ${step.status === 'pending' ? 'text-gray-400' : 'text-white'}`}>
+                          {step.label}
+                        </p>
+                        <p className="text-xs text-gray-500">{step.time}</p>
+                      </div>
+                    </div>)}
+                </div>
               </div>
 
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-                <h2 className="text-xl font-bold text-white">
-                  Choose Provider
-                </h2>
-                <motion.button className="p-2 rounded-xl hover:bg-white/5" onClick={() => setShowProviders(false)} whileTap={{
-              scale: 0.95
-            }}>
-                  <X className="w-6 h-6 text-white" />
-                </motion.button>
-              </div>
+              {/* Rider Info */}
+              <div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10 mb-4">
+                <h3 className="text-sm font-bold text-white mb-3">
+                  Your Rider
+                </h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Rider" className="w-12 h-12 rounded-full object-cover" />
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-white">David Okafor</p>
+                    <div className="flex items-center gap-1">
+                      <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                      <span className="text-xs text-gray-400">
+                        4.9 (234 pickups)
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-              <div className="flex-1 overflow-y-auto px-6 py-6 space-y-3">
-                {mockProviders.map((provider, index) => <motion.button key={provider.id} className="w-full bg-gradient-to-br from-[#0F1520] to-[#0A0E1A] rounded-2xl p-4 border border-white/10 text-left" initial={{
-              opacity: 0,
-              x: -20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              delay: index * 0.05
-            }} onClick={() => handleSelectProvider(provider)} whileTap={{
+                <div className="flex gap-2">
+                  <motion.button className="flex-1 py-3 bg-teal-500/20 border border-teal-500/30 rounded-xl text-teal-400 font-semibold text-sm flex items-center justify-center gap-2" whileTap={{
               scale: 0.98
             }}>
-                    <div className="flex items-center gap-4">
-                      <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
-                        <img src={provider.logo} alt={provider.name} className="w-full h-full object-cover" />
-                        {provider.verified && <div className="absolute top-1 right-1 bg-teal-500 rounded-full p-1">
-                            <CheckCircle className="w-3 h-3 text-white" />
-                          </div>}
-                      </div>
-
-                      <div className="flex-1">
-                        <h3 className="text-base font-bold text-white mb-1">
-                          {provider.name}
-                        </h3>
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="flex items-center gap-1">
-                            <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                            <span className="text-xs font-bold text-white">
-                              {provider.rating}
-                            </span>
-                            <span className="text-xs text-gray-400">
-                              ({provider.reviews})
-                            </span>
-                          </div>
-                          <span className="text-xs text-gray-500">•</span>
-                          <span className="text-xs text-gray-400">
-                            {provider.distance}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1 text-xs text-teal-400">
-                          <Clock className="w-3 h-3" />
-                          <span>{provider.pickupTime}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.button>)}
-              </div>
-            </motion.div>
-          </>}
-      </AnimatePresence>
-
-      {/* Checkout Sheet */}
-      <AnimatePresence>
-        {showCheckout && selectedProvider && <>
-            <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} exit={{
-          opacity: 0
-        }} onClick={() => setShowCheckout(false)} />
-            <motion.div className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[85vh] flex flex-col" initial={{
-          y: '100%'
-        }} animate={{
-          y: 0
-        }} exit={{
-          y: '100%'
-        }} transition={{
-          type: 'spring',
-          damping: 30,
-          stiffness: 300
-        }}>
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-12 h-1 bg-gray-600 rounded-full" />
-              </div>
-
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-                <h2 className="text-xl font-bold text-white">
-                  Schedule Pickup
-                </h2>
-                <motion.button className="p-2 rounded-xl hover:bg-white/5" onClick={() => setShowCheckout(false)} whileTap={{
-              scale: 0.95
+                    <Phone className="w-4 h-4" />
+                    Call
+                  </motion.button>
+                  <motion.button className="flex-1 py-3 bg-teal-500/20 border border-teal-500/30 rounded-xl text-teal-400 font-semibold text-sm flex items-center justify-center gap-2" whileTap={{
+              scale: 0.98
             }}>
-                  <X className="w-6 h-6 text-white" />
-                </motion.button>
+                    <MessageCircle className="w-4 h-4" />
+                    Message
+                  </motion.button>
+                </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
-                {/* Provider Info */}
-                <div className="bg-teal-500/10 border border-teal-500/30 rounded-xl p-4">
-                  <p className="text-sm font-bold text-teal-400 mb-2">
-                    Selected Provider
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <img src={selectedProvider.logo} alt={selectedProvider.name} className="w-12 h-12 rounded-lg object-cover" />
+              {/* Pickup Details */}
+              <div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10">
+                <h3 className="text-sm font-bold text-white mb-3">
+                  Pickup Details
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-5 h-5 text-teal-400 mt-0.5" />
                     <div>
-                      <p className="text-sm font-bold text-white">
-                        {selectedProvider.name}
+                      <p className="text-sm text-white font-semibold">
+                        {selectedSlot.date}
                       </p>
                       <p className="text-xs text-gray-400">
-                        {selectedProvider.pickupTime}
+                        {selectedSlot.time}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-teal-400 mt-0.5" />
+                    <div>
+                      <p className="text-xs text-gray-400 mb-1">
+                        Pickup Address
+                      </p>
+                      <p className="text-sm text-white">{pickupAddress}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Package className="w-5 h-5 text-teal-400 mt-0.5" />
+                    <div>
+                      <p className="text-xs text-gray-400 mb-1">Items</p>
+                      <p className="text-sm text-white">
+                        {items.length} items (~{totalKg.toFixed(1)}kg)
                       </p>
                     </div>
                   </div>
                 </div>
-
-                {/* Pickup Address */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-400 mb-2 block">
-                    Pickup Address
-                  </label>
-                  <div className="relative">
-                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-teal-400" />
-                    <input type="text" placeholder="Enter pickup address" value={pickupAddress} onChange={e => setPickupAddress(e.target.value)} className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-teal-500/50 focus:outline-none placeholder:text-gray-500" />
-                  </div>
-                  <button className="text-sm text-teal-400 font-semibold mt-2">
-                    📍 Use current location
-                  </button>
-                </div>
-
-                {/* Pickup Date */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-400 mb-3 block">
-                    Pickup Date
-                  </label>
-                  <div className="grid grid-cols-3 gap-3">
-                    {[{
-                  value: 'today',
-                  label: 'Today'
-                }, {
-                  value: 'tomorrow',
-                  label: 'Tomorrow'
-                }, {
-                  value: 'later',
-                  label: 'Later'
-                }].map(option => <motion.button key={option.value} className={`p-3 rounded-xl border-2 transition-all ${pickupDate === option.value ? 'bg-teal-500/20 border-teal-500' : 'bg-[#0A0E1A] border-white/10'}`} onClick={() => setPickupDate(option.value)} whileTap={{
-                  scale: 0.98
-                }}>
-                        <Calendar className={`w-5 h-5 mx-auto mb-1 ${pickupDate === option.value ? 'text-teal-400' : 'text-gray-400'}`} />
-                        <p className={`text-xs font-semibold ${pickupDate === option.value ? 'text-white' : 'text-gray-400'}`}>
-                          {option.label}
-                        </p>
-                      </motion.button>)}
-                  </div>
-                </div>
-
-                {/* Pickup Time */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-400 mb-3 block">
-                    Pickup Time
-                  </label>
-                  <div className="grid grid-cols-3 gap-3">
-                    {[{
-                  value: 'morning',
-                  label: 'Morning',
-                  time: '8-12'
-                }, {
-                  value: 'afternoon',
-                  label: 'Afternoon',
-                  time: '12-5'
-                }, {
-                  value: 'evening',
-                  label: 'Evening',
-                  time: '5-8'
-                }].map(option => <motion.button key={option.value} className={`p-3 rounded-xl border-2 transition-all ${pickupTime === option.value ? 'bg-teal-500/20 border-teal-500' : 'bg-[#0A0E1A] border-white/10'}`} onClick={() => setPickupTime(option.value)} whileTap={{
-                  scale: 0.98
-                }}>
-                        <Clock className={`w-5 h-5 mx-auto mb-1 ${pickupTime === option.value ? 'text-teal-400' : 'text-gray-400'}`} />
-                        <p className={`text-sm font-semibold ${pickupTime === option.value ? 'text-white' : 'text-gray-400'}`}>
-                          {option.label}
-                        </p>
-                        <p className="text-[10px] text-gray-500">
-                          {option.time}
-                        </p>
-                      </motion.button>)}
-                  </div>
-                </div>
-
-                {/* Special Instructions */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-400 mb-2 block">
-                    Special Instructions (Optional)
-                  </label>
-                  <textarea placeholder="e.g., Handle with care, separate whites..." value={specialInstructions} onChange={e => setSpecialInstructions(e.target.value)} rows={3} className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-teal-500/50 focus:outline-none placeholder:text-gray-500 resize-none" />
-                </div>
-
-                {/* Order Summary */}
-                <div className="bg-teal-500/10 border border-teal-500/30 rounded-xl p-4">
-                  <p className="text-sm font-bold text-teal-400 mb-3">
-                    Order Summary
-                  </p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Services</span>
-                      <span className="text-white">
-                        ₦{totalPrice.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Pickup & Delivery</span>
-                      <span className="text-white">₦{pickupFee}</span>
-                    </div>
-                    <div className="pt-2 border-t border-teal-500/30 flex justify-between">
-                      <span className="font-bold text-white">Total</span>
-                      <span className="font-bold text-teal-400">
-                        ₦{(totalPrice + pickupFee).toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              <div className="px-6 py-4 border-t border-white/10 bg-[#0A0E1A]">
-                <motion.button className="w-full py-4 bg-gradient-to-r from-teal-500 to-green-500 rounded-xl text-white font-bold shadow-lg flex items-center justify-center gap-2" whileTap={{
-              scale: 0.98
-            }} onClick={handlePlaceOrder}>
-                  <CheckCircle className="w-5 h-5" />
-                  Confirm Pickup
-                </motion.button>
-              </div>
-            </motion.div>
-          </>}
-      </AnimatePresence>
-
-      {/* Confirmation Sheet */}
-      <AnimatePresence>
-        {showConfirmation && selectedProvider && <>
-            <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} exit={{
-          opacity: 0
-        }} />
-            <motion.div className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[70vh] flex flex-col" initial={{
-          y: '100%'
-        }} animate={{
-          y: 0
-        }} exit={{
-          y: '100%'
-        }} transition={{
-          type: 'spring',
-          damping: 30,
-          stiffness: 300
-        }}>
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-12 h-1 bg-gray-600 rounded-full" />
-              </div>
-
-              <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col items-center justify-center text-center">
-                <motion.div className="w-20 h-20 rounded-full bg-teal-500/20 flex items-center justify-center mb-6" initial={{
-              scale: 0
-            }} animate={{
-              scale: 1
-            }} transition={{
-              type: 'spring',
-              damping: 15,
-              delay: 0.1
-            }}>
-                  <CheckCircle className="w-12 h-12 text-teal-400" />
-                </motion.div>
-
-                <motion.h3 className="text-2xl font-bold text-white mb-3" initial={{
-              opacity: 0,
-              y: 10
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              delay: 0.2
-            }}>
-                  Pickup Scheduled!
-                </motion.h3>
-
-                <motion.p className="text-gray-400 mb-2 max-w-sm" initial={{
-              opacity: 0,
-              y: 10
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              delay: 0.3
-            }}>
-                  {selectedProvider.name} will pick up your laundry {pickupDate}{' '}
-                  during {pickupTime}
-                </motion.p>
-
-                <motion.div className="bg-teal-500/10 border border-teal-500/30 rounded-xl p-4 mb-6 w-full max-w-sm" initial={{
-              opacity: 0,
-              y: 10
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              delay: 0.4
-            }}>
-                  <p className="text-sm text-teal-400 mb-2">
-                    Order #OYA-{Math.floor(Math.random() * 10000)}
-                  </p>
-                  <p className="text-xs text-gray-400 mb-3">
-                    You'll receive a call 30 minutes before pickup
-                  </p>
-                  <div className="flex gap-2">
-                    <motion.button className="flex-1 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm font-semibold flex items-center justify-center gap-2" whileTap={{
-                  scale: 0.95
-                }}>
-                      <Phone className="w-4 h-4" />
-                      Call Provider
-                    </motion.button>
-                  </div>
-                </motion.div>
-
-                <motion.button className="w-full py-4 bg-gradient-to-r from-teal-500 to-green-500 rounded-xl text-white font-bold shadow-lg" onClick={onBack} whileTap={{
-              scale: 0.98
-            }} initial={{
-              opacity: 0,
-              y: 10
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              delay: 0.5
-            }}>
-                  Back to Home
-                </motion.button>
-              </div>
-            </motion.div>
-          </>}
+            </motion.div>}
       </AnimatePresence>
     </div>;
 }

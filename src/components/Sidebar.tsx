@@ -1,136 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Home, Store, Gift, ShoppingBag, Wallet, Utensils, Car, Building, Package, Briefcase, MessageCircle, ShoppingCart, Pill, Sparkles, Shirt, Users, ChevronRight } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon, ShoppingCartIcon, PillIcon, WashingMachineIcon, ChevronDownIcon, MapPinIcon, UserIcon, LogOutIcon, SparklesIcon, TruckIcon, SettingsIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: string;
+  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry' | 'beauty-provider' | 'beauty-customer' | 'supermarket-customer' | 'pharmacy-customer' | 'laundry-customer';
   onNavigate: (view: string) => void;
 }
-interface NavSection {
-  title: string;
-  items: NavItem[];
-}
-interface NavItem {
-  id: string;
-  label: string;
-  icon: React.ReactNode;
-  color: string;
-  badge?: string;
-}
-const navSections: NavSection[] = [{
-  title: 'Main',
-  items: [{
-    id: 'home',
-    label: 'Home Dashboard',
-    icon: <Home className="w-5 h-5" />,
-    color: '#00D9C0'
-  }, {
-    id: 'wallet',
-    label: 'Wallet',
-    icon: <Wallet className="w-5 h-5" />,
-    color: '#FFB800'
-  }, {
-    id: 'referral',
-    label: 'Referral Program',
-    icon: <Gift className="w-5 h-5" />,
-    color: '#B026FF'
-  }, {
-    id: 'messaging',
-    label: 'Messages',
-    icon: <MessageCircle className="w-5 h-5" />,
-    color: '#00D9C0'
-  }]
+const navItems = [{
+  id: 'home',
+  label: 'Home',
+  icon: HomeIcon,
+  color: '#00ffcc'
 }, {
-  title: 'Customer Services',
-  items: [{
-    id: 'pharmacy-customer',
-    label: 'Pharmacy Shopping',
-    icon: <Pill className="w-5 h-5" />,
-    color: '#B026FF'
-  }, {
-    id: 'beauty-customer',
-    label: 'Beauty Services',
-    icon: <Sparkles className="w-5 h-5" />,
-    color: '#FF6B00'
-  }, {
-    id: 'supermarket-customer',
-    label: 'Supermarket',
-    icon: <ShoppingCart className="w-5 h-5" />,
-    color: '#10B981'
-  }, {
-    id: 'laundry-customer',
-    label: 'Laundry Service',
-    icon: <Shirt className="w-5 h-5" />,
-    color: '#14B8A6'
-  }, {
-    id: 'fastfood',
-    label: 'Fast Food',
-    icon: <Utensils className="w-5 h-5" />,
-    color: '#EF4444'
-  }, {
-    id: 'transport',
-    label: 'Transport',
-    icon: <Car className="w-5 h-5" />,
-    color: '#00D9C0'
-  }, {
-    id: 'accommodation',
-    label: 'Accommodation',
-    icon: <Building className="w-5 h-5" />,
-    color: '#3B82F6'
-  }, {
-    id: 'marketplace',
-    label: 'Marketplace',
-    icon: <ShoppingBag className="w-5 h-5" />,
-    color: '#8B5CF6'
-  }]
+  id: 'messaging',
+  label: 'Messages',
+  icon: MessageCircleIcon,
+  color: '#00D9C0'
 }, {
-  title: 'Provider Dashboards',
-  items: [{
-    id: 'beauty-provider',
-    label: 'Beauty Provider',
-    icon: <Sparkles className="w-5 h-5" />,
-    color: '#FF6B00',
-    badge: 'New'
-  }, {
-    id: 'pharmacy',
-    label: 'Pharmacy Dashboard',
-    icon: <Pill className="w-5 h-5" />,
-    color: '#B026FF'
-  }, {
-    id: 'supermarket',
-    label: 'Supermarket Dashboard',
-    icon: <ShoppingCart className="w-5 h-5" />,
-    color: '#10B981'
-  }, {
-    id: 'laundry',
-    label: 'Laundry Dashboard',
-    icon: <Shirt className="w-5 h-5" />,
-    color: '#14B8A6'
-  }, {
-    id: 'merchant',
-    label: 'Merchant Dashboard',
-    icon: <Store className="w-5 h-5" />,
-    color: '#EF4444'
-  }, {
-    id: 'provider',
-    label: 'Universal Provider',
-    icon: <Briefcase className="w-5 h-5" />,
-    color: '#00D9C0'
-  }]
+  id: 'beauty-provider',
+  label: 'Beauty Provider',
+  icon: SparklesIcon,
+  color: '#FF6B00'
 }, {
-  title: 'Business',
-  items: [{
-    id: 'kiosk',
-    label: 'Kiosk Dashboard',
-    icon: <Store className="w-5 h-5" />,
-    color: '#8B5CF6'
-  }, {
-    id: 'kioskstore',
-    label: 'Kiosk Storefront',
-    icon: <Package className="w-5 h-5" />,
-    color: '#8B5CF6'
-  }]
+  id: 'laundry',
+  label: 'Laundry Dashboard',
+  icon: WashingMachineIcon,
+  color: '#00D9C0'
+}, {
+  id: 'pharmacy',
+  label: 'Pharmacy Dashboard',
+  icon: PillIcon,
+  color: '#10B981'
+}, {
+  id: 'supermarket',
+  label: 'Supermarket Dashboard',
+  icon: ShoppingCartIcon,
+  color: '#00D9C0'
+}, {
+  id: 'provider',
+  label: 'Provider Dashboard',
+  icon: BriefcaseIcon,
+  color: '#00F0FF'
+}, {
+  id: 'accommodation',
+  label: 'Stays',
+  icon: BedIcon,
+  color: '#A855F7'
+}, {
+  id: 'transport',
+  label: 'Transport',
+  icon: CarIcon,
+  color: '#00F0FF'
+}, {
+  id: 'kioskstore',
+  label: 'Kiosk Store',
+  icon: StoreIcon,
+  color: '#FFB800'
+}, {
+  id: 'merchant',
+  label: 'Merchant PRO',
+  icon: LayoutDashboardIcon,
+  color: '#10B981'
+}, {
+  id: 'fastfood',
+  label: 'Fast-Food Arena',
+  icon: UtensilsIcon,
+  color: '#FF6B00'
+}, {
+  id: 'marketplace',
+  label: 'Marketplace',
+  icon: ShoppingBagIcon,
+  color: '#00d9ff'
+}, {
+  id: 'wallet',
+  label: 'Wallet Quest',
+  icon: WalletIcon,
+  color: '#B026FF'
+}, {
+  id: 'kiosk',
+  label: 'Kiosk Dashboard',
+  icon: StoreIcon,
+  color: '#ff00ff'
+}, {
+  id: 'referral',
+  label: 'Referral Quest',
+  icon: UsersIcon,
+  color: '#ffb800'
 }];
 export function Sidebar({
   isOpen,
@@ -138,10 +94,26 @@ export function Sidebar({
   activeView,
   onNavigate
 }: SidebarProps) {
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    orders: true,
+    foodOrders: false,
+    marketplaceOrders: false
+  });
+  const handleNavigate = (view: string) => {
+    onNavigate(view);
+    onClose();
+  };
+  const toggleSection = (section: string) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+  const isProviderView = activeView === 'provider';
   return <AnimatePresence>
       {isOpen && <>
           {/* Backdrop */}
-          <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50" initial={{
+          <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]" initial={{
         opacity: 0
       }} animate={{
         opacity: 1
@@ -150,7 +122,7 @@ export function Sidebar({
       }} onClick={onClose} />
 
           {/* Sidebar */}
-          <motion.div className="fixed left-0 top-0 bottom-0 w-80 bg-gradient-to-b from-[#0A0E1A] to-[#0F1520] z-50 overflow-y-auto" initial={{
+          <motion.div className={`fixed top-0 left-0 bottom-0 w-72 border-r z-[70] shadow-2xl overflow-y-auto ${isProviderView ? 'bg-gradient-to-b from-[#1a3a3a] via-[#1f4545] to-[#1a3a3a] border-teal-500/20' : 'bg-gradient-to-b from-[#0a1a1f] via-[#0f2027] to-[#0a1a1f] border-white/10'}`} initial={{
         x: '-100%'
       }} animate={{
         x: 0
@@ -158,93 +130,379 @@ export function Sidebar({
         x: '-100%'
       }} transition={{
         type: 'spring',
-        damping: 30,
-        stiffness: 300
+        damping: 25,
+        stiffness: 200
       }}>
-            {/* Header */}
-            <div className="sticky top-0 bg-[#0A0E1A] border-b border-white/10 p-4 flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-white">OyaDrop</h2>
-                <p className="text-xs text-gray-400">
-                  All Services & Dashboards
-                </p>
-              </div>
-              <motion.button className="p-2 rounded-xl hover:bg-white/5 transition-colors" onClick={onClose} whileTap={{
-            scale: 0.95
-          }}>
-                <X className="w-6 h-6 text-white" />
-              </motion.button>
-            </div>
+            {isProviderView ?
+        // Universal Provider Sidebar
+        <>
+                {/* Provider Header */}
+                <div className="p-5 border-b border-teal-500/20">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="relative">
+                        <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-green-500 rounded-full flex items-center justify-center ring-2 ring-teal-400/30">
+                          <UserIcon className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-[#1a3a3a]" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-white">
+                          Sonia Alfred
+                        </p>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <span className="text-xs text-green-400 font-semibold">
+                            Online
+                          </span>
+                          <span className="text-xs text-gray-500">•</span>
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs text-gray-400">ORDER</span>
+                            <ChevronDownIcon className="w-3 h-3 text-gray-400" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-            {/* Navigation Sections */}
-            <div className="p-4 space-y-6">
-              {navSections.map((section, sectionIndex) => <div key={section.title}>
-                  <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">
-                    {section.title}
-                  </h3>
-                  <div className="space-y-1">
-                    {section.items.map((item, itemIndex) => {
+                    <motion.button className="p-2 rounded-lg hover:bg-white/5 transition-colors" onClick={onClose} whileTap={{
+                scale: 0.95
+              }}>
+                      <XIcon className="w-5 h-5 text-white" />
+                    </motion.button>
+                  </div>
+
+                  {/* Balance Card */}
+                  <div className="bg-gradient-to-br from-teal-500/20 to-green-500/10 border border-teal-500/30 rounded-xl p-3">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-xs text-gray-400 mb-1">
+                          Today's Earnings
+                        </p>
+                        <p className="text-xl font-bold text-white">₦12,450</p>
+                      </div>
+                      <div className="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
+                        <WalletIcon className="w-5 h-5 text-teal-400" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Provider Navigation */}
+                <nav className="p-4 space-y-1.5">
+                  {/* Dashboard */}
+                  <motion.button className="w-full text-left px-4 py-3 rounded-xl bg-teal-500/20 border border-teal-500/30 text-white font-semibold text-sm hover:bg-teal-500/30 transition-all" initial={{
+              opacity: 0,
+              y: -10
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.1
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <div className="flex items-center gap-3">
+                      <LayoutDashboardIcon className="w-4 h-4 text-teal-400" />
+                      <span>Dashboard</span>
+                    </div>
+                  </motion.button>
+
+                  {/* Orders Section */}
+                  <div>
+                    <motion.button className="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/5 text-white font-semibold text-sm transition-all" onClick={() => toggleSection('orders')} initial={{
+                opacity: 0,
+                y: -10
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                delay: 0.15
+              }} whileTap={{
+                scale: 0.98
+              }}>
+                      <div className="flex items-center gap-3">
+                        <ShoppingBagIcon className="w-4 h-4 text-gray-400" />
+                        <span>Orders (Food & Marketplace)</span>
+                      </div>
+                      <ChevronDownIcon className={`w-4 h-4 text-gray-400 transition-transform ${expandedSections.orders ? 'rotate-180' : ''}`} />
+                    </motion.button>
+
+                    <AnimatePresence>
+                      {expandedSections.orders && <motion.div className="ml-3 mt-1.5 space-y-1.5 border-l-2 border-teal-500/20 pl-3" initial={{
+                  opacity: 0,
+                  height: 0
+                }} animate={{
+                  opacity: 1,
+                  height: 'auto'
+                }} exit={{
+                  opacity: 0,
+                  height: 0
+                }} transition={{
+                  duration: 0.2
+                }}>
+                          {/* Food Orders */}
+                          <div>
+                            <button className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5 text-white text-sm transition-all" onClick={() => toggleSection('foodOrders')}>
+                              <div className="flex items-center gap-2">
+                                <UtensilsIcon className="w-4 h-4 text-orange-400" />
+                                <span>Food Orders</span>
+                              </div>
+                              <ChevronDownIcon className={`w-3.5 h-3.5 text-gray-400 transition-transform ${expandedSections.foodOrders ? 'rotate-180' : ''}`} />
+                            </button>
+
+                            <AnimatePresence>
+                              {expandedSections.foodOrders && <motion.div className="ml-3 mt-1 space-y-1" initial={{
+                        opacity: 0,
+                        height: 0
+                      }} animate={{
+                        opacity: 1,
+                        height: 'auto'
+                      }} exit={{
+                        opacity: 0,
+                        height: 0
+                      }} transition={{
+                        duration: 0.2
+                      }}>
+                                  <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 text-sm transition-all">
+                                    Food Dashboard
+                                  </button>
+                                  <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 text-sm transition-all">
+                                    Food Deliveries
+                                  </button>
+                                </motion.div>}
+                            </AnimatePresence>
+                          </div>
+
+                          {/* Marketplace Orders */}
+                          <div>
+                            <button className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5 text-white text-sm transition-all" onClick={() => toggleSection('marketplaceOrders')}>
+                              <div className="flex items-center gap-2">
+                                <ShoppingCartIcon className="w-4 h-4 text-blue-400" />
+                                <span>Marketplace Orders</span>
+                              </div>
+                              <ChevronDownIcon className={`w-3.5 h-3.5 text-gray-400 transition-transform ${expandedSections.marketplaceOrders ? 'rotate-180' : ''}`} />
+                            </button>
+
+                            <AnimatePresence>
+                              {expandedSections.marketplaceOrders && <motion.div className="ml-3 mt-1 space-y-1" initial={{
+                        opacity: 0,
+                        height: 0
+                      }} animate={{
+                        opacity: 1,
+                        height: 'auto'
+                      }} exit={{
+                        opacity: 0,
+                        height: 0
+                      }} transition={{
+                        duration: 0.2
+                      }}>
+                                  <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 text-sm transition-all">
+                                    Marketplace Dashboard
+                                  </button>
+                                  <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 text-sm transition-all">
+                                    Marketplace Deliveries
+                                  </button>
+                                  <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 text-sm transition-all">
+                                    Marketplace Order Bid
+                                  </button>
+                                </motion.div>}
+                            </AnimatePresence>
+                          </div>
+                        </motion.div>}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Vehicle Management */}
+                  <motion.button className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 text-white font-semibold text-sm transition-all" initial={{
+              opacity: 0,
+              y: -10
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.2
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <div className="flex items-center gap-3">
+                      <TruckIcon className="w-4 h-4 text-gray-400" />
+                      <span>Vehicle Management</span>
+                    </div>
+                  </motion.button>
+
+                  {/* Manage Services */}
+                  <motion.button className="w-full text-left px-4 py-3 rounded-xl bg-teal-500/20 border border-teal-500/30 text-white font-semibold text-sm hover:bg-teal-500/30 transition-all" initial={{
+              opacity: 0,
+              y: -10
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.25
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <div className="flex items-center gap-3">
+                      <SettingsIcon className="w-4 h-4 text-teal-400" />
+                      <span>Manage Services</span>
+                    </div>
+                  </motion.button>
+
+                  {/* Live Location */}
+                  <motion.button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 text-white font-semibold text-sm transition-all" initial={{
+              opacity: 0,
+              y: -10
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.3
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <MapPinIcon className="w-4 h-4 text-green-400" />
+                    <span>Live Location</span>
+                  </motion.button>
+
+                  {/* Profile */}
+                  <motion.button className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 text-white font-semibold text-sm transition-all" initial={{
+              opacity: 0,
+              y: -10
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.35
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <div className="flex items-center gap-3">
+                      <UserIcon className="w-4 h-4 text-gray-400" />
+                      <span>Profile</span>
+                    </div>
+                  </motion.button>
+                </nav>
+
+                {/* Logout */}
+                <div className="p-4 border-t border-teal-500/20 mt-auto">
+                  <motion.button className="w-full py-3 bg-gradient-to-r from-teal-500 to-green-500 rounded-xl text-white font-bold flex items-center justify-center gap-2 hover:from-teal-600 hover:to-green-600 transition-all shadow-lg shadow-teal-500/20" initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.4
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <LogOutIcon className="w-5 h-5" />
+                    Logout
+                  </motion.button>
+                </div>
+              </> :
+        // Standard Sidebar (Original Design)
+        <>
+                {/* Header */}
+                <div className="flex items-center justify-between p-5 border-b border-white/10">
+                  <motion.div className="text-xl font-bold bg-gradient-to-r from-[#00ffcc] to-[#00d9ff] bg-clip-text text-transparent" initial={{
+              opacity: 0,
+              x: -20
+            }} animate={{
+              opacity: 1,
+              x: 0
+            }} transition={{
+              delay: 0.1
+            }}>
+                    OyaDrop
+                  </motion.div>
+
+                  <motion.button className="p-2 rounded-lg hover:bg-white/5 transition-colors" onClick={onClose} whileTap={{
+              scale: 0.95
+            }} initial={{
+              opacity: 0,
+              rotate: -90
+            }} animate={{
+              opacity: 1,
+              rotate: 0
+            }} transition={{
+              delay: 0.1
+            }}>
+                    <XIcon className="w-6 h-6 text-white" />
+                  </motion.button>
+                </div>
+
+                {/* Navigation Items */}
+                <nav className="p-4">
+                  <motion.p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-3" initial={{
+              opacity: 0,
+              y: -10
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.2
+            }}>
+                    Navigation
+                  </motion.p>
+
+                  <div className="space-y-2">
+                    {navItems.map((item, index) => {
+                const Icon = item.icon;
                 const isActive = activeView === item.id;
-                return <motion.button key={item.id} className={`w-full flex items-center justify-between p-3 rounded-xl transition-all ${isActive ? 'bg-white/10 border border-white/20' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => {
-                  onNavigate(item.id);
-                  onClose();
-                }} initial={{
+                return <motion.button key={item.id} className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all ${isActive ? 'bg-gradient-to-r from-[#00ffcc]/20 to-[#00d9ff]/10 border border-[#00ffcc]/30' : 'hover:bg-white/5 border border-transparent'}`} onClick={() => handleNavigate(item.id)} initial={{
                   opacity: 0,
                   x: -20
                 }} animate={{
                   opacity: 1,
                   x: 0
                 }} transition={{
-                  delay: sectionIndex * 0.1 + itemIndex * 0.03
+                  delay: 0.2 + index * 0.1
                 }} whileTap={{
                   scale: 0.98
                 }}>
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{
-                      backgroundColor: `${item.color}20`,
-                      color: item.color
-                    }}>
-                              {item.icon}
-                            </div>
-                            <div className="text-left">
-                              <p className={`text-sm font-semibold ${isActive ? 'text-white' : 'text-gray-300'}`}>
-                                {item.label}
-                              </p>
-                              {item.badge && <span className="text-xs font-bold text-orange-400">
-                                  {item.badge}
-                                </span>}
-                            </div>
-                          </div>
-                          {isActive && <motion.div initial={{
-                    scale: 0
-                  }} animate={{
-                    scale: 1
-                  }} transition={{
-                    type: 'spring',
-                    damping: 15
+                          <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${isActive ? 'shadow-lg' : ''}`} style={{
+                    backgroundColor: isActive ? `${item.color}30` : '#1a2a2f',
+                    boxShadow: isActive ? `0 0 20px ${item.color}40` : 'none'
                   }}>
-                              <ChevronRight className="w-5 h-5 text-white" />
-                            </motion.div>}
+                            <Icon className="w-5 h-5" style={{
+                      color: isActive ? item.color : '#6b7280'
+                    }} />
+                          </div>
+
+                          <span className={`text-sm font-semibold ${isActive ? 'text-white' : 'text-gray-400'}`}>
+                            {item.label}
+                          </span>
+
+                          {isActive && <motion.div className="ml-auto w-2 h-2 rounded-full" style={{
+                    backgroundColor: item.color
+                  }} layoutId="activeIndicator" transition={{
+                    type: 'spring',
+                    damping: 20,
+                    stiffness: 300
+                  }} />}
                         </motion.button>;
               })}
                   </div>
-                </div>)}
-            </div>
+                </nav>
 
-            {/* Footer */}
-            <div className="sticky bottom-0 bg-gradient-to-t from-[#0A0E1A] to-transparent p-4 border-t border-white/10">
-              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-4">
-                <p className="text-sm font-bold text-white mb-1">Need Help?</p>
-                <p className="text-xs text-gray-400 mb-3">
-                  Contact support for assistance
-                </p>
-                <motion.button className="w-full py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-white text-sm font-bold" whileTap={{
-              scale: 0.98
-            }}>
-                  Contact Support
-                </motion.button>
-              </div>
-            </div>
+                {/* Footer Info */}
+                <motion.div className="p-5 border-t border-white/10 mt-4" initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            delay: 0.4
+          }}>
+                  <div className="bg-gradient-to-br from-[#1a2a2f] to-[#1f2f35] rounded-xl p-4 border border-white/10">
+                    <p className="text-xs text-gray-400 mb-2">
+                      OyaDrop Super App
+                    </p>
+                    <p className="text-sm font-semibold text-white">v2.0.0</p>
+                  </div>
+                </motion.div>
+              </>}
           </motion.div>
         </>}
     </AnimatePresence>;

@@ -51,6 +51,19 @@ export function App() {
         duration: 0.3
       }}>
             <HomeDashboardPage onMenuClick={toggleSidebar} onNavigate={handleNavigate} />
+          </motion.div> : activeView === 'fastfood' ? <motion.div key="fastfood" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <FastFoodPage onMenuClick={toggleSidebar} onOpenChat={handleOpenChat} />
           </motion.div> : activeView === 'pharmacy-customer' ? <motion.div key="pharmacy-customer" initial={{
         opacity: 0,
         x: 20
@@ -168,19 +181,6 @@ export function App() {
         duration: 0.3
       }}>
             <WalletDashboardPage onMenuClick={toggleSidebar} />
-          </motion.div> : activeView === 'fastfood' ? <motion.div key="fastfood" initial={{
-        opacity: 0,
-        scale: 0.95
-      }} animate={{
-        opacity: 1,
-        scale: 1
-      }} exit={{
-        opacity: 0,
-        scale: 0.95
-      }} transition={{
-        duration: 0.3
-      }}>
-            <FastFoodPage onMenuClick={toggleSidebar} onOpenChat={handleOpenChat} />
           </motion.div> : activeView === 'merchant' ? <motion.div key="merchant" initial={{
         opacity: 0,
         scale: 0.95
