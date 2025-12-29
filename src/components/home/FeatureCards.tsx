@@ -1,53 +1,77 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { StoreIcon, ShoppingBagIcon } from 'lucide-react';
+import { Gift, Users, MessageCircle } from 'lucide-react';
+interface FeatureCardsProps {
+  onNavigate?: (view: string) => void;
+}
 const features = [{
-  id: 'kiosk',
-  title: 'Be a Kiosk Owner',
-  description: 'Own and run your own kiosk and start earning instantly',
-  icon: StoreIcon,
-  gradient: 'from-teal-500 to-cyan-500',
-  image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop'
+  id: 'wallet',
+  title: 'Earn Rewards',
+  description: 'Get points with every order',
+  icon: Gift,
+  gradient: 'from-yellow-500 to-orange-500',
+  color: '#FFB800'
 }, {
-  id: 'marketplace',
-  title: 'Access Marketplace',
-  description: 'Browse and shop from verified sellers and stores',
-  icon: ShoppingBagIcon,
-  gradient: 'from-emerald-500 to-teal-500',
-  image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=300&fit=crop'
+  id: 'referral',
+  title: 'Refer & Earn',
+  description: 'Invite friends, get bonuses',
+  icon: Users,
+  gradient: 'from-green-500 to-teal-500',
+  color: '#10B981'
+}, {
+  id: 'messaging',
+  title: 'Chat with Friends',
+  description: 'Connect and share with others',
+  icon: MessageCircle,
+  gradient: 'from-cyan-500 to-blue-500',
+  color: '#00D9FF'
 }];
-export function FeatureCards() {
-  return <div className="px-5 py-6">
-      <div className="grid grid-cols-2 gap-3">
+export function FeatureCards({
+  onNavigate
+}: FeatureCardsProps) {
+  const handleFeatureClick = (featureId: string) => {
+    if (onNavigate) {
+      onNavigate(featureId);
+    }
+  };
+  return <div className="px-4 py-6">
+      <motion.h2 className="text-lg font-bold text-white mb-4" initial={{
+      opacity: 0,
+      y: 10
+    }} animate={{
+      opacity: 1,
+      y: 0
+    }}>
+        Why OyaDrop?
+      </motion.h2>
+
+      <div className="grid grid-cols-1 gap-3">
         {features.map((feature, index) => {
         const Icon = feature.icon;
-        return <motion.button key={feature.id} className="relative bg-gray-900 rounded-2xl overflow-hidden text-left group" initial={{
+        return <motion.button key={feature.id} className={`bg-gradient-to-br ${feature.gradient} rounded-2xl p-5 relative overflow-hidden text-left`} initial={{
           opacity: 0,
-          y: 20
+          x: -20
         }} animate={{
           opacity: 1,
-          y: 0
+          x: 0
         }} transition={{
-          delay: 0.4 + index * 0.1
-        }} whileTap={{
-          scale: 0.95
+          delay: index * 0.1
+        }} onClick={() => handleFeatureClick(feature.id)} whileTap={{
+          scale: 0.98
         }}>
-              <div className="relative h-24 overflow-hidden">
-                <img src={feature.image} alt={feature.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
-              </div>
+              {/* Glow effect */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl" />
 
-              <div className="p-4">
-                <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-2`}>
-                  <Icon className="w-5 h-5 text-white" />
+              <div className="relative flex items-center gap-4">
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-7 h-7 text-white" />
                 </div>
-
-                <h3 className="text-sm font-bold text-white mb-1">
-                  {feature.title}
-                </h3>
-                <p className="text-xs text-gray-400 leading-relaxed">
-                  {feature.description}
-                </p>
+                <div>
+                  <h3 className="text-base font-bold text-white mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-white/80">{feature.description}</p>
+                </div>
               </div>
             </motion.button>;
       })}

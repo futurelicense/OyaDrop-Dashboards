@@ -24,7 +24,7 @@ export function HomeDashboardPage({
         <PromoBannerSlider />
         <ServicesGrid onNavigate={onNavigate} />
         <RewardsProgress />
-        <FeatureCards />
+        <FeatureCards onNavigate={onNavigate} />
         <RecentActivity />
       </main>
     </div>;
