@@ -20,11 +20,12 @@ import { BeautyCustomerPage } from './pages/BeautyCustomerPage';
 import { BeautyProviderDashboardPage } from './pages/BeautyProviderDashboardPage';
 import { LaundryDashboardPage } from './pages/LaundryDashboardPage';
 import { LaundryCustomerPage } from './pages/LaundryCustomerPage';
+import { ServicesPage } from './pages/ServicesPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services'>('home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services') => {
     setActiveView(view);
     setSidebarOpen(false);
   };
@@ -51,19 +52,19 @@ export function App() {
         duration: 0.3
       }}>
             <HomeDashboardPage onMenuClick={toggleSidebar} onNavigate={handleNavigate} />
-          </motion.div> : activeView === 'fastfood' ? <motion.div key="fastfood" initial={{
+          </motion.div> : activeView === 'services' ? <motion.div key="services" initial={{
         opacity: 0,
-        scale: 0.95
+        x: 20
       }} animate={{
         opacity: 1,
-        scale: 1
+        x: 0
       }} exit={{
         opacity: 0,
-        scale: 0.95
+        x: -20
       }} transition={{
         duration: 0.3
       }}>
-            <FastFoodPage onMenuClick={toggleSidebar} onOpenChat={handleOpenChat} />
+            <ServicesPage onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />
           </motion.div> : activeView === 'pharmacy-customer' ? <motion.div key="pharmacy-customer" initial={{
         opacity: 0,
         x: 20
@@ -181,6 +182,19 @@ export function App() {
         duration: 0.3
       }}>
             <WalletDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> : activeView === 'fastfood' ? <motion.div key="fastfood" initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} exit={{
+        opacity: 0,
+        scale: 0.95
+      }} transition={{
+        duration: 0.3
+      }}>
+            <FastFoodPage onMenuClick={toggleSidebar} onOpenChat={handleOpenChat} />
           </motion.div> : activeView === 'merchant' ? <motion.div key="merchant" initial={{
         opacity: 0,
         scale: 0.95
