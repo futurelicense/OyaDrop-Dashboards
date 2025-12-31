@@ -21,11 +21,14 @@ import { BeautyProviderDashboardPage } from './pages/BeautyProviderDashboardPage
 import { LaundryDashboardPage } from './pages/LaundryDashboardPage';
 import { LaundryCustomerPage } from './pages/LaundryCustomerPage';
 import { ServicesPage } from './pages/ServicesPage';
+import { SidebarPage } from './pages/SidebarPage';
+import { TrackPage } from './pages/TrackPage';
+import { HistoryPage } from './pages/HistoryPage';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services' | 'sidebar' | 'track' | 'history'>('home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services') => {
+  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services' | 'sidebar' | 'track' | 'history') => {
     setActiveView(view);
     setSidebarOpen(false);
   };
@@ -52,6 +55,45 @@ export function App() {
         duration: 0.3
       }}>
             <HomeDashboardPage onMenuClick={toggleSidebar} onNavigate={handleNavigate} />
+          </motion.div> : activeView === 'sidebar' ? <motion.div key="sidebar" initial={{
+        opacity: 0,
+        x: 20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <SidebarPage onNavigate={handleNavigate} />
+          </motion.div> : activeView === 'track' ? <motion.div key="track" initial={{
+        opacity: 0,
+        x: 20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <TrackPage onBack={() => handleNavigate('home')} />
+          </motion.div> : activeView === 'history' ? <motion.div key="history" initial={{
+        opacity: 0,
+        x: 20
+      }} animate={{
+        opacity: 1,
+        x: 0
+      }} exit={{
+        opacity: 0,
+        x: -20
+      }} transition={{
+        duration: 0.3
+      }}>
+            <HistoryPage onBack={() => handleNavigate('home')} />
           </motion.div> : activeView === 'services' ? <motion.div key="services" initial={{
         opacity: 0,
         x: 20

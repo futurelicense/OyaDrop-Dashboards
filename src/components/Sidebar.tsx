@@ -1,17 +1,42 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon, ShoppingCartIcon, PillIcon, WashingMachineIcon, ChevronDownIcon, MapPinIcon, UserIcon, LogOutIcon, SparklesIcon, TruckIcon, SettingsIcon } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon, ShoppingCartIcon, PillIcon, WashingMachineIcon, ChevronDownIcon, MapPinIcon, UserIcon, LogOutIcon, SparklesIcon, TruckIcon, SettingsIcon, ClockIcon, MenuIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry' | 'beauty-provider' | 'beauty-customer' | 'supermarket-customer' | 'pharmacy-customer' | 'laundry-customer';
+  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry' | 'beauty-provider' | 'beauty-customer' | 'supermarket-customer' | 'pharmacy-customer' | 'laundry-customer' | 'sidebar' | 'track' | 'history';
   onNavigate: (view: string) => void;
 }
 const navItems = [{
   id: 'home',
-  label: 'Home',
+  label: 'Dashboard',
   icon: HomeIcon,
   color: '#00ffcc'
+}, {
+  id: 'referral',
+  label: 'Referrals',
+  icon: UsersIcon,
+  color: '#ffb800'
+}, {
+  id: 'wallet',
+  label: 'Wallet',
+  icon: WalletIcon,
+  color: '#B026FF'
+}, {
+  id: 'sidebar',
+  label: 'Sidebar',
+  icon: MenuIcon,
+  color: '#00D9C0'
+}, {
+  id: 'track',
+  label: 'Track',
+  icon: MapPinIcon,
+  color: '#FFB800'
+}, {
+  id: 'history',
+  label: 'History',
+  icon: ClockIcon,
+  color: '#8B5CF6'
 }, {
   id: 'messaging',
   label: 'Messages',
@@ -73,20 +98,10 @@ const navItems = [{
   icon: ShoppingBagIcon,
   color: '#00d9ff'
 }, {
-  id: 'wallet',
-  label: 'Wallet Quest',
-  icon: WalletIcon,
-  color: '#B026FF'
-}, {
   id: 'kiosk',
   label: 'Kiosk Dashboard',
   icon: StoreIcon,
   color: '#ff00ff'
-}, {
-  id: 'referral',
-  label: 'Referral Quest',
-  icon: UsersIcon,
-  color: '#ffb800'
 }];
 export function Sidebar({
   isOpen,
@@ -485,23 +500,27 @@ export function Sidebar({
                   </div>
                 </nav>
 
-                {/* Footer Info */}
-                <motion.div className="p-5 border-t border-white/10 mt-4" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.4
-          }}>
-                  <div className="bg-gradient-to-br from-[#1a2a2f] to-[#1f2f35] rounded-xl p-4 border border-white/10">
-                    <p className="text-xs text-gray-400 mb-2">
-                      OyaDrop Super App
-                    </p>
-                    <p className="text-sm font-semibold text-white">v2.0.0</p>
-                  </div>
-                </motion.div>
+                {/* Logout Button */}
+                <div className="p-4 border-t border-white/10 mt-auto">
+                  <motion.button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 transition-all" initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              delay: 0.4
+            }} whileTap={{
+              scale: 0.98
+            }}>
+                    <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
+                      <LogOutIcon className="w-5 h-5 text-red-400" />
+                    </div>
+                    <span className="text-sm font-semibold text-red-400">
+                      Logout
+                    </span>
+                  </motion.button>
+                </div>
               </>}
           </motion.div>
         </>}
