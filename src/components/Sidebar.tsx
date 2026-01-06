@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon, ShoppingCartIcon, PillIcon, WashingMachineIcon, ChevronDownIcon, MapPinIcon, UserIcon, LogOutIcon, SparklesIcon, TruckIcon, SettingsIcon, ClockIcon, MenuIcon } from 'lucide-react';
+import { HomeIcon, StoreIcon, UsersIcon, XIcon, ShoppingBagIcon, WalletIcon, UtensilsIcon, LayoutDashboardIcon, CarIcon, BedIcon, BriefcaseIcon, MessageCircleIcon, ShoppingCartIcon, PillIcon, WashingMachineIcon, ChevronDownIcon, MapPinIcon, UserIcon, LogOutIcon, SparklesIcon, TruckIcon, SettingsIcon, ClockIcon, MenuIcon, PresentationIcon } from 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry' | 'beauty-provider' | 'beauty-customer' | 'supermarket-customer' | 'pharmacy-customer' | 'laundry-customer' | 'sidebar' | 'track' | 'history';
+  activeView: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'pharmacy' | 'laundry' | 'beauty-provider' | 'beauty-customer' | 'supermarket-customer' | 'pharmacy-customer' | 'laundry-customer' | 'sidebar' | 'track' | 'history' | 'pitch-deck';
   onNavigate: (view: string) => void;
 }
 const navItems = [{
@@ -12,6 +12,11 @@ const navItems = [{
   label: 'Dashboard',
   icon: HomeIcon,
   color: '#00ffcc'
+}, {
+  id: 'pitch-deck',
+  label: 'Pitch Deck',
+  icon: PresentationIcon,
+  color: '#FF6B00'
 }, {
   id: 'referral',
   label: 'Referrals',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { HomeDashboardPage } from './pages/HomeDashboardPage';
 import { DashboardPage } from './pages/DashboardPage';
@@ -24,13 +24,29 @@ import { ServicesPage } from './pages/ServicesPage';
 import { SidebarPage } from './pages/SidebarPage';
 import { TrackPage } from './pages/TrackPage';
 import { HistoryPage } from './pages/HistoryPage';
+import { PitchDeckPage } from './pages/PitchDeckPage';
+import { PasswordGate } from './components/pitch/PasswordGate';
 import { Sidebar } from './components/Sidebar';
 export function App() {
-  const [activeView, setActiveView] = useState<'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services' | 'sidebar' | 'track' | 'history'>('home');
+  // Check URL hash to determine if we should show pitch deck or main app
+  const isPitchDeckMode = window.location.hash === '#pitch' || window.location.hash === '';
+  // Check if pitch deck is unlocked in this session
+  const [isPitchDeckUnlocked, setIsPitchDeckUnlocked] = useState(false);
+  useEffect(() => {
+    const unlocked = sessionStorage.getItem('pitch_deck_unlocked') === 'true';
+    setIsPitchDeckUnlocked(unlocked);
+  }, []);
+  const [activeView, setActiveView] = useState<'pitch-deck' | 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services' | 'sidebar' | 'track' | 'history'>(isPitchDeckMode ? 'pitch-deck' : 'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleNavigate = (view: 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services' | 'sidebar' | 'track' | 'history') => {
+  const handleNavigate = (view: 'pitch-deck' | 'home' | 'kiosk' | 'referral' | 'marketplace' | 'wallet' | 'fastfood' | 'merchant' | 'transport' | 'accommodation' | 'kioskstore' | 'provider' | 'messaging' | 'supermarket' | 'supermarket-customer' | 'pharmacy' | 'pharmacy-customer' | 'beauty-customer' | 'beauty-provider' | 'laundry' | 'laundry-customer' | 'services' | 'sidebar' | 'track' | 'history') => {
     setActiveView(view);
     setSidebarOpen(false);
+    // Update URL hash
+    if (view === 'pitch-deck') {
+      window.location.hash = '#pitch';
+    } else if (view === 'home') {
+      window.location.hash = '#app';
+    }
   };
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -38,6 +54,19 @@ export function App() {
   const handleOpenChat = () => {
     setActiveView('messaging');
   };
+  const handleUnlock = () => {
+    setIsPitchDeckUnlocked(true);
+  };
+  // If in pitch deck mode and not unlocked, show password gate
+  if (activeView === 'pitch-deck' && !isPitchDeckUnlocked) {
+    return <PasswordGate onUnlock={handleUnlock} />;
+  }
+  // If in pitch deck mode and unlocked, show pitch deck
+  if (activeView === 'pitch-deck') {
+    return <PitchDeckPage onBack={() => {
+      handleNavigate('home');
+    }} />;
+  }
   return <>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} activeView={activeView} onNavigate={handleNavigate} />
 
