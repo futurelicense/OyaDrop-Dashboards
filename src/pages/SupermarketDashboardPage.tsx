@@ -57,28 +57,51 @@ export function SupermarketDashboardPage({
     setOrderView('list');
     setSelectedOrder(null);
   };
-  return <>
+  return (
+    <>
       <div className="flex flex-col h-screen bg-[#0A0E1A]">
-        {orderView === 'list' && <SupermarketHeader onMenuClick={onMenuClick} />}
+        {orderView === 'list' &&
+        <SupermarketHeader onMenuClick={onMenuClick} />
+        }
 
         <div className="flex-1 overflow-y-auto pb-20">
-          {activeTab === 'home' && orderView === 'list' && <>
+          {activeTab === 'home' && orderView === 'list' &&
+          <>
               <DashboardCards />
               <QuickActionsBar />
-            </>}
+            </>
+          }
           {activeTab === 'products' && <ProductGrid />}
-          {activeTab === 'orders' && orderView === 'list' && <OrderList onSelectOrder={handleSelectOrder} />}
-          {activeTab === 'orders' && orderView === 'picking' && selectedOrder && <PickPackMode orderNumber={selectedOrder.orderNumber} onBack={handleBackToList} onComplete={handleCompleteOrder} onSubstitute={handleSubstitute} />}
+          {activeTab === 'orders' && orderView === 'list' &&
+          <OrderList onSelectOrder={handleSelectOrder} />
+          }
+          {activeTab === 'orders' &&
+          orderView === 'picking' &&
+          selectedOrder &&
+          <PickPackMode
+            orderNumber={selectedOrder.orderNumber}
+            onBack={handleBackToList}
+            onComplete={handleCompleteOrder}
+            onSubstitute={handleSubstitute} />
+
+          }
           {activeTab === 'messages' && <CustomerMessages />}
           {activeTab === 'settings' && <StoreSettings />}
         </div>
 
-        {orderView === 'list' && <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />}
+        {orderView === 'list' &&
+        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+        }
       </div>
 
-      <SubstitutionDrawer isOpen={showSubstitution} onClose={() => setShowSubstitution(false)} originalItem={{
-      name: selectedItem?.name || '',
-      price: 500
-    }} />
-    </>;
+      <SubstitutionDrawer
+        isOpen={showSubstitution}
+        onClose={() => setShowSubstitution(false)}
+        originalItem={{
+          name: selectedItem?.name || '',
+          price: 500
+        }} />
+
+    </>);
+
 }

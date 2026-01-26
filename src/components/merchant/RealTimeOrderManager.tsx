@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Clock, User, MapPin, CreditCard, ChefHat, CheckCircle, Bike } from 'lucide-react';
+import {
+  Clock,
+  User,
+  MapPin,
+  CreditCard,
+  ChefHat,
+  CheckCircle,
+  Bike } from
+'lucide-react';
 interface Order {
   id: string;
   orderNumber: string;
@@ -13,7 +21,8 @@ interface Order {
   prepTimer: number; // minutes
   branch: string;
 }
-const orders: Order[] = [{
+const orders: Order[] = [
+{
   id: '1',
   orderNumber: '#ORD-2847',
   timeAgo: '2m ago',
@@ -24,7 +33,8 @@ const orders: Order[] = [{
   status: 'pending',
   prepTimer: 0,
   branch: 'Jakande'
-}, {
+},
+{
   id: '2',
   orderNumber: '#ORD-2846',
   timeAgo: '5m ago',
@@ -35,7 +45,8 @@ const orders: Order[] = [{
   status: 'cooking',
   prepTimer: 8,
   branch: 'Ikota'
-}, {
+},
+{
   id: '3',
   orderNumber: '#ORD-2845',
   timeAgo: '12m ago',
@@ -47,6 +58,7 @@ const orders: Order[] = [{
   prepTimer: 15,
   branch: 'Lekki Phase 1'
 }];
+
 export function RealTimeOrderManager() {
   const [activeOrders, setActiveOrders] = useState(orders);
   const getStatusColor = (status: string) => {
@@ -95,20 +107,25 @@ export function RealTimeOrderManager() {
     if (minutes < 15) return '#FFB800';
     return '#EF4444';
   };
-  return <div className="px-4 py-6">
+  return (
+    <div className="px-4 py-6">
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-lg font-bold text-white">Live Orders</h2>
           <p className="text-xs text-gray-400">Real-time order management</p>
         </div>
         <div className="flex items-center gap-2 bg-orange-500/20 px-3 py-1.5 rounded-lg border border-orange-500/30">
-          <motion.div className="w-2 h-2 bg-orange-500 rounded-full" animate={{
-          scale: [1, 1.3, 1],
-          opacity: [1, 0.5, 1]
-        }} transition={{
-          duration: 1.5,
-          repeat: Infinity
-        }} />
+          <motion.div
+            className="w-2 h-2 bg-orange-500 rounded-full"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [1, 0.5, 1]
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity
+            }} />
+
           <span className="text-xs font-bold text-white">
             {activeOrders.length} Active
           </span>
@@ -117,19 +134,27 @@ export function RealTimeOrderManager() {
 
       <div className="space-y-3">
         {activeOrders.map((order, index) => {
-        const statusColors = getStatusColor(order.status);
-        const timerColor = getTimerColor(order.prepTimer);
-        return <motion.div key={order.id} className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10" initial={{
-          opacity: 0,
-          x: -20
-        }} animate={{
-          opacity: 1,
-          x: 0
-        }} transition={{
-          delay: index * 0.1
-        }} whileHover={{
-          borderColor: statusColors.border + '40'
-        }}>
+          const statusColors = getStatusColor(order.status);
+          const timerColor = getTimerColor(order.prepTimer);
+          return (
+            <motion.div
+              key={order.id}
+              className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10"
+              initial={{
+                opacity: 0,
+                x: -20
+              }}
+              animate={{
+                opacity: 1,
+                x: 0
+              }}
+              transition={{
+                delay: index * 0.1
+              }}
+              whileHover={{
+                borderColor: statusColors.border + '40'
+              }}>
+
               {/* Header */}
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
@@ -143,11 +168,14 @@ export function RealTimeOrderManager() {
                 </div>
 
                 {/* Status Badge */}
-                <div className="px-2 py-1 rounded-lg text-[10px] font-bold uppercase" style={{
-              backgroundColor: statusColors.bg,
-              color: statusColors.text,
-              border: `1px solid ${statusColors.border}40`
-            }}>
+                <div
+                  className="px-2 py-1 rounded-lg text-[10px] font-bold uppercase"
+                  style={{
+                    backgroundColor: statusColors.bg,
+                    color: statusColors.text,
+                    border: `1px solid ${statusColors.border}40`
+                  }}>
+
                   {order.status}
                 </div>
               </div>
@@ -155,9 +183,11 @@ export function RealTimeOrderManager() {
               {/* Items */}
               <div className="bg-[#0A0E1A]/50 rounded-xl p-3 mb-3">
                 <p className="text-xs text-gray-400 mb-2">Order Items:</p>
-                {order.items.map((item, i) => <p key={i} className="text-sm text-white font-semibold">
+                {order.items.map((item, i) =>
+                <p key={i} className="text-sm text-white font-semibold">
                     • {item}
-                  </p>)}
+                  </p>
+                )}
               </div>
 
               {/* Customer & Details */}
@@ -179,66 +209,104 @@ export function RealTimeOrderManager() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" style={{
-                color: timerColor
-              }} />
-                  <span className="text-xs font-bold" style={{
-                color: timerColor
-              }}>
-                    {order.prepTimer > 0 ? `${order.prepTimer}m` : 'Not started'}
+                  <Clock
+                    className="w-4 h-4"
+                    style={{
+                      color: timerColor
+                    }} />
+
+                  <span
+                    className="text-xs font-bold"
+                    style={{
+                      color: timerColor
+                    }}>
+
+                    {order.prepTimer > 0 ?
+                    `${order.prepTimer}m` :
+                    'Not started'}
                   </span>
                 </div>
               </div>
 
               {/* Action Buttons */}
               <div className="grid grid-cols-4 gap-2">
-                {order.status === 'pending' && <>
-                    <motion.button className="col-span-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/30" whileHover={{
-                scale: 1.02
-              }} whileTap={{
-                scale: 0.98
-              }}>
+                {order.status === 'pending' &&
+                <>
+                    <motion.button
+                    className="col-span-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/30"
+                    whileHover={{
+                      scale: 1.02
+                    }}
+                    whileTap={{
+                      scale: 0.98
+                    }}>
+
                       <CheckCircle className="w-4 h-4" />
                       Accept
                     </motion.button>
-                    <motion.button className="col-span-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 font-bold text-sm" whileHover={{
-                scale: 1.02
-              }} whileTap={{
-                scale: 0.98
-              }}>
+                    <motion.button
+                    className="col-span-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 font-bold text-sm"
+                    whileHover={{
+                      scale: 1.02
+                    }}
+                    whileTap={{
+                      scale: 0.98
+                    }}>
+
                       Reject
                     </motion.button>
-                  </>}
+                  </>
+                }
 
-                {order.status === 'accepted' && <motion.button className="col-span-4 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold text-sm shadow-lg" whileHover={{
-              scale: 1.02
-            }} whileTap={{
-              scale: 0.98
-            }}>
+                {order.status === 'accepted' &&
+                <motion.button
+                  className="col-span-4 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold text-sm shadow-lg"
+                  whileHover={{
+                    scale: 1.02
+                  }}
+                  whileTap={{
+                    scale: 0.98
+                  }}>
+
                     <ChefHat className="w-4 h-4" />
                     Start Cooking
-                  </motion.button>}
+                  </motion.button>
+                }
 
-                {order.status === 'cooking' && <motion.button className="col-span-4 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-green-500 to-teal-500 text-white font-bold text-sm shadow-lg" whileHover={{
-              scale: 1.02
-            }} whileTap={{
-              scale: 0.98
-            }}>
+                {order.status === 'cooking' &&
+                <motion.button
+                  className="col-span-4 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-green-500 to-teal-500 text-white font-bold text-sm shadow-lg"
+                  whileHover={{
+                    scale: 1.02
+                  }}
+                  whileTap={{
+                    scale: 0.98
+                  }}>
+
                     <CheckCircle className="w-4 h-4" />
                     Mark Ready
-                  </motion.button>}
+                  </motion.button>
+                }
 
-                {order.status === 'ready' && <motion.button className="col-span-4 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-sm shadow-lg" whileHover={{
-              scale: 1.02
-            }} whileTap={{
-              scale: 0.98
-            }}>
+                {order.status === 'ready' &&
+                <motion.button
+                  className="col-span-4 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-sm shadow-lg"
+                  whileHover={{
+                    scale: 1.02
+                  }}
+                  whileTap={{
+                    scale: 0.98
+                  }}>
+
                     <Bike className="w-4 h-4" />
                     Handed to Rider
-                  </motion.button>}
+                  </motion.button>
+                }
               </div>
-            </motion.div>;
-      })}
+            </motion.div>);
+
+        })}
       </div>
-    </div>;
+    </div>);
+
 }

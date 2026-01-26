@@ -1,6 +1,14 @@
 import React, { useState, Children } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Star, MapPin, CheckCircle, Calendar, Users, CreditCard } from 'lucide-react';
+import {
+  ArrowLeft,
+  Star,
+  MapPin,
+  CheckCircle,
+  Calendar,
+  Users,
+  CreditCard } from
+'lucide-react';
 interface Partner {
   id: string;
   name: string;
@@ -19,40 +27,60 @@ export function PartnerBookingFlow({
   partner,
   onBack
 }: PartnerBookingFlowProps) {
-  const [step, setStep] = useState<'select-property' | 'booking-details' | 'payment'>('select-property');
+  const [step, setStep] = useState<
+    'select-property' | 'booking-details' | 'payment'>(
+    'select-property');
   const typeColors: Record<string, string> = {
     Hotel: '#00D9C0',
     'Shortlet Agency': '#00F0FF',
     'Shared Living': '#B026FF'
   };
-  return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
       {/* Header */}
-      <motion.header className="sticky top-0 z-50 bg-[#0A0E1A]/95 backdrop-blur-xl border-b border-cyan-500/20 px-4 py-4" initial={{
-      y: -20,
-      opacity: 0
-    }} animate={{
-      y: 0,
-      opacity: 1
-    }}>
-        <div className="flex items-center gap-4">
-          <motion.button className="p-2 rounded-xl hover:bg-white/5 transition-colors" onClick={onBack} whileTap={{
-          scale: 0.95
+      <motion.header
+        className="sticky top-0 z-50 bg-[#0A0E1A]/95 backdrop-blur-xl border-b border-cyan-500/20 px-4 py-4"
+        initial={{
+          y: -20,
+          opacity: 0
+        }}
+        animate={{
+          y: 0,
+          opacity: 1
         }}>
+
+        <div className="flex items-center gap-4">
+          <motion.button
+            className="p-2 rounded-xl hover:bg-white/5 transition-colors"
+            onClick={onBack}
+            whileTap={{
+              scale: 0.95
+            }}>
+
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
 
           <div className="flex items-center gap-3 flex-1">
-            <img src={partner.logo} alt={partner.name} className="w-12 h-12 rounded-xl border-2 border-white/10" />
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="w-12 h-12 rounded-xl border-2 border-white/10" />
+
             <div>
               <h1 className="text-lg font-bold text-white">{partner.name}</h1>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{
-                backgroundColor: typeColors[partner.type] + '20',
-                color: typeColors[partner.type]
-              }}>
+                <span
+                  className="text-xs font-semibold px-2 py-0.5 rounded-full"
+                  style={{
+                    backgroundColor: typeColors[partner.type] + '20',
+                    color: typeColors[partner.type]
+                  }}>
+
                   {partner.type}
                 </span>
-                {partner.verified && <CheckCircle className="w-4 h-4 text-cyan-400 fill-cyan-400" />}
+                {partner.verified &&
+                <CheckCircle className="w-4 h-4 text-cyan-400 fill-cyan-400" />
+                }
               </div>
             </div>
           </div>
@@ -60,36 +88,61 @@ export function PartnerBookingFlow({
 
         {/* Progress Steps */}
         <div className="flex items-center gap-2 mt-4">
-          {['Select Property', 'Booking Details', 'Payment'].map((label, index) => {
-          const stepIndex = ['select-property', 'booking-details', 'payment'].indexOf(step);
-          const isActive = index === stepIndex;
-          const isCompleted = index < stepIndex;
-          return <div key={label} className="flex items-center flex-1">
+          {['Select Property', 'Booking Details', 'Payment'].map(
+            (label, index) => {
+              const stepIndex = [
+              'select-property',
+              'booking-details',
+              'payment'].
+              indexOf(step);
+              const isActive = index === stepIndex;
+              const isCompleted = index < stepIndex;
+              return (
+                <div key={label} className="flex items-center flex-1">
                   <div className="flex items-center gap-2 flex-1">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all ${isCompleted ? 'bg-green-500 text-white' : isActive ? 'bg-cyan-500 text-white' : 'bg-[#131B2E] text-gray-400'}`}>
-                      {isCompleted ? <CheckCircle className="w-5 h-5" /> : index + 1}
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all ${isCompleted ? 'bg-green-500 text-white' : isActive ? 'bg-cyan-500 text-white' : 'bg-[#131B2E] text-gray-400'}`}>
+
+                      {isCompleted ?
+                      <CheckCircle className="w-5 h-5" /> :
+
+                      index + 1
+                      }
                     </div>
-                    <span className={`text-xs font-semibold ${isActive ? 'text-white' : 'text-gray-400'}`}>
+                    <span
+                      className={`text-xs font-semibold ${isActive ? 'text-white' : 'text-gray-400'}`}>
+
                       {label}
                     </span>
                   </div>
-                  {index < 2 && <div className={`h-0.5 flex-1 mx-2 transition-all ${isCompleted ? 'bg-green-500' : 'bg-[#131B2E]'}`} />}
-                </div>;
-        })}
+                  {index < 2 &&
+                  <div
+                    className={`h-0.5 flex-1 mx-2 transition-all ${isCompleted ? 'bg-green-500' : 'bg-[#131B2E]'}`} />
+
+                  }
+                </div>);
+
+            }
+          )}
         </div>
       </motion.header>
 
       {/* Content */}
       <main className="px-4 py-6">
-        {step === 'select-property' && <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.3
-      }}>
+        {step === 'select-property' &&
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+
             <h2 className="text-xl font-bold text-white mb-2">
               Select a Property
             </h2>
@@ -99,14 +152,25 @@ export function PartnerBookingFlow({
 
             {/* Mock Property Cards */}
             <div className="space-y-4">
-              {[1, 2, 3].map(i => <motion.button key={i} className="w-full bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl overflow-hidden border border-white/10 text-left" whileHover={{
-            y: -2,
-            borderColor: '#00D9C040'
-          }} whileTap={{
-            scale: 0.98
-          }} onClick={() => setStep('booking-details')}>
+              {[1, 2, 3].map((i) =>
+            <motion.button
+              key={i}
+              className="w-full bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl overflow-hidden border border-white/10 text-left"
+              whileHover={{
+                y: -2,
+                borderColor: '#00D9C040'
+              }}
+              whileTap={{
+                scale: 0.98
+              }}
+              onClick={() => setStep('booking-details')}>
+
                   <div className="flex gap-4 p-4">
-                    <img src={`https://images.unsplash.com/photo-${1582719478250 + i}?w=200&h=200&fit=crop`} alt="Property" className="w-24 h-24 rounded-xl object-cover" />
+                    <img
+                  src={`https://images.unsplash.com/photo-${1582719478250 + i}?w=200&h=200&fit=crop`}
+                  alt="Property"
+                  className="w-24 h-24 rounded-xl object-cover" />
+
                     <div className="flex-1">
                       <h3 className="text-base font-bold text-white mb-1">
                         Luxury Suite {i}
@@ -131,19 +195,26 @@ export function PartnerBookingFlow({
                       </div>
                     </div>
                   </div>
-                </motion.button>)}
+                </motion.button>
+            )}
             </div>
-          </motion.div>}
+          </motion.div>
+        }
 
-        {step === 'booking-details' && <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.3
-      }}>
+        {step === 'booking-details' &&
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+
             <h2 className="text-xl font-bold text-white mb-6">
               Booking Details
             </h2>
@@ -160,13 +231,19 @@ export function PartnerBookingFlow({
                     <label className="text-xs text-gray-400 mb-1 block">
                       Check-in
                     </label>
-                    <input type="date" className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+                    <input
+                    type="date"
+                    className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+
                   </div>
                   <div>
                     <label className="text-xs text-gray-400 mb-1 block">
                       Check-out
                     </label>
-                    <input type="date" className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+                    <input
+                    type="date"
+                    className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+
                   </div>
                 </div>
               </div>
@@ -182,13 +259,23 @@ export function PartnerBookingFlow({
                     <label className="text-xs text-gray-400 mb-1 block">
                       Adults
                     </label>
-                    <input type="number" defaultValue={2} min={1} className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+                    <input
+                    type="number"
+                    defaultValue={2}
+                    min={1}
+                    className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+
                   </div>
                   <div>
                     <label className="text-xs text-gray-400 mb-1 block">
                       Children
                     </label>
-                    <input type="number" defaultValue={0} min={0} className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+                    <input
+                    type="number"
+                    defaultValue={0}
+                    min={0}
+                    className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
+
                   </div>
                 </div>
               </div>
@@ -216,34 +303,51 @@ export function PartnerBookingFlow({
                 </div>
               </div>
 
-              <motion.button className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30" whileHover={{
-            scale: 1.02
-          }} whileTap={{
-            scale: 0.98
-          }} onClick={() => setStep('payment')}>
+              <motion.button
+              className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30"
+              whileHover={{
+                scale: 1.02
+              }}
+              whileTap={{
+                scale: 0.98
+              }}
+              onClick={() => setStep('payment')}>
+
                 Continue to Payment
               </motion.button>
             </div>
-          </motion.div>}
+          </motion.div>
+        }
 
-        {step === 'payment' && <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.3
-      }}>
+        {step === 'payment' &&
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+
             <h2 className="text-xl font-bold text-white mb-6">
               Payment Method
             </h2>
 
             <div className="space-y-4">
               {/* Payment Options */}
-              {['Wallet', 'Card', 'Bank Transfer', 'OyaCoin'].map((method, index) => <motion.button key={method} className="w-full bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 border-white/10 hover:border-cyan-500/50 transition-colors text-left" whileTap={{
-            scale: 0.98
-          }}>
+              {['Wallet', 'Card', 'Bank Transfer', 'OyaCoin'].map(
+              (method, index) =>
+              <motion.button
+                key={method}
+                className="w-full bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 border-white/10 hover:border-cyan-500/50 transition-colors text-left"
+                whileTap={{
+                  scale: 0.98
+                }}>
+
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
                         <CreditCard className="w-6 h-6 text-cyan-400" />
@@ -260,18 +364,26 @@ export function PartnerBookingFlow({
                         </p>
                       </div>
                     </div>
-                  </motion.button>)}
+                  </motion.button>
 
-              <motion.button className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-500/30 flex items-center justify-center gap-2" whileHover={{
-            scale: 1.02
-          }} whileTap={{
-            scale: 0.98
-          }}>
+            )}
+
+              <motion.button
+              className="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-500/30 flex items-center justify-center gap-2"
+              whileHover={{
+                scale: 1.02
+              }}
+              whileTap={{
+                scale: 0.98
+              }}>
+
                 <CheckCircle className="w-5 h-5" />
                 Confirm Booking
               </motion.button>
             </div>
-          </motion.div>}
+          </motion.div>
+        }
       </main>
-    </div>;
+    </div>);
+
 }

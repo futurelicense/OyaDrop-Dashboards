@@ -15,7 +15,8 @@ export function HomeDashboardPage({
   onMenuClick,
   onNavigate
 }: HomeDashboardPageProps) {
-  return <div className="min-h-screen bg-black">
+  return (
+    <div className="min-h-screen bg-black">
       <HomeTopNav onMenuClick={onMenuClick} />
       <MarqueeBar />
       <QuickAccessBar onNavigate={onNavigate} />
@@ -27,5 +28,6 @@ export function HomeDashboardPage({
         <FeatureCards onNavigate={onNavigate} />
         <RecentActivity />
       </main>
-    </div>;
+    </div>);
+
 }

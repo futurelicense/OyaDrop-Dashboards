@@ -9,10 +9,9 @@ import { PromoBanner } from '../components/dashboard/PromoBanner';
 interface DashboardPageProps {
   onMenuClick: () => void;
 }
-export function DashboardPage({
-  onMenuClick
-}: DashboardPageProps) {
-  return <div className="min-h-screen bg-[#0a0a0f]">
+export function DashboardPage({ onMenuClick }: DashboardPageProps) {
+  return (
+    <div className="min-h-screen bg-[#0a0a0f]">
       <TopNav onMenuClick={onMenuClick} />
 
       <main className="max-w-md mx-auto">
@@ -23,5 +22,6 @@ export function DashboardPage({
         <InsightsStrip />
         <PromoBanner />
       </main>
-    </div>;
+    </div>);
+
 }

@@ -18,7 +18,13 @@ interface LaundryOrder {
   customerName: string;
   garmentCount: number;
   serviceType: 'Wash Only' | 'Wash & Iron' | 'Dry Cleaning' | 'Express';
-  status: 'pickup' | 'sorting' | 'washing' | 'ironing' | 'packaging' | 'delivery';
+  status:
+  'pickup' |
+  'sorting' |
+  'washing' |
+  'ironing' |
+  'packaging' |
+  'delivery';
   urgency: 'normal' | 'urgent' | 'express';
   timeElapsed: string;
   deliveryType: 'pickup' | 'delivery';
@@ -26,23 +32,28 @@ interface LaundryOrder {
 interface LaundryDashboardPageProps {
   onMenuClick: () => void;
 }
-const statusOptions = [{
+const statusOptions = [
+{
   value: 'washing',
   label: 'Start Washing',
   color: '#00D9C0'
-}, {
+},
+{
   value: 'ironing',
   label: 'Move to Iron',
   color: '#FFB800'
-}, {
+},
+{
   value: 'packaging',
   label: 'Package',
   color: '#B026FF'
-}, {
+},
+{
   value: 'delivery',
   label: 'Ready for Delivery',
   color: '#10B981'
 }];
+
 export function LaundryDashboardPage({
   onMenuClick
 }: LaundryDashboardPageProps) {
@@ -66,24 +77,31 @@ export function LaundryDashboardPage({
       deliveryType: order.deliveryType,
       createdAt: '2 hours ago',
       estimatedCompletion: '4 hours',
-      specialInstructions: order.serviceType === 'Express' ? 'Customer needs this urgently for an event tonight' : undefined,
-      items: [{
+      specialInstructions:
+      order.serviceType === 'Express' ?
+      'Customer needs this urgently for an event tonight' :
+      undefined,
+      items: [
+      {
         id: '1',
         name: 'Shirts',
         quantity: 5,
         price: 500,
         notes: 'White shirts - handle with care'
-      }, {
+      },
+      {
         id: '2',
         name: 'Trousers',
         quantity: 3,
         price: 800
-      }, {
+      },
+      {
         id: '3',
         name: 'Bed Sheets',
         quantity: 2,
         price: 1200
       }],
+
       paymentMethod: 'card',
       paymentStatus: 'paid'
     };
@@ -105,19 +123,26 @@ export function LaundryDashboardPage({
       setActiveTab('home');
     }
   };
-  const handleQuickAction = (action: 'create-order' | 'update-status' | 'assign-rider') => {
+  const handleQuickAction = (
+  action: 'create-order' | 'update-status' | 'assign-rider') =>
+  {
     setActiveQuickAction(action);
   };
-  return <>
+  return (
+    <>
       <div className="flex flex-col h-screen bg-[#0A0E1A]">
         <LaundryHeader onMenuClick={onMenuClick} />
 
         <div className="flex-1 overflow-y-auto pb-20">
-          {activeTab === 'home' && <>
+          {activeTab === 'home' &&
+          <>
               <LaundryDashboardCards />
               <LaundryQuickActions onActionClick={handleQuickAction} />
-            </>}
-          {activeTab === 'orders' && <LaundryOrderList onSelectOrder={handleSelectOrder} />}
+            </>
+          }
+          {activeTab === 'orders' &&
+          <LaundryOrderList onSelectOrder={handleSelectOrder} />
+          }
           {activeTab === 'messages' && <LaundryMessages />}
           {activeTab === 'settings' && <LaundrySettings />}
         </div>
@@ -126,11 +151,28 @@ export function LaundryDashboardPage({
       </div>
 
       {/* Quick Action Sheets */}
-      <CreateOrderSheet isOpen={activeQuickAction === 'create-order'} onClose={() => setActiveQuickAction(null)} />
-      <UpdateStatusSheet isOpen={activeQuickAction === 'update-status'} onClose={() => setActiveQuickAction(null)} />
-      <AssignRiderSheet isOpen={activeQuickAction === 'assign-rider'} onClose={() => setActiveQuickAction(null)} />
+      <CreateOrderSheet
+        isOpen={activeQuickAction === 'create-order'}
+        onClose={() => setActiveQuickAction(null)} />
+
+      <UpdateStatusSheet
+        isOpen={activeQuickAction === 'update-status'}
+        onClose={() => setActiveQuickAction(null)} />
+
+      <AssignRiderSheet
+        isOpen={activeQuickAction === 'assign-rider'}
+        onClose={() => setActiveQuickAction(null)} />
+
 
       {/* Order Details Sheet */}
-      <OrderDetailsSheet isOpen={showOrderDetails} onClose={() => setShowOrderDetails(false)} order={selectedOrder} onStatusChange={handleStatusChange} onContactCustomer={handleContactCustomer} statusOptions={statusOptions} />
-    </>;
+      <OrderDetailsSheet
+        isOpen={showOrderDetails}
+        onClose={() => setShowOrderDetails(false)}
+        order={selectedOrder}
+        onStatusChange={handleStatusChange}
+        onContactCustomer={handleContactCustomer}
+        statusOptions={statusOptions} />
+
+    </>);
+
 }

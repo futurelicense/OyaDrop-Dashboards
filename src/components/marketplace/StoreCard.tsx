@@ -15,29 +15,39 @@ interface StoreCardProps {
   store: Store;
   index?: number;
 }
-export function StoreCard({
-  store,
-  index = 0
-}: StoreCardProps) {
-  return <motion.button className="flex-shrink-0 w-32 bg-[#1a2a2f] rounded-2xl p-4 border border-white/10 text-center group hover:border-[#00ffcc]/30 transition-colors" initial={{
-    opacity: 0,
-    scale: 0.9
-  }} animate={{
-    opacity: 1,
-    scale: 1
-  }} transition={{
-    delay: index * 0.05
-  }} whileTap={{
-    scale: 0.95
-  }}>
+export function StoreCard({ store, index = 0 }: StoreCardProps) {
+  return (
+    <motion.button
+      className="flex-shrink-0 w-32 bg-[#1a2a2f] rounded-2xl p-4 border border-white/10 text-center group hover:border-[#00ffcc]/30 transition-colors"
+      initial={{
+        opacity: 0,
+        scale: 0.9
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1
+      }}
+      transition={{
+        delay: index * 0.05
+      }}
+      whileTap={{
+        scale: 0.95
+      }}>
+
       {/* Logo */}
       <div className="relative w-16 h-16 mx-auto mb-3">
         <div className="w-full h-full bg-[#0f1f24] rounded-xl overflow-hidden">
-          <img src={store.logo} alt={store.name} className="w-full h-full object-cover" />
+          <img
+            src={store.logo}
+            alt={store.name}
+            className="w-full h-full object-cover" />
+
         </div>
-        {store.verified && <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#00ffcc] rounded-full flex items-center justify-center border-2 border-[#1a2a2f]">
+        {store.verified &&
+        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#00ffcc] rounded-full flex items-center justify-center border-2 border-[#1a2a2f]">
             <CheckCircleIcon className="w-4 h-4 text-black" />
-          </div>}
+          </div>
+        }
       </div>
 
       {/* Name */}
@@ -57,5 +67,6 @@ export function StoreCard({
           <span>{store.products}</span>
         </div>
       </div>
-    </motion.button>;
+    </motion.button>);
+
 }

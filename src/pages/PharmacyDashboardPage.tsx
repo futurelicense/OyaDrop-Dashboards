@@ -11,8 +11,18 @@ import { AddMedicationSheet } from '../components/pharmacy/AddMedicationSheet';
 import { CheckPrescriptionSheet } from '../components/pharmacy/CheckPrescriptionSheet';
 import { UploadStockSheet } from '../components/pharmacy/UploadStockSheet';
 import { PharmacyBottomNav } from '../components/pharmacy/PharmacyBottomNav';
-type Tab = 'home' | 'catalog' | 'orders' | 'prescriptions' | 'messages' | 'settings';
-type QuickAction = 'add-medication' | 'check-prescription' | 'upload-stock' | null;
+type Tab =
+'home' |
+'catalog' |
+'orders' |
+'prescriptions' |
+'messages' |
+'settings';
+type QuickAction =
+'add-medication' |
+'check-prescription' |
+'upload-stock' |
+null;
 interface Order {
   id: string;
   orderNumber: string;
@@ -49,21 +59,32 @@ export function PharmacyDashboardPage({
   const handleReviewPrescription = (prescription: Prescription) => {
     console.log('Review prescription:', prescription);
   };
-  const handleQuickAction = (action: 'add-medication' | 'check-prescription' | 'upload-stock') => {
+  const handleQuickAction = (
+  action: 'add-medication' | 'check-prescription' | 'upload-stock') =>
+  {
     setActiveQuickAction(action);
   };
-  return <>
+  return (
+    <>
       <div className="flex flex-col h-screen bg-[#0A0E1A]">
         <PharmacyHeader onMenuClick={onMenuClick} />
 
         <div className="flex-1 overflow-y-auto pb-20">
-          {activeTab === 'home' && <>
+          {activeTab === 'home' &&
+          <>
               <PharmacyDashboardCards />
               <PharmacyQuickActions onActionClick={handleQuickAction} />
-            </>}
+            </>
+          }
           {activeTab === 'catalog' && <MedicationCatalog />}
-          {activeTab === 'orders' && <PharmacyOrders onSelectOrder={handleSelectOrder} />}
-          {activeTab === 'prescriptions' && <PrescriptionQueue onReviewPrescription={handleReviewPrescription} />}
+          {activeTab === 'orders' &&
+          <PharmacyOrders onSelectOrder={handleSelectOrder} />
+          }
+          {activeTab === 'prescriptions' &&
+          <PrescriptionQueue
+            onReviewPrescription={handleReviewPrescription} />
+
+          }
           {activeTab === 'messages' && <PharmacyChat />}
           {activeTab === 'settings' && <PharmacySettings />}
         </div>
@@ -72,8 +93,18 @@ export function PharmacyDashboardPage({
       </div>
 
       {/* Quick Action Sheets */}
-      <AddMedicationSheet isOpen={activeQuickAction === 'add-medication'} onClose={() => setActiveQuickAction(null)} />
-      <CheckPrescriptionSheet isOpen={activeQuickAction === 'check-prescription'} onClose={() => setActiveQuickAction(null)} />
-      <UploadStockSheet isOpen={activeQuickAction === 'upload-stock'} onClose={() => setActiveQuickAction(null)} />
-    </>;
+      <AddMedicationSheet
+        isOpen={activeQuickAction === 'add-medication'}
+        onClose={() => setActiveQuickAction(null)} />
+
+      <CheckPrescriptionSheet
+        isOpen={activeQuickAction === 'check-prescription'}
+        onClose={() => setActiveQuickAction(null)} />
+
+      <UploadStockSheet
+        isOpen={activeQuickAction === 'upload-stock'}
+        onClose={() => setActiveQuickAction(null)} />
+
+    </>);
+
 }

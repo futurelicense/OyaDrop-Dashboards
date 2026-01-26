@@ -15,14 +15,20 @@ export function FareSummaryFooter({
   destination,
   onBookRide
 }: FareSummaryFooterProps) {
-  return <motion.div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-[#0A0E1A] via-[#0F1520] to-transparent backdrop-blur-xl border-t border-cyan-500/20 p-4" initial={{
-    y: 100
-  }} animate={{
-    y: 0
-  }} transition={{
-    type: 'spring',
-    damping: 20
-  }}>
+  return (
+    <motion.div
+      className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-[#0A0E1A] via-[#0F1520] to-transparent backdrop-blur-xl border-t border-cyan-500/20 p-4"
+      initial={{
+        y: 100
+      }}
+      animate={{
+        y: 0
+      }}
+      transition={{
+        type: 'spring',
+        damping: 20
+      }}>
+
       {/* Summary */}
       <div className="mb-3">
         <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
@@ -51,12 +57,18 @@ export function FareSummaryFooter({
       </div>
 
       {/* CTA Button */}
-      <motion.button className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2" whileHover={{
-      scale: 1.02
-    }} whileTap={{
-      scale: 0.98
-    }} onClick={onBookRide}>
+      <motion.button
+        className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30 flex items-center justify-center gap-2"
+        whileHover={{
+          scale: 1.02
+        }}
+        whileTap={{
+          scale: 0.98
+        }}
+        onClick={onBookRide}>
+
         {mode === 'regular' ? '🚗 Book Ride Now' : '💰 Send Offer to Drivers'}
       </motion.button>
-    </motion.div>;
+    </motion.div>);
+
 }

@@ -29,16 +29,23 @@ export function ProviderRideRequestSheet({
     onClose();
   };
   if (!isOpen) return null;
-  return <>
+  return (
+    <>
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/50 z-40 transition-opacity" onClick={onClose} />
+      <div
+        className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+        onClick={onClose} />
+
 
       {/* Sheet */}
       <div className="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto animate-slide-up">
         {/* Header */}
         <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-3xl">
           <h2 className="text-xl font-bold text-gray-900">Request Transport</h2>
-          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+
             <XIcon className="w-5 h-5 text-gray-600" />
           </button>
         </div>
@@ -47,7 +54,12 @@ export function ProviderRideRequestSheet({
         <div className="p-6 space-y-6">
           {/* Location Inputs */}
           <div className="space-y-3">
-            <LocationInputCards pickup={pickup} destination={destination} onPickupChange={setPickup} onDestinationChange={setDestination} />
+            <LocationInputCards
+              pickup={pickup}
+              destination={destination}
+              onPickupChange={setPickup}
+              onDestinationChange={setDestination} />
+
           </div>
 
           {/* Ride Mode Selector */}
@@ -60,7 +72,14 @@ export function ProviderRideRequestSheet({
 
           {/* Pricing Panel */}
           <div>
-            {rideMode === 'regular' ? <RegularPricingPanel selectedVehicle={selectedVehicle} onVehicleChange={setSelectedVehicle} /> : <NegotiatePricingPanel />}
+            {rideMode === 'regular' ?
+            <RegularPricingPanel
+              selectedVehicle={selectedVehicle}
+              onVehicleChange={setSelectedVehicle} /> :
+
+
+            <NegotiatePricingPanel />
+            }
           </div>
 
           {/* Payment Method */}
@@ -68,11 +87,18 @@ export function ProviderRideRequestSheet({
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Payment Method
             </h3>
-            <PaymentMethodSelector selectedMethod={paymentMethod} onMethodChange={setPaymentMethod} />
+            <PaymentMethodSelector
+              selectedMethod={paymentMethod}
+              onMethodChange={setPaymentMethod} />
+
           </div>
 
           {/* Confirm Button */}
-          <button onClick={handleConfirmRide} disabled={!pickup || !destination} className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed shadow-lg">
+          <button
+            onClick={handleConfirmRide}
+            disabled={!pickup || !destination}
+            className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed shadow-lg">
+
             Confirm Ride Request
           </button>
 
@@ -97,5 +123,6 @@ export function ProviderRideRequestSheet({
           animation: slide-up 0.3s ease-out;
         }
       `}</style>
-    </>;
+    </>);
+
 }

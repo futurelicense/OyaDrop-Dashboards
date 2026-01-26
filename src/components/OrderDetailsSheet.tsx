@@ -1,6 +1,18 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, MapPin, Clock, Phone, MessageCircle, Package, CheckCircle, AlertCircle, TrendingUp, Calendar } from 'lucide-react';
+import {
+  X,
+  User,
+  MapPin,
+  Clock,
+  Phone,
+  MessageCircle,
+  Package,
+  CheckCircle,
+  AlertCircle,
+  TrendingUp,
+  Calendar } from
+'lucide-react';
 export interface OrderItem {
   id: string;
   name: string;
@@ -72,29 +84,43 @@ export function OrderDetailsSheet({
 }: OrderDetailsSheetProps) {
   if (!order) return null;
   const urgency = urgencyConfig[order.urgency || 'normal'];
-  return <AnimatePresence>
-      {isOpen && <>
+  return (
+    <AnimatePresence>
+      {isOpen &&
+      <>
           {/* Backdrop */}
-          <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80]" initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} exit={{
-        opacity: 0
-      }} onClick={onClose} />
+          <motion.div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80]"
+          initial={{
+            opacity: 0
+          }}
+          animate={{
+            opacity: 1
+          }}
+          exit={{
+            opacity: 0
+          }}
+          onClick={onClose} />
+
 
           {/* Sheet */}
-          <motion.div className="fixed inset-x-0 bottom-0 z-[90] bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[90vh] flex flex-col" initial={{
-        y: '100%'
-      }} animate={{
-        y: 0
-      }} exit={{
-        y: '100%'
-      }} transition={{
-        type: 'spring',
-        damping: 30,
-        stiffness: 300
-      }}>
+          <motion.div
+          className="fixed inset-x-0 bottom-0 z-[90] bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[90vh] flex flex-col"
+          initial={{
+            y: '100%'
+          }}
+          animate={{
+            y: 0
+          }}
+          exit={{
+            y: '100%'
+          }}
+          transition={{
+            type: 'spring',
+            damping: 30,
+            stiffness: 300
+          }}>
+
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -106,9 +132,13 @@ export function OrderDetailsSheet({
                 <h2 className="text-xl font-bold text-white">Order Details</h2>
                 <p className="text-sm text-gray-400">{order.orderNumber}</p>
               </div>
-              <motion.button className="p-2 rounded-xl hover:bg-white/5 transition-colors" onClick={onClose} whileTap={{
-            scale: 0.95
-          }}>
+              <motion.button
+              className="p-2 rounded-xl hover:bg-white/5 transition-colors"
+              onClick={onClose}
+              whileTap={{
+                scale: 0.95
+              }}>
+
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -116,19 +146,27 @@ export function OrderDetailsSheet({
             {/* Content */}
             <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
               {/* Status & Urgency */}
-              <motion.div className="flex items-center gap-3" initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.1
-          }}>
-                <div className="px-4 py-2 rounded-xl font-bold text-sm" style={{
-              backgroundColor: urgency.bg,
-              color: urgency.color
-            }}>
+              <motion.div
+              className="flex items-center gap-3"
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                delay: 0.1
+              }}>
+
+                <div
+                className="px-4 py-2 rounded-xl font-bold text-sm"
+                style={{
+                  backgroundColor: urgency.bg,
+                  color: urgency.color
+                }}>
+
                   {urgency.label}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -138,15 +176,20 @@ export function OrderDetailsSheet({
               </motion.div>
 
               {/* Customer Info */}
-              <motion.div className="bg-[#0A0E1A]/50 rounded-2xl p-4 space-y-3" initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.2
-          }}>
+              <motion.div
+              className="bg-[#0A0E1A]/50 rounded-2xl p-4 space-y-3"
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                delay: 0.2
+              }}>
+
                 <h3 className="text-sm font-bold text-white mb-3">
                   Customer Information
                 </h3>
@@ -156,49 +199,74 @@ export function OrderDetailsSheet({
                     <p className="text-sm font-semibold text-white">
                       {order.customerName}
                     </p>
-                    {order.customerPhone && <p className="text-xs text-gray-400">
+                    {order.customerPhone &&
+                  <p className="text-xs text-gray-400">
                         {order.customerPhone}
-                      </p>}
+                      </p>
+                  }
                   </div>
                 </div>
-                {order.customerAddress && <div className="flex items-start gap-3">
+                {order.customerAddress &&
+              <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-cyan-400 mt-0.5" />
                     <p className="text-sm text-gray-300">
                       {order.customerAddress}
                     </p>
-                  </div>}
-                {order.deliveryType && <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+                  </div>
+              }
+                {order.deliveryType &&
+              <div className="flex items-center gap-2 pt-2 border-t border-white/10">
                     <Package className="w-4 h-4 text-gray-400" />
                     <span className="text-sm text-gray-400 capitalize">
                       {order.deliveryType}
                     </span>
-                  </div>}
+                  </div>
+              }
               </motion.div>
 
               {/* Order Items */}
-              {order.items && order.items.length > 0 && <motion.div className="space-y-3" initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.3
-          }}>
+              {order.items && order.items.length > 0 &&
+            <motion.div
+              className="space-y-3"
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                delay: 0.3
+              }}>
+
                   <h3 className="text-sm font-bold text-white">
                     Items ({order.items.length})
                   </h3>
                   <div className="space-y-2">
-                    {order.items.map((item, index) => <motion.div key={item.id} className="bg-[#0A0E1A]/50 rounded-xl p-3 flex items-center gap-3" initial={{
-                opacity: 0,
-                x: -10
-              }} animate={{
-                opacity: 1,
-                x: 0
-              }} transition={{
-                delay: 0.4 + index * 0.05
-              }}>
-                        {item.image && <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />}
+                    {order.items.map((item, index) =>
+                <motion.div
+                  key={item.id}
+                  className="bg-[#0A0E1A]/50 rounded-xl p-3 flex items-center gap-3"
+                  initial={{
+                    opacity: 0,
+                    x: -10
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0
+                  }}
+                  transition={{
+                    delay: 0.4 + index * 0.05
+                  }}>
+
+                        {item.image &&
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-12 h-12 rounded-lg object-cover" />
+
+                  }
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-semibold text-white">
                             {item.name}
@@ -206,27 +274,39 @@ export function OrderDetailsSheet({
                           <p className="text-xs text-gray-400">
                             Qty: {item.quantity}
                           </p>
-                          {item.notes && <p className="text-xs text-gray-500 mt-1">
+                          {item.notes &&
+                    <p className="text-xs text-gray-500 mt-1">
                               Note: {item.notes}
-                            </p>}
+                            </p>
+                    }
                         </div>
-                        {item.price && <p className="text-sm font-bold text-cyan-400">
+                        {item.price &&
+                  <p className="text-sm font-bold text-cyan-400">
                             ₦{(item.price * item.quantity).toLocaleString()}
-                          </p>}
-                      </motion.div>)}
+                          </p>
+                  }
+                      </motion.div>
+                )}
                   </div>
-                </motion.div>}
+                </motion.div>
+            }
 
               {/* Special Instructions */}
-              {order.specialInstructions && <motion.div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4" initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.5
-          }}>
+              {order.specialInstructions &&
+            <motion.div
+              className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4"
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                delay: 0.5
+              }}>
+
                   <div className="flex items-start gap-3">
                     <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                     <div>
@@ -238,32 +318,41 @@ export function OrderDetailsSheet({
                       </p>
                     </div>
                   </div>
-                </motion.div>}
+                </motion.div>
+            }
 
               {/* Order Summary */}
-              {order.totalValue && <motion.div className="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4" initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.6
-          }}>
+              {order.totalValue &&
+            <motion.div
+              className="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4"
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                delay: 0.6
+              }}>
+
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-gray-400">Subtotal</span>
                     <span className="text-sm text-white">
                       ₦{order.totalValue.toLocaleString()}
                     </span>
                   </div>
-                  {order.paymentMethod && <div className="flex items-center justify-between mb-2">
+                  {order.paymentMethod &&
+              <div className="flex items-center justify-between mb-2">
                       <span className="text-sm text-gray-400">
                         Payment Method
                       </span>
                       <span className="text-sm text-white capitalize">
                         {order.paymentMethod}
                       </span>
-                    </div>}
+                    </div>
+              }
                   <div className="pt-3 border-t border-cyan-500/30 flex items-center justify-between">
                     <span className="text-base font-bold text-white">
                       Total
@@ -272,69 +361,103 @@ export function OrderDetailsSheet({
                       ₦{order.totalValue.toLocaleString()}
                     </span>
                   </div>
-                </motion.div>}
+                </motion.div>
+            }
 
               {/* Timeline */}
-              {(order.createdAt || order.estimatedCompletion) && <motion.div className="space-y-3" initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.7
-          }}>
+              {(order.createdAt || order.estimatedCompletion) &&
+            <motion.div
+              className="space-y-3"
+              initial={{
+                opacity: 0,
+                y: 10
+              }}
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+              transition={{
+                delay: 0.7
+              }}>
+
                   <h3 className="text-sm font-bold text-white">Timeline</h3>
                   <div className="space-y-2">
-                    {order.createdAt && <div className="flex items-center gap-3 text-sm">
+                    {order.createdAt &&
+                <div className="flex items-center gap-3 text-sm">
                         <Calendar className="w-4 h-4 text-gray-400" />
                         <span className="text-gray-400">Created:</span>
                         <span className="text-white">{order.createdAt}</span>
-                      </div>}
-                    {order.estimatedCompletion && <div className="flex items-center gap-3 text-sm">
+                      </div>
+                }
+                    {order.estimatedCompletion &&
+                <div className="flex items-center gap-3 text-sm">
                         <TrendingUp className="w-4 h-4 text-green-400" />
                         <span className="text-gray-400">Est. Completion:</span>
                         <span className="text-green-400">
                           {order.estimatedCompletion}
                         </span>
-                      </div>}
+                      </div>
+                }
                   </div>
-                </motion.div>}
+                </motion.div>
+            }
             </div>
 
             {/* Actions Footer */}
             <div className="px-6 py-4 border-t border-white/10 bg-[#0A0E1A] space-y-3">
               {/* Contact Customer */}
-              {onContactCustomer && <div className="grid grid-cols-2 gap-3">
-                  <motion.button className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold hover:bg-white/10 transition-colors" whileTap={{
-              scale: 0.98
-            }} onClick={() => onContactCustomer(order.id)}>
+              {onContactCustomer &&
+            <div className="grid grid-cols-2 gap-3">
+                  <motion.button
+                className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold hover:bg-white/10 transition-colors"
+                whileTap={{
+                  scale: 0.98
+                }}
+                onClick={() => onContactCustomer(order.id)}>
+
                     <Phone className="w-4 h-4" />
                     Call
                   </motion.button>
-                  <motion.button className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold hover:bg-white/10 transition-colors" whileTap={{
-              scale: 0.98
-            }} onClick={() => onContactCustomer(order.id)}>
+                  <motion.button
+                className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold hover:bg-white/10 transition-colors"
+                whileTap={{
+                  scale: 0.98
+                }}
+                onClick={() => onContactCustomer(order.id)}>
+
                     <MessageCircle className="w-4 h-4" />
                     Message
                   </motion.button>
-                </div>}
+                </div>
+            }
 
               {/* Status Actions */}
-              {statusOptions && onStatusChange && <div className="grid grid-cols-2 gap-3">
-                  {statusOptions.slice(0, 2).map(option => <motion.button key={option.value} className="flex items-center justify-center gap-2 py-3 rounded-xl font-bold shadow-lg" style={{
-              backgroundColor: option.color + '20',
-              border: `2px solid ${option.color}40`,
-              color: option.color
-            }} whileTap={{
-              scale: 0.98
-            }} onClick={() => onStatusChange(order.id, option.value)}>
+              {statusOptions && onStatusChange &&
+            <div className="grid grid-cols-2 gap-3">
+                  {statusOptions.slice(0, 2).map((option) =>
+              <motion.button
+                key={option.value}
+                className="flex items-center justify-center gap-2 py-3 rounded-xl font-bold shadow-lg"
+                style={{
+                  backgroundColor: option.color + '20',
+                  border: `2px solid ${option.color}40`,
+                  color: option.color
+                }}
+                whileTap={{
+                  scale: 0.98
+                }}
+                onClick={() => onStatusChange(order.id, option.value)}>
+
                       <CheckCircle className="w-4 h-4" />
                       {option.label}
-                    </motion.button>)}
-                </div>}
+                    </motion.button>
+              )}
+                </div>
+            }
             </div>
           </motion.div>
-        </>}
-    </AnimatePresence>;
+        </>
+      }
+    </AnimatePresence>);
+
 }

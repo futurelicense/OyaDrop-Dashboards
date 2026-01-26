@@ -19,14 +19,19 @@ export function PersonalizedSection({
     time: ClockIcon
   };
   const Icon = icons[icon];
-  return <div className="px-5 py-6">
-      <motion.div className="flex items-center gap-3 mb-4" initial={{
-      opacity: 0,
-      y: 10
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }}>
+  return (
+    <div className="px-5 py-6">
+      <motion.div
+        className="flex items-center gap-3 mb-4"
+        initial={{
+          opacity: 0,
+          y: 10
+        }}
+        animate={{
+          opacity: 1,
+          y: 0
+        }}>
+
         <div className="w-10 h-10 bg-gradient-to-br from-[#00ffcc] to-[#00d9ff] rounded-xl flex items-center justify-center">
           <Icon className="w-5 h-5 text-black" />
         </div>
@@ -36,5 +41,6 @@ export function PersonalizedSection({
         </div>
       </motion.div>
       {children}
-    </div>;
+    </div>);
+
 }

@@ -21,16 +21,28 @@ export function ChatButton({
     lg: 'px-6 py-3 text-base'
   };
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-lg shadow-cyan-500/30',
+    primary:
+    'bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-lg shadow-cyan-500/30',
     secondary: 'bg-[#131B2E] border border-cyan-500/30 text-cyan-400',
     ghost: 'bg-white/5 border border-white/10 text-white hover:bg-white/10'
   };
-  return <motion.button className={`flex items-center gap-2 rounded-xl font-semibold transition-all ${sizeClasses[size]} ${variantClasses[variant]}`} whileHover={{
-    scale: 1.05
-  }} whileTap={{
-    scale: 0.95
-  }} onClick={onClick}>
-      <MessageCircle className={size === 'sm' ? 'w-4 h-4' : size === 'md' ? 'w-4 h-4' : 'w-5 h-5'} />
+  return (
+    <motion.button
+      className={`flex items-center gap-2 rounded-xl font-semibold transition-all ${sizeClasses[size]} ${variantClasses[variant]}`}
+      whileHover={{
+        scale: 1.05
+      }}
+      whileTap={{
+        scale: 0.95
+      }}
+      onClick={onClick}>
+
+      <MessageCircle
+        className={
+        size === 'sm' ? 'w-4 h-4' : size === 'md' ? 'w-4 h-4' : 'w-5 h-5'
+        } />
+
       <span>Chat with {contactName}</span>
-    </motion.button>;
+    </motion.button>);
+
 }

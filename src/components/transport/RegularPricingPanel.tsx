@@ -1,28 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Clock, RefreshCw } from 'lucide-react';
-const vehicleCategories = [{
+const vehicleCategories = [
+{
   id: 'bike',
   name: 'Bike',
   icon: '🏍️',
   fare: '₦800',
   eta: '5 min',
   color: '#FFB800'
-}, {
+},
+{
   id: 'mini',
   name: 'Mini',
   icon: '🚗',
   fare: '₦1,200',
   eta: '7 min',
   color: '#00D9C0'
-}, {
+},
+{
   id: 'sedan',
   name: 'Sedan',
   icon: '🚙',
   fare: '₦1,800',
   eta: '8 min',
   color: '#00F0FF'
-}, {
+},
+{
   id: 'xl',
   name: 'XL',
   icon: '🚐',
@@ -30,6 +34,7 @@ const vehicleCategories = [{
   eta: '10 min',
   color: '#B026FF'
 }];
+
 interface RegularPricingPanelProps {
   selectedVehicle: string;
   onVehicleChange: (vehicleId: string) => void;
@@ -38,22 +43,31 @@ export function RegularPricingPanel({
   selectedVehicle,
   onVehicleChange
 }: RegularPricingPanelProps) {
-  return <div className="px-4 py-4">
+  return (
+    <div className="px-4 py-4">
       {/* Fare Estimate Card */}
-      <motion.div className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-cyan-500/30 mb-4" initial={{
-      opacity: 0,
-      y: 20
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      delay: 0.4
-    }}>
+      <motion.div
+        className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-cyan-500/30 mb-4"
+        initial={{
+          opacity: 0,
+          y: 20
+        }}
+        animate={{
+          opacity: 1,
+          y: 0
+        }}
+        transition={{
+          delay: 0.4
+        }}>
+
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-bold text-white">Estimated Fare</h3>
-          <motion.button className="p-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors" whileTap={{
-          scale: 0.9
-        }}>
+          <motion.button
+            className="p-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors"
+            whileTap={{
+              scale: 0.9
+            }}>
+
             <RefreshCw className="w-4 h-4 text-cyan-400" />
           </motion.button>
         </div>
@@ -92,24 +106,37 @@ export function RegularPricingPanel({
         <h3 className="text-sm font-bold text-white mb-3">Select Vehicle</h3>
         <div className="grid grid-cols-2 gap-3">
           {vehicleCategories.map((vehicle, index) => {
-          const isSelected = selectedVehicle === vehicle.id;
-          return <motion.button key={vehicle.id} className={`bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 transition-colors text-left ${isSelected ? 'border-cyan-500 shadow-lg shadow-cyan-500/30' : 'border-white/10 hover:border-cyan-500/50'}`} initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.5 + index * 0.1
-          }} whileHover={{
-            y: -2
-          }} whileTap={{
-            scale: 0.98
-          }} onClick={() => onVehicleChange(vehicle.id)}>
+            const isSelected = selectedVehicle === vehicle.id;
+            return (
+              <motion.button
+                key={vehicle.id}
+                className={`bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border-2 transition-colors text-left ${isSelected ? 'border-cyan-500 shadow-lg shadow-cyan-500/30' : 'border-white/10 hover:border-cyan-500/50'}`}
+                initial={{
+                  opacity: 0,
+                  y: 20
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0
+                }}
+                transition={{
+                  delay: 0.5 + index * 0.1
+                }}
+                whileHover={{
+                  y: -2
+                }}
+                whileTap={{
+                  scale: 0.98
+                }}
+                onClick={() => onVehicleChange(vehicle.id)}>
+
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{
-                backgroundColor: vehicle.color + '20'
-              }}>
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
+                    style={{
+                      backgroundColor: vehicle.color + '20'
+                    }}>
+
                     {vehicle.icon}
                   </div>
                   <div>
@@ -119,14 +146,19 @@ export function RegularPricingPanel({
                     <p className="text-xs text-gray-400">{vehicle.eta}</p>
                   </div>
                 </div>
-                <p className="text-lg font-bold" style={{
-              color: vehicle.color
-            }}>
+                <p
+                  className="text-lg font-bold"
+                  style={{
+                    color: vehicle.color
+                  }}>
+
                   {vehicle.fare}
                 </p>
-              </motion.button>;
-        })}
+              </motion.button>);
+
+          })}
         </div>
       </div>
-    </div>;
+    </div>);
+
 }

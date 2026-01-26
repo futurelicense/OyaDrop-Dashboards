@@ -5,7 +5,8 @@ interface HistoryPageProps {
   onBack: () => void;
 }
 type FilterType = 'all' | 'food' | 'laundry' | 'pharmacy' | 'transport';
-const orderHistory = [{
+const orderHistory = [
+{
   id: 'ORD-12340',
   type: 'Food Delivery',
   category: 'food',
@@ -13,7 +14,8 @@ const orderHistory = [{
   date: 'Today, 2:30 PM',
   amount: 2500,
   status: 'Completed'
-}, {
+},
+{
   id: 'ORD-12339',
   type: 'Laundry Service',
   category: 'laundry',
@@ -21,7 +23,8 @@ const orderHistory = [{
   date: 'Yesterday, 10:15 AM',
   amount: 3500,
   status: 'Completed'
-}, {
+},
+{
   id: 'ORD-12338',
   type: 'Pharmacy',
   category: 'pharmacy',
@@ -29,7 +32,8 @@ const orderHistory = [{
   date: 'Dec 20, 4:45 PM',
   amount: 1200,
   status: 'Completed'
-}, {
+},
+{
   id: 'ORD-12337',
   type: 'Transport',
   category: 'transport',
@@ -37,7 +41,8 @@ const orderHistory = [{
   date: 'Dec 19, 8:30 AM',
   amount: 1500,
   status: 'Completed'
-}, {
+},
+{
   id: 'ORD-12336',
   type: 'Food Delivery',
   category: 'food',
@@ -46,37 +51,50 @@ const orderHistory = [{
   amount: 3200,
   status: 'Cancelled'
 }];
-export function HistoryPage({
-  onBack
-}: HistoryPageProps) {
+
+export function HistoryPage({ onBack }: HistoryPageProps) {
   const [filter, setFilter] = useState<FilterType>('all');
-  const filteredOrders = filter === 'all' ? orderHistory : orderHistory.filter(order => order.category === filter);
+  const filteredOrders =
+  filter === 'all' ?
+  orderHistory :
+  orderHistory.filter((order) => order.category === filter);
   const filters: {
     id: FilterType;
     label: string;
-  }[] = [{
+  }[] = [
+  {
     id: 'all',
     label: 'All'
-  }, {
+  },
+  {
     id: 'food',
     label: 'Food'
-  }, {
+  },
+  {
     id: 'laundry',
     label: 'Laundry'
-  }, {
+  },
+  {
     id: 'pharmacy',
     label: 'Pharmacy'
-  }, {
+  },
+  {
     id: 'transport',
     label: 'Transport'
   }];
-  return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
       {/* Header */}
       <div className="sticky top-0 z-50 bg-[#0A0E1A]/95 backdrop-blur-xl border-b border-white/10">
         <div className="flex items-center gap-3 px-4 py-4">
-          <motion.button className="p-2 rounded-xl hover:bg-white/5 transition-colors" onClick={onBack} whileTap={{
-          scale: 0.95
-        }}>
+          <motion.button
+            className="p-2 rounded-xl hover:bg-white/5 transition-colors"
+            onClick={onBack}
+            whileTap={{
+              scale: 0.95
+            }}>
+
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
           <div>
@@ -88,26 +106,40 @@ export function HistoryPage({
         {/* Filters */}
         <div className="px-4 pb-3">
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
-            {filters.map(f => <motion.button key={f.id} className={`px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition-all ${filter === f.id ? 'bg-teal-500/20 border border-teal-500/30 text-teal-400' : 'bg-white/5 border border-white/10 text-gray-400'}`} onClick={() => setFilter(f.id)} whileTap={{
-            scale: 0.95
-          }}>
+            {filters.map((f) =>
+            <motion.button
+              key={f.id}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition-all ${filter === f.id ? 'bg-teal-500/20 border border-teal-500/30 text-teal-400' : 'bg-white/5 border border-white/10 text-gray-400'}`}
+              onClick={() => setFilter(f.id)}
+              whileTap={{
+                scale: 0.95
+              }}>
+
                 {f.label}
-              </motion.button>)}
+              </motion.button>
+            )}
           </div>
         </div>
       </div>
 
       <main className="max-w-md mx-auto p-4">
         <div className="space-y-3">
-          {filteredOrders.map((order, index) => <motion.div key={order.id} className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10" initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: index * 0.05
-        }}>
+          {filteredOrders.map((order, index) =>
+          <motion.div
+            key={order.id}
+            className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl p-4 border border-white/10"
+            initial={{
+              opacity: 0,
+              y: 20
+            }}
+            animate={{
+              opacity: 1,
+              y: 0
+            }}
+            transition={{
+              delay: index * 0.05
+            }}>
+
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <p className="text-xs text-gray-400 mb-1">Order {order.id}</p>
@@ -118,8 +150,14 @@ export function HistoryPage({
                     {order.restaurant || order.provider}
                   </p>
                 </div>
-                <div className={`px-2 py-1 rounded-lg ${order.status === 'Completed' ? 'bg-green-500/20 border border-green-500/30' : 'bg-red-500/20 border border-red-500/30'}`}>
-                  {order.status === 'Completed' ? <CheckCircle className="w-4 h-4 text-green-400" /> : <X className="w-4 h-4 text-red-400" />}
+                <div
+                className={`px-2 py-1 rounded-lg ${order.status === 'Completed' ? 'bg-green-500/20 border border-green-500/30' : 'bg-red-500/20 border border-red-500/30'}`}>
+
+                  {order.status === 'Completed' ?
+                <CheckCircle className="w-4 h-4 text-green-400" /> :
+
+                <X className="w-4 h-4 text-red-400" />
+                }
                 </div>
               </div>
 
@@ -132,8 +170,10 @@ export function HistoryPage({
                   ₦{order.amount.toLocaleString()}
                 </p>
               </div>
-            </motion.div>)}
+            </motion.div>
+          )}
         </div>
       </main>
-    </div>;
+    </div>);
+
 }

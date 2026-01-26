@@ -2,59 +2,90 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Plus, FileCheck, Upload } from 'lucide-react';
 interface PharmacyQuickActionsProps {
-  onActionClick?: (action: 'add-medication' | 'check-prescription' | 'upload-stock') => void;
+  onActionClick?: (
+  action: 'add-medication' | 'check-prescription' | 'upload-stock')
+  => void;
 }
 export function PharmacyQuickActions({
   onActionClick
 }: PharmacyQuickActionsProps) {
-  const actions = [{
+  const actions = [
+  {
     id: 'add-medication',
     label: 'Add Medication',
     icon: Plus,
     color: '#00D9C0'
-  }, {
+  },
+  {
     id: 'check-prescription',
     label: 'Check Prescription',
     icon: FileCheck,
     color: '#B026FF'
-  }, {
+  },
+  {
     id: 'upload-stock',
     label: 'Upload Stock',
     icon: Upload,
     color: '#FFB800'
   }];
-  return <div className="sticky bottom-20 px-4 pb-4">
+
+  return (
+    <div className="sticky bottom-20 px-4 pb-4">
       <div className="bg-gradient-to-r from-[#131B2E] to-[#0F1520] rounded-2xl p-3 border border-white/10 shadow-2xl">
         <p className="text-xs font-semibold text-gray-400 mb-3 px-2">
           Quick Actions
         </p>
         <div className="grid grid-cols-3 gap-2">
           {actions.map((action, index) => {
-          const Icon = action.icon;
-          return <motion.button key={action.id} className="flex flex-col items-center gap-2 p-3 rounded-xl bg-[#0A0E1A] border border-white/10" initial={{
-            opacity: 0,
-            scale: 0.9
-          }} animate={{
-            opacity: 1,
-            scale: 1
-          }} transition={{
-            delay: index * 0.05
-          }} whileTap={{
-            scale: 0.95
-          }} onClick={() => onActionClick?.(action.id as 'add-medication' | 'check-prescription' | 'upload-stock')}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{
-              backgroundColor: action.color + '20'
-            }}>
-                  <Icon className="w-5 h-5" style={{
-                color: action.color
-              }} />
+            const Icon = action.icon;
+            return (
+              <motion.button
+                key={action.id}
+                className="flex flex-col items-center gap-2 p-3 rounded-xl bg-[#0A0E1A] border border-white/10"
+                initial={{
+                  opacity: 0,
+                  scale: 0.9
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1
+                }}
+                transition={{
+                  delay: index * 0.05
+                }}
+                whileTap={{
+                  scale: 0.95
+                }}
+                onClick={() =>
+                onActionClick?.(
+                  action.id as
+                  'add-medication' |
+                  'check-prescription' |
+                  'upload-stock'
+                )
+                }>
+
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  style={{
+                    backgroundColor: action.color + '20'
+                  }}>
+
+                  <Icon
+                    className="w-5 h-5"
+                    style={{
+                      color: action.color
+                    }} />
+
                 </div>
                 <span className="text-xs font-semibold text-white text-center leading-tight">
                   {action.label}
                 </span>
-              </motion.button>;
-        })}
+              </motion.button>);
+
+          })}
         </div>
       </div>
-    </div>;
+    </div>);
+
 }

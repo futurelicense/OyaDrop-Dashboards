@@ -9,10 +9,9 @@ import { TransactionFeed } from '../components/wallet/TransactionFeed';
 interface WalletDashboardPageProps {
   onMenuClick: () => void;
 }
-export function WalletDashboardPage({
-  onMenuClick
-}: WalletDashboardPageProps) {
-  return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
+export function WalletDashboardPage({ onMenuClick }: WalletDashboardPageProps) {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
       <GamifiedWalletHeader onMenuClick={onMenuClick} />
 
       <main className="pb-6">
@@ -23,5 +22,6 @@ export function WalletDashboardPage({
         <WalletAchievements />
         <TransactionFeed />
       </main>
-    </div>;
+    </div>);
+
 }

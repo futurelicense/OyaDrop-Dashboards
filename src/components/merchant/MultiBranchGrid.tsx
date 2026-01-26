@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, TrendingUp, Clock, ChevronDown, Settings, QrCode, Edit, Zap } from 'lucide-react';
+import {
+  MapPin,
+  TrendingUp,
+  Clock,
+  ChevronDown,
+  Settings,
+  QrCode,
+  Edit,
+  Zap } from
+'lucide-react';
 interface Branch {
   id: string;
   name: string;
@@ -15,7 +24,8 @@ interface Branch {
   peakHours: string;
   comboRate: number;
 }
-const branches: Branch[] = [{
+const branches: Branch[] = [
+{
   id: '1',
   name: 'Jakande Branch',
   location: 'Lekki, Lagos',
@@ -28,7 +38,8 @@ const branches: Branch[] = [{
   heatLevel: 'high',
   peakHours: '12PM-2PM',
   comboRate: 68
-}, {
+},
+{
   id: '2',
   name: 'Ikota Branch',
   location: 'Ajah, Lagos',
@@ -41,7 +52,8 @@ const branches: Branch[] = [{
   heatLevel: 'medium',
   peakHours: '1PM-3PM',
   comboRate: 54
-}, {
+},
+{
   id: '3',
   name: 'Lekki Phase 1',
   location: 'Lekki, Lagos',
@@ -54,7 +66,8 @@ const branches: Branch[] = [{
   heatLevel: 'high',
   peakHours: '12PM-2PM',
   comboRate: 72
-}, {
+},
+{
   id: '4',
   name: 'VI Branch',
   location: 'Victoria Island',
@@ -68,11 +81,16 @@ const branches: Branch[] = [{
   peakHours: '6PM-8PM',
   comboRate: 45
 }];
+
 export function MultiBranchGrid() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [expandedBranches, setExpandedBranches] = useState<string[]>([]);
   const toggleBranch = (branchId: string) => {
-    setExpandedBranches(prev => prev.includes(branchId) ? prev.filter(id => id !== branchId) : [...prev, branchId]);
+    setExpandedBranches((prev) =>
+    prev.includes(branchId) ?
+    prev.filter((id) => id !== branchId) :
+    [...prev, branchId]
+    );
   };
   const getHeatColor = (level: string) => {
     switch (level) {
@@ -102,58 +120,85 @@ export function MultiBranchGrid() {
         };
     }
   };
-  return <div className="px-4 py-6">
+  return (
+    <div className="px-4 py-6">
       {/* Header */}
-      <motion.button className="w-full flex items-center justify-between mb-4 p-4 rounded-2xl bg-gradient-to-br from-[#131B2E] to-[#0F1520] border border-cyan-500/30 hover:border-cyan-500/50 transition-colors" onClick={() => setIsExpanded(!isExpanded)} whileTap={{
-      scale: 0.98
-    }}>
+      <motion.button
+        className="w-full flex items-center justify-between mb-4 p-4 rounded-2xl bg-gradient-to-br from-[#131B2E] to-[#0F1520] border border-cyan-500/30 hover:border-cyan-500/50 transition-colors"
+        onClick={() => setIsExpanded(!isExpanded)}
+        whileTap={{
+          scale: 0.98
+        }}>
+
         <div className="text-left">
           <h2 className="text-lg font-bold text-white">Branch Performance</h2>
           <p className="text-xs text-gray-400">
             Real-time overview of all locations
           </p>
         </div>
-        <motion.div animate={{
-        rotate: isExpanded ? 180 : 0
-      }} transition={{
-        duration: 0.3
-      }}>
+        <motion.div
+          animate={{
+            rotate: isExpanded ? 180 : 0
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+
           <ChevronDown className="w-6 h-6 text-cyan-400" />
         </motion.div>
       </motion.button>
 
       {/* Branch Cards */}
       <AnimatePresence>
-        {isExpanded && <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4" initial={{
-        height: 0,
-        opacity: 0
-      }} animate={{
-        height: 'auto',
-        opacity: 1
-      }} exit={{
-        height: 0,
-        opacity: 0
-      }} transition={{
-        duration: 0.3
-      }}>
-            {branches.map((branch, index) => {
-          const heatColors = getHeatColor(branch.heatLevel);
-          const isBranchExpanded = expandedBranches.includes(branch.id);
-          return <motion.div key={branch.id} className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl border border-white/10 overflow-hidden" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: index * 0.1
-          }} whileHover={{
-            borderColor: '#00D9C040'
+        {isExpanded &&
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          initial={{
+            height: 0,
+            opacity: 0
+          }}
+          animate={{
+            height: 'auto',
+            opacity: 1
+          }}
+          exit={{
+            height: 0,
+            opacity: 0
+          }}
+          transition={{
+            duration: 0.3
           }}>
+
+            {branches.map((branch, index) => {
+            const heatColors = getHeatColor(branch.heatLevel);
+            const isBranchExpanded = expandedBranches.includes(branch.id);
+            return (
+              <motion.div
+                key={branch.id}
+                className="bg-gradient-to-br from-[#131B2E] to-[#0F1520] rounded-2xl border border-white/10 overflow-hidden"
+                initial={{
+                  opacity: 0,
+                  y: 20
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0
+                }}
+                transition={{
+                  delay: index * 0.1
+                }}
+                whileHover={{
+                  borderColor: '#00D9C040'
+                }}>
+
                   {/* Clickable Header */}
-                  <motion.button className="w-full p-5 text-left" onClick={() => toggleBranch(branch.id)} whileTap={{
-              scale: 0.98
-            }}>
+                  <motion.button
+                  className="w-full p-5 text-left"
+                  onClick={() => toggleBranch(branch.id)}
+                  whileTap={{
+                    scale: 0.98
+                  }}>
+
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center text-2xl">
@@ -172,20 +217,26 @@ export function MultiBranchGrid() {
 
                       <div className="flex items-center gap-2">
                         {/* Heat Level */}
-                        <div className="px-2 py-1 rounded-lg text-[10px] font-bold uppercase" style={{
-                    backgroundColor: heatColors.bg,
-                    color: heatColors.text,
-                    border: `1px solid ${heatColors.border}40`
-                  }}>
+                        <div
+                        className="px-2 py-1 rounded-lg text-[10px] font-bold uppercase"
+                        style={{
+                          backgroundColor: heatColors.bg,
+                          color: heatColors.text,
+                          border: `1px solid ${heatColors.border}40`
+                        }}>
+
                           {branch.heatLevel}
                         </div>
 
                         {/* Expand Icon */}
-                        <motion.div animate={{
-                    rotate: isBranchExpanded ? 180 : 0
-                  }} transition={{
-                    duration: 0.3
-                  }}>
+                        <motion.div
+                        animate={{
+                          rotate: isBranchExpanded ? 180 : 0
+                        }}
+                        transition={{
+                          duration: 0.3
+                        }}>
+
                           <ChevronDown className="w-5 h-5 text-gray-400" />
                         </motion.div>
                       </div>
@@ -216,18 +267,25 @@ export function MultiBranchGrid() {
 
                   {/* Expanded Details */}
                   <AnimatePresence>
-                    {isBranchExpanded && <motion.div initial={{
-                height: 0,
-                opacity: 0
-              }} animate={{
-                height: 'auto',
-                opacity: 1
-              }} exit={{
-                height: 0,
-                opacity: 0
-              }} transition={{
-                duration: 0.3
-              }} className="overflow-hidden">
+                    {isBranchExpanded &&
+                  <motion.div
+                    initial={{
+                      height: 0,
+                      opacity: 0
+                    }}
+                    animate={{
+                      height: 'auto',
+                      opacity: 1
+                    }}
+                    exit={{
+                      height: 0,
+                      opacity: 0
+                    }}
+                    transition={{
+                      duration: 0.3
+                    }}
+                    className="overflow-hidden">
+
                         <div className="px-5 pb-5 space-y-4">
                           {/* Detailed Stats Grid */}
                           <div className="grid grid-cols-2 gap-3">
@@ -298,36 +356,48 @@ export function MultiBranchGrid() {
 
                           {/* Action Buttons */}
                           <div className="grid grid-cols-4 gap-2">
-                            <motion.button className="flex flex-col items-center gap-1 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors" whileTap={{
-                      scale: 0.95
-                    }}>
+                            <motion.button
+                          className="flex flex-col items-center gap-1 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors"
+                          whileTap={{
+                            scale: 0.95
+                          }}>
+
                               <Settings className="w-4 h-4 text-cyan-400" />
                               <span className="text-[9px] text-cyan-400 font-semibold">
                                 Manage
                               </span>
                             </motion.button>
 
-                            <motion.button className="flex flex-col items-center gap-1 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors" whileTap={{
-                      scale: 0.95
-                    }}>
+                            <motion.button
+                          className="flex flex-col items-center gap-1 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                          whileTap={{
+                            scale: 0.95
+                          }}>
+
                               <QrCode className="w-4 h-4 text-gray-400" />
                               <span className="text-[9px] text-gray-400 font-semibold">
                                 QR
                               </span>
                             </motion.button>
 
-                            <motion.button className="flex flex-col items-center gap-1 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors" whileTap={{
-                      scale: 0.95
-                    }}>
+                            <motion.button
+                          className="flex flex-col items-center gap-1 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                          whileTap={{
+                            scale: 0.95
+                          }}>
+
                               <Edit className="w-4 h-4 text-gray-400" />
                               <span className="text-[9px] text-gray-400 font-semibold">
                                 Menu
                               </span>
                             </motion.button>
 
-                            <motion.button className="flex flex-col items-center gap-1 py-2 rounded-lg bg-yellow-500/10 border border-yellow-500/30 hover:bg-yellow-500/20 transition-colors" whileTap={{
-                      scale: 0.95
-                    }}>
+                            <motion.button
+                          className="flex flex-col items-center gap-1 py-2 rounded-lg bg-yellow-500/10 border border-yellow-500/30 hover:bg-yellow-500/20 transition-colors"
+                          whileTap={{
+                            scale: 0.95
+                          }}>
+
                               <Zap className="w-4 h-4 text-yellow-400" />
                               <span className="text-[9px] text-yellow-400 font-semibold">
                                 Promo
@@ -335,11 +405,15 @@ export function MultiBranchGrid() {
                             </motion.button>
                           </div>
                         </div>
-                      </motion.div>}
+                      </motion.div>
+                  }
                   </AnimatePresence>
-                </motion.div>;
-        })}
-          </motion.div>}
+                </motion.div>);
+
+          })}
+          </motion.div>
+        }
       </AnimatePresence>
-    </div>;
+    </div>);
+
 }

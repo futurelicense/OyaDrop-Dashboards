@@ -6,7 +6,8 @@ interface ProviderRideRequestCardProps {
 export function ProviderRideRequestCard({
   onRequestRide
 }: ProviderRideRequestCardProps) {
-  return <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+  return (
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-4">
         <div className="p-3 bg-blue-50 rounded-lg">
           <TruckIcon className="w-6 h-6 text-blue-600" />
@@ -21,8 +22,12 @@ export function ProviderRideRequestCard({
         Book a ride for deliveries, pickups, or business travel
       </p>
 
-      <button onClick={onRequestRide} className="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+      <button
+        onClick={onRequestRide}
+        className="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+
         Request Ride
       </button>
-    </div>;
+    </div>);
+
 }

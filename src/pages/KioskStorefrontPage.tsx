@@ -8,7 +8,8 @@ const mockVendor = {
   name: 'TechHub Nigeria',
   bio: 'Your one-stop shop for premium electronics and gadgets',
   logo: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&h=200&fit=crop',
-  banner: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1200&h=400&fit=crop',
+  banner:
+  'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1200&h=400&fit=crop',
   rating: 4.8,
   reviews: 1234,
   followers: 15600,
@@ -22,20 +23,24 @@ const mockVendor = {
 interface KioskStorefrontPageProps {
   onMenuClick: () => void;
 }
-export function KioskStorefrontPage({
-  onMenuClick
-}: KioskStorefrontPageProps) {
+export function KioskStorefrontPage({ onMenuClick }: KioskStorefrontPageProps) {
   const [filterOpen, setFilterOpen] = useState(false);
-  return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A]">
       {/* Menu Button */}
-      <motion.button className="fixed top-4 left-4 z-50 p-3 bg-[#131B2E] rounded-xl border border-white/10 hover:bg-white/5 transition-colors" onClick={onMenuClick} whileTap={{
-      scale: 0.95
-    }}>
+      <motion.button
+        className="fixed top-4 left-4 z-50 p-3 bg-[#131B2E] rounded-xl border border-white/10 hover:bg-white/5 transition-colors"
+        onClick={onMenuClick}
+        whileTap={{
+          scale: 0.95
+        }}>
+
         <Menu className="w-6 h-6 text-white" />
       </motion.button>
 
       <KioskStorefrontHeader vendor={mockVendor} />
       <CategoryNavigationBar onFilterClick={() => setFilterOpen(true)} />
       <KioskProductGrid />
-    </div>;
+    </div>);
+
 }

@@ -17,39 +17,59 @@ export function StickyCartFooter({
 }: StickyCartFooterProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   if (itemCount === 0) return null;
-  return <>
+  return (
+    <>
       {/* Backdrop */}
       <AnimatePresence>
-        {isExpanded && <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40" initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} exit={{
-        opacity: 0
-      }} onClick={() => setIsExpanded(false)} />}
+        {isExpanded &&
+        <motion.div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+          initial={{
+            opacity: 0
+          }}
+          animate={{
+            opacity: 1
+          }}
+          exit={{
+            opacity: 0
+          }}
+          onClick={() => setIsExpanded(false)} />
+
+        }
       </AnimatePresence>
 
       {/* Cart Footer */}
-      <motion.div className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-[#0A0E1A] via-[#0F1520] to-transparent backdrop-blur-xl border-t border-cyan-500/20" initial={{
-      y: 100
-    }} animate={{
-      y: 0
-    }} transition={{
-      type: 'spring',
-      damping: 20
-    }}>
+      <motion.div
+        className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-[#0A0E1A] via-[#0F1520] to-transparent backdrop-blur-xl border-t border-cyan-500/20"
+        initial={{
+          y: 100
+        }}
+        animate={{
+          y: 0
+        }}
+        transition={{
+          type: 'spring',
+          damping: 20
+        }}>
+
         {/* Expanded Content */}
         <AnimatePresence>
-          {isExpanded && <motion.div className="bg-[#131B2E] border-b border-white/10 p-4" initial={{
-          height: 0,
-          opacity: 0
-        }} animate={{
-          height: 'auto',
-          opacity: 1
-        }} exit={{
-          height: 0,
-          opacity: 0
-        }}>
+          {isExpanded &&
+          <motion.div
+            className="bg-[#131B2E] border-b border-white/10 p-4"
+            initial={{
+              height: 0,
+              opacity: 0
+            }}
+            animate={{
+              height: 'auto',
+              opacity: 1
+            }}
+            exit={{
+              height: 0,
+              opacity: 0
+            }}>
+
               <h3 className="text-sm font-bold text-white mb-3">
                 Suggested Add-ons
               </h3>
@@ -81,18 +101,25 @@ export function StickyCartFooter({
                   </div>
                 </div>
               </div>
-            </motion.div>}
+            </motion.div>
+          }
         </AnimatePresence>
 
         {/* Main Footer */}
         <div className="p-4">
           {/* Expand/Collapse Button */}
-          <button className="w-full flex items-center justify-center mb-3" onClick={() => setIsExpanded(!isExpanded)}>
-            <motion.div animate={{
-            rotate: isExpanded ? 180 : 0
-          }} transition={{
-            duration: 0.3
-          }}>
+          <button
+            className="w-full flex items-center justify-center mb-3"
+            onClick={() => setIsExpanded(!isExpanded)}>
+
+            <motion.div
+              animate={{
+                rotate: isExpanded ? 180 : 0
+              }}
+              transition={{
+                duration: 0.3
+              }}>
+
               <ChevronUp className="w-5 h-5 text-gray-400" />
             </motion.div>
           </button>
@@ -129,14 +156,20 @@ export function StickyCartFooter({
           </div>
 
           {/* Checkout Button */}
-          <motion.button className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30" onClick={onCheckout} whileHover={{
-          scale: 1.02
-        }} whileTap={{
-          scale: 0.98
-        }}>
+          <motion.button
+            className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-cyan-500/30"
+            onClick={onCheckout}
+            whileHover={{
+              scale: 1.02
+            }}
+            whileTap={{
+              scale: 0.98
+            }}>
+
             Review Order & Gain XP
           </motion.button>
         </div>
       </motion.div>
-    </>;
+    </>);
+
 }

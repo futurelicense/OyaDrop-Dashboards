@@ -5,51 +5,66 @@ interface AppMockupProps {
   children: React.ReactNode;
   delay?: number;
 }
-export function AppMockup({
-  type,
-  children,
-  delay = 0
-}: AppMockupProps) {
+export function AppMockup({ type, children, delay = 0 }: AppMockupProps) {
   if (type === 'phone') {
-    return <motion.div className="relative" initial={{
-      opacity: 0,
-      y: 20
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      delay
-    }}>
+    return (
+      <motion.div
+        className="relative"
+        initial={{
+          opacity: 0,
+          y: 20
+        }}
+        animate={{
+          opacity: 1,
+          y: 0
+        }}
+        transition={{
+          delay
+        }}>
+
         {/* Phone Frame */}
-        <div className="relative mx-auto" style={{
-        width: '280px'
-      }}>
+        <div
+          className="relative mx-auto"
+          style={{
+            width: '280px'
+          }}>
+
           {/* Phone Bezel */}
           <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
             {/* Notch */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-10" />
 
             {/* Screen */}
-            <div className="relative bg-black rounded-[2rem] overflow-hidden" style={{
-            height: '560px'
-          }}>
+            <div
+              className="relative bg-black rounded-[2rem] overflow-hidden"
+              style={{
+                height: '560px'
+              }}>
+
               <div className="absolute inset-0 overflow-y-auto scrollbar-hide">
                 {children}
               </div>
             </div>
           </div>
         </div>
-      </motion.div>;
+      </motion.div>);
+
   }
-  return <motion.div className="relative" initial={{
-    opacity: 0,
-    y: 20
-  }} animate={{
-    opacity: 1,
-    y: 0
-  }} transition={{
-    delay
-  }}>
+  return (
+    <motion.div
+      className="relative"
+      initial={{
+        opacity: 0,
+        y: 20
+      }}
+      animate={{
+        opacity: 1,
+        y: 0
+      }}
+      transition={{
+        delay
+      }}>
+
       {/* Desktop Frame */}
       <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-xl p-2 shadow-2xl">
         {/* Browser Bar */}
@@ -65,13 +80,17 @@ export function AppMockup({
         </div>
 
         {/* Screen */}
-        <div className="relative bg-black rounded-b-lg overflow-hidden" style={{
-        height: '400px'
-      }}>
+        <div
+          className="relative bg-black rounded-b-lg overflow-hidden"
+          style={{
+            height: '400px'
+          }}>
+
           <div className="absolute inset-0 overflow-y-auto scrollbar-hide">
             {children}
           </div>
         </div>
       </div>
-    </motion.div>;
+    </motion.div>);
+
 }

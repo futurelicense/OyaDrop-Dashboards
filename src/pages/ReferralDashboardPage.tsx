@@ -14,7 +14,8 @@ interface ReferralDashboardPageProps {
 export function ReferralDashboardPage({
   onMenuClick
 }: ReferralDashboardPageProps) {
-  return <div className="min-h-screen bg-gradient-to-b from-[#0a1a1f] via-[#0f2027] to-[#0a1a1f]">
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0a1a1f] via-[#0f2027] to-[#0a1a1f]">
       <GamifiedHeader onMenuClick={onMenuClick} />
 
       <main className="max-w-md mx-auto pb-8">
@@ -27,5 +28,6 @@ export function ReferralDashboardPage({
         <StreakTracker />
         <Leaderboard />
       </main>
-    </div>;
+    </div>);
+
 }

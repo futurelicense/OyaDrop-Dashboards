@@ -9,7 +9,8 @@ interface MerchantDashboardPageProps {
 export function MerchantDashboardPage({
   onMenuClick
 }: MerchantDashboardPageProps) {
-  return <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A] pb-8">
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A] pb-8">
       <MerchantProHeader onMenuClick={onMenuClick} />
 
       <main>
@@ -17,5 +18,6 @@ export function MerchantDashboardPage({
         <MultiBranchGrid />
         <RealTimeOrderManager />
       </main>
-    </div>;
+    </div>);
+
 }
