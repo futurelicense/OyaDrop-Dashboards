@@ -129,9 +129,9 @@ export function App() {
   if (showSplash) {
     return <SplashScreen />;
   }
-  // If not unlocked, show password gate
+  // If not unlocked, show login screen
   if (!isAppUnlocked) {
-    return <PasswordGate onUnlock={handleUnlock} />;
+    return <AuthPage onBack={handleUnlock} />;
   }
   // If viewing pitch deck, show it standalone
   if (activeView === 'pitch-deck') {
