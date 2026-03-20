@@ -68,7 +68,7 @@ export function FastFoodRequestSheet({
       icon={<UtensilsCrossed className="w-6 h-6 text-red-400" />}
       onSubmit={handleSubmit}
       submitLabel="Browse Restaurants">
-
+      
       <div className="space-y-6">
         {/* Cuisine Type */}
         <div>
@@ -84,11 +84,11 @@ export function FastFoodRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <div className="text-2xl mb-1">{cuisine.icon}</div>
                 <p
                 className={`text-xs font-semibold ${selectedCuisine === cuisine.id ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {cuisine.name}
                 </p>
               </motion.button>
@@ -109,7 +109,7 @@ export function FastFoodRequestSheet({
               value={restaurant}
               onChange={(e) => setRestaurant(e.target.value)}
               className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-red-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
         </div>
 
@@ -126,7 +126,7 @@ export function FastFoodRequestSheet({
               value={deliveryAddress}
               onChange={(e) => setDeliveryAddress(e.target.value)}
               className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-red-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
           <div className="mt-2 flex gap-2">
             <motion.button
@@ -134,7 +134,7 @@ export function FastFoodRequestSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               📍 Use current location
             </motion.button>
           </div>
@@ -151,7 +151,7 @@ export function FastFoodRequestSheet({
               key={name}
               className="w-full text-left text-sm text-gray-300 hover:text-white transition-colors"
               onClick={() => setRestaurant(name)}>
-
+              
                 • {name}
               </button>
             )}

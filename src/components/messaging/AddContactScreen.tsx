@@ -94,14 +94,14 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
           y: 0,
           opacity: 1
         }}>
-
+        
         <motion.button
           className="p-2 rounded-xl hover:bg-white/5 transition-colors"
           onClick={onBack}
           whileTap={{
             scale: 0.95
           }}>
-
+          
           <ArrowLeft className="w-6 h-6 text-white" />
         </motion.button>
 
@@ -117,17 +117,17 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
             whileTap={{
               scale: 0.98
             }}>
-
+            
             <div
               className={`w-12 h-12 rounded-xl flex items-center justify-center ${activeMethod === 'recent' ? 'bg-cyan-500/20' : 'bg-white/5'}`}>
-
+              
               <User
                 className={`w-6 h-6 ${activeMethod === 'recent' ? 'text-cyan-400' : 'text-gray-400'}`} />
-
+              
             </div>
             <span
               className={`text-xs font-semibold ${activeMethod === 'recent' ? 'text-white' : 'text-gray-400'}`}>
-
+              
               Recent
             </span>
           </motion.button>
@@ -138,17 +138,17 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
             whileTap={{
               scale: 0.98
             }}>
-
+            
             <div
               className={`w-12 h-12 rounded-xl flex items-center justify-center ${activeMethod === 'search' ? 'bg-cyan-500/20' : 'bg-white/5'}`}>
-
+              
               <Phone
                 className={`w-6 h-6 ${activeMethod === 'search' ? 'text-cyan-400' : 'text-gray-400'}`} />
-
+              
             </div>
             <span
               className={`text-xs font-semibold ${activeMethod === 'search' ? 'text-white' : 'text-gray-400'}`}>
-
+              
               Phone/ID
             </span>
           </motion.button>
@@ -159,17 +159,17 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
             whileTap={{
               scale: 0.98
             }}>
-
+            
             <div
               className={`w-12 h-12 rounded-xl flex items-center justify-center ${activeMethod === 'qr' ? 'bg-cyan-500/20' : 'bg-white/5'}`}>
-
+              
               <QrCode
                 className={`w-6 h-6 ${activeMethod === 'qr' ? 'text-cyan-400' : 'text-gray-400'}`} />
-
+              
             </div>
             <span
               className={`text-xs font-semibold ${activeMethod === 'qr' ? 'text-white' : 'text-gray-400'}`}>
-
+              
               QR Code
             </span>
           </motion.button>
@@ -192,7 +192,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
           transition={{
             duration: 0.3
           }}>
-
+          
             <h2 className="text-sm font-bold text-white mb-3">
               Recent Interactions
             </h2>
@@ -219,13 +219,13 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
                   transition={{
                     delay: index * 0.05
                   }}>
-
+                  
                     <div className="flex items-center gap-3 mb-3">
                       <img
                       src={interaction.avatar}
                       alt={interaction.name}
                       className="w-12 h-12 rounded-full object-cover" />
-
+                    
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-bold text-white truncate">
                           {interaction.name}
@@ -236,7 +236,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
                           style={{
                             color
                           }} />
-
+                        
                           <span className="text-xs text-gray-400">
                             {interaction.detail}
                           </span>
@@ -255,7 +255,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                       Add to Contacts
                     </motion.button>
                   </motion.div>);
@@ -279,7 +279,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
           transition={{
             duration: 0.3
           }}>
-
+          
             <h2 className="text-sm font-bold text-white mb-3">
               Search by Phone or ID
             </h2>
@@ -299,7 +299,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
                   type="tel"
                   placeholder="+234 800 000 0000"
                   className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                 </div>
               </div>
 
@@ -314,7 +314,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
                   type="text"
                   placeholder="@username or ID"
                   className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                 </div>
               </div>
 
@@ -326,7 +326,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 Search Contact
               </motion.button>
             </div>
@@ -347,7 +347,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
           transition={{
             duration: 0.3
           }}>
-
+          
             <h2 className="text-sm font-bold text-white mb-3">Scan QR Code</h2>
             <p className="text-xs text-gray-400 mb-4">
               Scan merchant, rider, or user QR code
@@ -376,7 +376,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
                   repeat: Infinity,
                   ease: 'linear'
                 }} />
-
+              
 
                 <QrCode className="w-16 h-16 text-gray-600" />
               </div>
@@ -396,7 +396,7 @@ export function AddContactScreen({ onBack }: AddContactScreenProps) {
             whileTap={{
               scale: 0.98
             }}>
-
+            
               Show My QR Code
             </motion.button>
           </motion.div>

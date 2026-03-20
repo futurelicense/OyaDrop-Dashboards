@@ -61,13 +61,13 @@ export function StatsGrid() {
               whileHover={{
                 scale: 1.05
               }}>
-
+              
               <div
                 className="absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl opacity-20"
                 style={{
                   backgroundColor: stat.color
                 }} />
-
+              
 
               <div className="relative">
                 <div
@@ -76,13 +76,13 @@ export function StatsGrid() {
                     backgroundColor: `${stat.color}15`,
                     boxShadow: `0 0 20px ${stat.color}30`
                   }}>
-
+                  
                   <Icon
                     className="w-5 h-5"
                     style={{
                       color: stat.color
                     }} />
-
+                  
                 </div>
 
                 <p className="text-xs text-gray-400 mb-1">{stat.label}</p>

@@ -24,7 +24,7 @@ export function OyaCoinVault() {
         transition={{
           duration: 0.5
         }}>
-
+        
         {/* Gold Shine Effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-400/10 to-transparent"
@@ -36,7 +36,7 @@ export function OyaCoinVault() {
             repeat: Infinity,
             repeatDelay: 3
           }} />
-
+        
 
         {/* Vault Door Button */}
         <motion.button
@@ -45,7 +45,7 @@ export function OyaCoinVault() {
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <motion.div
@@ -56,7 +56,7 @@ export function OyaCoinVault() {
                 transition={{
                   duration: 0.5
                 }}>
-
+                
                 {isOpen ?
                 <Unlock className="w-7 h-7 text-black" /> :
 
@@ -81,7 +81,7 @@ export function OyaCoinVault() {
                 duration: 0.3
               }}
               className="text-amber-400">
-
+              
               ▼
             </motion.div>
           </div>
@@ -113,7 +113,7 @@ export function OyaCoinVault() {
               duration: 0.3
             }}
             className="overflow-hidden">
-
+            
               <div className="px-6 pb-6 space-y-4">
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 gap-3">
@@ -151,7 +151,7 @@ export function OyaCoinVault() {
                 transition={{
                   delay: 0.2
                 }}>
-
+                
                     <div className="flex items-center justify-between mb-3">
                       <div>
                         <p className="text-xs text-gray-400 mb-1">
@@ -170,7 +170,7 @@ export function OyaCoinVault() {
                           src="/oyadrop_app_0.png"
                           alt="OC"
                           className="w-3 h-3" />
-
+                        
                             <span className="text-sm font-bold text-amber-400">
                               {convertibleOC} OC
                             </span>
@@ -189,7 +189,7 @@ export function OyaCoinVault() {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                       <Zap className="w-4 h-4" />
                       Convert {availableXP} XP to {convertibleOC} OC
                     </motion.button>
@@ -209,7 +209,7 @@ export function OyaCoinVault() {
                 transition={{
                   delay: 0.2
                 }}>
-
+                
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <Gift className="w-6 h-6 text-purple-400" />
@@ -230,7 +230,7 @@ export function OyaCoinVault() {
                     whileTap={{
                       scale: 0.95
                     }}>
-
+                    
                         Claim +50 XP
                       </motion.button>
                     </div>

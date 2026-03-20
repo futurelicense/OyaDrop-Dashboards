@@ -24,7 +24,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Bottom Sheet */}
           <motion.div
@@ -43,7 +43,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -63,7 +63,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -82,7 +82,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <FileSpreadsheet className="w-6 h-6 mx-auto mb-2" />
                     <p className="text-sm font-semibold">Bulk Upload</p>
                     <p className="text-xs opacity-70 mt-1">CSV/Excel file</p>
@@ -93,7 +93,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <Plus className="w-6 h-6 mx-auto mb-2" />
                     <p className="text-sm font-semibold">Manual Entry</p>
                     <p className="text-xs opacity-70 mt-1">Add one by one</p>
@@ -113,7 +113,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                       <Upload className="w-12 h-12 text-yellow-400 mx-auto mb-3" />
                       <p className="text-base font-semibold text-white text-center mb-1">
                         Upload CSV or Excel File
@@ -138,7 +138,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                       Download Template
                     </motion.button>
                   </div>
@@ -173,7 +173,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                     type="text"
                     placeholder="Search existing medication..."
                     className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-yellow-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                  
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
@@ -185,7 +185,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                       type="number"
                       placeholder="0"
                       className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-yellow-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                    
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-400 mb-2 block">
@@ -195,7 +195,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                       type="text"
                       placeholder="BT-2024-001"
                       className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-yellow-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                    
                       </div>
                     </div>
 
@@ -206,7 +206,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
                       <input
                     type="date"
                     className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-yellow-500/50 focus:outline-none" />
-
+                  
                     </div>
                   </div>
 
@@ -227,7 +227,7 @@ export function UploadStockSheet({ isOpen, onClose }: UploadStockSheetProps) {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Upload className="w-5 h-5" />
                 {uploadMethod === 'bulk' ? 'Upload Stock File' : 'Update Stock'}
               </motion.button>

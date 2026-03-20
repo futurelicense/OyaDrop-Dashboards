@@ -94,7 +94,7 @@ export function HistoryPage({ onBack }: HistoryPageProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
           <div>
@@ -114,7 +114,7 @@ export function HistoryPage({ onBack }: HistoryPageProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {f.label}
               </motion.button>
             )}
@@ -139,7 +139,7 @@ export function HistoryPage({ onBack }: HistoryPageProps) {
             transition={{
               delay: index * 0.05
             }}>
-
+            
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <p className="text-xs text-gray-400 mb-1">Order {order.id}</p>
@@ -152,7 +152,7 @@ export function HistoryPage({ onBack }: HistoryPageProps) {
                 </div>
                 <div
                 className={`px-2 py-1 rounded-lg ${order.status === 'Completed' ? 'bg-green-500/20 border border-green-500/30' : 'bg-red-500/20 border border-red-500/30'}`}>
-
+                
                   {order.status === 'Completed' ?
                 <CheckCircle className="w-4 h-4 text-green-400" /> :
 

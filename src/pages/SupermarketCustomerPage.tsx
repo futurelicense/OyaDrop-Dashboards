@@ -336,7 +336,7 @@ export function SupermarketCustomerPage({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <ArrowLeft className="w-6 h-6 text-white" />
             </motion.button>
             <div>
@@ -350,7 +350,7 @@ export function SupermarketCustomerPage({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ShoppingCart className="w-5 h-5 text-green-400" />
             {cartItemCount > 0 &&
             <motion.span
@@ -365,7 +365,7 @@ export function SupermarketCustomerPage({
                 type: 'spring',
                 damping: 15
               }}>
-
+              
                 {cartItemCount}
               </motion.span>
             }
@@ -382,7 +382,7 @@ export function SupermarketCustomerPage({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#131B2E] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-green-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
         </div>
 
@@ -397,7 +397,7 @@ export function SupermarketCustomerPage({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {category}
               </motion.button>
             )}
@@ -421,7 +421,7 @@ export function SupermarketCustomerPage({
             whileTap={{
               scale: 0.95
             }}>
-
+            
               View All
             </motion.button>
           }
@@ -450,7 +450,7 @@ export function SupermarketCustomerPage({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                 <div className="flex items-center gap-4">
                   {/* Logo */}
                   <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
@@ -458,7 +458,7 @@ export function SupermarketCustomerPage({
                       src={vendor.logo}
                       alt={vendor.name}
                       className="w-full h-full object-cover" />
-
+                    
                     {isSelected &&
                     <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
                         <CheckCircle className="w-6 h-6 text-green-400" />
@@ -479,7 +479,7 @@ export function SupermarketCustomerPage({
                           backgroundColor: badge.bg,
                           color: badge.color
                         }}>
-
+                        
                           {badge.label}
                         </span>
                       }
@@ -526,7 +526,7 @@ export function SupermarketCustomerPage({
                       type: 'spring',
                       damping: 15
                     }}>
-
+                    
                       <TrendingUp className="w-5 h-5 text-green-400" />
                     </motion.div>
                   }
@@ -569,14 +569,14 @@ export function SupermarketCustomerPage({
                 transition={{
                   delay: index * 0.05
                 }}>
-
+                
                 {/* Image */}
                 <div className="relative aspect-square bg-[#0A0E1A]">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover" />
-
+                  
                   {badge && BadgeIcon &&
                   <div
                     className="absolute top-2 left-2 flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-lg"
@@ -584,7 +584,7 @@ export function SupermarketCustomerPage({
                       backgroundColor: badge.bg,
                       color: badge.color
                     }}>
-
+                    
                       <BadgeIcon className="w-3 h-3" />
                       {product.badge}
                     </div>
@@ -629,7 +629,7 @@ export function SupermarketCustomerPage({
                     whileTap={{
                       scale: 0.95
                     }}>
-
+                    
                     <Plus className="w-4 h-4" />
                     Add to Cart
                   </motion.button>
@@ -656,7 +656,7 @@ export function SupermarketCustomerPage({
               opacity: 0
             }}
             onClick={() => setShowCart(false)} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[80vh] flex flex-col"
             initial={{
@@ -673,7 +673,7 @@ export function SupermarketCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
               </div>
@@ -688,7 +688,7 @@ export function SupermarketCustomerPage({
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                   <X className="w-6 h-6 text-white" />
                 </motion.button>
               </div>
@@ -706,12 +706,12 @@ export function SupermarketCustomerPage({
                   key={item.id}
                   className="bg-[#0A0E1A]/50 rounded-xl p-3 flex items-center gap-3"
                   layout>
-
+                  
                         <img
                     src={item.image}
                     alt={item.name}
                     className="w-16 h-16 rounded-lg object-cover" />
-
+                  
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-bold text-white mb-1">
                             {item.name}
@@ -730,7 +730,7 @@ export function SupermarketCustomerPage({
                       whileTap={{
                         scale: 0.9
                       }}>
-
+                      
                             <Minus className="w-4 h-4 text-white" />
                           </motion.button>
                           <span className="text-white font-bold w-8 text-center">
@@ -742,7 +742,7 @@ export function SupermarketCustomerPage({
                       whileTap={{
                         scale: 0.9
                       }}>
-
+                      
                             <Plus className="w-4 h-4 text-white" />
                           </motion.button>
                         </div>
@@ -781,7 +781,7 @@ export function SupermarketCustomerPage({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     Proceed to Checkout
                   </motion.button>
                 </div>
@@ -807,7 +807,7 @@ export function SupermarketCustomerPage({
               opacity: 0
             }}
             onClick={() => setShowCheckout(false)} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[85vh] flex flex-col"
             initial={{
@@ -824,7 +824,7 @@ export function SupermarketCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
               </div>
@@ -837,7 +837,7 @@ export function SupermarketCustomerPage({
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                   <X className="w-6 h-6 text-white" />
                 </motion.button>
               </div>
@@ -856,7 +856,7 @@ export function SupermarketCustomerPage({
                     value={deliveryAddress}
                     onChange={(e) => setDeliveryAddress(e.target.value)}
                     className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-green-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                  
                   </div>
                   <button className="text-sm text-green-400 font-semibold mt-2">
                     📍 Use current location
@@ -888,13 +888,13 @@ export function SupermarketCustomerPage({
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                         <Clock
                       className={`w-5 h-5 mx-auto mb-1 ${deliveryTime === option.value ? 'text-green-400' : 'text-gray-400'}`} />
-
+                    
                         <p
                       className={`text-sm font-semibold ${deliveryTime === option.value ? 'text-white' : 'text-gray-400'}`}>
-
+                      
                           {option.label}
                         </p>
                         <p className="text-xs text-gray-500">{option.time}</p>
@@ -938,7 +938,7 @@ export function SupermarketCustomerPage({
                   scale: 0.98
                 }}
                 onClick={handlePlaceOrder}>
-
+                
                   <CheckCircle className="w-5 h-5" />
                   Place Order
                 </motion.button>
@@ -963,7 +963,7 @@ export function SupermarketCustomerPage({
             exit={{
               opacity: 0
             }} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[70vh] flex flex-col"
             initial={{
@@ -980,7 +980,7 @@ export function SupermarketCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
               </div>
@@ -999,7 +999,7 @@ export function SupermarketCustomerPage({
                   damping: 15,
                   delay: 0.1
                 }}>
-
+                
                   <CheckCircle className="w-12 h-12 text-green-400" />
                 </motion.div>
 
@@ -1016,7 +1016,7 @@ export function SupermarketCustomerPage({
                 transition={{
                   delay: 0.2
                 }}>
-
+                
                   Order Placed Successfully!
                 </motion.h3>
 
@@ -1033,7 +1033,7 @@ export function SupermarketCustomerPage({
                 transition={{
                   delay: 0.3
                 }}>
-
+                
                   Your groceries from {currentVendor?.name} will be delivered in{' '}
                   {currentVendor?.deliveryTime}
                 </motion.p>
@@ -1051,7 +1051,7 @@ export function SupermarketCustomerPage({
                 transition={{
                   delay: 0.4
                 }}>
-
+                
                   <p className="text-sm text-green-400 mb-2">
                     Order #OYA-{Math.floor(Math.random() * 10000)}
                   </p>
@@ -1077,7 +1077,7 @@ export function SupermarketCustomerPage({
                 transition={{
                   delay: 0.5
                 }}>
-
+                
                   Back to Home
                 </motion.button>
               </div>

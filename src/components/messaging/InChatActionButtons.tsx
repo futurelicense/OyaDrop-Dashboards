@@ -140,19 +140,19 @@ export function InChatActionButtons({
                 scale: 0.98
               }}
               onClick={() => onAction(action.id)}>
-
+              
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                 style={{
                   backgroundColor: action.color + '20'
                 }}>
-
+                
                 <Icon
                   className="w-4 h-4"
                   style={{
                     color: action.color
                   }} />
-
+                
               </div>
               <span className="text-xs font-semibold text-white text-left">
                 {action.label}

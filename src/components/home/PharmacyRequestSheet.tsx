@@ -35,7 +35,7 @@ export function PharmacyRequestSheet({
       icon={<Pill className="w-6 h-6 text-purple-400" />}
       onSubmit={handleSubmit}
       submitLabel="Browse Pharmacy">
-
+      
       <div className="space-y-6">
         {/* Request Type */}
         <div>
@@ -49,13 +49,13 @@ export function PharmacyRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
               <Search
                 className={`w-6 h-6 mx-auto mb-2 ${requestType === 'otc' ? 'text-purple-400' : 'text-gray-400'}`} />
-
+              
               <p
                 className={`text-sm font-semibold ${requestType === 'otc' ? 'text-white' : 'text-gray-400'}`}>
-
+                
                 Over-the-Counter
               </p>
             </motion.button>
@@ -66,13 +66,13 @@ export function PharmacyRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
               <Upload
                 className={`w-6 h-6 mx-auto mb-2 ${requestType === 'prescription' ? 'text-purple-400' : 'text-gray-400'}`} />
-
+              
               <p
                 className={`text-sm font-semibold ${requestType === 'prescription' ? 'text-white' : 'text-gray-400'}`}>
-
+                
                 Prescription
               </p>
             </motion.button>
@@ -90,7 +90,7 @@ export function PharmacyRequestSheet({
             onChange={(e) => setItems(e.target.value)}
             rows={4}
             className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-purple-500/50 focus:outline-none placeholder:text-gray-500 resize-none" />
-
+          
         </div>
 
         {requestType === 'prescription' &&

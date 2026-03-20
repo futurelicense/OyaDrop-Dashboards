@@ -17,7 +17,7 @@ export function LaundryHeader({ onMenuClick }: LaundryHeaderProps) {
               scale: 0.95
             }}
             onClick={onMenuClick}>
-
+            
             <Menu className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -40,7 +40,7 @@ export function LaundryHeader({ onMenuClick }: LaundryHeaderProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Bell className="w-6 h-6 text-white" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
           </motion.button>
@@ -55,11 +55,11 @@ export function LaundryHeader({ onMenuClick }: LaundryHeaderProps) {
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <div className="flex items-center gap-3">
             <div
               className={`w-3 h-3 rounded-full ${isOnline ? 'bg-green-500' : 'bg-gray-500'}`} />
-
+            
             <div className="text-left">
               <p className="text-sm font-bold text-white">
                 {isOnline ? 'Accepting Orders' : 'Closed'}
@@ -75,7 +75,7 @@ export function LaundryHeader({ onMenuClick }: LaundryHeaderProps) {
             animate={{
               backgroundColor: isOnline ? '#10B981' : '#4B5563'
             }}>
-
+            
             <motion.div
               className="w-6 h-6 bg-white rounded-full"
               animate={{
@@ -86,7 +86,7 @@ export function LaundryHeader({ onMenuClick }: LaundryHeaderProps) {
                 damping: 20,
                 stiffness: 300
               }} />
-
+            
           </motion.div>
         </motion.button>
       </div>

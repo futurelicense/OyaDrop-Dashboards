@@ -17,7 +17,7 @@ export function DestinationSearchHero() {
         transition={{
           duration: 0.5
         }}>
-
+        
         <h2 className="text-xl font-bold text-white mb-6">
           Where are you going?
         </h2>
@@ -30,7 +30,7 @@ export function DestinationSearchHero() {
               type="text"
               placeholder="Search destinations..."
               className="w-full bg-[#0A0E1A] text-white pl-12 pr-4 py-4 rounded-xl border border-cyan-500/30 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
 
           {/* Date Inputs */}
@@ -41,7 +41,7 @@ export function DestinationSearchHero() {
                 type="text"
                 placeholder="Check-in"
                 className="w-full bg-[#0A0E1A] text-white pl-10 pr-3 py-3.5 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500 text-sm" />
-
+              
             </div>
 
             <div className="relative">
@@ -50,7 +50,7 @@ export function DestinationSearchHero() {
                 type="text"
                 placeholder="Check-out"
                 className="w-full bg-[#0A0E1A] text-white pl-10 pr-3 py-3.5 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500 text-sm" />
-
+              
             </div>
           </div>
 
@@ -61,7 +61,7 @@ export function DestinationSearchHero() {
               type="text"
               placeholder="2 guests"
               className="w-full bg-[#0A0E1A] text-white pl-12 pr-4 py-4 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
 
           {/* Search Button */}
@@ -73,7 +73,7 @@ export function DestinationSearchHero() {
             whileTap={{
               scale: 0.98
             }}>
-
+            
             <Search className="w-5 h-5" />
             Search Stays
           </motion.button>

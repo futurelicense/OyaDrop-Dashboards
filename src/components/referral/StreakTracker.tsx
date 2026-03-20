@@ -46,7 +46,7 @@ export function StreakTracker() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Streak Power
       </motion.h2>
 
@@ -63,7 +63,7 @@ export function StreakTracker() {
         transition={{
           delay: 0.2
         }}>
-
+        
         <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/10 blur-3xl" />
 
         <div className="relative">
@@ -79,7 +79,7 @@ export function StreakTracker() {
                   duration: 1.5,
                   repeat: Infinity
                 }}>
-
+                
                 <FlameIcon className="w-8 h-8 text-white fill-white" />
               </motion.div>
               <div>
@@ -111,10 +111,10 @@ export function StreakTracker() {
               transition={{
                 delay: 0.3 + index * 0.05
               }}>
-
+              
                 <div
                 className={`h-2 rounded-full mb-2 ${day.completed ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.6)]' : 'bg-white/20'}`} />
-
+              
                 <p className="text-[10px] text-white/80 text-center">
                   {day.day}
                 </p>

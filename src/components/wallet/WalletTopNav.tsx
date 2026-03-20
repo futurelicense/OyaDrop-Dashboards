@@ -8,7 +8,7 @@ export function WalletTopNav() {
         <button
           className="p-2 rounded-xl hover:bg-white/5 active:scale-95 transition-all"
           aria-label="Menu">
-
+          
           <Menu className="w-6 h-6 text-white" />
         </button>
 
@@ -25,7 +25,7 @@ export function WalletTopNav() {
           <button
             className="relative p-2 rounded-xl hover:bg-white/5 active:scale-95 transition-all"
             aria-label="Notifications">
-
+            
             <Bell className="w-6 h-6 text-white" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-teal-400 rounded-full ring-2 ring-[#0A1628]"></span>
           </button>

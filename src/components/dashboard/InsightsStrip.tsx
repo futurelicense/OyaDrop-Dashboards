@@ -52,7 +52,7 @@ export function InsightsStrip() {
               whileHover={{
                 scale: 1.05
               }}>
-
+              
               <div className="flex items-start gap-3">
                 <div
                   className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -60,13 +60,13 @@ export function InsightsStrip() {
                     backgroundColor: `${insight.color}15`,
                     boxShadow: `0 0 16px ${insight.color}20`
                   }}>
-
+                  
                   <Icon
                     className="w-5 h-5"
                     style={{
                       color: insight.color
                     }} />
-
+                  
                 </div>
 
                 <div className="flex-1 min-w-0">

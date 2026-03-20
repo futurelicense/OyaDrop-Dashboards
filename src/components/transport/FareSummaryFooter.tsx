@@ -28,7 +28,7 @@ export function FareSummaryFooter({
         type: 'spring',
         damping: 20
       }}>
-
+      
       {/* Summary */}
       <div className="mb-3">
         <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
@@ -66,7 +66,7 @@ export function FareSummaryFooter({
           scale: 0.98
         }}
         onClick={onBookRide}>
-
+        
         {mode === 'regular' ? '🚗 Book Ride Now' : '💰 Send Offer to Drivers'}
       </motion.button>
     </motion.div>);

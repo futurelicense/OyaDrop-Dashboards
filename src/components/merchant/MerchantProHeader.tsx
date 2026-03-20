@@ -33,7 +33,7 @@ export function MerchantProHeader({ onMenuClick }: MerchantProHeaderProps) {
       transition={{
         duration: 0.5
       }}>
-
+      
       <div className="px-4 py-4">
         {/* Top Row */}
         <div className="flex items-center justify-between mb-4">
@@ -44,7 +44,7 @@ export function MerchantProHeader({ onMenuClick }: MerchantProHeaderProps) {
                 scale: 0.95
               }}
               onClick={onMenuClick}>
-
+              
               <Menu className="w-6 h-6 text-white" />
             </motion.button>
 
@@ -66,7 +66,7 @@ export function MerchantProHeader({ onMenuClick }: MerchantProHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Bell className="w-5 h-5 text-white" />
               <motion.span
                 className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
@@ -77,7 +77,7 @@ export function MerchantProHeader({ onMenuClick }: MerchantProHeaderProps) {
                   duration: 2,
                   repeat: Infinity
                 }} />
-
+              
             </motion.button>
           </div>
         </div>
@@ -90,7 +90,7 @@ export function MerchantProHeader({ onMenuClick }: MerchantProHeaderProps) {
               value={selectedBranch}
               onChange={(e) => setSelectedBranch(e.target.value)}
               className="appearance-none bg-[#131B2E] text-white px-4 py-2 pr-10 rounded-xl border border-cyan-500/30 text-sm font-semibold cursor-pointer hover:border-cyan-500/50 transition-colors">
-
+              
               {branches.map((branch) =>
               <option key={branch} value={branch}>
                   {branch}
@@ -113,7 +113,7 @@ export function MerchantProHeader({ onMenuClick }: MerchantProHeaderProps) {
                   duration: 1.5,
                   repeat: Infinity
                 }} />
-
+              
               <span className="text-xs font-bold text-white">8 Live</span>
             </div>
 

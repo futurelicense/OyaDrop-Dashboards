@@ -19,7 +19,7 @@ export function TransportHeader({ onMenuClick }: TransportHeaderProps) {
       transition={{
         duration: 0.5
       }}>
-
+      
       <div className="px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Left Side */}
@@ -30,7 +30,7 @@ export function TransportHeader({ onMenuClick }: TransportHeaderProps) {
                 scale: 0.95
               }}
               onClick={onMenuClick}>
-
+              
               <Menu className="w-6 h-6 text-white" />
             </motion.button>
 
@@ -47,7 +47,7 @@ export function TransportHeader({ onMenuClick }: TransportHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Clock className="w-5 h-5 text-gray-400" />
             </motion.button>
 
@@ -56,7 +56,7 @@ export function TransportHeader({ onMenuClick }: TransportHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Bell className="w-5 h-5 text-white" />
               <motion.span
                 className="absolute top-1 right-1 w-2 h-2 bg-cyan-500 rounded-full"
@@ -67,7 +67,7 @@ export function TransportHeader({ onMenuClick }: TransportHeaderProps) {
                   duration: 2,
                   repeat: Infinity
                 }} />
-
+              
             </motion.button>
 
             <motion.button
@@ -75,7 +75,7 @@ export function TransportHeader({ onMenuClick }: TransportHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               👤
             </motion.button>
           </div>

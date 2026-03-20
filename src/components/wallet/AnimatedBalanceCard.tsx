@@ -25,7 +25,7 @@ export function AnimatedBalanceCard() {
         boxShadow:
         '0 20px 60px rgba(0, 217, 192, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
       }}>
-
+      
       {/* Animated Background Glow */}
       <motion.div
         className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-400/20 rounded-full blur-3xl"
@@ -37,7 +37,7 @@ export function AnimatedBalanceCard() {
           duration: 4,
           repeat: Infinity
         }} />
-
+      
       <motion.div
         className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"
         animate={{
@@ -49,7 +49,7 @@ export function AnimatedBalanceCard() {
           repeat: Infinity,
           delay: 1
         }} />
-
+      
 
       {/* Sparkle Effect */}
       <motion.div
@@ -63,7 +63,7 @@ export function AnimatedBalanceCard() {
           repeatDelay: 5,
           ease: 'easeInOut'
         }} />
-
+      
 
       <div className="relative z-10">
         {/* Security Badge */}
@@ -93,7 +93,7 @@ export function AnimatedBalanceCard() {
                 duration: 0.3,
                 delay: 0.2
               }}>
-
+              
               {isBalanceVisible ?
               `₦${balance.toLocaleString('en-NG', {
                 minimumFractionDigits: 2
@@ -106,7 +106,7 @@ export function AnimatedBalanceCard() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               {isBalanceVisible ?
               <Eye className="w-5 h-5 text-gray-400" /> :
 
@@ -130,7 +130,7 @@ export function AnimatedBalanceCard() {
               repeat: Infinity,
               ease: 'linear'
             }} />
-
+          
           <div className="flex-1">
             <p className="text-xs text-gray-400">Cashback Earned</p>
             <p className="text-xl font-bold text-amber-400">
@@ -161,7 +161,7 @@ export function AnimatedBalanceCard() {
                 duration: 1,
                 ease: 'easeOut'
               }}>
-
+              
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
             </motion.div>
           </div>
@@ -176,7 +176,7 @@ export function AnimatedBalanceCard() {
             scale: 0.98
           }}
           className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 text-white font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-shadow">
-
+          
           <Plus className="w-5 h-5" />
           <span>Add Fund</span>
         </motion.button>

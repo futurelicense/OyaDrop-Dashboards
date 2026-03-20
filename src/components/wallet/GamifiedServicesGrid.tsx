@@ -65,7 +65,7 @@ export function GamifiedServicesGrid() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Wallet Services
       </motion.h2>
 
@@ -95,14 +95,14 @@ export function GamifiedServicesGrid() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               {/* Glow Effect on Hover */}
               <motion.div
                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"
                 style={{
                   background: `radial-gradient(circle at 50% 50%, ${service.color}20, transparent 70%)`
                 }} />
-
+              
 
               {/* Icon */}
               <div
@@ -111,13 +111,13 @@ export function GamifiedServicesGrid() {
                   backgroundColor: service.color + '20',
                   boxShadow: `0 0 0 0 ${service.color}30`
                 }}>
-
+                
                 <Icon
                   className="w-6 h-6"
                   style={{
                     color: service.color
                   }} />
-
+                
               </div>
 
               {/* Name */}
@@ -133,7 +133,7 @@ export function GamifiedServicesGrid() {
                   backgroundColor: service.color + '20',
                   color: service.color
                 }}>
-
+                
                   {service.xpReward}
                 </span>
               }

@@ -101,7 +101,7 @@ export function SupermarketDashboardPage({
           name: selectedItem?.name || '',
           price: 500
         }} />
-
+      
     </>);
 
 }

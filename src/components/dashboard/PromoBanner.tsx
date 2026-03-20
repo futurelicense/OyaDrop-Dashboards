@@ -16,14 +16,14 @@ export function PromoBanner() {
       transition={{
         delay: 1.2
       }}>
-
+      
       <div className="bg-gradient-to-br from-[#1a1a24] via-[#1f1f2e] to-[#1a1a24] rounded-2xl p-6 border border-white/10 shadow-2xl overflow-hidden relative">
         <div
           className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-30"
           style={{
             background: 'radial-gradient(circle, #00d9ff, #00ffcc)'
           }} />
-
+        
 
         <div className="relative">
           <div className="flex items-center gap-2 mb-3">
@@ -50,7 +50,7 @@ export function PromoBanner() {
             whileTap={{
               scale: 0.98
             }}>
-
+            
             Learn More
             <ArrowRightIcon className="w-4 h-4" />
           </motion.button>

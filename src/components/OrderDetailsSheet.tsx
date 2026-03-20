@@ -101,7 +101,7 @@ export function OrderDetailsSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Sheet */}
           <motion.div
@@ -120,7 +120,7 @@ export function OrderDetailsSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -138,7 +138,7 @@ export function OrderDetailsSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -159,14 +159,14 @@ export function OrderDetailsSheet({
               transition={{
                 delay: 0.1
               }}>
-
+              
                 <div
                 className="px-4 py-2 rounded-xl font-bold text-sm"
                 style={{
                   backgroundColor: urgency.bg,
                   color: urgency.color
                 }}>
-
+                
                   {urgency.label}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -189,7 +189,7 @@ export function OrderDetailsSheet({
               transition={{
                 delay: 0.2
               }}>
-
+              
                 <h3 className="text-sm font-bold text-white mb-3">
                   Customer Information
                 </h3>
@@ -239,7 +239,7 @@ export function OrderDetailsSheet({
               transition={{
                 delay: 0.3
               }}>
-
+              
                   <h3 className="text-sm font-bold text-white">
                     Items ({order.items.length})
                   </h3>
@@ -259,7 +259,7 @@ export function OrderDetailsSheet({
                   transition={{
                     delay: 0.4 + index * 0.05
                   }}>
-
+                  
                         {item.image &&
                   <img
                     src={item.image}
@@ -306,7 +306,7 @@ export function OrderDetailsSheet({
               transition={{
                 delay: 0.5
               }}>
-
+              
                   <div className="flex items-start gap-3">
                     <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                     <div>
@@ -336,7 +336,7 @@ export function OrderDetailsSheet({
               transition={{
                 delay: 0.6
               }}>
-
+              
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-gray-400">Subtotal</span>
                     <span className="text-sm text-white">
@@ -379,7 +379,7 @@ export function OrderDetailsSheet({
               transition={{
                 delay: 0.7
               }}>
-
+              
                   <h3 className="text-sm font-bold text-white">Timeline</h3>
                   <div className="space-y-2">
                     {order.createdAt &&
@@ -414,7 +414,7 @@ export function OrderDetailsSheet({
                   scale: 0.98
                 }}
                 onClick={() => onContactCustomer(order.id)}>
-
+                
                     <Phone className="w-4 h-4" />
                     Call
                   </motion.button>
@@ -424,7 +424,7 @@ export function OrderDetailsSheet({
                   scale: 0.98
                 }}
                 onClick={() => onContactCustomer(order.id)}>
-
+                
                     <MessageCircle className="w-4 h-4" />
                     Message
                   </motion.button>
@@ -447,7 +447,7 @@ export function OrderDetailsSheet({
                   scale: 0.98
                 }}
                 onClick={() => onStatusChange(order.id, option.value)}>
-
+                
                       <CheckCircle className="w-4 h-4" />
                       {option.label}
                     </motion.button>

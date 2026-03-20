@@ -19,7 +19,7 @@ export function WelcomeHeader() {
         delay: 0.2,
         duration: 0.5
       }}>
-
+      
       <h1 className="text-2xl font-bold text-white mb-1">
         Welcome back, Merchant 👋
       </h1>
@@ -35,7 +35,7 @@ export function WelcomeHeader() {
         transition={{
           duration: 0.2
         }}>
-
+        
         <div className="flex items-start justify-between mb-4">
           <div>
             <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">

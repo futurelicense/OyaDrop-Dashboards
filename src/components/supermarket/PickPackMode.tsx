@@ -93,7 +93,7 @@ export function PickPackMode({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
           <div>
@@ -123,7 +123,7 @@ export function PickPackMode({
                 type: 'spring',
                 damping: 20
               }} />
-
+            
           </div>
         </div>
       </div>
@@ -155,14 +155,14 @@ export function PickPackMode({
             if (info.offset.x < -100) handleSwipe(item.id, 'left');
             if (info.offset.x > 100) handleSwipe(item.id, 'right');
           }}>
-
+          
             <div className="flex items-center gap-3 p-4">
               {/* Image */}
               <img
               src={item.image}
               alt={item.name}
               className="w-20 h-20 rounded-xl object-cover" />
-
+            
 
               {/* Info */}
               <div className="flex-1 min-w-0">
@@ -188,7 +188,7 @@ export function PickPackMode({
                   scale: 0.9
                 }}
                 onClick={() => updateItemStatus(item.id, 'found')}>
-
+                
                   <Check className="w-5 h-5 text-green-400" />
                 </motion.button>
                 <motion.button
@@ -197,7 +197,7 @@ export function PickPackMode({
                   scale: 0.9
                 }}
                 onClick={() => updateItemStatus(item.id, 'unavailable')}>
-
+                
                   <X className="w-5 h-5 text-red-400" />
                 </motion.button>
                 <motion.button
@@ -206,7 +206,7 @@ export function PickPackMode({
                   scale: 0.9
                 }}
                 onClick={() => onSubstitute(item)}>
-
+                
                   <RefreshCw className="w-5 h-5 text-cyan-400" />
                 </motion.button>
               </div>
@@ -216,7 +216,7 @@ export function PickPackMode({
             {item.status !== 'pending' &&
           <div
             className={`px-4 py-2 text-center text-sm font-bold ${item.status === 'found' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-
+            
                 {item.status === 'found' ? '✓ Found' : '✗ Not Available'}
               </div>
           }
@@ -231,7 +231,7 @@ export function PickPackMode({
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <MessageCircle className="w-5 h-5" />
           Chat with Customer
         </motion.button>
@@ -241,7 +241,7 @@ export function PickPackMode({
             scale: 0.98
           }}
           onClick={onComplete}>
-
+          
           Complete Picking ({foundCount}/{totalCount})
         </motion.button>
       </div>

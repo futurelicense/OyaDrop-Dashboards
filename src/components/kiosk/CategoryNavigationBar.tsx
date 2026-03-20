@@ -66,7 +66,7 @@ export function CategoryNavigationBar({
               type="text"
               placeholder="Search products..."
               className="w-full bg-[#131B2E] text-white pl-10 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500 text-sm" />
-
+            
           </div>
 
           <motion.button
@@ -75,7 +75,7 @@ export function CategoryNavigationBar({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <SlidersHorizontal className="w-5 h-5 text-gray-400" />
           </motion.button>
         </div>
@@ -103,7 +103,7 @@ export function CategoryNavigationBar({
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                 <span className="text-base">{category.icon}</span>
                 {category.label}
               </motion.button>);

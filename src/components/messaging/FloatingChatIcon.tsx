@@ -35,7 +35,7 @@ export function FloatingChatIcon({
             type: 'spring',
             damping: 20
           }}>
-
+          
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-sm font-bold text-white">Quick Chat</h3>
               <motion.button
@@ -44,7 +44,7 @@ export function FloatingChatIcon({
               whileTap={{
                 scale: 0.9
               }}>
-
+              
                 <X className="w-4 h-4 text-gray-400" />
               </motion.button>
             </div>
@@ -65,7 +65,7 @@ export function FloatingChatIcon({
               setIsExpanded(false);
               onOpenChat();
             }}>
-
+            
               Open Messages
             </motion.button>
           </motion.div>
@@ -97,7 +97,7 @@ export function FloatingChatIcon({
         } :
         {}
         }>
-
+        
         <MessageCircle className="w-6 h-6 text-white" />
 
         {unreadCount > 0 &&
@@ -113,7 +113,7 @@ export function FloatingChatIcon({
             type: 'spring',
             damping: 15
           }}>
-
+          
             {unreadCount > 9 ? '9+' : unreadCount}
           </motion.span>
         }

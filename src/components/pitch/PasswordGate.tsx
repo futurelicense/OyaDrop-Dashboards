@@ -39,7 +39,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
             backgroundSize: '50px 50px',
             animation: 'gridMove 20s linear infinite'
           }} />
-
+        
       </div>
 
       {/* Floating Particles */}
@@ -76,7 +76,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
         transition={{
           duration: 0.5
         }}>
-
+        
         {/* Logo */}
         <motion.div
           className="text-center mb-8"
@@ -90,7 +90,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
             delay: 0.2,
             type: 'spring'
           }}>
-
+          
           <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-cyan-500/50">
             <span className="text-white font-bold text-3xl">O</span>
           </div>
@@ -123,7 +123,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
               duration: 0.4
             }
           }}>
-
+          
           <div className="flex items-center gap-3 mb-6">
             <div className="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
               <Lock className="w-6 h-6 text-cyan-400" />
@@ -145,12 +145,12 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
                 placeholder="Enter password"
                 className={`w-full px-4 py-3 bg-black/40 border ${error ? 'border-red-500/50' : 'border-white/10'} rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all pr-12`}
                 autoFocus />
-
+              
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 p-2 hover:bg-white/5 rounded-lg transition-colors">
-
+                
                 {showPassword ?
                 <EyeOff className="w-5 h-5 text-gray-400" /> :
 
@@ -170,7 +170,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
                 opacity: 1,
                 y: 0
               }}>
-
+              
                 <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
                 <p className="text-sm text-red-400">
                   Incorrect password. Please try again.
@@ -187,7 +187,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
               Unlock Platform
             </motion.button>
           </form>
@@ -205,7 +205,7 @@ export function PasswordGate({ onUnlock }: PasswordGateProps) {
           transition={{
             delay: 0.5
           }}>
-
+          
           This platform is password protected for authorized access only.
         </motion.p>
       </motion.div>

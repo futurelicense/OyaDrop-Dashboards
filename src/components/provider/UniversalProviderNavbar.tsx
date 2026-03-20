@@ -56,7 +56,7 @@ export function UniversalProviderNavbar({
       transition={{
         duration: 0.5
       }}>
-
+      
       <div className="flex items-center justify-between">
         {/* Left: Menu & Avatar & Status */}
         <div className="flex items-center gap-3">
@@ -66,7 +66,7 @@ export function UniversalProviderNavbar({
               scale: 0.95
             }}
             onClick={onMenuClick}>
-
+            
             <Menu className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -75,7 +75,7 @@ export function UniversalProviderNavbar({
               src={provider.avatar}
               alt={provider.name}
               className="w-12 h-12 rounded-full border-2 border-cyan-500/30" />
-
+            
             <motion.div
               className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-[#0A0E1A]"
               style={{
@@ -88,7 +88,7 @@ export function UniversalProviderNavbar({
                 duration: 2,
                 repeat: Infinity
               }} />
-
+            
           </div>
 
           <div>
@@ -100,7 +100,7 @@ export function UniversalProviderNavbar({
                   color: currentStatus.color,
                   backgroundColor: currentStatus.bg
                 }}>
-
+                
                 {currentStatus.label}
               </span>
               <button className="flex items-center gap-1 text-xs text-gray-400">
@@ -119,7 +119,7 @@ export function UniversalProviderNavbar({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <DollarSign className="w-4 h-4 text-green-400" />
             <span className="text-sm font-bold text-green-400">
               ₦{earnings.toLocaleString()}
@@ -132,7 +132,7 @@ export function UniversalProviderNavbar({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Bell className="w-5 h-5 text-white" />
             {notifications > 0 &&
             <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-white text-xs font-bold flex items-center justify-center">
@@ -148,7 +148,7 @@ export function UniversalProviderNavbar({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Power className="w-5 h-5" />
           </motion.button>
         </div>

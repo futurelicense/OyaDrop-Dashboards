@@ -105,11 +105,11 @@ export function QuickServiceRequests({
                 scale: 0.98
               }}
               onClick={() => onServiceSelect(service.id)}>
-
+              
               {/* Gradient Overlay on Hover */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity`} />
-
+              
 
               {/* Icon */}
               <div
@@ -117,13 +117,13 @@ export function QuickServiceRequests({
                 style={{
                   backgroundColor: service.color + '20'
                 }}>
-
+                
                 <Icon
                   className="w-6 h-6"
                   style={{
                     color: service.color
                   }} />
-
+                
               </div>
 
               {/* Content */}
@@ -143,18 +143,18 @@ export function QuickServiceRequests({
                 whileHover={{
                   x: 0
                 }}>
-
+                
                 <div
                   className="w-6 h-6 rounded-full flex items-center justify-center"
                   style={{
                     backgroundColor: service.color + '20'
                   }}>
-
+                  
                   <span
                     style={{
                       color: service.color
                     }}>
-
+                    
                     →
                   </span>
                 </div>

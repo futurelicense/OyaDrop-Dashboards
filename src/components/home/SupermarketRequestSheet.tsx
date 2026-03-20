@@ -30,7 +30,7 @@ export function SupermarketRequestSheet({
       icon={<ShoppingCart className="w-6 h-6 text-green-400" />}
       onSubmit={handleSubmit}
       submitLabel="Browse Supermarket">
-
+      
       <div className="space-y-6">
         {/* Shopping List */}
         <div>
@@ -43,7 +43,7 @@ export function SupermarketRequestSheet({
             onChange={(e) => setItems(e.target.value)}
             rows={6}
             className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-green-500/50 focus:outline-none placeholder:text-gray-500 resize-none" />
-
+          
           <p className="text-xs text-gray-500 mt-2">
             List items you need, one per line
           </p>
@@ -79,13 +79,13 @@ export function SupermarketRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Clock
                 className={`w-5 h-5 mx-auto mb-1 ${urgency === option.value ? 'text-green-400' : 'text-gray-400'}`} />
-
+              
                 <p
                 className={`text-xs font-semibold ${urgency === option.value ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {option.label}
                 </p>
                 <p className="text-[10px] text-gray-500">{option.time}</p>

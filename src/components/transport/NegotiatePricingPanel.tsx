@@ -17,7 +17,7 @@ export function NegotiatePricingPanel() {
         transition={{
           delay: 0.4
         }}>
-
+        
         <h3 className="text-sm font-bold text-white mb-4">Set Your Price</h3>
 
         {/* Price Input */}
@@ -29,7 +29,7 @@ export function NegotiatePricingPanel() {
             type="number"
             placeholder="Enter your offer"
             className="w-full bg-[#0A0E1A] text-white text-2xl font-bold pl-12 pr-4 py-4 rounded-xl border border-purple-500/30 focus:border-purple-500/50 focus:outline-none placeholder:text-gray-600" />
-
+          
         </div>
 
         {/* Recommended Range */}
@@ -57,7 +57,7 @@ export function NegotiatePricingPanel() {
           whileTap={{
             scale: 0.98
           }}>
-
+          
           Send Offer to Drivers
         </motion.button>
       </motion.div>

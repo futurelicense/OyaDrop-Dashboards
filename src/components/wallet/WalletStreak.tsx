@@ -42,7 +42,7 @@ export function WalletStreak() {
           opacity: 1,
           scale: 1
         }}>
-
+        
         {/* Flame Glow */}
         <motion.div
           className="absolute top-0 right-0 w-32 h-32 bg-orange-500/20 rounded-full blur-3xl"
@@ -54,7 +54,7 @@ export function WalletStreak() {
             duration: 2,
             repeat: Infinity
           }} />
-
+        
 
         <div className="relative z-10">
           {/* Header */}
@@ -69,7 +69,7 @@ export function WalletStreak() {
                   duration: 1.5,
                   repeat: Infinity
                 }}>
-
+                
                 <Flame className="w-8 h-8 text-white fill-white" />
               </motion.div>
               <div>
@@ -100,11 +100,11 @@ export function WalletStreak() {
               transition={{
                 delay: index * 0.1
               }}>
-
+              
                 <div className="flex items-center gap-3">
                   <div
                   className={`w-10 h-10 rounded-xl flex items-center justify-center ${milestone.unlocked ? 'bg-green-500/20 text-green-400' : 'bg-white/5 text-gray-500'}`}>
-
+                  
                     {milestone.unlocked ? '✓' : milestone.day}
                   </div>
                   <div>
@@ -125,7 +125,7 @@ export function WalletStreak() {
                   repeat: Infinity,
                   repeatDelay: 2
                 }}>
-
+                
                     <Gift className="w-5 h-5 text-purple-400" />
                   </motion.div>
               }

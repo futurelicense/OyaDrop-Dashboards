@@ -43,7 +43,7 @@ export function RewardChests() {
           opacity: 1,
           y: 0
         }}>
-
+        
         <Gift className="w-5 h-5 text-purple-400" />
         Reward Chests
       </motion.h2>
@@ -83,7 +83,7 @@ export function RewardChests() {
           {}
           }
           disabled={!chest.unlocked}>
-
+          
             {/* Sparkle Effect */}
             {chest.unlocked &&
           <motion.div
@@ -96,7 +96,7 @@ export function RewardChests() {
               duration: 2,
               repeat: Infinity
             }}>
-
+            
                 <Sparkles className="w-4 h-4 text-white" />
               </motion.div>
           }
@@ -125,7 +125,7 @@ export function RewardChests() {
               duration: 1.5,
               repeat: Infinity
             }}>
-
+            
                 Tap to unlock
               </motion.p>
           }

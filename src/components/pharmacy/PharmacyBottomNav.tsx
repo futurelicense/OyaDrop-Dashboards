@@ -69,7 +69,7 @@ export function PharmacyBottomNav({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               {isActive &&
               <motion.div
                 className="absolute inset-0 bg-cyan-500/20 rounded-xl"
@@ -83,10 +83,10 @@ export function PharmacyBottomNav({
               }
               <Icon
                 className={`w-5 h-5 relative z-10 ${isActive ? 'text-cyan-400' : 'text-gray-400'}`} />
-
+              
               <span
                 className={`text-[10px] font-semibold relative z-10 ${isActive ? 'text-cyan-400' : 'text-gray-400'}`}>
-
+                
                 {tab.label}
               </span>
             </motion.button>);

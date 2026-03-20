@@ -248,7 +248,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -301,7 +301,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             opacity: 0,
             x: 20
           }}>
-
+          
             <h2 className="text-xl font-bold text-white mb-2">
               Select Service Type
             </h2>
@@ -335,20 +335,20 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <div className="flex items-center gap-4">
                       <div
                       className="w-14 h-14 rounded-xl flex items-center justify-center"
                       style={{
                         backgroundColor: service.color + '20'
                       }}>
-
+                      
                         <Icon
                         className="w-7 h-7"
                         style={{
                           color: service.color
                         }} />
-
+                      
                       </div>
 
                       <div className="flex-1">
@@ -363,7 +363,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                         style={{
                           color: service.color
                         }}>
-
+                        
                           ₦{service.pricePerKg}/kg
                         </p>
                       </div>
@@ -393,7 +393,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             opacity: 0,
             x: 20
           }}>
-
+          
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-4">
                 <div
@@ -401,13 +401,13 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                 style={{
                   backgroundColor: selectedService.color + '20'
                 }}>
-
+                
                   <selectedService.icon
                   className="w-6 h-6"
                   style={{
                     color: selectedService.color
                   }} />
-
+                
                 </div>
                 <div>
                   <h2 className="text-lg font-bold text-white">
@@ -442,7 +442,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                   transition={{
                     delay: index * 0.05
                   }}>
-
+                  
                     <div className="text-center mb-3">
                       <div className="text-3xl mb-2">{template.icon}</div>
                       <p className="text-sm font-semibold text-white mb-1">
@@ -461,7 +461,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                       whileTap={{
                         scale: 0.9
                       }}>
-
+                      
                           <Minus className="w-4 h-4 text-teal-400" />
                         </motion.button>
                         <span className="text-lg font-bold text-white">
@@ -473,7 +473,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                       whileTap={{
                         scale: 0.9
                       }}>
-
+                      
                           <Plus className="w-4 h-4 text-teal-400" />
                         </motion.button>
                       </div> :
@@ -484,7 +484,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                     whileTap={{
                       scale: 0.95
                     }}>
-
+                    
                         Add
                       </motion.button>
                   }
@@ -504,7 +504,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
               opacity: 1,
               y: 0
             }}>
-
+            
                 <h4 className="text-sm font-bold text-white mb-3">
                   Your Items
                 </h4>
@@ -513,7 +513,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
               <div
                 key={item.id}
                 className="flex items-center justify-between text-sm">
-
+                
                       <span className="text-gray-300">
                         {item.icon} {item.name} x{item.quantity}
                       </span>
@@ -550,7 +550,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             } :
             {}
             }>
-
+            
               Continue to Schedule
             </motion.button>
           </motion.div>
@@ -572,7 +572,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             opacity: 0,
             x: 20
           }}>
-
+          
             <h2 className="text-xl font-bold text-white mb-6">
               Schedule Pickup
             </h2>
@@ -591,7 +591,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                     value={pickupAddress}
                     onChange={(e) => setPickupAddress(e.target.value)}
                     className="w-full bg-transparent text-white text-sm focus:outline-none" />
-
+                  
                   </div>
                 </div>
               </div>
@@ -611,7 +611,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                     value={deliveryAddress}
                     onChange={(e) => setDeliveryAddress(e.target.value)}
                     className="w-full bg-transparent text-white text-sm focus:outline-none" />
-
+                  
                   </div>
                 </div>
               </div>
@@ -646,15 +646,15 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
               } :
               {}
               }>
-
+              
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div
                     className={`w-10 h-10 rounded-xl flex items-center justify-center ${slot.available ? 'bg-teal-500/20' : 'bg-white/5'}`}>
-
+                    
                         <Clock
                       className={`w-5 h-5 ${slot.available ? 'text-teal-400' : 'text-gray-500'}`} />
-
+                    
                       </div>
                       <div className="text-left">
                         <p className="text-sm font-bold text-white">
@@ -697,7 +697,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             opacity: 0,
             x: 20
           }}>
-
+          
             <h2 className="text-xl font-bold text-white mb-6">
               Review Your Order
             </h2>
@@ -710,13 +710,13 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                 style={{
                   backgroundColor: selectedService.color + '20'
                 }}>
-
+                
                   <selectedService.icon
                   className="w-6 h-6"
                   style={{
                     color: selectedService.color
                   }} />
-
+                
                 </div>
                 <div>
                   <p className="text-sm font-bold text-white">
@@ -733,7 +733,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
               <div
                 key={item.id}
                 className="flex items-center justify-between text-sm">
-
+                
                     <span className="text-gray-300">
                       {item.icon} {item.name} x{item.quantity}
                     </span>
@@ -810,7 +810,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             whileTap={{
               scale: 0.98
             }}>
-
+            
               Place Order
             </motion.button>
           </motion.div>
@@ -831,7 +831,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
             opacity: 1,
             scale: 1
           }}>
-
+          
               {/* Success Message */}
               <motion.div
             className="bg-gradient-to-br from-green-500/20 to-teal-500/20 border-2 border-green-500/50 rounded-2xl p-6 mb-6"
@@ -845,7 +845,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
               type: 'spring',
               damping: 20
             }}>
-
+            
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center">
                     <Check className="w-8 h-8 text-white" />
@@ -907,7 +907,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
               <div key={index} className="flex items-start gap-3">
                       <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${step.status === 'completed' ? 'bg-green-500' : step.status === 'active' ? 'bg-teal-500 animate-pulse' : 'bg-white/10'}`}>
-
+                  
                         {step.status === 'completed' ?
                   <Check className="w-4 h-4 text-white" /> :
                   step.status === 'active' ?
@@ -919,7 +919,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                       <div className="flex-1">
                         <p
                     className={`text-sm font-semibold ${step.status === 'pending' ? 'text-gray-400' : 'text-white'}`}>
-
+                    
                           {step.label}
                         </p>
                         <p className="text-xs text-gray-500">{step.time}</p>
@@ -939,7 +939,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
                 alt="Rider"
                 className="w-12 h-12 rounded-full object-cover" />
-
+              
                   <div className="flex-1">
                     <p className="text-sm font-bold text-white">David Okafor</p>
                     <div className="flex items-center gap-1">
@@ -957,7 +957,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <Phone className="w-4 h-4" />
                     Call
                   </motion.button>
@@ -966,7 +966,7 @@ export function LaundryCustomerPage({ onBack }: LaundryCustomerPageProps) {
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <MessageCircle className="w-4 h-4" />
                     Message
                   </motion.button>

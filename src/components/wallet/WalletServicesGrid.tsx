@@ -32,7 +32,7 @@ function ServiceTile({ icon, label, delay }: ServiceTileProps) {
         boxShadow:
         '0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
       }}>
-
+      
       {/* Hover glow effect */}
       <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/0 to-cyan-500/0 group-hover:from-teal-500/10 group-hover:to-cyan-500/10 transition-all duration-300" />
 
@@ -62,7 +62,7 @@ function SendIcon() {
         stroke="#00D9C0"
         strokeWidth="2"
         strokeLinecap="round" />
-
+      
     </svg>);
 
 }
@@ -76,7 +76,7 @@ function ReceiveIcon() {
           y1="0%"
           x2="100%"
           y2="100%">
-
+          
           <stop offset="0%" stopColor="#06B6D4" />
           <stop offset="100%" stopColor="#0891B2" />
         </linearGradient>
@@ -89,7 +89,7 @@ function ReceiveIcon() {
         rx="4"
         fill="url(#receiveGradient)"
         opacity="0.3" />
-
+      
       <rect
         x="18"
         y="24"
@@ -97,7 +97,7 @@ function ReceiveIcon() {
         height="20"
         rx="3"
         fill="url(#receiveGradient)" />
-
+      
       <circle cx="32" cy="34" r="4" fill="white" opacity="0.9" />
       <path
         d="M32 14 L32 30 M26 24 L32 30 L38 24"
@@ -106,7 +106,7 @@ function ReceiveIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none" />
-
+      
     </svg>);
 
 }
@@ -120,7 +120,7 @@ function AirtimeIcon() {
           y1="0%"
           x2="100%"
           y2="100%">
-
+          
           <stop offset="0%" stopColor="#8B5CF6" />
           <stop offset="100%" stopColor="#6366F1" />
         </linearGradient>
@@ -133,7 +133,7 @@ function AirtimeIcon() {
         rx="4"
         fill="url(#airtimeGradient)"
         opacity="0.3" />
-
+      
       <rect
         x="22"
         y="14"
@@ -141,7 +141,7 @@ function AirtimeIcon() {
         height="36"
         rx="3"
         fill="url(#airtimeGradient)" />
-
+      
       <rect
         x="26"
         y="18"
@@ -150,7 +150,7 @@ function AirtimeIcon() {
         rx="1"
         fill="white"
         opacity="0.2" />
-
+      
       <circle cx="32" cy="44" r="2" fill="white" opacity="0.9" />
       <path
         d="M28 32 Q32 28 36 32 M28 36 Q32 32 36 36"
@@ -159,7 +159,7 @@ function AirtimeIcon() {
         strokeLinecap="round"
         fill="none"
         opacity="0.6" />
-
+      
     </svg>);
 
 }
@@ -173,7 +173,7 @@ function StatementIcon() {
           y1="0%"
           x2="100%"
           y2="100%">
-
+          
           <stop offset="0%" stopColor="#F59E0B" />
           <stop offset="100%" stopColor="#D97706" />
         </linearGradient>
@@ -186,7 +186,7 @@ function StatementIcon() {
         rx="3"
         fill="url(#statementGradient)"
         opacity="0.3" />
-
+      
       <rect
         x="20"
         y="16"
@@ -194,7 +194,7 @@ function StatementIcon() {
         height="32"
         rx="2"
         fill="url(#statementGradient)" />
-
+      
       <line
         x1="26"
         y1="24"
@@ -204,7 +204,7 @@ function StatementIcon() {
         strokeWidth="2"
         strokeLinecap="round"
         opacity="0.8" />
-
+      
       <line
         x1="26"
         y1="30"
@@ -214,7 +214,7 @@ function StatementIcon() {
         strokeWidth="2"
         strokeLinecap="round"
         opacity="0.6" />
-
+      
       <line
         x1="26"
         y1="36"
@@ -224,7 +224,7 @@ function StatementIcon() {
         strokeWidth="2"
         strokeLinecap="round"
         opacity="0.4" />
-
+      
       <circle cx="38" cy="40" r="6" fill="#10B981" />
       <text
         x="38"
@@ -233,7 +233,7 @@ function StatementIcon() {
         fill="white"
         fontSize="8"
         fontWeight="bold">
-
+        
         ₦
       </text>
     </svg>);

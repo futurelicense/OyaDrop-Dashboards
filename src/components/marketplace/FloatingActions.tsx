@@ -28,7 +28,7 @@ export function FloatingActions() {
           scale: 1.05,
           borderColor: 'rgba(0, 255, 204, 0.6)'
         }}>
-
+        
         <SlidersHorizontalIcon className="w-6 h-6 text-[#00ffcc]" />
       </motion.button>
 
@@ -56,7 +56,7 @@ export function FloatingActions() {
           whileHover={{
             scale: 1.05
           }}>
-
+          
             <ArrowUpIcon className="w-6 h-6 text-black" />
           </motion.button>
         }

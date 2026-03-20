@@ -31,7 +31,7 @@ export function PersonalizedSection({
           opacity: 1,
           y: 0
         }}>
-
+        
         <div className="w-10 h-10 bg-gradient-to-br from-[#00ffcc] to-[#00d9ff] rounded-xl flex items-center justify-center">
           <Icon className="w-5 h-5 text-black" />
         </div>

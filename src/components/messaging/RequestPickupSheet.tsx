@@ -31,7 +31,7 @@ export function RequestPickupSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Bottom Sheet */}
           <motion.div
@@ -50,7 +50,7 @@ export function RequestPickupSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -68,7 +68,7 @@ export function RequestPickupSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -88,13 +88,13 @@ export function RequestPickupSheet({
                   value={pickup}
                   onChange={(e) => setPickup(e.target.value)}
                   className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                   <motion.button
                   className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-cyan-500/20 rounded-lg"
                   whileTap={{
                     scale: 0.9
                   }}>
-
+                  
                     <Navigation className="w-4 h-4 text-cyan-400" />
                   </motion.button>
                 </div>
@@ -113,7 +113,7 @@ export function RequestPickupSheet({
                   value={dropoff}
                   onChange={(e) => setDropoff(e.target.value)}
                   className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                 </div>
               </div>
 
@@ -129,13 +129,13 @@ export function RequestPickupSheet({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <Clock
                     className={`w-6 h-6 mx-auto mb-2 ${scheduledTime === 'now' ? 'text-cyan-400' : 'text-gray-400'}`} />
-
+                  
                     <p
                     className={`text-sm font-semibold ${scheduledTime === 'now' ? 'text-white' : 'text-gray-400'}`}>
-
+                    
                       Pick me now
                     </p>
                   </motion.button>
@@ -146,13 +146,13 @@ export function RequestPickupSheet({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <Clock
                     className={`w-6 h-6 mx-auto mb-2 ${scheduledTime === 'later' ? 'text-cyan-400' : 'text-gray-400'}`} />
-
+                  
                     <p
                     className={`text-sm font-semibold ${scheduledTime === 'later' ? 'text-white' : 'text-gray-400'}`}>
-
+                    
                       Schedule for later
                     </p>
                   </motion.button>
@@ -180,7 +180,7 @@ export function RequestPickupSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 Request Pickup
               </motion.button>
             </div>

@@ -65,23 +65,23 @@ export function PaymentMethodSelector({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-2 mx-auto"
                 style={{
                   backgroundColor: method.color + '20'
                 }}>
-
+                
                 <Icon
                   className="w-6 h-6"
                   style={{
                     color: method.color
                   }} />
-
+                
               </div>
               <p
                 className={`text-sm font-semibold ${isSelected ? 'text-white' : 'text-gray-400'}`}>
-
+                
                 {method.name}
               </p>
             </motion.button>);

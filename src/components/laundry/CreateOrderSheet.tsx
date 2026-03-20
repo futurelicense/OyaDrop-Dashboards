@@ -32,7 +32,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           <motion.div
           className="fixed bottom-0 left-0 right-0 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl z-[90] max-h-[85vh] flex flex-col"
@@ -50,7 +50,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
             damping: 30,
             stiffness: 300
           }}>
-
+          
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
             </div>
@@ -66,7 +66,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -88,7 +88,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
                 })
                 }
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
               </div>
 
               <div>
@@ -107,7 +107,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
                 })
                 }
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
               </div>
 
               <div>
@@ -126,7 +126,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
                 }
                 rows={2}
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500 resize-none" />
-
+              
               </div>
 
               <div>
@@ -142,7 +142,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
                 })
                 }
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none">
-
+                
                   <option>Wash Only</option>
                   <option>Wash & Iron</option>
                   <option>Dry Cleaning</option>
@@ -169,7 +169,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
                   whileTap={{
                     scale: 0.95
                   }}>
-
+                  
                       {type === 'delivery' ? 'Delivery' : 'Customer Pickup'}
                     </motion.button>
                 )}
@@ -224,7 +224,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
                   whileTap={{
                     scale: 0.95
                   }}>
-
+                  
                       {option.label}
                     </motion.button>
                 )}
@@ -238,7 +238,7 @@ export function CreateOrderSheet({ isOpen, onClose }: CreateOrderSheetProps) {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Plus className="w-5 h-5" />
                 Create Order
               </motion.button>

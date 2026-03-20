@@ -51,7 +51,7 @@ export function LaundryBottomNav({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               {isActive &&
               <motion.div
                 className="absolute inset-0 bg-cyan-500/20 rounded-xl"
@@ -65,10 +65,10 @@ export function LaundryBottomNav({
               }
               <Icon
                 className={`w-6 h-6 relative z-10 ${isActive ? 'text-cyan-400' : 'text-gray-400'}`} />
-
+              
               <span
                 className={`text-xs font-semibold relative z-10 ${isActive ? 'text-cyan-400' : 'text-gray-400'}`}>
-
+                
                 {tab.label}
               </span>
             </motion.button>);

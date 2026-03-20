@@ -76,7 +76,7 @@ export function TransactionFeed() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Activity Timeline
       </motion.h2>
 
@@ -103,7 +103,7 @@ export function TransactionFeed() {
                 scale: 1.02,
                 borderColor: transaction.color + '40'
               }}>
-
+              
               {/* Icon */}
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -111,13 +111,13 @@ export function TransactionFeed() {
                   backgroundColor: transaction.color + '20',
                   boxShadow: `0 0 12px ${transaction.color}20`
                 }}>
-
+                
                 <Icon
                   className="w-5 h-5"
                   style={{
                     color: transaction.color
                   }} />
-
+                
               </div>
 
               {/* Info */}
@@ -137,7 +137,7 @@ export function TransactionFeed() {
               <div className="text-right">
                 <p
                   className={`text-sm font-bold ${isPositive ? 'text-green-400' : 'text-white'}`}>
-
+                  
                   {transaction.amount}
                 </p>
               </div>

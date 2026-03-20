@@ -35,7 +35,7 @@ export function StorefrontActions() {
           transition={{
             delay: 0.8
           }}>
-
+          
           <ExternalLinkIcon className="w-5 h-5" />
           View Store
         </motion.button>
@@ -60,7 +60,7 @@ export function StorefrontActions() {
           transition={{
             delay: 0.8
           }}>
-
+          
           <AnimatePresence mode="wait">
             {copied ?
             <motion.div
@@ -78,7 +78,7 @@ export function StorefrontActions() {
                 rotate: 180
               }}
               className="flex items-center gap-2">
-
+              
                 <CheckIcon className="w-5 h-5 text-[#00ff88]" />
                 Copied!
               </motion.div> :
@@ -95,7 +95,7 @@ export function StorefrontActions() {
                 scale: 0
               }}
               className="flex items-center gap-2">
-
+              
                 <Share2Icon className="w-5 h-5" />
                 Share Link
               </motion.div>

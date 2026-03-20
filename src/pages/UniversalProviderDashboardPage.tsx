@@ -33,7 +33,7 @@ export function UniversalProviderDashboardPage({
         earnings={45200}
         notifications={3}
         onMenuClick={onMenuClick} />
-
+      
 
       <main>
         <DynamicKPISummary providerType={providerType} />
@@ -44,7 +44,7 @@ export function UniversalProviderDashboardPage({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <ProviderRideRequestCard
               onRequestRide={() => setIsRideRequestOpen(true)} />
-
+            
           </div>
         </div>
 
@@ -55,7 +55,7 @@ export function UniversalProviderDashboardPage({
       <ProviderRideRequestSheet
         isOpen={isRideRequestOpen}
         onClose={() => setIsRideRequestOpen(false)} />
-
+      
     </div>);
 
 }

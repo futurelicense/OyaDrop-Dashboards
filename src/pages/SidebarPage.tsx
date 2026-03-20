@@ -153,7 +153,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
             backgroundSize: '50px 50px',
             animation: 'gridMove 20s linear infinite'
           }} />
-
+        
       </div>
 
       {/* Hamburger Menu Button */}
@@ -167,7 +167,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
         whileTap={{
           scale: 0.95
         }}>
-
+        
         <AnimatePresence mode="wait">
           {sidebarOpen ?
           <motion.div
@@ -187,7 +187,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
             transition={{
               duration: 0.2
             }}>
-
+            
               <X className="w-7 h-7 text-white" />
             </motion.div> :
 
@@ -208,7 +208,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
             transition={{
               duration: 0.2
             }}>
-
+            
               <Menu className="w-7 h-7 text-white" />
             </motion.div>
           }
@@ -253,7 +253,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Glowing Background */}
             <div className="absolute inset-0 bg-gradient-to-r from-black via-cyan-500/10 to-transparent border-r border-cyan-500/20" />
 
@@ -273,7 +273,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
               transition={{
                 delay: 0.2
               }}>
-
+              
                 <div className="flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl backdrop-blur-xl">
                   <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
                     <span className="text-white font-bold text-xs">JD</span>
@@ -311,7 +311,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                   repeat: Infinity
                 }
               }}>
-
+              
                 <div className="w-20 h-20 rounded-full bg-black flex items-center justify-center">
                   <span className="text-white font-bold text-2xl">O</span>
                 </div>
@@ -386,7 +386,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                     damping: 20,
                     delay: 0.3 + index * 0.08
                   }}>
-
+                  
                     {/* Connection Line */}
                     <motion.div
                     className="absolute top-1/2 left-1/2 origin-left"
@@ -399,7 +399,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                     animate={{
                       opacity: isActive || isHovered ? 0.8 : 0.2
                     }} />
-
+                  
 
                     {/* Menu Button */}
                     <motion.button
@@ -413,7 +413,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                     whileTap={{
                       scale: 0.95
                     }}>
-
+                    
                       {/* Glow Effect */}
                       <motion.div
                       className="absolute inset-0 rounded-full blur-lg"
@@ -424,7 +424,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                         opacity: isActive ? 0.5 : isHovered ? 0.3 : 0,
                         scale: isActive ? 1.4 : 1
                       }} />
-
+                    
 
                       {/* Icon Container */}
                       <motion.div
@@ -444,14 +444,14 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                       transition={{
                         duration: 0.6
                       }}>
-
+                      
                         <Icon
                         className="w-6 h-6"
                         style={{
                           color:
                           isActive || isHovered ? item.color : '#6B7280'
                         }} />
-
+                      
                       </motion.div>
 
                       {/* Label - Always Visible */}
@@ -472,7 +472,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                       transition={{
                         delay: 0.5 + index * 0.08
                       }}>
-
+                      
                         <div
                         className="px-2.5 py-1 rounded-lg text-xs font-bold backdrop-blur-sm"
                         style={{
@@ -484,7 +484,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                           isActive || isHovered ? item.color : '#9CA3AF',
                           border: `1px solid ${item.color}${isActive || isHovered ? '40' : '20'}`
                         }}>
-
+                        
                           {item.label}
                         </div>
                       </motion.div>
@@ -563,7 +563,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
             transition={{
               delay: 0.2
             }}>
-
+            
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-transparent blur-3xl" />
             <div className="relative">
               <div className="flex items-center gap-3 mb-2">
@@ -600,7 +600,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                   whileHover={{
                     y: -5
                   }}>
-
+                  
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
 
                   <div className="relative bg-gradient-to-br from-[#0A0E1A] to-[#0F1520] rounded-2xl p-6 border border-white/10 backdrop-blur-xl overflow-hidden">
@@ -614,7 +614,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                         repeat: Infinity,
                         ease: 'linear'
                       }} />
-
+                    
 
                     <div className="flex items-center justify-between mb-4">
                       <motion.div
@@ -628,13 +628,13 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                         transition={{
                           duration: 0.5
                         }}>
-
+                        
                         <Icon
                           className="w-6 h-6"
                           style={{
                             color: stat.color
                           }} />
-
+                        
                       </motion.div>
                       <span className="text-sm font-bold text-green-400">
                         {stat.change}
@@ -664,7 +664,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
             transition={{
               delay: 0.7
             }}>
-
+            
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 rounded-2xl blur-3xl" />
 
             <div className="relative bg-gradient-to-br from-[#0A0E1A] to-[#0F1520] rounded-2xl p-6 border border-cyan-500/20 backdrop-blur-xl">
@@ -691,7 +691,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                   transition={{
                     delay: 0.8 + index * 0.1
                   }}>
-
+                  
                     <motion.div
                     className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 relative"
                     style={{
@@ -700,7 +700,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                     whileHover={{
                       scale: 1.1
                     }}>
-
+                    
                       <motion.div
                       className="w-2 h-2 rounded-full"
                       style={{
@@ -717,7 +717,7 @@ export function SidebarPage({ onNavigate }: SidebarPageProps) {
                         duration: 2,
                         repeat: Infinity
                       }} />
-
+                    
                     </motion.div>
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-white">

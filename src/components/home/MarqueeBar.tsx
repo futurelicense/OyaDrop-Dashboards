@@ -16,13 +16,13 @@ export function MarqueeBar() {
           repeat: Infinity,
           ease: 'linear'
         }}>
-
+        
         {[...announcements, ...announcements, ...announcements].map(
           (text, index) =>
           <div
             key={index}
             className="flex items-center gap-2 whitespace-nowrap">
-
+            
               <span className="text-xs font-medium text-gray-300">{text}</span>
             </div>
 

@@ -154,15 +154,15 @@ export function LaundryDashboardPage({
       <CreateOrderSheet
         isOpen={activeQuickAction === 'create-order'}
         onClose={() => setActiveQuickAction(null)} />
-
+      
       <UpdateStatusSheet
         isOpen={activeQuickAction === 'update-status'}
         onClose={() => setActiveQuickAction(null)} />
-
+      
       <AssignRiderSheet
         isOpen={activeQuickAction === 'assign-rider'}
         onClose={() => setActiveQuickAction(null)} />
-
+      
 
       {/* Order Details Sheet */}
       <OrderDetailsSheet
@@ -172,7 +172,7 @@ export function LaundryDashboardPage({
         onStatusChange={handleStatusChange}
         onContactCustomer={handleContactCustomer}
         statusOptions={statusOptions} />
-
+      
     </>);
 
 }

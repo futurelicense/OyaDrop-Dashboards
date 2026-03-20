@@ -74,7 +74,7 @@ export function SmartFilters() {
           whileTap={{
             scale: 0.95
           }}>
-
+          
             <X className="w-3 h-3" />
             Clear all
           </motion.button>
@@ -110,7 +110,7 @@ export function SmartFilters() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Icon className="w-4 h-4" />
               {filter.label}
             </motion.button>);

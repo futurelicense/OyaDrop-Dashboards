@@ -19,7 +19,7 @@ export function TopNav({ onMenuClick }: TopNavProps) {
       transition={{
         duration: 0.4
       }}>
-
+      
       <div className="flex items-center justify-between px-5 py-4">
         <motion.button
           className="p-2 rounded-lg hover:bg-white/5 transition-colors"
@@ -27,7 +27,7 @@ export function TopNav({ onMenuClick }: TopNavProps) {
             scale: 0.95
           }}
           onClick={onMenuClick}>
-
+          
           <MenuIcon className="w-6 h-6 text-white" />
         </motion.button>
 
@@ -44,7 +44,7 @@ export function TopNav({ onMenuClick }: TopNavProps) {
           transition={{
             delay: 0.2
           }}>
-
+          
           OyaDrop
         </motion.div>
 
@@ -54,7 +54,7 @@ export function TopNav({ onMenuClick }: TopNavProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <BellIcon className="w-6 h-6 text-white" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#00ff88] rounded-full shadow-[0_0_8px_#00ff88]" />
           </motion.button>
@@ -64,7 +64,7 @@ export function TopNav({ onMenuClick }: TopNavProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <div className="w-full h-full rounded-full bg-[#1a1a24] flex items-center justify-center">
               <UserCircleIcon className="w-5 h-5 text-[#00d9ff]" />
             </div>

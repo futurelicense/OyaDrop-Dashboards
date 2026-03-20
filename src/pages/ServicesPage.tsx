@@ -124,7 +124,7 @@ export function ServicesPage({ onBack, onNavigate }: ServicesPageProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <ArrowLeft className="w-6 h-6 text-white" />
             </motion.button>
             <div>
@@ -144,32 +144,32 @@ export function ServicesPage({ onBack, onNavigate }: ServicesPageProps) {
         isOpen={activeSheet === 'pharmacy'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handlePharmacySubmit} />
-
+      
       <SupermarketRequestSheet
         isOpen={activeSheet === 'supermarket'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handleSupermarketSubmit} />
-
+      
       <BeautyRequestSheet
         isOpen={activeSheet === 'beauty'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handleBeautySubmit} />
-
+      
       <TransportRequestSheet
         isOpen={activeSheet === 'transport'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handleTransportSubmit} />
-
+      
       <FastFoodRequestSheet
         isOpen={activeSheet === 'fastfood'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handleFastFoodSubmit} />
-
+      
       <LaundryRequestSheet
         isOpen={activeSheet === 'laundry'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handleLaundrySubmit} />
-
+      
 
       {/* Success Confirmation */}
       {successConfig &&

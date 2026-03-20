@@ -102,7 +102,7 @@ export function MessagingPage({ onMenuClick }: MessagingPageProps) {
             y: 0,
             opacity: 1
           }}>
-
+          
           <div className="flex items-center gap-3">
             <motion.button
               className="p-2 rounded-xl hover:bg-white/5 transition-colors"
@@ -110,7 +110,7 @@ export function MessagingPage({ onMenuClick }: MessagingPageProps) {
                 scale: 0.95
               }}
               onClick={onMenuClick}>
-
+              
               <Menu className="w-6 h-6 text-white" />
             </motion.button>
             <h1 className="text-xl font-bold text-white">Messages</h1>
@@ -122,7 +122,7 @@ export function MessagingPage({ onMenuClick }: MessagingPageProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Bell className="w-6 h-6 text-white" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-cyan-500 rounded-full" />
             </motion.button>
@@ -158,7 +158,7 @@ export function MessagingPage({ onMenuClick }: MessagingPageProps) {
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                 <Icon className="w-5 h-5" />
                 <span className="text-sm font-semibold">{tab.label}</span>
 
@@ -202,12 +202,12 @@ export function MessagingPage({ onMenuClick }: MessagingPageProps) {
       <CreateUpdateSheet
         isOpen={showCreateUpdate}
         onClose={() => setShowCreateUpdate(false)} />
-
+      
       <ViewUpdateSheet
         isOpen={!!selectedUpdate}
         onClose={() => setSelectedUpdate(null)}
         update={selectedUpdate} />
-
+      
     </>);
 
 }

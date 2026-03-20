@@ -96,15 +96,15 @@ export function PharmacyDashboardPage({
       <AddMedicationSheet
         isOpen={activeQuickAction === 'add-medication'}
         onClose={() => setActiveQuickAction(null)} />
-
+      
       <CheckPrescriptionSheet
         isOpen={activeQuickAction === 'check-prescription'}
         onClose={() => setActiveQuickAction(null)} />
-
+      
       <UploadStockSheet
         isOpen={activeQuickAction === 'upload-stock'}
         onClose={() => setActiveQuickAction(null)} />
-
+      
     </>);
 
 }

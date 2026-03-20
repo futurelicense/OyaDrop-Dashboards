@@ -19,7 +19,7 @@ export function HomeTopNav({ onMenuClick }: HomeTopNavProps) {
       transition={{
         duration: 0.4
       }}>
-
+      
       <div className="flex items-center justify-between px-5 py-4">
         <motion.button
           className="p-2 rounded-lg hover:bg-gray-900 transition-colors"
@@ -27,7 +27,7 @@ export function HomeTopNav({ onMenuClick }: HomeTopNavProps) {
             scale: 0.95
           }}
           onClick={onMenuClick}>
-
+          
           <MenuIcon className="w-6 h-6 text-white" />
         </motion.button>
 
@@ -44,7 +44,7 @@ export function HomeTopNav({ onMenuClick }: HomeTopNavProps) {
           transition={{
             delay: 0.2
           }}>
-
+          
           <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-sm">O</span>
           </div>
@@ -57,7 +57,7 @@ export function HomeTopNav({ onMenuClick }: HomeTopNavProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <BellIcon className="w-6 h-6 text-white" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full" />
           </motion.button>
@@ -67,7 +67,7 @@ export function HomeTopNav({ onMenuClick }: HomeTopNavProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <UserCircleIcon className="w-6 h-6 text-white" />
           </motion.button>
         </div>

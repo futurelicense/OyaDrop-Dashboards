@@ -62,7 +62,7 @@ export function StartGroupOrderSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Bottom Sheet */}
           <motion.div
@@ -81,7 +81,7 @@ export function StartGroupOrderSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -101,7 +101,7 @@ export function StartGroupOrderSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -119,7 +119,7 @@ export function StartGroupOrderSheet({
                 value={groupName}
                 onChange={(e) => setGroupName(e.target.value)}
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
               </div>
 
               {/* Order Deadline */}
@@ -136,13 +136,13 @@ export function StartGroupOrderSheet({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                       <Clock
                     className={`w-5 h-5 mx-auto mb-1 ${deadline === mins ? 'text-purple-400' : 'text-gray-400'}`} />
-
+                  
                       <p
                     className={`text-xs font-semibold ${deadline === mins ? 'text-white' : 'text-gray-400'}`}>
-
+                    
                         {mins} mins
                       </p>
                     </motion.button>
@@ -175,15 +175,15 @@ export function StartGroupOrderSheet({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                       <img
                     src={contact.avatar}
                     alt={contact.name}
                     className="w-10 h-10 rounded-full object-cover" />
-
+                  
                       <span
                     className={`text-sm font-semibold flex-1 text-left ${selectedContacts.includes(contact.id) ? 'text-white' : 'text-gray-400'}`}>
-
+                    
                         {contact.name}
                       </span>
                       {selectedContacts.includes(contact.id) &&
@@ -217,7 +217,7 @@ export function StartGroupOrderSheet({
                 scale: selectedContacts.length > 0 ? 0.98 : 1
               }}
               disabled={selectedContacts.length === 0}>
-
+              
                 Start Group Order
               </motion.button>
             </div>

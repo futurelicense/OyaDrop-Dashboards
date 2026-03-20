@@ -65,7 +65,7 @@ export function AchievementWall() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Achievement Wall
       </motion.h2>
       <p className="text-sm text-gray-400 mb-6">
@@ -97,7 +97,7 @@ export function AchievementWall() {
               } :
               {}
               }>
-
+              
               {achievement.unlocked &&
               <div
                 className="absolute top-0 right-0 w-16 h-16 rounded-full blur-2xl opacity-30"
@@ -129,7 +129,7 @@ export function AchievementWall() {
                     duration: 2,
                     repeat: Infinity
                   }}>
-
+                  
                   <Icon
                     className="w-6 h-6"
                     style={{
@@ -137,12 +137,12 @@ export function AchievementWall() {
                       achievement.color :
                       '#4a5568'
                     }} />
-
+                  
                 </motion.div>
 
                 <p
                   className={`text-[10px] font-semibold leading-tight ${achievement.unlocked ? 'text-white' : 'text-gray-600'}`}>
-
+                  
                   {achievement.title}
                 </p>
 
@@ -159,7 +159,7 @@ export function AchievementWall() {
                     delay: 0.4 + index * 0.08,
                     type: 'spring'
                   }}>
-
+                  
                     <span className="text-white text-[10px]">✓</span>
                   </motion.div>
                 }

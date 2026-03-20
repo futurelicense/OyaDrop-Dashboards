@@ -48,7 +48,7 @@ export function FeatureCards({ onNavigate }: FeatureCardsProps) {
           opacity: 1,
           y: 0
         }}>
-
+        
         Why OyaDrop?
       </motion.h2>
 
@@ -74,7 +74,7 @@ export function FeatureCards({ onNavigate }: FeatureCardsProps) {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
               {/* Glow effect */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl" />
 

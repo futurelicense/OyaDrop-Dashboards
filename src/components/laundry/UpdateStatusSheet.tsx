@@ -61,7 +61,7 @@ export function UpdateStatusSheet({ isOpen, onClose }: UpdateStatusSheetProps) {
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           <motion.div
           className="fixed bottom-0 left-0 right-0 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl z-[90] max-h-[75vh] flex flex-col"
@@ -79,7 +79,7 @@ export function UpdateStatusSheet({ isOpen, onClose }: UpdateStatusSheetProps) {
             damping: 30,
             stiffness: 300
           }}>
-
+          
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
             </div>
@@ -95,7 +95,7 @@ export function UpdateStatusSheet({ isOpen, onClose }: UpdateStatusSheetProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -130,7 +130,7 @@ export function UpdateStatusSheet({ isOpen, onClose }: UpdateStatusSheetProps) {
                 scale: 0.98
               }}
               onClick={() => setSelectedStatus(status.id)}>
-
+              
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{status.icon}</span>
                     <div className="flex-1">
@@ -157,7 +157,7 @@ export function UpdateStatusSheet({ isOpen, onClose }: UpdateStatusSheetProps) {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 Update Status
               </motion.button>
             </div>

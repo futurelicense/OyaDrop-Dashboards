@@ -391,7 +391,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
               }
             }}
             className="w-full max-w-6xl">
-
+            
             {/* Product Showcase Slide with Real UI Mockups */}
             {slide.type === 'product-showcase' &&
             <div>
@@ -488,19 +488,19 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                           <div
                             key={i}
                             className="bg-white/5 border border-white/10 rounded-lg p-2 text-center">
-
+                            
                               <div
                               className="w-8 h-8 mx-auto mb-1 rounded-lg flex items-center justify-center"
                               style={{
                                 backgroundColor: `${service.color}20`
                               }}>
-
+                              
                                 <Icon
                                 className="w-4 h-4"
                                 style={{
                                   color: service.color
                                 }} />
-
+                              
                               </div>
                               <p className="text-[8px] text-white">
                                 {service.label}
@@ -519,7 +519,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                       <div
                         key={i}
                         className="flex items-center gap-2 mb-2 last:mb-0">
-
+                        
                             <div className="w-6 h-6 bg-cyan-500/20 rounded-lg flex items-center justify-center">
                               <Utensils className="w-3 h-3 text-cyan-400" />
                             </div>
@@ -581,7 +581,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                       <div
                         key={i}
                         className="bg-white/5 border border-white/10 rounded-lg p-2">
-
+                        
                             <p className="text-[7px] text-gray-400 mb-1">
                               {kpi.label}
                             </p>
@@ -593,7 +593,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                           style={{
                             color: kpi.color
                           }}>
-
+                          
                               {kpi.change}
                             </span>
                           </div>
@@ -627,7 +627,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                       <div
                         key={i}
                         className="flex items-center gap-2 mb-2 last:mb-0 text-[7px]">
-
+                        
                             <div className="w-4 h-4 bg-orange-500/20 rounded flex items-center justify-center">
                               <span className="text-orange-400 text-[8px]">
                                 #{i}
@@ -692,7 +692,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                       <div
                         key={i}
                         className="bg-teal-500/10 border border-teal-500/20 rounded-lg p-2 mb-2 last:mb-0">
-
+                        
                             <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center gap-2">
                                 <div className="w-6 h-6 bg-teal-500/20 rounded-lg flex items-center justify-center">
@@ -754,7 +754,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.5
                 }}>
-
+                
                   {[
                 {
                   label: 'Real-time Tracking',
@@ -782,19 +782,19 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                     <div
                       key={i}
                       className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl p-4 text-center">
-
+                      
                         <div
                         className="w-10 h-10 mx-auto mb-2 rounded-lg flex items-center justify-center"
                         style={{
                           backgroundColor: `${feature.color}20`
                         }}>
-
+                        
                           <Icon
                           className="w-5 h-5"
                           style={{
                             color: feature.color
                           }} />
-
+                        
                         </div>
                         <p className="text-xs font-bold text-white">
                           {feature.label}
@@ -821,7 +821,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   delay: 0.2,
                   type: 'spring'
                 }}>
-
+                
                   <div className="w-32 h-32 mx-auto bg-gradient-to-br from-cyan-500 to-teal-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/50">
                     <span className="text-white font-bold text-6xl">O</span>
                   </div>
@@ -839,7 +839,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.3
                 }}>
-
+                
                   {slide.title}
                 </motion.h1>
                 <motion.p
@@ -855,7 +855,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.4
                 }}>
-
+                
                   {slide.subtitle}
                 </motion.p>
                 <motion.p
@@ -871,7 +871,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.5
                 }}>
-
+                
                   {slide.tagline}
                 </motion.p>
               </div>
@@ -900,7 +900,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.1
                   }}>
-
+                  
                       <h3 className="text-xl font-bold text-white mb-2">
                         {point.text}
                       </h3>
@@ -936,7 +936,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                       transition={{
                         delay: index * 0.1
                       }}>
-
+                      
                         <div className="w-16 h-16 mx-auto mb-4 bg-cyan-500/20 rounded-xl flex items-center justify-center">
                           <Icon className="w-8 h-8 text-cyan-400" />
                         </div>
@@ -974,7 +974,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.1
                   }}>
-
+                  
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-5xl font-bold text-white">
                           {stat.value}
@@ -1013,7 +1013,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.1
                   }}>
-
+                  
                       <p className="text-sm text-gray-400 mb-2">
                         {metric.label}
                       </p>
@@ -1055,7 +1055,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.1
                   }}>
-
+                  
                       <div className="text-4xl font-bold text-cyan-400 w-20">
                         {stream.percentage}
                       </div>
@@ -1078,7 +1078,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                         delay: 0.5 + index * 0.1,
                         duration: 0.8
                       }} />
-
+                    
                       </div>
                     </motion.div>
                 )}
@@ -1109,7 +1109,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.15
                   }}>
-
+                  
                       <h3 className="text-3xl font-bold text-white mb-6">
                         {year.year}
                       </h3>
@@ -1164,7 +1164,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.1
                   }}>
-
+                  
                       <div className="w-24">
                         <div className="text-sm text-gray-400 mb-1">
                           {phase.phase}
@@ -1209,7 +1209,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.1
                   }}>
-
+                  
                       <h3 className="text-xl font-bold text-white mb-2">
                         {advantage.title}
                       </h3>
@@ -1240,7 +1240,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                     type: 'spring',
                     delay: 0.2
                   }}>
-
+                  
                     <p className="text-6xl font-bold text-white">{slide.ask}</p>
                   </motion.div>
                 </div>
@@ -1260,7 +1260,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   transition={{
                     delay: index * 0.1
                   }}>
-
+                  
                       <div className="flex-1">
                         <h3 className="text-lg font-bold text-white">
                           {item.category}
@@ -1298,7 +1298,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.2
                 }}>
-
+                
                   <Award className="w-20 h-20 text-purple-400 mx-auto mb-6" />
                   <p className="text-2xl text-white">{slide.description}</p>
                 </motion.div>
@@ -1320,7 +1320,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                   delay: 0.2,
                   type: 'spring'
                 }}>
-
+                
                   <div className="w-32 h-32 mx-auto bg-gradient-to-br from-cyan-500 to-teal-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/50">
                     <span className="text-white font-bold text-6xl">O</span>
                   </div>
@@ -1338,7 +1338,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.3
                 }}>
-
+                
                   {slide.title}
                 </motion.h1>
                 <motion.p
@@ -1354,7 +1354,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.4
                 }}>
-
+                
                   {slide.subtitle}
                 </motion.p>
                 <motion.p
@@ -1370,7 +1370,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.5
                 }}>
-
+                
                   {slide.cta}
                 </motion.p>
                 <motion.div
@@ -1384,7 +1384,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
                 transition={{
                   delay: 0.6
                 }}>
-
+                
                   <p>contact@oyadrop.com</p>
                   <p className="mt-2">www.oyadrop.com</p>
                 </motion.div>
@@ -1401,7 +1401,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
             onClick={prevSlide}
             disabled={currentSlide === 0}
             className="p-3 rounded-xl bg-cyan-500/20 border border-cyan-500/30 hover:bg-cyan-500/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
-
+            
             <ChevronLeft className="w-6 h-6 text-white" />
           </button>
 
@@ -1419,7 +1419,7 @@ export function PitchDeckPage({ onBack }: PitchDeckPageProps) {
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1}
             className="p-3 rounded-xl bg-cyan-500/20 border border-cyan-500/30 hover:bg-cyan-500/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
-
+            
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
         </div>

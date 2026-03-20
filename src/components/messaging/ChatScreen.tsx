@@ -85,14 +85,14 @@ export function ChatScreen({
             y: 0,
             opacity: 1
           }}>
-
+          
           <motion.button
             className="p-2 rounded-xl hover:bg-white/5 transition-colors"
             onClick={onBack}
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -101,7 +101,7 @@ export function ChatScreen({
               src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop"
               alt="B-square Restaurant"
               className="w-11 h-11 rounded-full object-cover" />
-
+            
             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-[#131B2E]" />
           </div>
 
@@ -118,7 +118,7 @@ export function ChatScreen({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Phone className="w-5 h-5 text-white" />
             </motion.button>
             <motion.button
@@ -126,7 +126,7 @@ export function ChatScreen({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Info className="w-5 h-5 text-white" />
             </motion.button>
           </div>
@@ -149,15 +149,15 @@ export function ChatScreen({
             transition={{
               delay: index * 0.1
             }}>
-
+            
               {msg.type === 'text' && msg.text &&
             <div
               className={`max-w-[75%] rounded-2xl px-4 py-3 ${msg.sender === 'user' ? 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-br-sm' : 'bg-[#131B2E] text-white rounded-bl-sm'}`}>
-
+              
                   <p className="text-sm">{msg.text}</p>
                   <p
                 className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-white/70' : 'text-gray-400'}`}>
-
+                
                     {msg.time}
                   </p>
                 </div>
@@ -182,7 +182,7 @@ export function ChatScreen({
             animate={{
               opacity: 1
             }}>
-
+            
             <div className="bg-[#131B2E] rounded-2xl rounded-bl-sm px-4 py-3">
               <div className="flex gap-1">
                 <motion.div
@@ -195,7 +195,7 @@ export function ChatScreen({
                     repeat: Infinity,
                     delay: 0
                   }} />
-
+                
                 <motion.div
                   className="w-2 h-2 bg-gray-400 rounded-full"
                   animate={{
@@ -206,7 +206,7 @@ export function ChatScreen({
                     repeat: Infinity,
                     delay: 0.2
                   }} />
-
+                
                 <motion.div
                   className="w-2 h-2 bg-gray-400 rounded-full"
                   animate={{
@@ -217,7 +217,7 @@ export function ChatScreen({
                     repeat: Infinity,
                     delay: 0.4
                   }} />
-
+                
               </div>
             </div>
           </motion.div>
@@ -239,7 +239,7 @@ export function ChatScreen({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Plus className="w-6 h-6 text-gray-400" />
             </motion.button>
 
@@ -250,13 +250,13 @@ export function ChatScreen({
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 pr-10 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
               <motion.button
                 className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg hover:bg-white/5 transition-colors"
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                 <ImageIcon className="w-5 h-5 text-gray-400" />
               </motion.button>
             </div>
@@ -273,7 +273,7 @@ export function ChatScreen({
               animate={{
                 scale: 1
               }}>
-
+              
                 <Send className="w-5 h-5 text-white" />
               </motion.button> :
 
@@ -282,7 +282,7 @@ export function ChatScreen({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <Mic className="w-5 h-5 text-gray-400" />
               </motion.button>
             }
@@ -295,17 +295,17 @@ export function ChatScreen({
         isOpen={activeSheet === 'view-menu'}
         onClose={() => setActiveSheet(null)}
         restaurantName="B-square Restaurant" />
-
+      
       <RequestPickupSheet
         isOpen={activeSheet === 'request-pickup'}
         onClose={() => setActiveSheet(null)}
         driverName="Tunde" />
-
+      
       <StartGroupOrderSheet
         isOpen={activeSheet === 'group-order'}
         onClose={() => setActiveSheet(null)}
         restaurantName="B-square Restaurant" />
-
+      
     </>);
 
 }

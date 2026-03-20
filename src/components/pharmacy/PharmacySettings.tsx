@@ -121,20 +121,20 @@ export function PharmacySettings() {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <div className="flex items-center gap-3">
                       <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                       style={{
                         backgroundColor: item.color + '20'
                       }}>
-
+                      
                         <Icon
                         className="w-6 h-6"
                         style={{
                           color: item.color
                         }} />
-
+                      
                       </div>
 
                       <div className="flex-1 min-w-0">

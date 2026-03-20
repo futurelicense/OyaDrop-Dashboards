@@ -116,14 +116,14 @@ export function FastFoodKPIBar() {
                 y: -2,
                 borderColor: kpi.color + '40'
               }}>
-
+              
               {/* Glow Effect */}
               <div
                 className="absolute top-0 right-0 w-16 h-16 rounded-full blur-2xl opacity-20"
                 style={{
                   backgroundColor: kpi.color
                 }} />
-
+              
 
               {/* Icon */}
               <div
@@ -131,13 +131,13 @@ export function FastFoodKPIBar() {
                 style={{
                   backgroundColor: kpi.color + '20'
                 }}>
-
+                
                 <Icon
                   className="w-4 h-4"
                   style={{
                     color: kpi.color
                   }} />
-
+                
                 {kpi.pulse &&
                 <motion.div
                   className="absolute inset-0 rounded-lg"
@@ -170,7 +170,7 @@ export function FastFoodKPIBar() {
                   style={{
                     color: kpi.trend.startsWith('+') ? '#10B981' : '#EF4444'
                   }}>
-
+                  
                     {kpi.trend}
                   </span>
                 }
@@ -201,7 +201,7 @@ export function FastFoodKPIBar() {
           whileTap={{
             scale: 0.95
           }}>
-
+          
             <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
               <Plus className="w-4 h-4 text-cyan-400" />
             </div>
@@ -229,7 +229,7 @@ export function FastFoodKPIBar() {
           whileTap={{
             scale: 0.95
           }}>
-
+          
             <div className="w-8 h-8 rounded-lg bg-gray-500/20 flex items-center justify-center">
               <motion.div
               animate={{
@@ -238,7 +238,7 @@ export function FastFoodKPIBar() {
               transition={{
                 duration: 0.3
               }}>
-
+              
                 <Plus className="w-4 h-4 text-gray-400" />
               </motion.div>
             </div>

@@ -51,7 +51,7 @@ export function RecentActivity() {
               opacity: 1,
               y: 0
             }}>
-
+            
             Recent Activity
           </motion.h2>
           <p className="text-xs text-cyan-400">Live updates</p>
@@ -62,7 +62,7 @@ export function RecentActivity() {
           whileTap={{
             scale: 0.95
           }}>
-
+          
           View All
         </motion.button>
       </div>
@@ -80,7 +80,7 @@ export function RecentActivity() {
         transition={{
           delay: 0.5
         }}>
-
+        
         <div className="divide-y divide-gray-800">
           {activities.map((activity, index) => {
             const Icon = activity.icon;
@@ -99,19 +99,19 @@ export function RecentActivity() {
                 transition={{
                   delay: 0.6 + index * 0.1
                 }}>
-
+                
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{
                     backgroundColor: `${activity.color}20`
                   }}>
-
+                  
                   <Icon
                     className="w-5 h-5"
                     style={{
                       color: activity.color
                     }} />
-
+                  
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -129,7 +129,7 @@ export function RecentActivity() {
                 <div className="text-right">
                   <p
                     className={`text-sm font-bold ${activity.isCredit ? 'text-green-400' : 'text-white'}`}>
-
+                    
                     {activity.amount}
                   </p>
                 </div>

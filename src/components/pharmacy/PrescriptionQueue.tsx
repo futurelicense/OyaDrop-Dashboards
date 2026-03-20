@@ -85,7 +85,7 @@ export function PrescriptionQueue({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {filter}
               </motion.button>
 
@@ -112,14 +112,14 @@ export function PrescriptionQueue({
               transition={{
                 delay: index * 0.05
               }}>
-
+              
               {/* Prescription Image */}
               <div className="relative h-40">
                 <img
                   src={prescription.uploadedImage}
                   alt="Prescription"
                   className="w-full h-full object-cover" />
-
+                
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute top-3 left-3">
                   <span
@@ -129,7 +129,7 @@ export function PrescriptionQueue({
                       color: colors.text,
                       borderColor: colors.border
                     }}>
-
+                    
                     {prescription.status.charAt(0).toUpperCase() +
                     prescription.status.slice(1)}
                   </span>
@@ -173,7 +173,7 @@ export function PrescriptionQueue({
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                     <MessageCircle className="w-4 h-4" />
                     Chat
                   </motion.button>
@@ -183,7 +183,7 @@ export function PrescriptionQueue({
                       scale: 0.98
                     }}
                     onClick={() => onReviewPrescription(prescription)}>
-
+                    
                     <Eye className="w-4 h-4" />
                     Review Now
                   </motion.button>

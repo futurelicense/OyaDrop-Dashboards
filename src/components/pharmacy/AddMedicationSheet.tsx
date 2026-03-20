@@ -37,7 +37,7 @@ export function AddMedicationSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Bottom Sheet */}
           <motion.div
@@ -56,7 +56,7 @@ export function AddMedicationSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -74,7 +74,7 @@ export function AddMedicationSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -91,7 +91,7 @@ export function AddMedicationSheet({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                   <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                   <p className="text-sm text-gray-400 text-center">
                     Tap to upload image
@@ -115,7 +115,7 @@ export function AddMedicationSheet({
                 })
                 }
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
               </div>
 
               {/* Generic Name */}
@@ -134,7 +134,7 @@ export function AddMedicationSheet({
                 })
                 }
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
               </div>
 
               {/* Form & Strength */}
@@ -152,7 +152,7 @@ export function AddMedicationSheet({
                   })
                   }
                   className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none">
-
+                  
                     <option>Tablet</option>
                     <option>Capsule</option>
                     <option>Syrup</option>
@@ -176,7 +176,7 @@ export function AddMedicationSheet({
                   })
                   }
                   className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                 </div>
               </div>
 
@@ -199,7 +199,7 @@ export function AddMedicationSheet({
                   whileTap={{
                     scale: 0.95
                   }}>
-
+                  
                       {type}
                     </motion.button>
                 )}
@@ -223,7 +223,7 @@ export function AddMedicationSheet({
                   })
                   }
                   className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                 </div>
                 <div>
                   <label className="text-sm font-semibold text-gray-400 mb-2 block">
@@ -240,7 +240,7 @@ export function AddMedicationSheet({
                   })
                   }
                   className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                 </div>
               </div>
 
@@ -260,7 +260,7 @@ export function AddMedicationSheet({
                   })
                   }
                   className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none" />
-
+                
                 </div>
                 <div>
                   <label className="text-sm font-semibold text-gray-400 mb-2 block">
@@ -277,7 +277,7 @@ export function AddMedicationSheet({
                   })
                   }
                   className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                
                 </div>
               </div>
             </div>
@@ -289,7 +289,7 @@ export function AddMedicationSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Plus className="w-5 h-5" />
                 Add Medication
               </motion.button>

@@ -119,7 +119,7 @@ export function ChatContactsList({
             type="text"
             placeholder="Search contacts, riders, vendors..."
             className="w-full bg-[#131B2E] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+          
         </div>
       </div>
 
@@ -136,7 +136,7 @@ export function ChatContactsList({
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                 {filter.label}
               </motion.button>);
 
@@ -165,20 +165,20 @@ export function ChatContactsList({
             scale: 0.98
           }}
           onClick={() => onSelectContact?.(contact)}>
-
+          
             {/* Avatar with Status */}
             <div className="relative flex-shrink-0">
               <img
               src={contact.avatar}
               alt={contact.name}
               className="w-14 h-14 rounded-full object-cover" />
-
+            
               <div
               className="absolute bottom-0 right-0 w-4 h-4 rounded-full border-2 border-[#0A0E1A]"
               style={{
                 backgroundColor: statusColors[contact.status]
               }} />
-
+            
             </div>
 
             {/* Info */}
@@ -193,7 +193,7 @@ export function ChatContactsList({
                   backgroundColor: roleColors[contact.role] + '20',
                   color: roleColors[contact.role]
                 }}>
-
+                
                   {contact.role}
                 </span>
               </div>
@@ -213,7 +213,7 @@ export function ChatContactsList({
                 e.stopPropagation();
                 onSelectContact?.(contact);
               }}>
-
+              
                 <MessageCircle className="w-4 h-4 text-cyan-400" />
               </motion.button>
             </div>
@@ -231,7 +231,7 @@ export function ChatContactsList({
           scale: 0.9
         }}
         onClick={onAddContact}>
-
+        
         <Plus className="w-6 h-6 text-white" />
       </motion.button>
     </div>);

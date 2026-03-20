@@ -36,7 +36,7 @@ export function RequestSuccessSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Sheet */}
           <motion.div
@@ -55,7 +55,7 @@ export function RequestSuccessSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -72,7 +72,7 @@ export function RequestSuccessSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -95,13 +95,13 @@ export function RequestSuccessSheet({
                 damping: 15,
                 delay: 0.1
               }}>
-
+              
                 <CheckCircle
                 className="w-12 h-12"
                 style={{
                   color
                 }} />
-
+              
               </motion.div>
 
               <motion.h3
@@ -117,7 +117,7 @@ export function RequestSuccessSheet({
               transition={{
                 delay: 0.2
               }}>
-
+              
                 {title}
               </motion.h3>
 
@@ -134,7 +134,7 @@ export function RequestSuccessSheet({
               transition={{
                 delay: 0.3
               }}>
-
+              
                 {message}
               </motion.p>
 
@@ -158,7 +158,7 @@ export function RequestSuccessSheet({
               transition={{
                 delay: 0.4
               }}>
-
+              
                 {actionLabel}
                 <ArrowRight className="w-5 h-5" />
               </motion.button>

@@ -29,7 +29,7 @@ export function LocationInputCards({
         transition={{
           delay: 0.2
         }}>
-
+        
         <div className="flex items-center gap-3 mb-3">
           <div className="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center">
             <MapPin className="w-5 h-5 text-green-400" />
@@ -42,7 +42,7 @@ export function LocationInputCards({
               value={pickup}
               onChange={(e) => onPickupChange(e.target.value)}
               className="w-full bg-transparent text-white text-sm placeholder:text-gray-500 focus:outline-none" />
-
+            
           </div>
           <Search className="w-5 h-5 text-gray-400" />
         </div>
@@ -53,7 +53,7 @@ export function LocationInputCards({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Navigation className="w-3 h-3" />
             My Location
           </motion.button>
@@ -63,7 +63,7 @@ export function LocationInputCards({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Clock className="w-3 h-3" />
             Saved
           </motion.button>
@@ -84,7 +84,7 @@ export function LocationInputCards({
         transition={{
           delay: 0.3
         }}>
-
+        
         <div className="flex items-center gap-3 mb-3">
           <div className="w-10 h-10 bg-red-500/20 rounded-xl flex items-center justify-center">
             <MapPin className="w-5 h-5 text-red-400" />
@@ -97,7 +97,7 @@ export function LocationInputCards({
               value={destination}
               onChange={(e) => onDestinationChange(e.target.value)}
               className="w-full bg-transparent text-white text-sm placeholder:text-gray-500 focus:outline-none" />
-
+            
           </div>
           <Search className="w-5 h-5 text-gray-400" />
         </div>
@@ -108,7 +108,7 @@ export function LocationInputCards({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <MapPin className="w-3 h-3" />
             Choose on Map
           </motion.button>
@@ -118,7 +118,7 @@ export function LocationInputCards({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Clock className="w-3 h-3" />
             Recent
           </motion.button>

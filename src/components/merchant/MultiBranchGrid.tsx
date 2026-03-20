@@ -129,7 +129,7 @@ export function MultiBranchGrid() {
         whileTap={{
           scale: 0.98
         }}>
-
+        
         <div className="text-left">
           <h2 className="text-lg font-bold text-white">Branch Performance</h2>
           <p className="text-xs text-gray-400">
@@ -143,7 +143,7 @@ export function MultiBranchGrid() {
           transition={{
             duration: 0.3
           }}>
-
+          
           <ChevronDown className="w-6 h-6 text-cyan-400" />
         </motion.div>
       </motion.button>
@@ -168,7 +168,7 @@ export function MultiBranchGrid() {
           transition={{
             duration: 0.3
           }}>
-
+          
             {branches.map((branch, index) => {
             const heatColors = getHeatColor(branch.heatLevel);
             const isBranchExpanded = expandedBranches.includes(branch.id);
@@ -190,7 +190,7 @@ export function MultiBranchGrid() {
                 whileHover={{
                   borderColor: '#00D9C040'
                 }}>
-
+                
                   {/* Clickable Header */}
                   <motion.button
                   className="w-full p-5 text-left"
@@ -198,7 +198,7 @@ export function MultiBranchGrid() {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center text-2xl">
@@ -224,7 +224,7 @@ export function MultiBranchGrid() {
                           color: heatColors.text,
                           border: `1px solid ${heatColors.border}40`
                         }}>
-
+                        
                           {branch.heatLevel}
                         </div>
 
@@ -236,7 +236,7 @@ export function MultiBranchGrid() {
                         transition={{
                           duration: 0.3
                         }}>
-
+                        
                           <ChevronDown className="w-5 h-5 text-gray-400" />
                         </motion.div>
                       </div>
@@ -285,7 +285,7 @@ export function MultiBranchGrid() {
                       duration: 0.3
                     }}
                     className="overflow-hidden">
-
+                    
                         <div className="px-5 pb-5 space-y-4">
                           {/* Detailed Stats Grid */}
                           <div className="grid grid-cols-2 gap-3">
@@ -361,7 +361,7 @@ export function MultiBranchGrid() {
                           whileTap={{
                             scale: 0.95
                           }}>
-
+                          
                               <Settings className="w-4 h-4 text-cyan-400" />
                               <span className="text-[9px] text-cyan-400 font-semibold">
                                 Manage
@@ -373,7 +373,7 @@ export function MultiBranchGrid() {
                           whileTap={{
                             scale: 0.95
                           }}>
-
+                          
                               <QrCode className="w-4 h-4 text-gray-400" />
                               <span className="text-[9px] text-gray-400 font-semibold">
                                 QR
@@ -385,7 +385,7 @@ export function MultiBranchGrid() {
                           whileTap={{
                             scale: 0.95
                           }}>
-
+                          
                               <Edit className="w-4 h-4 text-gray-400" />
                               <span className="text-[9px] text-gray-400 font-semibold">
                                 Menu
@@ -397,7 +397,7 @@ export function MultiBranchGrid() {
                           whileTap={{
                             scale: 0.95
                           }}>
-
+                          
                               <Zap className="w-4 h-4 text-yellow-400" />
                               <span className="text-[9px] text-yellow-400 font-semibold">
                                 Promo

@@ -14,7 +14,7 @@ export function RewardChests() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Treasure Vaults
       </motion.h2>
 
@@ -36,7 +36,7 @@ export function RewardChests() {
           whileHover={{
             scale: 1.02
           }}>
-
+          
           <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#00ffcc]/20 blur-3xl" />
 
           <div className="relative flex items-center justify-between">
@@ -50,7 +50,7 @@ export function RewardChests() {
                   duration: 2,
                   repeat: Infinity
                 }}>
-
+                
                 <UsersIcon className="w-8 h-8 text-[#0a1a1f]" />
               </motion.div>
 
@@ -74,7 +74,7 @@ export function RewardChests() {
                 duration: 1.5,
                 repeat: Infinity
               }}>
-
+              
               <TrendingUpIcon className="w-4 h-4 text-[#00ff88]" />
               <span className="text-sm font-bold text-[#00ff88]">+8</span>
             </motion.div>
@@ -98,7 +98,7 @@ export function RewardChests() {
           whileHover={{
             scale: 1.02
           }}>
-
+          
           <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#ffd700]/20 blur-3xl" />
 
           <div className="relative flex items-center justify-between">
@@ -112,7 +112,7 @@ export function RewardChests() {
                   duration: 2,
                   repeat: Infinity
                 }}>
-
+                
                 <CoinsIcon className="w-8 h-8 text-[#0a1a1f]" />
               </motion.div>
 
@@ -136,7 +136,7 @@ export function RewardChests() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               Claim
             </motion.button>
           </div>

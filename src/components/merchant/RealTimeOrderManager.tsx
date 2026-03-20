@@ -125,7 +125,7 @@ export function RealTimeOrderManager() {
               duration: 1.5,
               repeat: Infinity
             }} />
-
+          
           <span className="text-xs font-bold text-white">
             {activeOrders.length} Active
           </span>
@@ -154,7 +154,7 @@ export function RealTimeOrderManager() {
               whileHover={{
                 borderColor: statusColors.border + '40'
               }}>
-
+              
               {/* Header */}
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
@@ -175,7 +175,7 @@ export function RealTimeOrderManager() {
                     color: statusColors.text,
                     border: `1px solid ${statusColors.border}40`
                   }}>
-
+                  
                   {order.status}
                 </div>
               </div>
@@ -214,13 +214,13 @@ export function RealTimeOrderManager() {
                     style={{
                       color: timerColor
                     }} />
-
+                  
                   <span
                     className="text-xs font-bold"
                     style={{
                       color: timerColor
                     }}>
-
+                    
                     {order.prepTimer > 0 ?
                     `${order.prepTimer}m` :
                     'Not started'}
@@ -240,7 +240,7 @@ export function RealTimeOrderManager() {
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                       <CheckCircle className="w-4 h-4" />
                       Accept
                     </motion.button>
@@ -252,7 +252,7 @@ export function RealTimeOrderManager() {
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                       Reject
                     </motion.button>
                   </>
@@ -267,7 +267,7 @@ export function RealTimeOrderManager() {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <ChefHat className="w-4 h-4" />
                     Start Cooking
                   </motion.button>
@@ -282,7 +282,7 @@ export function RealTimeOrderManager() {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <CheckCircle className="w-4 h-4" />
                     Mark Ready
                   </motion.button>
@@ -297,7 +297,7 @@ export function RealTimeOrderManager() {
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <Bike className="w-4 h-4" />
                     Handed to Rider
                   </motion.button>

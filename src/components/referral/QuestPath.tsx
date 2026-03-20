@@ -48,7 +48,7 @@ export function QuestPath() {
         transition={{
           delay: 0.5
         }}>
-
+        
         Quest Path
       </motion.h2>
       <p className="text-sm text-gray-400 mb-6">
@@ -62,7 +62,7 @@ export function QuestPath() {
           style={{
             zIndex: 0
           }}>
-
+          
           <motion.path
             d="M 60 40 Q 180 80, 60 140 T 60 240"
             stroke="url(#questGradient)"
@@ -81,7 +81,7 @@ export function QuestPath() {
               delay: 0.7,
               duration: 1.5
             }} />
-
+          
           <defs>
             <linearGradient
               id="questGradient"
@@ -89,7 +89,7 @@ export function QuestPath() {
               y1="0%"
               x2="0%"
               y2="100%">
-
+              
               <stop offset="0%" stopColor="#00ffcc" />
               <stop offset="50%" stopColor="#00d9ff" />
               <stop offset="100%" stopColor="#ffd700" />
@@ -102,7 +102,7 @@ export function QuestPath() {
           style={{
             zIndex: 1
           }}>
-
+          
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
@@ -120,13 +120,13 @@ export function QuestPath() {
                 transition={{
                   delay: 0.8 + index * 0.2
                 }}>
-
+                
                 <motion.div
                   className="relative flex-shrink-0"
                   whileHover={{
                     scale: 1.1
                   }}>
-
+                  
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center relative"
                     style={{
@@ -134,13 +134,13 @@ export function QuestPath() {
                       boxShadow: `0 0 20px ${step.color}40, inset 0 0 20px ${step.color}20`,
                       border: `2px solid ${step.color}60`
                     }}>
-
+                    
                     <Icon
                       className="w-7 h-7"
                       style={{
                         color: step.color
                       }} />
-
+                    
                   </div>
                   <motion.div
                     className="absolute -top-1 -right-1 bg-gradient-to-br from-[#ffd700] to-[#ffb800] rounded-full px-2 py-0.5 text-[10px] font-bold text-[#0a1a1f] shadow-lg"
@@ -154,7 +154,7 @@ export function QuestPath() {
                       delay: 1 + index * 0.2,
                       type: 'spring'
                     }}>
-
+                    
                     {index + 1}
                   </motion.div>
                 </motion.div>

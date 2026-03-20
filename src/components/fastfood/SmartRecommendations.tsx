@@ -64,19 +64,19 @@ export function SmartRecommendations() {
               transition={{
                 delay: index * 0.1
               }}>
-
+              
               <Icon
                 className="w-3 h-3"
                 style={{
                   color: tag.color
                 }} />
-
+              
               <span
                 className="text-xs font-semibold"
                 style={{
                   color: tag.color
                 }}>
-
+                
                 {tag.text}
               </span>
             </motion.div>);

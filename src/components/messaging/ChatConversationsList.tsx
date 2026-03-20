@@ -93,7 +93,7 @@ export function ChatConversationsList({
             type="text"
             placeholder="Search conversations..."
             className="w-full bg-[#131B2E] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+          
         </div>
       </div>
 
@@ -122,7 +122,7 @@ export function ChatConversationsList({
                 scale: 0.98
               }}
               onClick={() => onSelectChat?.(conversation)}>
-
+              
               {/* Pinned Indicator */}
               {conversation.isPinned &&
               <div className="absolute top-2 left-2">
@@ -136,10 +136,10 @@ export function ChatConversationsList({
                   src={conversation.avatar}
                   alt={conversation.name}
                   className="w-14 h-14 rounded-full object-cover" />
-
+                
                 <div
                   className={`absolute bottom-0 right-0 w-4 h-4 rounded-full border-2 border-[#0A0E1A] ${conversation.status === 'online' ? 'bg-green-500' : 'bg-gray-500'}`} />
-
+                
               </div>
 
               {/* Info */}

@@ -123,12 +123,12 @@ export function FastFoodCategoryNav() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <div className="flex flex-col items-center gap-1">
                 <span className="text-2xl">{category.emoji}</span>
                 <span
                   className={`text-xs font-semibold ${isActive ? 'text-white' : 'text-gray-400'}`}>
-
+                  
                   {category.name}
                 </span>
                 <span
@@ -137,7 +137,7 @@ export function FastFoodCategoryNav() {
                     backgroundColor: `${category.color}20`,
                     color: category.color
                   }}>
-
+                  
                   {category.xpBoost}
                 </span>
               </div>

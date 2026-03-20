@@ -59,7 +59,7 @@ export function RegularPricingPanel({
         transition={{
           delay: 0.4
         }}>
-
+        
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-bold text-white">Estimated Fare</h3>
           <motion.button
@@ -67,7 +67,7 @@ export function RegularPricingPanel({
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <RefreshCw className="w-4 h-4 text-cyan-400" />
           </motion.button>
         </div>
@@ -129,14 +129,14 @@ export function RegularPricingPanel({
                   scale: 0.98
                 }}
                 onClick={() => onVehicleChange(vehicle.id)}>
-
+                
                 <div className="flex items-center gap-3 mb-2">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
                     style={{
                       backgroundColor: vehicle.color + '20'
                     }}>
-
+                    
                     {vehicle.icon}
                   </div>
                   <div>
@@ -151,7 +151,7 @@ export function RegularPricingPanel({
                   style={{
                     color: vehicle.color
                   }}>
-
+                  
                   {vehicle.fare}
                 </p>
               </motion.button>);

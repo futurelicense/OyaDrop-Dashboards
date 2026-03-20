@@ -65,7 +65,7 @@ export function LaundryRequestSheet({
       icon={<Shirt className="w-6 h-6 text-teal-400" />}
       onSubmit={handleSubmit}
       submitLabel="Schedule Pickup">
-
+      
       <div className="space-y-6">
         {/* Service Type */}
         <div>
@@ -81,11 +81,11 @@ export function LaundryRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <div className="text-2xl mb-2">{service.icon}</div>
                 <p
                 className={`text-sm font-semibold mb-1 ${serviceType === service.id ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {service.name}
                 </p>
                 <p className="text-xs text-gray-500">{service.price}</p>
@@ -107,7 +107,7 @@ export function LaundryRequestSheet({
               value={pickupAddress}
               onChange={(e) => setPickupAddress(e.target.value)}
               className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-teal-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
         </div>
 
@@ -138,13 +138,13 @@ export function LaundryRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Calendar
                 className={`w-5 h-5 mx-auto mb-1 ${when === option.value ? 'text-teal-400' : 'text-gray-400'}`} />
-
+              
                 <p
                 className={`text-xs font-semibold ${when === option.value ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {option.label}
                 </p>
               </motion.button>
@@ -182,13 +182,13 @@ export function LaundryRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Clock
                 className={`w-5 h-5 mx-auto mb-1 ${time === option.value ? 'text-teal-400' : 'text-gray-400'}`} />
-
+              
                 <p
                 className={`text-xs font-semibold ${time === option.value ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {option.label}
                 </p>
                 <p className="text-[10px] text-gray-500">{option.time}</p>

@@ -109,7 +109,7 @@ export function StoreSettings() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             ← Back
           </motion.button>
           <h2 className="text-xl font-bold text-white mt-2">Store Hours</h2>
@@ -139,7 +139,7 @@ export function StoreSettings() {
             transition={{
               delay: index * 0.05
             }}>
-
+            
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-bold text-white">{day}</span>
                 <motion.button
@@ -147,7 +147,7 @@ export function StoreSettings() {
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                   Edit
                 </motion.button>
               </div>
@@ -177,7 +177,7 @@ export function StoreSettings() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             ← Back
           </motion.button>
           <h2 className="text-xl font-bold text-white mt-2">
@@ -196,7 +196,7 @@ export function StoreSettings() {
               opacity: 1,
               y: 0
             }}>
-
+            
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-base font-bold text-white mb-1">
@@ -212,7 +212,7 @@ export function StoreSettings() {
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                 <motion.div
                   className="w-6 h-6 bg-white rounded-full"
                   animate={{
@@ -223,7 +223,7 @@ export function StoreSettings() {
                     damping: 20,
                     stiffness: 300
                   }} />
-
+                
               </motion.button>
             </div>
           </motion.div>
@@ -272,20 +272,20 @@ export function StoreSettings() {
                     if (item.id === 'store-hours') setView('store-hours');
                     if (item.id === 'auto-accept') setView('auto-accept');
                   }}>
-
+                  
                     <div className="flex items-center gap-3">
                       <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                       style={{
                         backgroundColor: item.color + '20'
                       }}>
-
+                      
                         <Icon
                         className="w-6 h-6"
                         style={{
                           color: item.color
                         }} />
-
+                      
                       </div>
 
                       <div className="flex-1 min-w-0">

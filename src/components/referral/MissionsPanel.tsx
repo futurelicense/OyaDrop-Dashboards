@@ -81,7 +81,7 @@ function MissionCard({ mission, index, delay }: any) {
       whileHover={{
         scale: 1.02
       }}>
-
+      
       <div className="flex items-start gap-3 mb-3">
         <div
           className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -89,13 +89,13 @@ function MissionCard({ mission, index, delay }: any) {
             backgroundColor: `${mission.color}20`,
             boxShadow: `0 0 16px ${mission.color}30`
           }}>
-
+          
           <Icon
             className="w-5 h-5"
             style={{
               color: mission.color
             }} />
-
+          
         </div>
 
         <div className="flex-1 min-w-0">
@@ -112,7 +112,7 @@ function MissionCard({ mission, index, delay }: any) {
                 backgroundColor: `${mission.color}20`,
                 color: mission.color
               }}>
-
+              
               {mission.reward}
             </span>
           </div>
@@ -130,7 +130,7 @@ function MissionCard({ mission, index, delay }: any) {
           transition={{
             type: 'spring'
           }}>
-
+          
             <span className="text-white text-xs">✓</span>
           </motion.div>
         }
@@ -154,7 +154,7 @@ function MissionCard({ mission, index, delay }: any) {
             duration: 0.8,
             ease: 'easeOut'
           }} />
-
+        
       </div>
     </motion.div>);
 
@@ -172,7 +172,7 @@ export function MissionsPanel() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Active Missions
       </motion.h2>
 

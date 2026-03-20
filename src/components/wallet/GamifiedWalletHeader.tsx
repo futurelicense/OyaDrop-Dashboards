@@ -27,7 +27,7 @@ export function GamifiedWalletHeader({
       transition={{
         duration: 0.5
       }}>
-
+      
       <div className="px-4 pt-4 pb-3">
         {/* Top Row */}
         <div className="flex items-center justify-between mb-4">
@@ -37,7 +37,7 @@ export function GamifiedWalletHeader({
               scale: 0.95
             }}
             onClick={onMenuClick}>
-
+            
             <Menu className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -54,7 +54,7 @@ export function GamifiedWalletHeader({
             transition={{
               delay: 0.2
             }}>
-
+            
             Wallet Quest
           </motion.div>
 
@@ -64,7 +64,7 @@ export function GamifiedWalletHeader({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Bell className="w-5 h-5 text-white" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_8px_#B026FF]" />
             </motion.button>
@@ -86,7 +86,7 @@ export function GamifiedWalletHeader({
               delay: 0.3,
               type: 'spring'
             }}>
-
+            
             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 via-teal-400 to-purple-500 p-0.5 shadow-[0_0_20px_rgba(0,217,192,0.5)]">
               <div className="w-full h-full rounded-full bg-[#0F1520] flex items-center justify-center border-2 border-cyan-400/30">
                 <span className="text-xl">🎮</span>
@@ -111,7 +111,7 @@ export function GamifiedWalletHeader({
                     duration: 2,
                     repeat: Infinity
                   }}>
-
+                  
                   <Zap className="w-3 h-3 text-green-400 fill-green-400" />
                   <span className="text-[10px] font-bold text-green-400">
                     +50 XP
@@ -138,7 +138,7 @@ export function GamifiedWalletHeader({
                   duration: 1,
                   ease: 'easeOut'
                 }}>
-
+                
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
               </motion.div>
             </div>
@@ -161,7 +161,7 @@ export function GamifiedWalletHeader({
             whileHover={{
               scale: 1.05
             }}>
-
+            
             <motion.div
               animate={{
                 scale: [1, 1.2, 1]
@@ -170,7 +170,7 @@ export function GamifiedWalletHeader({
                 duration: 1,
                 repeat: Infinity
               }}>
-
+              
               <Flame className="w-4 h-4 text-white fill-white" />
             </motion.div>
             <div className="text-right">

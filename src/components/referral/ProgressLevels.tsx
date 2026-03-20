@@ -43,7 +43,7 @@ export function ProgressLevels() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Level Progression
       </motion.h2>
       <p className="text-sm text-gray-400 mb-6">Unlock new ranks and rewards</p>
@@ -71,13 +71,13 @@ export function ProgressLevels() {
               whileHover={{
                 scale: 1.02
               }}>
-
+              
               <div
                 className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl opacity-40"
                 style={{
                   backgroundColor: level.color
                 }} />
-
+              
 
               <div className="relative flex items-start gap-4 mb-4">
                 <div
@@ -86,13 +86,13 @@ export function ProgressLevels() {
                     backgroundColor: `${level.color}30`,
                     boxShadow: `0 0 20px ${level.color}40`
                   }}>
-
+                  
                   <Icon
                     className="w-7 h-7"
                     style={{
                       color: level.color
                     }} />
-
+                  
                 </div>
 
                 <div className="flex-1">
@@ -106,7 +106,7 @@ export function ProgressLevels() {
                         backgroundColor: `${level.color}20`,
                         color: level.color
                       }}>
-
+                      
                       {level.subtitle}
                     </span>
                   </div>
@@ -142,7 +142,7 @@ export function ProgressLevels() {
                     duration: 1,
                     ease: 'easeOut'
                   }}>
-
+                  
                   {isComplete &&
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
@@ -174,7 +174,7 @@ export function ProgressLevels() {
                   delay: 0.6 + index * 0.15,
                   type: 'spring'
                 }}>
-
+                
                   <div className="w-8 h-8 rounded-full bg-[#00ff88] flex items-center justify-center shadow-[0_0_12px_rgba(0,255,136,0.6)]">
                     <SparklesIcon className="w-4 h-4 text-white" />
                   </div>

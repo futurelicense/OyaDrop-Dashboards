@@ -49,14 +49,14 @@ export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
         y: -4,
         borderColor: '#00D9C040'
       }}>
-
+      
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={property.image}
           alt={property.name}
           className="w-full h-full object-cover" />
-
+        
 
         {/* Type Badge */}
         <div
@@ -66,7 +66,7 @@ export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
             color: typeColors[property.type],
             border: `1px solid ${typeColors[property.type]}60`
           }}>
-
+          
           {property.type}
         </div>
 
@@ -77,10 +77,10 @@ export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
           whileTap={{
             scale: 0.9
           }}>
-
+          
           <Heart
             className={`w-5 h-5 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-white'}`} />
-
+          
         </motion.button>
       </div>
 
@@ -113,7 +113,7 @@ export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
                 key={amenity}
                 className="w-8 h-8 bg-cyan-500/10 rounded-lg flex items-center justify-center"
                 title={amenity}>
-
+                
                 <Icon className="w-4 h-4 text-cyan-400" />
               </div>);
 

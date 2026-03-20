@@ -95,7 +95,7 @@ export function PharmacyOrders({ onSelectOrder }: PharmacyOrdersProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {filter}
               </motion.button>
 
@@ -129,14 +129,14 @@ export function PharmacyOrders({ onSelectOrder }: PharmacyOrdersProps) {
                 scale: 0.98
               }}
               onClick={() => onSelectOrder(order)}>
-
+              
               {/* Urgency Bar */}
               <div
                 className="absolute top-0 left-0 right-0 h-1"
                 style={{
                   backgroundColor: colors.border
                 }} />
-
+              
 
               {/* Header */}
               <div className="flex items-start justify-between mb-3">
@@ -168,7 +168,7 @@ export function PharmacyOrders({ onSelectOrder }: PharmacyOrdersProps) {
                     backgroundColor: colors.bg,
                     color: colors.border
                   }}>
-
+                  
                   {statusLabels[order.status]}
                 </span>
               </div>

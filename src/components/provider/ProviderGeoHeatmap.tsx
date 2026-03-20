@@ -153,7 +153,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
         transition={{
           duration: 0.5
         }}>
-
+        
         {/* Grid Background */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full">
@@ -162,14 +162,14 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
               width="40"
               height="40"
               patternUnits="userSpaceOnUse">
-
+              
               <path
                 d="M 40 0 L 0 0 0 40"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="0.5"
                 className="text-cyan-500" />
-
+              
             </pattern>
             <rect width="100%" height="100%" fill="url(#provider-grid)" />
           </svg>
@@ -186,7 +186,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
               duration: 2,
               repeat: Infinity
             }}>
-
+            
             {/* Pulsing Ring */}
             <motion.div
               className="absolute inset-0 bg-cyan-500 rounded-full"
@@ -198,7 +198,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
                 duration: 2,
                 repeat: Infinity
               }} />
-
+            
             {/* Center Dot */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full shadow-lg shadow-cyan-500/50 flex items-center justify-center">
               <Navigation className="w-4 h-4 text-white" />
@@ -228,7 +228,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
               transition={{
                 delay: index * 0.1
               }}>
-
+              
               {/* Pulsing Heatmap Circle */}
               <motion.div
                 className="absolute -inset-8 rounded-full"
@@ -245,7 +245,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
                   repeat: Infinity,
                   delay: index * 0.5
                 }} />
-
+              
 
               {/* Hotspot Marker */}
               <motion.div
@@ -261,19 +261,19 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
                 whileTap={{
                   scale: 0.9
                 }}>
-
+                
                 <Users
                   className="w-4 h-4 mb-0.5"
                   style={{
                     color: colors.border
                   }} />
-
+                
                 <span
                   className="text-xs font-bold"
                   style={{
                     color: colors.border
                   }}>
-
+                  
                   {hotspot.requests}
                 </span>
               </motion.div>
@@ -289,7 +289,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
                   opacity: 1,
                   y: 0
                 }}>
-
+                
                 <p className="text-xs font-bold text-white">{hotspot.name}</p>
                 <p className="text-[10px] text-gray-400">
                   {hotspot.requests} requests
@@ -319,7 +319,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
           transition={{
             delay: 0.5 + index * 0.1
           }}>
-
+          
             {/* Request Pin */}
             <motion.div
             className="relative"
@@ -334,7 +334,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
               repeat: Infinity,
               delay: index * 0.3
             }}>
-
+            
               <MapPin className="w-6 h-6 text-yellow-400 fill-yellow-400/20" />
 
               {/* Price Badge */}
@@ -352,7 +352,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <span className="text-white text-lg">+</span>
           </motion.button>
           <motion.button
@@ -360,7 +360,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <span className="text-white text-lg">−</span>
           </motion.button>
         </div>
@@ -411,7 +411,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <TrendingUp className="w-4 h-4" />
           Go to Hotspot
         </motion.button>
@@ -424,7 +424,7 @@ export function ProviderGeoHeatmap({ providerType }: ProviderGeoHeatmapProps) {
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <MapPin className="w-4 h-4" />
           View All Requests
         </motion.button>

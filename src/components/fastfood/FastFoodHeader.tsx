@@ -26,7 +26,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
       transition={{
         duration: 0.5
       }}>
-
+      
       <div className="px-4 pt-4 pb-3">
         {/* Top Row */}
         <div className="flex items-center justify-between mb-4">
@@ -36,7 +36,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
               scale: 0.95
             }}
             onClick={onMenuClick}>
-
+            
             <Menu className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -53,7 +53,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
             transition={{
               delay: 0.2
             }}>
-
+            
             <p className="text-xs text-gray-400 uppercase tracking-wider">
               Welcome to
             </p>
@@ -67,7 +67,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Bell className="w-5 h-5 text-white" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full shadow-[0_0_8px_#EF4444]" />
           </motion.button>
@@ -88,7 +88,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
               delay: 0.3,
               type: 'spring'
             }}>
-
+            
             <svg className="w-16 h-16 -rotate-90">
               <circle
                 cx="32"
@@ -97,7 +97,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
                 stroke="#1F2937"
                 strokeWidth="4"
                 fill="none" />
-
+              
               <motion.circle
                 cx="32"
                 cy="32"
@@ -117,7 +117,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
                   duration: 1,
                   ease: 'easeOut'
                 }} />
-
+              
               <defs>
                 <linearGradient
                   id="xpGradient"
@@ -125,7 +125,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
                   y1="0%"
                   x2="100%"
                   y2="100%">
-
+                  
                   <stop offset="0%" stopColor="#FFB800" />
                   <stop offset="100%" stopColor="#FF6B00" />
                 </linearGradient>
@@ -165,7 +165,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
                   duration: 1,
                   ease: 'easeOut'
                 }}>
-
+                
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
               </motion.div>
             </div>
@@ -185,7 +185,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
                 transition={{
                   delay: 0.6
                 }}>
-
+                
                 <Coins className="w-3 h-3 text-amber-400" />
                 <span className="text-xs font-bold text-amber-400">
                   {oyaCoins.toLocaleString()}
@@ -205,7 +205,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
                 transition={{
                   delay: 0.7
                 }}>
-
+                
                 <motion.div
                   animate={{
                     scale: [1, 1.2, 1]
@@ -214,7 +214,7 @@ export function FastFoodHeader({ onMenuClick }: FastFoodHeaderProps) {
                     duration: 1,
                     repeat: Infinity
                   }}>
-
+                  
                   <Flame className="w-3 h-3 text-white fill-white" />
                 </motion.div>
                 <span className="text-xs font-bold text-white">

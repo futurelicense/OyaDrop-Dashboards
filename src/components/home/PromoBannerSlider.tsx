@@ -72,7 +72,7 @@ export function PromoBannerSlider() {
             transition={{
               duration: 0.3
             }}>
-
+            
             <div className="absolute top-0 right-0 text-8xl opacity-20">
               {banners[currentIndex].emoji}
             </div>
@@ -92,7 +92,7 @@ export function PromoBannerSlider() {
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                 Shop Now
               </motion.button>
             </div>
@@ -107,7 +107,7 @@ export function PromoBannerSlider() {
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <ChevronLeftIcon className="w-5 h-5 text-white" />
           </motion.button>
           <motion.button
@@ -116,7 +116,7 @@ export function PromoBannerSlider() {
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <ChevronRightIcon className="w-5 h-5 text-white" />
           </motion.button>
         </div>

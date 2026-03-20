@@ -98,7 +98,7 @@ export function OrderList({ onSelectOrder }: OrderListProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {filter}
               </motion.button>
 
@@ -132,14 +132,14 @@ export function OrderList({ onSelectOrder }: OrderListProps) {
                 scale: 0.98
               }}
               onClick={() => onSelectOrder(order)}>
-
+              
               {/* Urgency Indicator */}
               <div
                 className="absolute top-0 left-0 right-0 h-1"
                 style={{
                   backgroundColor: colors.border
                 }} />
-
+              
 
               {/* Header */}
               <div className="flex items-start justify-between mb-3">
@@ -154,7 +154,7 @@ export function OrderList({ onSelectOrder }: OrderListProps) {
                         backgroundColor: colors.bg,
                         color: colors.text
                       }}>
-
+                      
                       {statusLabels[order.status]}
                     </span>
                   </div>

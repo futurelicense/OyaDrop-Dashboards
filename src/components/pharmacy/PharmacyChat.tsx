@@ -103,7 +103,7 @@ export function PharmacyChat() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -111,7 +111,7 @@ export function PharmacyChat() {
             src={selectedConversation.avatar}
             alt={selectedConversation.customerName}
             className="w-10 h-10 rounded-full object-cover" />
-
+          
 
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-bold text-white truncate">
@@ -136,7 +136,7 @@ export function PharmacyChat() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Package className="w-5 h-5 text-cyan-400" />
           </motion.button>
         </div>
@@ -158,14 +158,14 @@ export function PharmacyChat() {
             transition={{
               delay: index * 0.1
             }}>
-
+            
               <div
               className={`max-w-[75%] rounded-2xl px-4 py-3 ${msg.sender === 'pharmacy' ? 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-br-sm' : 'bg-[#131B2E] text-white rounded-bl-sm'}`}>
-
+              
                 <p className="text-sm">{msg.text}</p>
                 <p
                 className={`text-xs mt-1 ${msg.sender === 'pharmacy' ? 'text-white/70' : 'text-gray-400'}`}>
-
+                
                   {msg.time}
                 </p>
               </div>
@@ -188,7 +188,7 @@ export function PharmacyChat() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {reply}
               </motion.button>
             )}
@@ -203,7 +203,7 @@ export function PharmacyChat() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <ImageIcon className="w-6 h-6 text-gray-400" />
             </motion.button>
 
@@ -213,14 +213,14 @@ export function PharmacyChat() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className="flex-1 bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
 
             <motion.button
               className="p-3 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl shadow-lg"
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Send className="w-5 h-5 text-white" />
             </motion.button>
           </div>
@@ -238,7 +238,7 @@ export function PharmacyChat() {
             type="text"
             placeholder="Search conversations..."
             className="w-full bg-[#131B2E] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+          
         </div>
       </div>
 
@@ -263,13 +263,13 @@ export function PharmacyChat() {
             scale: 0.98
           }}
           onClick={() => handleSelectConversation(conversation)}>
-
+          
             <div className="relative flex-shrink-0">
               <img
               src={conversation.avatar}
               alt={conversation.customerName}
               className="w-14 h-14 rounded-full object-cover" />
-
+            
               {conversation.unread > 0 &&
             <div className="absolute -top-1 -right-1 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center border-2 border-[#0A0E1A]">
                   <span className="text-xs font-bold text-white">

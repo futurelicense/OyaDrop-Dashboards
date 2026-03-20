@@ -51,7 +51,7 @@ export function TransportBookingPage({
           destination={destination}
           onPickupChange={setPickup}
           onDestinationChange={setDestination} />
-
+        
 
         <LiveMapPanel />
 
@@ -67,7 +67,7 @@ export function TransportBookingPage({
         <PaymentMethodSelector
           selectedMethod={paymentMethod}
           onMethodChange={setPaymentMethod} />
-
+        
 
         {/* Ride Booked Success State */}
         {rideBooked &&
@@ -85,7 +85,7 @@ export function TransportBookingPage({
             type: 'spring',
             damping: 20
           }}>
-
+          
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
                 <span className="text-2xl">✓</span>
@@ -101,7 +101,7 @@ export function TransportBookingPage({
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
               alt="Tunde"
               className="w-12 h-12 rounded-full object-cover" />
-
+            
               <div className="flex-1">
                 <p className="text-sm font-bold text-white">Tunde - Rider</p>
                 <p className="text-xs text-gray-400">
@@ -133,7 +133,7 @@ export function TransportBookingPage({
         pickup={pickup}
         destination={destination}
         onBookRide={handleBookRide} />
-
+      
 
       {onOpenChat &&
       <FloatingChatIcon unreadCount={2} onOpenChat={onOpenChat} />

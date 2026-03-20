@@ -71,7 +71,7 @@ export function ProductGrid() {
             type="text"
             placeholder="Search products..."
             className="w-full bg-[#131B2E] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+          
         </div>
         <div className="flex gap-2">
           <motion.button
@@ -79,7 +79,7 @@ export function ProductGrid() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Filter className="w-4 h-4" />
             Filter
           </motion.button>
@@ -88,7 +88,7 @@ export function ProductGrid() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             Batch Edit
           </motion.button>
         </div>
@@ -112,14 +112,14 @@ export function ProductGrid() {
             transition={{
               delay: index * 0.05
             }}>
-
+            
               {/* Image */}
               <div className="relative aspect-square">
                 <img
                 src={product.image}
                 alt={product.name}
                 className="w-full h-full object-cover" />
-
+              
                 {!product.available &&
               <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
                     <span className="text-white font-bold text-sm">
@@ -161,7 +161,7 @@ export function ProductGrid() {
                     scale: 0.95
                   }}
                   onClick={() => toggleAvailability(product.id)}>
-
+                  
                     {product.available ? 'Available' : 'Unavailable'}
                   </motion.button>
                   <motion.button
@@ -169,7 +169,7 @@ export function ProductGrid() {
                   whileTap={{
                     scale: 0.95
                   }}>
-
+                  
                     <Edit2 className="w-4 h-4 text-cyan-400" />
                   </motion.button>
                 </div>

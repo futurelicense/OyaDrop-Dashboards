@@ -51,7 +51,7 @@ export function StickyCartFooter({
           type: 'spring',
           damping: 20
         }}>
-
+        
         {/* Expanded Content */}
         <AnimatePresence>
           {isExpanded &&
@@ -69,7 +69,7 @@ export function StickyCartFooter({
               height: 0,
               opacity: 0
             }}>
-
+            
               <h3 className="text-sm font-bold text-white mb-3">
                 Suggested Add-ons
               </h3>
@@ -111,7 +111,7 @@ export function StickyCartFooter({
           <button
             className="w-full flex items-center justify-center mb-3"
             onClick={() => setIsExpanded(!isExpanded)}>
-
+            
             <motion.div
               animate={{
                 rotate: isExpanded ? 180 : 0
@@ -119,7 +119,7 @@ export function StickyCartFooter({
               transition={{
                 duration: 0.3
               }}>
-
+              
               <ChevronUp className="w-5 h-5 text-gray-400" />
             </motion.div>
           </button>
@@ -165,7 +165,7 @@ export function StickyCartFooter({
             whileTap={{
               scale: 0.98
             }}>
-
+            
             Review Order & Gain XP
           </motion.button>
         </div>

@@ -55,7 +55,7 @@ export function FastFoodCard({
         y: -4,
         borderColor: 'rgba(0, 255, 204, 0.3)'
       }}>
-
+      
       {/* XP Burst Animation */}
       {showXPBurst &&
       <motion.div
@@ -71,7 +71,7 @@ export function FastFoodCard({
         transition={{
           duration: 0.6
         }}>
-
+        
           <div className="text-4xl font-bold text-yellow-400">
             +{item.xpReward} XP
           </div>
@@ -84,7 +84,7 @@ export function FastFoodCard({
           src={item.image}
           alt={item.name}
           className="w-full h-full object-cover" />
-
+        
 
         {/* Badges */}
         <div className="absolute top-2 left-2 flex flex-wrap gap-1">
@@ -125,10 +125,10 @@ export function FastFoodCard({
           whileTap={{
             scale: 0.9
           }}>
-
+          
           <Heart
             className={`w-4 h-4 ${isLiked ? 'fill-red-500 text-red-500' : 'text-white'}`} />
-
+          
         </motion.button>
 
         {/* XP Reward Badge */}
@@ -198,7 +198,7 @@ export function FastFoodCard({
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <Plus className="w-5 h-5 text-white" />
           </motion.button>
         </div>

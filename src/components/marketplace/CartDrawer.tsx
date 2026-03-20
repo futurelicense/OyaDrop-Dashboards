@@ -41,7 +41,7 @@ export function CartDrawer({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Drawer */}
           <motion.div
@@ -60,7 +60,7 @@ export function CartDrawer({
             damping: 25,
             stiffness: 200
           }}>
-
+          
             {/* Header */}
             <div className="flex items-center justify-between p-5 border-b border-white/10">
               <div className="flex items-center gap-3">
@@ -80,7 +80,7 @@ export function CartDrawer({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <XIcon className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -116,13 +116,13 @@ export function CartDrawer({
                   opacity: 0,
                   x: -20
                 }}>
-
+                
                       <div className="flex gap-4">
                         <img
                     src={item.image}
                     alt={item.name}
                     className="w-20 h-20 rounded-lg object-cover bg-[#0f1f24]" />
-
+                  
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-semibold text-white mb-1 line-clamp-2">
                             {item.name}
@@ -143,7 +143,7 @@ export function CartDrawer({
                           whileTap={{
                             scale: 0.9
                           }}>
-
+                          
                                 <MinusIcon className="w-4 h-4 text-white" />
                               </motion.button>
                               <span className="text-sm font-medium text-white w-6 text-center">
@@ -157,7 +157,7 @@ export function CartDrawer({
                           whileTap={{
                             scale: 0.9
                           }}>
-
+                          
                                 <PlusIcon className="w-4 h-4 text-[#00ffcc]" />
                               </motion.button>
                             </div>
@@ -169,7 +169,7 @@ export function CartDrawer({
                     whileTap={{
                       scale: 0.9
                     }}>
-
+                    
                           <TrashIcon className="w-5 h-5 text-red-400" />
                         </motion.button>
                       </div>
@@ -193,7 +193,7 @@ export function CartDrawer({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                   Proceed to Checkout
                 </motion.button>
               </div>

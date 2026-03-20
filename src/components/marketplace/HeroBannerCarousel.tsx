@@ -72,17 +72,17 @@ export function HeroBannerCarousel() {
             duration: 0.5,
             ease: 'easeInOut'
           }}>
-
+          
           <div
             className={`relative h-full bg-gradient-to-br ${banners[currentIndex].gradient} rounded-2xl overflow-hidden`}>
-
+            
             {/* Background Image with Overlay */}
             <div className="absolute inset-0">
               <img
                 src={banners[currentIndex].image}
                 alt={banners[currentIndex].title}
                 className="w-full h-full object-cover opacity-30" />
-
+              
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
             </div>
 
@@ -101,7 +101,7 @@ export function HeroBannerCarousel() {
                 transition={{
                   delay: 0.2
                 }}>
-
+                
                 {banners[currentIndex].title}
               </motion.h2>
               <motion.p
@@ -117,7 +117,7 @@ export function HeroBannerCarousel() {
                 transition={{
                   delay: 0.3
                 }}>
-
+                
                 {banners[currentIndex].subtitle}
               </motion.p>
               <motion.button
@@ -136,7 +136,7 @@ export function HeroBannerCarousel() {
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                 {banners[currentIndex].cta}
               </motion.button>
             </div>
@@ -152,7 +152,7 @@ export function HeroBannerCarousel() {
           whileTap={{
             scale: 0.9
           }}>
-
+          
           <ChevronLeftIcon className="w-5 h-5 text-white" />
         </motion.button>
         <motion.button
@@ -161,7 +161,7 @@ export function HeroBannerCarousel() {
           whileTap={{
             scale: 0.9
           }}>
-
+          
           <ChevronRightIcon className="w-5 h-5 text-white" />
         </motion.button>
       </div>

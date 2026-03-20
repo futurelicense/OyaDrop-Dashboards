@@ -90,7 +90,7 @@ export function ViewMenuSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Bottom Sheet */}
           <motion.div
@@ -109,7 +109,7 @@ export function ViewMenuSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -129,7 +129,7 @@ export function ViewMenuSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -152,13 +152,13 @@ export function ViewMenuSheet({
                 transition={{
                   delay: index * 0.1
                 }}>
-
+                
                     <div className="flex gap-4 p-4">
                       <img
                     src={item.image}
                     alt={item.name}
                     className="w-24 h-24 rounded-xl object-cover" />
-
+                  
                       <div className="flex-1">
                         <h3 className="text-base font-bold text-white mb-1">
                           {item.name}
@@ -182,7 +182,7 @@ export function ViewMenuSheet({
                         scale: 0.9
                       }}
                       onClick={() => removeFromCart(item.id)}>
-
+                      
                             <Minus className="w-4 h-4 text-white" />
                           </motion.button>
                           <span className="text-white font-bold">
@@ -194,7 +194,7 @@ export function ViewMenuSheet({
                         scale: 0.9
                       }}
                       onClick={() => addToCart(item.id)}>
-
+                      
                             <Plus className="w-4 h-4 text-white" />
                           </motion.button>
                         </div> :
@@ -205,7 +205,7 @@ export function ViewMenuSheet({
                       scale: 0.98
                     }}
                     onClick={() => addToCart(item.id)}>
-
+                    
                           <Plus className="w-4 h-4" />
                           Add to Cart
                         </motion.button>
@@ -226,7 +226,7 @@ export function ViewMenuSheet({
             animate={{
               y: 0
             }}>
-
+            
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <p className="text-sm text-gray-400">{totalItems} items</p>
@@ -239,7 +239,7 @@ export function ViewMenuSheet({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <ShoppingCart className="w-5 h-5" />
                     Send Order
                   </motion.button>

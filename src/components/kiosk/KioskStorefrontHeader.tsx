@@ -35,7 +35,7 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
           src={vendor.banner}
           alt={vendor.name}
           className="w-full h-full object-cover" />
-
+        
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A0E1A]" />
       </div>
 
@@ -56,12 +56,12 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
             transition={{
               delay: 0.2
             }}>
-
+            
             <img
               src={vendor.logo}
               alt={vendor.name}
               className="w-full h-full object-cover" />
-
+            
           </motion.div>
 
           {/* Message Button */}
@@ -84,7 +84,7 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
             transition={{
               delay: 0.3
             }}>
-
+            
             <MessageCircle className="w-4 h-4" />
             Message
           </motion.button>
@@ -103,7 +103,7 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
           transition={{
             delay: 0.4
           }}>
-
+          
           <h1 className="text-2xl font-bold text-white mb-2">{vendor.name}</h1>
           <p className="text-sm text-gray-400 mb-3">{vendor.bio}</p>
 
@@ -140,7 +140,7 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
               whileTap={{
                 scale: 0.9
               }}>
-
+              
                 <Facebook className="w-4 h-4 text-gray-400" />
               </motion.a>
             }
@@ -154,7 +154,7 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
               whileTap={{
                 scale: 0.9
               }}>
-
+              
                 <Twitter className="w-4 h-4 text-gray-400" />
               </motion.a>
             }
@@ -168,7 +168,7 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
               whileTap={{
                 scale: 0.9
               }}>
-
+              
                 <Instagram className="w-4 h-4 text-gray-400" />
               </motion.a>
             }
@@ -182,7 +182,7 @@ export function KioskStorefrontHeader({ vendor }: KioskStorefrontHeaderProps) {
               whileTap={{
                 scale: 0.9
               }}>
-
+              
                 <Youtube className="w-4 h-4 text-gray-400" />
               </motion.a>
             }

@@ -64,7 +64,7 @@ export function WalletAchievements() {
           opacity: 1,
           y: 0
         }}>
-
+        
         <Trophy className="w-5 h-5 text-yellow-400" />
         Achievement Wall
       </motion.h2>
@@ -103,7 +103,7 @@ export function WalletAchievements() {
               } :
               {}
               }>
-
+              
               {/* Rarity Badge */}
               <div
                 className="absolute top-1 right-1 px-1.5 py-0.5 rounded-full text-[8px] font-bold"
@@ -111,7 +111,7 @@ export function WalletAchievements() {
                   backgroundColor: achievement.color + '20',
                   color: achievement.color
                 }}>
-
+                
                 {achievement.rarity[0]}
               </div>
 
@@ -123,19 +123,19 @@ export function WalletAchievements() {
                   achievement.color + '20' :
                   '#1A1A1A'
                 }}>
-
+                
                 <Icon
                   className="w-6 h-6"
                   style={{
                     color: achievement.unlocked ? achievement.color : '#4A5568'
                   }} />
-
+                
               </div>
 
               {/* Name */}
               <p
                 className={`text-[10px] font-semibold text-center leading-tight ${achievement.unlocked ? 'text-white' : 'text-gray-600'}`}>
-
+                
                 {achievement.name}
               </p>
 

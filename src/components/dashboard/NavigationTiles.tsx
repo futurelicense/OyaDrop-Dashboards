@@ -79,13 +79,13 @@ export function NavigationTiles() {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
                   background: `radial-gradient(circle at 50% 50%, ${tile.color}15, transparent 70%)`
                 }} />
-
+              
 
               <div className="relative">
                 <div
@@ -94,13 +94,13 @@ export function NavigationTiles() {
                     backgroundColor: `${tile.color}15`,
                     boxShadow: `0 0 0 0 ${tile.color}30`
                   }}>
-
+                  
                   <Icon
                     className="w-6 h-6 transition-transform group-hover:scale-110"
                     style={{
                       color: tile.color
                     }} />
-
+                  
                 </div>
 
                 <h3 className="text-base font-semibold text-white mb-1">
@@ -115,7 +115,7 @@ export function NavigationTiles() {
                   background: `linear-gradient(90deg, transparent, ${tile.color}, transparent)`,
                   boxShadow: `0 0 8px ${tile.color}`
                 }} />
-
+              
             </motion.button>);
 
         })}

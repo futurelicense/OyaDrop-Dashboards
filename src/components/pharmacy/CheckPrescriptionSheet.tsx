@@ -29,7 +29,7 @@ export function CheckPrescriptionSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Bottom Sheet */}
           <motion.div
@@ -48,7 +48,7 @@ export function CheckPrescriptionSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -70,7 +70,7 @@ export function CheckPrescriptionSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -88,7 +88,7 @@ export function CheckPrescriptionSheet({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <Camera className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-white text-center">
                       Take Photo
@@ -99,7 +99,7 @@ export function CheckPrescriptionSheet({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                     <p className="text-sm font-semibold text-white text-center">
                       Upload File
@@ -120,12 +120,12 @@ export function CheckPrescriptionSheet({
                 opacity: 1,
                 scale: 1
               }}>
-
+              
                   <img
                 src={uploadedImage}
                 alt="Prescription"
                 className="w-full h-48 object-cover" />
-
+              
                   <div className="p-3 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <FileText className="w-5 h-5 text-purple-400" />
@@ -139,7 +139,7 @@ export function CheckPrescriptionSheet({
                     scale: 0.9
                   }}
                   onClick={() => setUploadedImage(null)}>
-
+                  
                       <X className="w-4 h-4 text-red-400" />
                     </motion.button>
                   </div>
@@ -157,7 +157,7 @@ export function CheckPrescriptionSheet({
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-purple-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
               </div>
 
               {/* Customer Note */}
@@ -171,7 +171,7 @@ export function CheckPrescriptionSheet({
                 onChange={(e) => setCustomerNote(e.target.value)}
                 rows={3}
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-purple-500/50 focus:outline-none placeholder:text-gray-500 resize-none" />
-
+              
               </div>
 
               {/* Verification Checklist */}
@@ -201,7 +201,7 @@ export function CheckPrescriptionSheet({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                       <div className="w-5 h-5 rounded border-2 border-purple-500/50 flex items-center justify-center">
                         <Check className="w-3 h-3 text-purple-400 opacity-0" />
                       </div>
@@ -219,7 +219,7 @@ export function CheckPrescriptionSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Check className="w-5 h-5" />
                 Submit for Review
               </motion.button>

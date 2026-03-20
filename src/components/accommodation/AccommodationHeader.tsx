@@ -37,7 +37,7 @@ export function AccommodationHeader({ onMenuClick }: AccommodationHeaderProps) {
       transition={{
         duration: 0.5
       }}>
-
+      
       {/* Top Row */}
       <div className="px-4 py-4">
         <div className="flex items-center justify-between mb-4">
@@ -48,7 +48,7 @@ export function AccommodationHeader({ onMenuClick }: AccommodationHeaderProps) {
                 scale: 0.95
               }}
               onClick={onMenuClick}>
-
+              
               <Menu className="w-6 h-6 text-white" />
             </motion.button>
 
@@ -64,7 +64,7 @@ export function AccommodationHeader({ onMenuClick }: AccommodationHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <Bell className="w-5 h-5 text-white" />
               <motion.span
                 className="absolute top-1 right-1 w-2 h-2 bg-cyan-500 rounded-full"
@@ -75,7 +75,7 @@ export function AccommodationHeader({ onMenuClick }: AccommodationHeaderProps) {
                   duration: 2,
                   repeat: Infinity
                 }} />
-
+              
             </motion.button>
 
             <motion.button
@@ -83,7 +83,7 @@ export function AccommodationHeader({ onMenuClick }: AccommodationHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               👤
             </motion.button>
           </div>
@@ -113,7 +113,7 @@ export function AccommodationHeader({ onMenuClick }: AccommodationHeaderProps) {
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                 <Icon className="w-4 h-4" />
                 {category.label}
               </motion.button>);

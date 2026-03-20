@@ -246,7 +246,7 @@ export function BeautyCustomerPage({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <ArrowLeft className="w-6 h-6 text-white" />
             </motion.button>
             <div>
@@ -266,7 +266,7 @@ export function BeautyCustomerPage({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#131B2E] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-orange-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
         </div>
       </div>
@@ -289,7 +289,7 @@ export function BeautyCustomerPage({
             delay: index * 0.05
           }}
           onClick={() => setSelectedProvider(provider)}>
-
+          
             <div className="flex gap-4 p-4">
               {/* Image */}
               <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
@@ -297,7 +297,7 @@ export function BeautyCustomerPage({
                 src={provider.image}
                 alt={provider.name}
                 className="w-full h-full object-cover" />
-
+              
                 {provider.verified &&
               <div className="absolute top-2 right-2 bg-orange-500 rounded-full p-1">
                     <Award className="w-3 h-3 text-white" />
@@ -333,7 +333,7 @@ export function BeautyCustomerPage({
                   whileTap={{
                     scale: 0.9
                   }}>
-
+                  
                     <Heart className="w-5 h-5 text-gray-400" />
                   </motion.button>
                 </div>
@@ -344,7 +344,7 @@ export function BeautyCustomerPage({
                 <span
                   key={specialty}
                   className="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded-lg">
-
+                  
                       {specialty}
                     </span>
                 )}
@@ -365,7 +365,7 @@ export function BeautyCustomerPage({
                     'text-green-400' :
                     'text-orange-400'
                     }>
-
+                    
                       {provider.nextAvailable}
                     </span>
                   </div>
@@ -392,7 +392,7 @@ export function BeautyCustomerPage({
               opacity: 0
             }}
             onClick={() => setSelectedProvider(null)} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[85vh] flex flex-col"
             initial={{
@@ -409,7 +409,7 @@ export function BeautyCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
               </div>
@@ -421,7 +421,7 @@ export function BeautyCustomerPage({
                   src={selectedProvider.image}
                   alt={selectedProvider.name}
                   className="w-16 h-16 rounded-xl object-cover" />
-
+                
                   <div className="flex-1">
                     <h2 className="text-xl font-bold text-white mb-1">
                       {selectedProvider.name}
@@ -442,7 +442,7 @@ export function BeautyCustomerPage({
                   whileTap={{
                     scale: 0.95
                   }}>
-
+                  
                     <X className="w-6 h-6 text-white" />
                   </motion.button>
                 </div>
@@ -466,13 +466,13 @@ export function BeautyCustomerPage({
                       whileTap={{
                         scale: 0.98
                       }}>
-
+                      
                         <div className="flex items-center gap-3">
                           <div className="text-2xl">{service.icon}</div>
                           <div className="flex-1">
                             <h4
                             className={`text-sm font-bold mb-1 ${isSelected ? 'text-white' : 'text-gray-300'}`}>
-
+                            
                               {service.name}
                             </h4>
                             <p className="text-xs text-gray-400 mb-2">
@@ -485,13 +485,13 @@ export function BeautyCustomerPage({
                               'text-orange-400' :
                               'text-gray-400'
                               }>
-
+                              
                                 {service.duration}
                               </span>
                               <span className="text-gray-500">•</span>
                               <span
                               className={`font-bold ${isSelected ? 'text-orange-400' : 'text-gray-400'}`}>
-
+                              
                                 ₦{service.price.toLocaleString()}
                               </span>
                             </div>
@@ -528,7 +528,7 @@ export function BeautyCustomerPage({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     Continue to Booking
                   </motion.button>
                 </div>
@@ -554,7 +554,7 @@ export function BeautyCustomerPage({
               opacity: 0
             }}
             onClick={() => setShowBooking(false)} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[85vh] flex flex-col"
             initial={{
@@ -571,7 +571,7 @@ export function BeautyCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
               </div>
@@ -586,7 +586,7 @@ export function BeautyCustomerPage({
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                   <X className="w-6 h-6 text-white" />
                 </motion.button>
               </div>
@@ -606,13 +606,13 @@ export function BeautyCustomerPage({
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                         <Calendar
                       className={`w-5 h-5 mx-auto mb-1 ${selectedDate === date ? 'text-orange-400' : 'text-gray-400'}`} />
-
+                    
                         <p
                       className={`text-xs font-semibold capitalize ${selectedDate === date ? 'text-white' : 'text-gray-400'}`}>
-
+                      
                           {date}
                         </p>
                       </motion.button>
@@ -650,13 +650,13 @@ export function BeautyCustomerPage({
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                         <Clock
                       className={`w-5 h-5 mx-auto mb-1 ${selectedTime === time.value ? 'text-orange-400' : 'text-gray-400'}`} />
-
+                    
                         <p
                       className={`text-xs font-semibold ${selectedTime === time.value ? 'text-white' : 'text-gray-400'}`}>
-
+                      
                           {time.label}
                         </p>
                         <p className="text-[10px] text-gray-500">{time.time}</p>
@@ -675,7 +675,7 @@ export function BeautyCustomerPage({
                   <div
                     key={service.id}
                     className="flex justify-between text-sm">
-
+                    
                         <span className="text-gray-300">
                           {service.icon} {service.name}
                         </span>
@@ -701,7 +701,7 @@ export function BeautyCustomerPage({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                   Confirm Booking
                 </motion.button>
               </div>
@@ -725,7 +725,7 @@ export function BeautyCustomerPage({
             exit={{
               opacity: 0
             }} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[70vh] flex flex-col"
             initial={{
@@ -742,7 +742,7 @@ export function BeautyCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
               </div>
@@ -761,7 +761,7 @@ export function BeautyCustomerPage({
                   damping: 15,
                   delay: 0.1
                 }}>
-
+                
                   <CheckCircle className="w-12 h-12 text-orange-400" />
                 </motion.div>
 
@@ -778,7 +778,7 @@ export function BeautyCustomerPage({
                 transition={{
                   delay: 0.2
                 }}>
-
+                
                   Booking Confirmed!
                 </motion.h3>
 
@@ -795,7 +795,7 @@ export function BeautyCustomerPage({
                 transition={{
                   delay: 0.3
                 }}>
-
+                
                   Your appointment has been confirmed. The provider will contact
                   you shortly to confirm the exact time.
                 </motion.p>
@@ -813,14 +813,14 @@ export function BeautyCustomerPage({
                 transition={{
                   delay: 0.4
                 }}>
-
+                
                   <div className="grid grid-cols-2 gap-3">
                     <motion.button
                     className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold"
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                       <Phone className="w-4 h-4" />
                       Call
                     </motion.button>
@@ -829,7 +829,7 @@ export function BeautyCustomerPage({
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                       <MessageCircle className="w-4 h-4" />
                       Message
                     </motion.button>
@@ -840,7 +840,7 @@ export function BeautyCustomerPage({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                     Back to Home
                   </motion.button>
                 </motion.div>

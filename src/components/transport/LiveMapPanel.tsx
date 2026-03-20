@@ -55,14 +55,14 @@ export function LiveMapPanel() {
               width="40"
               height="40"
               patternUnits="userSpaceOnUse">
-
+              
               <path
                 d="M 40 0 L 0 0 0 40"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="0.5"
                 className="text-cyan-500" />
-
+              
             </pattern>
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
@@ -79,7 +79,7 @@ export function LiveMapPanel() {
               duration: 2,
               repeat: Infinity
             }}>
-
+            
             {/* Pulsing Ring */}
             <motion.div
               className="absolute inset-0 bg-cyan-500 rounded-full"
@@ -91,7 +91,7 @@ export function LiveMapPanel() {
                 duration: 2,
                 repeat: Infinity
               }} />
-
+            
             {/* Center Dot */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full shadow-lg shadow-cyan-500/50 flex items-center justify-center">
               <Navigation className="w-3 h-3 text-white" />
@@ -119,7 +119,7 @@ export function LiveMapPanel() {
           transition={{
             delay: index * 0.1
           }}>
-
+          
             {/* Pulsing Ring */}
             <motion.div
             className="absolute -inset-2 bg-yellow-500 rounded-full"
@@ -132,7 +132,7 @@ export function LiveMapPanel() {
               repeat: Infinity,
               delay: index * 0.5
             }} />
-
+          
 
             {/* Driver Icon */}
             <motion.div
@@ -151,7 +151,7 @@ export function LiveMapPanel() {
               repeat: Infinity,
               delay: index * 0.3
             }}>
-
+            
               {driver.type}
             </motion.div>
           </motion.div>
@@ -171,7 +171,7 @@ export function LiveMapPanel() {
           transition={{
             delay: 0.5
           }}>
-
+          
           <div className="relative">
             <MapPin className="w-8 h-8 text-green-400 fill-green-400/20" />
             <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs px-2 py-1 rounded-lg whitespace-nowrap">
@@ -194,7 +194,7 @@ export function LiveMapPanel() {
           transition={{
             delay: 0.7
           }}>
-
+          
           <div className="relative">
             <MapPin className="w-8 h-8 text-red-400 fill-red-400/20" />
             <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-red-500 text-white text-xs px-2 py-1 rounded-lg whitespace-nowrap">
@@ -210,7 +210,7 @@ export function LiveMapPanel() {
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <span className="text-white text-lg">+</span>
           </motion.button>
           <motion.button
@@ -218,7 +218,7 @@ export function LiveMapPanel() {
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <span className="text-white text-lg">−</span>
           </motion.button>
         </div>

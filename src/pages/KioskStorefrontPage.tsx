@@ -34,7 +34,7 @@ export function KioskStorefrontPage({ onMenuClick }: KioskStorefrontPageProps) {
         whileTap={{
           scale: 0.95
         }}>
-
+        
         <Menu className="w-6 h-6 text-white" />
       </motion.button>
 

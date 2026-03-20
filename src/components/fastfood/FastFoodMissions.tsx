@@ -70,7 +70,7 @@ export function FastFoodMissions() {
                 transition={{
                   delay: index * 0.1
                 }}>
-
+                
                 <div className="flex items-center justify-between mb-2">
                   <p className="text-sm font-semibold text-white">
                     {mission.task}
@@ -81,7 +81,7 @@ export function FastFoodMissions() {
                       backgroundColor: `${mission.color}20`,
                       color: mission.color
                     }}>
-
+                    
                     {mission.reward}
                   </span>
                 </div>
@@ -102,7 +102,7 @@ export function FastFoodMissions() {
                         delay: 0.2 + index * 0.1,
                         duration: 0.6
                       }} />
-
+                    
                   </div>
                   <span className="text-xs text-gray-400">
                     {mission.progress}/{mission.total}

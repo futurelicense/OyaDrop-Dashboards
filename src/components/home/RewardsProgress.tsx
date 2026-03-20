@@ -23,7 +23,7 @@ export function RewardsProgress() {
         whileTap={{
           scale: 0.98
         }}>
-
+        
         <div className="relative flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             <motion.div
@@ -35,7 +35,7 @@ export function RewardsProgress() {
                 duration: 2,
                 repeat: Infinity
               }}>
-
+              
               <TrophyIcon className="w-6 h-6 text-white" />
             </motion.div>
 
@@ -53,7 +53,7 @@ export function RewardsProgress() {
               scale: 0.95,
               rotate: 180
             }}>
-
+            
             <RefreshCwIcon className="w-5 h-5 text-white" />
           </motion.button>
         </div>
@@ -72,7 +72,7 @@ export function RewardsProgress() {
               duration: 1,
               ease: 'easeOut'
             }} />
-
+          
         </div>
       </motion.div>
     </div>);

@@ -196,7 +196,7 @@ export function PharmacyCustomerPage({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <ArrowLeft className="w-6 h-6 text-white" />
             </motion.button>
             <div>
@@ -210,7 +210,7 @@ export function PharmacyCustomerPage({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ShoppingCart className="w-5 h-5 text-purple-400" />
             {cartItemCount > 0 &&
             <motion.span
@@ -225,7 +225,7 @@ export function PharmacyCustomerPage({
                 type: 'spring',
                 damping: 15
               }}>
-
+              
                 {cartItemCount}
               </motion.span>
             }
@@ -242,7 +242,7 @@ export function PharmacyCustomerPage({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#131B2E] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-purple-500/50 focus:outline-none placeholder:text-gray-500" />
-
+            
           </div>
         </div>
 
@@ -257,7 +257,7 @@ export function PharmacyCustomerPage({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {category}
               </motion.button>
             )}
@@ -277,7 +277,7 @@ export function PharmacyCustomerPage({
           opacity: 1,
           y: 0
         }}>
-
+        
           <div className="flex items-start gap-3">
             <Upload className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
@@ -293,7 +293,7 @@ export function PharmacyCustomerPage({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 Upload Prescription →
               </motion.button>
             </div>
@@ -318,14 +318,14 @@ export function PharmacyCustomerPage({
           transition={{
             delay: index * 0.05
           }}>
-
+          
             {/* Image */}
             <div className="relative aspect-square bg-[#0A0E1A]">
               <img
               src={medication.image}
               alt={medication.name}
               className="w-full h-full object-cover" />
-
+            
               {medication.requiresPrescription &&
             <div className="absolute top-2 left-2 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
                   Rx
@@ -367,7 +367,7 @@ export function PharmacyCustomerPage({
                 whileTap={{
                   scale: 0.9
                 }}>
-
+                
                   <Plus className="w-4 h-4 text-white" />
                 </motion.button>
               </div>
@@ -392,7 +392,7 @@ export function PharmacyCustomerPage({
               opacity: 0
             }}
             onClick={() => setShowCart(false)} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[80vh] flex flex-col"
             initial={{
@@ -409,7 +409,7 @@ export function PharmacyCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               {/* Handle */}
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -426,7 +426,7 @@ export function PharmacyCustomerPage({
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                   <X className="w-6 h-6 text-white" />
                 </motion.button>
               </div>
@@ -445,12 +445,12 @@ export function PharmacyCustomerPage({
                   key={item.id}
                   className="bg-[#0A0E1A]/50 rounded-xl p-3 flex items-center gap-3"
                   layout>
-
+                  
                         <img
                     src={item.image}
                     alt={item.name}
                     className="w-16 h-16 rounded-lg object-cover" />
-
+                  
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-bold text-white mb-1">
                             {item.name}
@@ -466,7 +466,7 @@ export function PharmacyCustomerPage({
                       whileTap={{
                         scale: 0.9
                       }}>
-
+                      
                             <Minus className="w-4 h-4 text-white" />
                           </motion.button>
                           <span className="text-white font-bold w-8 text-center">
@@ -478,7 +478,7 @@ export function PharmacyCustomerPage({
                       whileTap={{
                         scale: 0.9
                       }}>
-
+                      
                             <Plus className="w-4 h-4 text-white" />
                           </motion.button>
                         </div>
@@ -516,7 +516,7 @@ export function PharmacyCustomerPage({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     Proceed to Checkout
                   </motion.button>
                 </div>
@@ -542,7 +542,7 @@ export function PharmacyCustomerPage({
               opacity: 0
             }}
             onClick={() => setShowCheckout(false)} />
-
+          
             <motion.div
             className="fixed inset-x-0 bottom-0 z-50 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl max-h-[85vh] flex flex-col"
             initial={{
@@ -559,7 +559,7 @@ export function PharmacyCustomerPage({
               damping: 30,
               stiffness: 300
             }}>
-
+            
               <div className="flex justify-center pt-3 pb-2">
                 <div className="w-12 h-1 bg-gray-600 rounded-full" />
               </div>
@@ -572,7 +572,7 @@ export function PharmacyCustomerPage({
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                   <X className="w-6 h-6 text-white" />
                 </motion.button>
               </div>
@@ -591,7 +591,7 @@ export function PharmacyCustomerPage({
                     value={deliveryAddress}
                     onChange={(e) => setDeliveryAddress(e.target.value)}
                     className="w-full bg-[#0A0E1A] text-white pl-11 pr-4 py-3 rounded-xl border border-white/10 focus:border-purple-500/50 focus:outline-none placeholder:text-gray-500" />
-
+                  
                   </div>
                 </div>
 
@@ -608,7 +608,7 @@ export function PharmacyCustomerPage({
                     whileTap={{
                       scale: 0.98
                     }}>
-
+                    
                         <Clock className="w-5 h-5 mx-auto mb-1 text-purple-400" />
                         <p className="text-xs">{option}</p>
                       </motion.button>
@@ -655,7 +655,7 @@ export function PharmacyCustomerPage({
                   // Show success and navigate
                   onBack();
                 }}>
-
+                
                   <CheckCircle className="w-5 h-5" />
                   Place Order
                 </motion.button>

@@ -58,7 +58,7 @@ export function AbilityCards() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Power Abilities
       </motion.h2>
       <p className="text-sm text-gray-400 mb-6">
@@ -92,13 +92,13 @@ export function AbilityCards() {
                 scale: 0.95
               }}
               onClick={() => handleAction(ability.action, index)}>
-
+              
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
                   background: `radial-gradient(circle at 50% 50%, ${ability.color}20, transparent 70%)`
                 }} />
-
+              
 
               <motion.div
                 className="absolute top-2 right-2 w-20 h-20 rounded-full blur-2xl opacity-30"
@@ -112,7 +112,7 @@ export function AbilityCards() {
                   duration: 2,
                   repeat: Infinity
                 }} />
-
+              
 
               <div className="relative">
                 <div
@@ -121,7 +121,7 @@ export function AbilityCards() {
                     backgroundColor: `${ability.color}20`,
                     boxShadow: `0 0 20px ${ability.color}30`
                   }}>
-
+                  
                   <AnimatePresence mode="wait">
                     {isCopied ?
                     <motion.div
@@ -138,7 +138,7 @@ export function AbilityCards() {
                         scale: 0,
                         rotate: 180
                       }}>
-
+                      
                         <CheckIcon className="w-7 h-7 text-[#00ff88]" />
                       </motion.div> :
 
@@ -153,13 +153,13 @@ export function AbilityCards() {
                       exit={{
                         scale: 0
                       }}>
-
+                      
                         <Icon
                         className="w-7 h-7 transition-transform group-hover:scale-110"
                         style={{
                           color: ability.color
                         }} />
-
+                      
                       </motion.div>
                     }
                   </AnimatePresence>
@@ -174,7 +174,7 @@ export function AbilityCards() {
                   style={{
                     color: ability.color
                   }}>
-
+                  
                     {ability.xp}
                   </p>
                 }
@@ -186,7 +186,7 @@ export function AbilityCards() {
                   background: `linear-gradient(90deg, transparent, ${ability.color}, transparent)`,
                   boxShadow: `0 0 8px ${ability.color}`
                 }} />
-
+              
             </motion.button>);
 
         })}

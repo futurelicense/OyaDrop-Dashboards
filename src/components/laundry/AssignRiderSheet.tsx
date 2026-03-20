@@ -63,7 +63,7 @@ export function AssignRiderSheet({ isOpen, onClose }: AssignRiderSheetProps) {
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           <motion.div
           className="fixed bottom-0 left-0 right-0 bg-gradient-to-b from-[#131B2E] to-[#0A0E1A] rounded-t-3xl z-[90] max-h-[75vh] flex flex-col"
@@ -81,7 +81,7 @@ export function AssignRiderSheet({ isOpen, onClose }: AssignRiderSheetProps) {
             damping: 30,
             stiffness: 300
           }}>
-
+          
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
             </div>
@@ -97,7 +97,7 @@ export function AssignRiderSheet({ isOpen, onClose }: AssignRiderSheetProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -122,14 +122,14 @@ export function AssignRiderSheet({ isOpen, onClose }: AssignRiderSheetProps) {
                 scale: rider.available ? 0.98 : 1
               }}
               disabled={!rider.available}>
-
+              
                   <div className="flex items-center gap-3">
                     <div className="relative">
                       <img
                     src={rider.avatar}
                     alt={rider.name}
                     className="w-14 h-14 rounded-full object-cover" />
-
+                  
                       {rider.available &&
                   <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-[#0A0E1A] flex items-center justify-center">
                           <Bike className="w-3 h-3 text-white" />

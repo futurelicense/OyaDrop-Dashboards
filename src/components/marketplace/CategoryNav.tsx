@@ -66,7 +66,7 @@ export function CategoryNav() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Categories
       </motion.h2>
 
@@ -91,20 +91,20 @@ export function CategoryNav() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                 style={{
                   backgroundColor: `${category.color}20`,
                   border: `1px solid ${category.color}30`
                 }}>
-
+                
                 <Icon
                   className="w-7 h-7"
                   style={{
                     color: category.color
                   }} />
-
+                
               </div>
               <span className="text-xs text-gray-300 text-center max-w-[70px] leading-tight">
                 {category.name}

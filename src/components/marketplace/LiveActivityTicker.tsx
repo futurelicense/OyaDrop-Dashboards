@@ -46,13 +46,13 @@ export function LiveActivityTicker() {
           repeat: Infinity,
           ease: 'linear'
         }}>
-
+        
         {[...activities, ...activities, ...activities].map(
           (activity, index) =>
           <div
             key={index}
             className="flex items-center gap-2 whitespace-nowrap">
-
+            
               <div className="w-6 h-6 bg-[#00ffcc]/20 rounded-full flex items-center justify-center">
                 <ShoppingBagIcon className="w-3.5 h-3.5 text-[#00ffcc]" />
               </div>

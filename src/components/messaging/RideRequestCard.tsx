@@ -30,7 +30,7 @@ export function RideRequestCard({
         type: 'spring',
         damping: 20
       }}>
-
+      
       {/* Header */}
       <div className="flex items-center gap-2 mb-3 pb-3 border-b border-white/10">
         <div className="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center">
@@ -90,7 +90,7 @@ export function RideRequestCard({
           whileTap={{
             scale: 0.98
           }}>
-
+          
           Decline
         </motion.button>
         <motion.button
@@ -98,7 +98,7 @@ export function RideRequestCard({
           whileTap={{
             scale: 0.98
           }}>
-
+          
           Accept Ride
         </motion.button>
       </div>

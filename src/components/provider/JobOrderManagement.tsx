@@ -134,7 +134,7 @@ export function JobOrderManagement() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <div className="flex items-center gap-2">
                 {tab.label}
                 {jobCount > 0 &&
@@ -144,7 +144,7 @@ export function JobOrderManagement() {
                     backgroundColor: isActive ? tab.color : '#6B7280',
                     color: isActive ? '#000' : '#fff'
                   }}>
-
+                  
                     {jobCount}
                   </span>
                 }
@@ -176,7 +176,7 @@ export function JobOrderManagement() {
           transition={{
             delay: index * 0.1
           }}>
-
+          
               {/* Header */}
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-bold text-white">{job.id}</span>
@@ -223,7 +223,7 @@ export function JobOrderManagement() {
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                       Reject
                     </motion.button>
                     <motion.button
@@ -231,7 +231,7 @@ export function JobOrderManagement() {
                 whileTap={{
                   scale: 0.95
                 }}>
-
+                
                       Accept
                     </motion.button>
                   </div>
@@ -243,7 +243,7 @@ export function JobOrderManagement() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                     <Calendar className="w-4 h-4" />
                     View Details
                   </motion.button>
@@ -255,7 +255,7 @@ export function JobOrderManagement() {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                     <CheckCircle className="w-4 h-4" />
                     Complete
                   </motion.button>

@@ -17,7 +17,7 @@ export function VerifiedKiosks({ stores }: VerifiedKiosksProps) {
           opacity: 1,
           y: 0
         }}>
-
+        
         <h2 className="text-lg font-bold text-white">Verified Kiosks</h2>
         <button className="text-sm text-[#00ffcc] font-medium">View All</button>
       </motion.div>

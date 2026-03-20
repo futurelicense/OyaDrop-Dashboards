@@ -24,7 +24,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
       transition={{
         duration: 0.5
       }}>
-
+      
       <div className="px-5 pt-4 pb-3">
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-4">
@@ -34,7 +34,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
               scale: 0.95
             }}
             onClick={onMenuClick}>
-
+            
             <MenuIcon className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -51,7 +51,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
             transition={{
               delay: 0.2
             }}>
-
+            
             Referral Quest
           </motion.div>
 
@@ -61,7 +61,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <BellIcon className="w-6 h-6 text-white" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#ff00ff] rounded-full shadow-[0_0_8px_#ff00ff]" />
             </motion.button>
@@ -71,7 +71,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <div className="w-full h-full rounded-full bg-[#1a2a2f] flex items-center justify-center">
                 <UserCircleIcon className="w-5 h-5 text-[#00ffcc]" />
               </div>
@@ -94,7 +94,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
             transition={{
               delay: 0.3
             }}>
-
+            
             <div className="relative">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#ffd700] via-[#ffb800] to-[#ff8800] p-1 shadow-[0_0_20px_rgba(255,215,0,0.5)]">
                 <div className="w-full h-full rounded-full bg-[#0f2027] flex items-center justify-center border-2 border-[#ffd700]/30">
@@ -130,7 +130,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
             whileHover={{
               scale: 1.05
             }}>
-
+            
             <motion.div
               animate={{
                 scale: [1, 1.2, 1]
@@ -139,7 +139,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
                 duration: 1,
                 repeat: Infinity
               }}>
-
+              
               <FlameIcon className="w-5 h-5 text-white fill-white" />
             </motion.div>
             <div className="text-right">
@@ -164,7 +164,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
             delay: 0.4,
             duration: 0.6
           }}>
-
+          
           <div className="h-3 bg-[#1a2a2f] rounded-full overflow-hidden border border-[#00ffcc]/20 shadow-inner">
             <motion.div
               className="h-full bg-gradient-to-r from-[#00ffcc] via-[#00d9ff] to-[#00ffcc] rounded-full relative"
@@ -179,7 +179,7 @@ export function GamifiedHeader({ onMenuClick }: GamifiedHeaderProps) {
                 duration: 1,
                 ease: 'easeOut'
               }}>
-
+              
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
             </motion.div>
           </div>

@@ -40,14 +40,14 @@ export function KioskProductCard({
         y: -4,
         borderColor: '#00D9C040'
       }}>
-
+      
       {/* Image */}
       <div className="relative aspect-square overflow-hidden group">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-
+        
 
         {/* Discount Badge */}
         {product.discount &&
@@ -64,10 +64,10 @@ export function KioskProductCard({
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <Heart
               className={`w-4 h-4 ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-white'}`} />
-
+            
           </motion.button>
 
           <motion.button
@@ -75,7 +75,7 @@ export function KioskProductCard({
             whileTap={{
               scale: 0.9
             }}>
-
+            
             <Eye className="w-4 h-4 text-white" />
           </motion.button>
         </div>
@@ -126,7 +126,7 @@ export function KioskProductCard({
             scale: product.inStock ? 0.98 : 1
           }}
           disabled={!product.inStock}>
-
+          
           <ShoppingCart className="w-4 h-4" />
           Add to Cart
         </motion.button>

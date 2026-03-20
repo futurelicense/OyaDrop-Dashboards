@@ -21,14 +21,14 @@ export function AppMockup({ type, children, delay = 0 }: AppMockupProps) {
         transition={{
           delay
         }}>
-
+        
         {/* Phone Frame */}
         <div
           className="relative mx-auto"
           style={{
             width: '280px'
           }}>
-
+          
           {/* Phone Bezel */}
           <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
             {/* Notch */}
@@ -40,7 +40,7 @@ export function AppMockup({ type, children, delay = 0 }: AppMockupProps) {
               style={{
                 height: '560px'
               }}>
-
+              
               <div className="absolute inset-0 overflow-y-auto scrollbar-hide">
                 {children}
               </div>
@@ -64,7 +64,7 @@ export function AppMockup({ type, children, delay = 0 }: AppMockupProps) {
       transition={{
         delay
       }}>
-
+      
       {/* Desktop Frame */}
       <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-xl p-2 shadow-2xl">
         {/* Browser Bar */}
@@ -85,7 +85,7 @@ export function AppMockup({ type, children, delay = 0 }: AppMockupProps) {
           style={{
             height: '400px'
           }}>
-
+          
           <div className="absolute inset-0 overflow-y-auto scrollbar-hide">
             {children}
           </div>

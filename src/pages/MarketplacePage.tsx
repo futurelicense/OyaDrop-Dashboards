@@ -175,7 +175,7 @@ export function MarketplacePage({ onMenuClick }: MarketplacePageProps) {
         onMenuClick={onMenuClick}
         onCartClick={() => cart.setIsOpen(true)}
         cartItemCount={cart.itemCount} />
-
+      
 
       <LiveActivityTicker />
 
@@ -193,11 +193,11 @@ export function MarketplacePage({ onMenuClick }: MarketplacePageProps) {
           title="Recommended for You"
           subtitle="Based on your preferences"
           icon="ai">
-
+          
           <ProductGrid
             products={recommendedProducts}
             onAddToCart={handleAddToCart} />
-
+          
         </PersonalizedSection>
 
         {/* Nearby Stores */}
@@ -205,11 +205,11 @@ export function MarketplacePage({ onMenuClick }: MarketplacePageProps) {
           title="Nearby Stores"
           subtitle="Within 2km from you"
           icon="location">
-
+          
           <ProductGrid
             products={nearbyProducts}
             onAddToCart={handleAddToCart} />
-
+          
         </PersonalizedSection>
 
         {/* Trending Now */}
@@ -217,11 +217,11 @@ export function MarketplacePage({ onMenuClick }: MarketplacePageProps) {
           title="Trending Now"
           subtitle="Popular in your area"
           icon="time">
-
+          
           <ProductGrid
             products={trendingProducts}
             onAddToCart={handleAddToCart} />
-
+          
         </PersonalizedSection>
       </main>
 
@@ -232,7 +232,7 @@ export function MarketplacePage({ onMenuClick }: MarketplacePageProps) {
         total={cart.total}
         onUpdateQuantity={cart.updateQuantity}
         onRemoveItem={cart.removeItem} />
-
+      
 
       <FloatingActions />
     </div>);

@@ -86,7 +86,7 @@ export function Leaderboard() {
           opacity: 1,
           y: 0
         }}>
-
+        
         Leaderboard
       </motion.h2>
 
@@ -100,7 +100,7 @@ export function Leaderboard() {
           whileTap={{
             scale: 0.98
           }}>
-
+          
             {tab}
           </motion.button>
         )}
@@ -126,7 +126,7 @@ export function Leaderboard() {
           whileHover={{
             scale: 1.02
           }}>
-
+          
             {player.rank <= 3 &&
           <div
             className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl opacity-20"
@@ -155,7 +155,7 @@ export function Leaderboard() {
               <div className="flex-1">
                 <p
                 className={`text-sm font-bold ${player.isCurrentUser ? 'text-[#00ffcc]' : 'text-white'}`}>
-
+                
                   {player.name}
                 </p>
                 <p className="text-xs text-gray-400">
@@ -177,7 +177,7 @@ export function Leaderboard() {
                 delay: 0.4 + index * 0.05,
                 type: 'spring'
               }}>
-
+              
                   <span className="text-xs font-bold text-[#0a1a1f]">You</span>
                 </motion.div>
             }

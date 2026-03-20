@@ -198,19 +198,19 @@ export function DynamicKPISummary({ providerType }: DynamicKPISummaryProps) {
                 y: -2,
                 borderColor: kpi.color + '40'
               }}>
-
+              
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
                 style={{
                   backgroundColor: kpi.color + '20'
                 }}>
-
+                
                 <Icon
                   className="w-5 h-5"
                   style={{
                     color: kpi.color
                   }} />
-
+                
               </div>
 
               <p className="text-xs text-gray-400 mb-1">{kpi.label}</p>

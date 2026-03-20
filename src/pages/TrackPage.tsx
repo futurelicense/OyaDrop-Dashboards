@@ -36,7 +36,7 @@ export function TrackPage({ onBack }: TrackPageProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
           <div>
@@ -65,7 +65,7 @@ export function TrackPage({ onBack }: TrackPageProps) {
             transition={{
               delay: index * 0.1
             }}>
-
+            
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <p className="text-sm text-gray-400 mb-1">Order {order.id}</p>
@@ -104,7 +104,7 @@ export function TrackPage({ onBack }: TrackPageProps) {
                     duration: 1,
                     delay: index * 0.1
                   }} />
-
+                
                 </div>
               </div>
 
@@ -129,7 +129,7 @@ export function TrackPage({ onBack }: TrackPageProps) {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 View on Map
               </motion.button>
             </motion.div>

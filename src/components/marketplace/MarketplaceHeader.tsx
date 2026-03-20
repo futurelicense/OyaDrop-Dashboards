@@ -28,7 +28,7 @@ export function MarketplaceHeader({
         y: 0,
         opacity: 1
       }}>
-
+      
       <div className="px-5 py-4">
         {/* Top Row */}
         <div className="flex items-center justify-between mb-4">
@@ -38,7 +38,7 @@ export function MarketplaceHeader({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <MenuIcon className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -55,7 +55,7 @@ export function MarketplaceHeader({
             transition={{
               delay: 0.1
             }}>
-
+            
             <div className="w-8 h-8 bg-gradient-to-br from-[#00ffcc] to-[#00d9ff] rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">O</span>
             </div>
@@ -69,7 +69,7 @@ export function MarketplaceHeader({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <ShoppingCartIcon className="w-6 h-6 text-[#00ffcc]" />
               {cartItemCount > 0 &&
               <motion.span
@@ -84,7 +84,7 @@ export function MarketplaceHeader({
                   type: 'spring',
                   stiffness: 500
                 }}>
-
+                
                   {cartItemCount}
                 </motion.span>
               }
@@ -95,7 +95,7 @@ export function MarketplaceHeader({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <UserCircleIcon className="w-6 h-6 text-black" />
             </motion.button>
           </div>
@@ -115,7 +115,7 @@ export function MarketplaceHeader({
           transition={{
             delay: 0.2
           }}>
-
+          
           <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
             type="text"
@@ -123,7 +123,7 @@ export function MarketplaceHeader({
             className="w-full bg-[#1a2a2f] text-white pl-12 pr-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-[#00ffcc]/50 transition-colors placeholder:text-gray-500"
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)} />
-
+          
         </motion.div>
       </div>
     </motion.header>);

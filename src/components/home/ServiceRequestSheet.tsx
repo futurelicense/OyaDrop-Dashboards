@@ -40,7 +40,7 @@ export function ServiceRequestSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Sheet */}
           <motion.div
@@ -59,7 +59,7 @@ export function ServiceRequestSheet({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -73,7 +73,7 @@ export function ServiceRequestSheet({
                 style={{
                   backgroundColor: color + '20'
                 }}>
-
+                
                   {icon}
                 </div>
                 <div>
@@ -87,7 +87,7 @@ export function ServiceRequestSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -106,7 +106,7 @@ export function ServiceRequestSheet({
                 scale: 0.98
               }}
               onClick={onSubmit}>
-
+              
                 {submitLabel}
                 <ArrowRight className="w-5 h-5" />
               </motion.button>

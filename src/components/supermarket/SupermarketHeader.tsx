@@ -17,7 +17,7 @@ export function SupermarketHeader({ onMenuClick }: SupermarketHeaderProps) {
               scale: 0.95
             }}
             onClick={onMenuClick}>
-
+            
             <Menu className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -26,7 +26,7 @@ export function SupermarketHeader({ onMenuClick }: SupermarketHeaderProps) {
               src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=100&h=100&fit=crop"
               alt="Store"
               className="w-10 h-10 rounded-xl object-cover" />
-
+            
             <div>
               <h1 className="text-sm font-bold text-white">
                 FreshMart Supermarket
@@ -45,7 +45,7 @@ export function SupermarketHeader({ onMenuClick }: SupermarketHeaderProps) {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Bell className="w-6 h-6 text-white" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
           </motion.button>
@@ -60,11 +60,11 @@ export function SupermarketHeader({ onMenuClick }: SupermarketHeaderProps) {
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <div className="flex items-center gap-3">
             <div
               className={`w-3 h-3 rounded-full ${isOnline ? 'bg-green-500' : 'bg-gray-500'}`} />
-
+            
             <div className="text-left">
               <p className="text-sm font-bold text-white">
                 {isOnline ? 'Store is Online' : 'Store is Offline'}
@@ -80,7 +80,7 @@ export function SupermarketHeader({ onMenuClick }: SupermarketHeaderProps) {
             animate={{
               backgroundColor: isOnline ? '#10B981' : '#4B5563'
             }}>
-
+            
             <motion.div
               className="w-6 h-6 bg-white rounded-full"
               animate={{
@@ -91,7 +91,7 @@ export function SupermarketHeader({ onMenuClick }: SupermarketHeaderProps) {
                 damping: 20,
                 stiffness: 300
               }} />
-
+            
           </motion.div>
         </motion.button>
       </div>

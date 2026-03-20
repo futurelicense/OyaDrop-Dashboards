@@ -44,7 +44,7 @@ export function Sparkline({
         style={{
           filter: `drop-shadow(0 0 4px ${color})`
         }} />
-
+      
     </svg>);
 
 }

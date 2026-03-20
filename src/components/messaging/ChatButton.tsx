@@ -36,12 +36,12 @@ export function ChatButton({
         scale: 0.95
       }}
       onClick={onClick}>
-
+      
       <MessageCircle
         className={
         size === 'sm' ? 'w-4 h-4' : size === 'md' ? 'w-4 h-4' : 'w-5 h-5'
         } />
-
+      
       <span>Chat with {contactName}</span>
     </motion.button>);
 

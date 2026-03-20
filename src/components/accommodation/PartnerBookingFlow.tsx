@@ -48,7 +48,7 @@ export function PartnerBookingFlow({
           y: 0,
           opacity: 1
         }}>
-
+        
         <div className="flex items-center gap-4">
           <motion.button
             className="p-2 rounded-xl hover:bg-white/5 transition-colors"
@@ -56,7 +56,7 @@ export function PartnerBookingFlow({
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <ArrowLeft className="w-6 h-6 text-white" />
           </motion.button>
 
@@ -65,7 +65,7 @@ export function PartnerBookingFlow({
               src={partner.logo}
               alt={partner.name}
               className="w-12 h-12 rounded-xl border-2 border-white/10" />
-
+            
             <div>
               <h1 className="text-lg font-bold text-white">{partner.name}</h1>
               <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ export function PartnerBookingFlow({
                     backgroundColor: typeColors[partner.type] + '20',
                     color: typeColors[partner.type]
                   }}>
-
+                  
                   {partner.type}
                 </span>
                 {partner.verified &&
@@ -102,7 +102,7 @@ export function PartnerBookingFlow({
                   <div className="flex items-center gap-2 flex-1">
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all ${isCompleted ? 'bg-green-500 text-white' : isActive ? 'bg-cyan-500 text-white' : 'bg-[#131B2E] text-gray-400'}`}>
-
+                      
                       {isCompleted ?
                       <CheckCircle className="w-5 h-5" /> :
 
@@ -111,7 +111,7 @@ export function PartnerBookingFlow({
                     </div>
                     <span
                       className={`text-xs font-semibold ${isActive ? 'text-white' : 'text-gray-400'}`}>
-
+                      
                       {label}
                     </span>
                   </div>
@@ -142,7 +142,7 @@ export function PartnerBookingFlow({
           transition={{
             duration: 0.3
           }}>
-
+          
             <h2 className="text-xl font-bold text-white mb-2">
               Select a Property
             </h2>
@@ -164,13 +164,13 @@ export function PartnerBookingFlow({
                 scale: 0.98
               }}
               onClick={() => setStep('booking-details')}>
-
+              
                   <div className="flex gap-4 p-4">
                     <img
                   src={`https://images.unsplash.com/photo-${1582719478250 + i}?w=200&h=200&fit=crop`}
                   alt="Property"
                   className="w-24 h-24 rounded-xl object-cover" />
-
+                
                     <div className="flex-1">
                       <h3 className="text-base font-bold text-white mb-1">
                         Luxury Suite {i}
@@ -214,7 +214,7 @@ export function PartnerBookingFlow({
           transition={{
             duration: 0.3
           }}>
-
+          
             <h2 className="text-xl font-bold text-white mb-6">
               Booking Details
             </h2>
@@ -234,7 +234,7 @@ export function PartnerBookingFlow({
                     <input
                     type="date"
                     className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
-
+                  
                   </div>
                   <div>
                     <label className="text-xs text-gray-400 mb-1 block">
@@ -243,7 +243,7 @@ export function PartnerBookingFlow({
                     <input
                     type="date"
                     className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
-
+                  
                   </div>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export function PartnerBookingFlow({
                     defaultValue={2}
                     min={1}
                     className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
-
+                  
                   </div>
                   <div>
                     <label className="text-xs text-gray-400 mb-1 block">
@@ -275,7 +275,7 @@ export function PartnerBookingFlow({
                     defaultValue={0}
                     min={0}
                     className="w-full bg-[#0A0E1A] text-white px-3 py-2 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none text-sm" />
-
+                  
                   </div>
                 </div>
               </div>
@@ -312,7 +312,7 @@ export function PartnerBookingFlow({
                 scale: 0.98
               }}
               onClick={() => setStep('payment')}>
-
+              
                 Continue to Payment
               </motion.button>
             </div>
@@ -332,7 +332,7 @@ export function PartnerBookingFlow({
           transition={{
             duration: 0.3
           }}>
-
+          
             <h2 className="text-xl font-bold text-white mb-6">
               Payment Method
             </h2>
@@ -347,7 +347,7 @@ export function PartnerBookingFlow({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center">
                         <CreditCard className="w-6 h-6 text-cyan-400" />
@@ -376,7 +376,7 @@ export function PartnerBookingFlow({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <CheckCircle className="w-5 h-5" />
                 Confirm Booking
               </motion.button>

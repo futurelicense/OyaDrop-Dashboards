@@ -59,19 +59,19 @@ export function QuickAccessBar({ onNavigate }: QuickAccessBarProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               {/* Glow effect on hover */}
               <div
                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity"
                 style={{
                   backgroundColor: service.color + '40'
                 }} />
-
+              
 
               {/* Button content */}
               <div
                 className={`relative bg-gradient-to-br ${service.gradient} rounded-2xl p-4 flex flex-col items-center gap-2 shadow-lg`}>
-
+                
                 <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
                   <Icon className="w-6 h-6 text-white" />
                 </div>

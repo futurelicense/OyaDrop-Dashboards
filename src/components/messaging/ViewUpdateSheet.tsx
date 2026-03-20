@@ -59,7 +59,7 @@ export function ViewUpdateSheet({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Full Screen View */}
           <motion.div
@@ -73,7 +73,7 @@ export function ViewUpdateSheet({
           exit={{
             opacity: 0
           }}>
-
+          
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10">
               <div className="flex items-center gap-3">
@@ -81,7 +81,7 @@ export function ViewUpdateSheet({
                 src={update.user.avatar}
                 alt={update.user.name}
                 className="w-10 h-10 rounded-full object-cover" />
-
+              
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="text-sm font-bold text-white">
@@ -94,7 +94,7 @@ export function ViewUpdateSheet({
                       backgroundColor: typeColors[update.type] + '20',
                       color: typeColors[update.type]
                     }}>
-
+                    
                         {update.user.role}
                       </span>
                   }
@@ -108,7 +108,7 @@ export function ViewUpdateSheet({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -149,7 +149,7 @@ export function ViewUpdateSheet({
                 <div className="flex items-center gap-2 text-gray-400">
                   <Heart
                   className={`w-5 h-5 ${hasLiked ? 'fill-red-400 text-red-400' : ''}`} />
-
+                
                   <span className="text-sm font-semibold">{likes} likes</span>
                 </div>
               </div>
@@ -164,10 +164,10 @@ export function ViewUpdateSheet({
                   scale: 0.98
                 }}
                 onClick={toggleLike}>
-
+                
                   <Heart
                   className={`w-5 h-5 ${hasLiked ? 'fill-red-400' : ''}`} />
-
+                
                   {hasLiked ? 'Liked' : 'Like'}
                 </motion.button>
                 <motion.button
@@ -175,7 +175,7 @@ export function ViewUpdateSheet({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                   <Share2 className="w-5 h-5" />
                   Share
                 </motion.button>
@@ -189,14 +189,14 @@ export function ViewUpdateSheet({
                 value={reply}
                 onChange={(e) => setReply(e.target.value)}
                 className="flex-1 bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500" />
-
+              
                 <motion.button
                 className="px-6 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
                 whileTap={{
                   scale: reply ? 0.98 : 1
                 }}
                 disabled={!reply}>
-
+                
                   <MessageCircle className="w-5 h-5" />
                 </motion.button>
               </div>

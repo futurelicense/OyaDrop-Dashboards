@@ -19,13 +19,13 @@ export function OyaCoinInfoBanner() {
         height: 0
       }}
       className="mx-4 mb-6">
-
+      
       <div className="relative p-4 rounded-2xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/20 backdrop-blur-sm">
         <button
           onClick={() => setIsVisible(false)}
           className="absolute top-3 right-3 p-1 rounded-lg hover:bg-white/10 active:scale-95 transition-all"
           aria-label="Dismiss">
-
+          
           <X className="w-4 h-4 text-slate-400" />
         </button>
 
@@ -34,7 +34,7 @@ export function OyaCoinInfoBanner() {
             src="/image.png"
             alt="OyaCoin"
             className="w-10 h-10 flex-shrink-0" />
-
+          
 
           <div>
             <p className="text-white text-sm leading-relaxed mb-2">

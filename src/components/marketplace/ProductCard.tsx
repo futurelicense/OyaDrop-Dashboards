@@ -50,14 +50,14 @@ export function ProductCard({
         y: -4,
         borderColor: 'rgba(0, 255, 204, 0.3)'
       }}>
-
+      
       {/* Image */}
       <div className="relative aspect-square overflow-hidden bg-[#0f1f24]">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-
+        
 
         {/* Badges */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">
@@ -76,7 +76,7 @@ export function ProductCard({
               delay: 0.2 + index * 0.05,
               type: 'spring'
             }}>
-
+            
               -{discountPercent}%
             </motion.div>
           }
@@ -93,7 +93,7 @@ export function ProductCard({
               delay: 0.3 + index * 0.05,
               type: 'spring'
             }}>
-
+            
               <ZapIcon className="w-3 h-3" />
               Trending
             </motion.div>
@@ -110,7 +110,7 @@ export function ProductCard({
           whileTap={{
             scale: 0.9
           }}>
-
+          
           <AnimatePresence mode="wait">
             {isWishlisted ?
             <motion.div
@@ -124,7 +124,7 @@ export function ProductCard({
               exit={{
                 scale: 0
               }}>
-
+              
                 <HeartIcon className="w-4 h-4 fill-[#ff00ff] text-[#ff00ff]" />
               </motion.div> :
 
@@ -139,7 +139,7 @@ export function ProductCard({
               exit={{
                 scale: 0
               }}>
-
+              
                 <HeartIcon className="w-4 h-4 text-white" />
               </motion.div>
             }
@@ -156,7 +156,7 @@ export function ProductCard({
           whileHover={{
             scale: 1.1
           }}>
-
+          
           <PlusIcon className="w-5 h-5 text-black" />
         </motion.button>
       </div>
@@ -196,7 +196,7 @@ export function ProductCard({
           animate={{
             opacity: 1
           }}>
-
+          
             Only {product.stock} left!
           </motion.p>
         }

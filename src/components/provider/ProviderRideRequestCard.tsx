@@ -25,7 +25,7 @@ export function ProviderRideRequestCard({
       <button
         onClick={onRequestRide}
         className="w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-
+        
         Request Ride
       </button>
     </div>);

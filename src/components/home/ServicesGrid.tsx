@@ -102,19 +102,19 @@ export function ServicesGrid({ onNavigate }: ServicesGridProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center"
                 style={{
                   backgroundColor: `${service.color}20`
                 }}>
-
+                
                 <Icon
                   className="w-6 h-6"
                   style={{
                     color: service.color
                   }} />
-
+                
               </div>
               <span className="text-xs font-semibold text-white text-center leading-tight">
                 {service.name}

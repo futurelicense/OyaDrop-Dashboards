@@ -33,7 +33,7 @@ export function CreateUpdateSheet({ isOpen, onClose }: CreateUpdateSheetProps) {
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Bottom Sheet */}
           <motion.div
@@ -52,7 +52,7 @@ export function CreateUpdateSheet({ isOpen, onClose }: CreateUpdateSheetProps) {
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -72,7 +72,7 @@ export function CreateUpdateSheet({ isOpen, onClose }: CreateUpdateSheetProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -91,7 +91,7 @@ export function CreateUpdateSheet({ isOpen, onClose }: CreateUpdateSheetProps) {
                 onChange={(e) => setContent(e.target.value)}
                 rows={4}
                 className="w-full bg-[#0A0E1A] text-white px-4 py-3 rounded-xl border border-white/10 focus:border-cyan-500/50 focus:outline-none placeholder:text-gray-500 resize-none" />
-
+              
               </div>
 
               {/* Quick Messages */}
@@ -120,7 +120,7 @@ export function CreateUpdateSheet({ isOpen, onClose }: CreateUpdateSheetProps) {
                     scale: 0.98
                   }}
                   onClick={() => setContent(msg)}>
-
+                  
                       {msg}
                     </motion.button>
                 )}
@@ -138,7 +138,7 @@ export function CreateUpdateSheet({ isOpen, onClose }: CreateUpdateSheetProps) {
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                   <ImageIcon className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                   <p className="text-sm text-gray-400 text-center">
                     Tap to add image
@@ -165,7 +165,7 @@ export function CreateUpdateSheet({ isOpen, onClose }: CreateUpdateSheetProps) {
                 scale: content ? 0.98 : 1
               }}
               disabled={!content}>
-
+              
                 <Send className="w-5 h-5" />
                 Post Update
               </motion.button>

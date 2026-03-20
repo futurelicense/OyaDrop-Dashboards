@@ -54,7 +54,7 @@ export function BarberRequestSheet({
       icon={<Scissors className="w-6 h-6 text-orange-400" />}
       onSubmit={handleSubmit}
       submitLabel="Find Barbers">
-
+      
       <div className="space-y-6">
         {/* Service Type */}
         <div>
@@ -70,11 +70,11 @@ export function BarberRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <div className="text-2xl mb-2">{service.icon}</div>
                 <p
                 className={`text-sm font-semibold ${selectedService === service.id ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {service.name}
                 </p>
               </motion.button>
@@ -109,13 +109,13 @@ export function BarberRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Calendar
                 className={`w-5 h-5 mx-auto mb-1 ${when === option.value ? 'text-orange-400' : 'text-gray-400'}`} />
-
+              
                 <p
                 className={`text-xs font-semibold ${when === option.value ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {option.label}
                 </p>
               </motion.button>
@@ -153,13 +153,13 @@ export function BarberRequestSheet({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                 <Clock
                 className={`w-5 h-5 mx-auto mb-1 ${time === option.value ? 'text-orange-400' : 'text-gray-400'}`} />
-
+              
                 <p
                 className={`text-xs font-semibold ${time === option.value ? 'text-white' : 'text-gray-400'}`}>
-
+                
                   {option.label}
                 </p>
                 <p className="text-[10px] text-gray-500">{option.time}</p>

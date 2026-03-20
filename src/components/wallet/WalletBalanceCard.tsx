@@ -20,7 +20,7 @@ export function WalletBalanceCard() {
         boxShadow:
         '0 20px 60px rgba(0, 217, 192, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
       }}>
-
+      
       {/* Animated shimmer overlay */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
@@ -33,7 +33,7 @@ export function WalletBalanceCard() {
           repeatDelay: 5,
           ease: 'easeInOut'
         }} />
-
+      
 
       {/* Glow effect */}
       <div className="absolute -top-20 -right-20 w-40 h-40 bg-teal-400/20 rounded-full blur-3xl" />
@@ -55,7 +55,7 @@ export function WalletBalanceCard() {
               duration: 0.3,
               delay: 0.2
             }}>
-
+            
             ₦1,782,216.65
           </motion.h1>
           <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ export function WalletBalanceCard() {
               repeat: Infinity,
               ease: 'linear'
             }} />
-
+          
           <div>
             <p className="text-slate-400 text-xs">Cashback Earned</p>
             <p className="text-amber-400 text-lg font-bold">38,249.27 OC</p>
@@ -98,7 +98,7 @@ export function WalletBalanceCard() {
               scale: 0.98
             }}
             className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50 transition-shadow">
-
+            
             <Plus className="w-5 h-5" />
             Add Fund
           </motion.button>
@@ -111,7 +111,7 @@ export function WalletBalanceCard() {
               scale: 0.98
             }}
             className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-white/5 backdrop-blur-sm text-white font-semibold border border-white/10 hover:bg-white/10 transition-colors">
-
+            
             <ArrowDownToLine className="w-5 h-5" />
             Withdrawal
           </motion.button>

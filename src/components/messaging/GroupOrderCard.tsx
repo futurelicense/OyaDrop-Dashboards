@@ -63,7 +63,7 @@ export function GroupOrderCard({
         type: 'spring',
         damping: 20
       }}>
-
+      
       {/* Header */}
       <div className="flex items-center gap-2 mb-3 pb-3 border-b border-white/10">
         <div className="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center">
@@ -112,12 +112,12 @@ export function GroupOrderCard({
           transition={{
             delay: index * 0.05
           }}>
-
+          
             <img
             src={member.avatar}
             alt={member.name}
             className="w-8 h-8 rounded-full object-cover" />
-
+          
             <div className="flex-1 min-w-0">
               <p className="text-xs font-semibold text-white">{member.name}</p>
               {member.order ?
@@ -150,7 +150,7 @@ export function GroupOrderCard({
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <Plus className="w-4 h-4" />
           Add Item
         </motion.button>
@@ -159,7 +159,7 @@ export function GroupOrderCard({
           whileTap={{
             scale: 0.98
           }}>
-
+          
           <ShoppingCart className="w-4 h-4" />
           Place Order
         </motion.button>

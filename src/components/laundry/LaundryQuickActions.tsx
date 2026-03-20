@@ -64,19 +64,19 @@ export function LaundryQuickActions({
                   'assign-rider'
                 )
                 }>
-
+                
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
                   style={{
                     backgroundColor: action.color + '20'
                   }}>
-
+                  
                   <Icon
                     className="w-5 h-5"
                     style={{
                       color: action.color
                     }} />
-
+                  
                 </div>
                 <span className="text-xs font-semibold text-white text-center leading-tight">
                   {action.label}

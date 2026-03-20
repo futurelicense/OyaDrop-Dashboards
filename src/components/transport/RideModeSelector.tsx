@@ -23,13 +23,13 @@ export function RideModeSelector({
               damping: 20,
               stiffness: 300
             }} />
-
+          
 
           {/* Regular Button */}
           <button
             className={`relative z-10 py-3 px-4 rounded-xl font-semibold text-sm transition-colors ${mode === 'regular' ? 'text-white' : 'text-gray-400'}`}
             onClick={() => onModeChange('regular')}>
-
+            
             🚗 Regular Ride
           </button>
 
@@ -37,7 +37,7 @@ export function RideModeSelector({
           <button
             className={`relative z-10 py-3 px-4 rounded-xl font-semibold text-sm transition-colors ${mode === 'negotiate' ? 'text-white' : 'text-gray-400'}`}
             onClick={() => onModeChange('negotiate')}>
-
+            
             💰 Negotiate Ride
           </button>
         </div>

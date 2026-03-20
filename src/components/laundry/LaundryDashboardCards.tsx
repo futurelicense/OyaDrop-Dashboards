@@ -93,7 +93,7 @@ export function LaundryDashboardCards() {
             whileTap={{
               scale: 0.98
             }}>
-
+            
             {card.urgent &&
             <div className="absolute top-2 right-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
@@ -106,13 +106,13 @@ export function LaundryDashboardCards() {
                 style={{
                   backgroundColor: card.color + '20'
                 }}>
-
+                
                 <Icon
                   className="w-7 h-7"
                   style={{
                     color: card.color
                   }} />
-
+                
               </div>
 
               <div className="flex-1 min-w-0">

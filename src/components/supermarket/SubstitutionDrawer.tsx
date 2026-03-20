@@ -68,7 +68,7 @@ export function SubstitutionDrawer({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Drawer */}
           <motion.div
@@ -87,7 +87,7 @@ export function SubstitutionDrawer({
             damping: 30,
             stiffness: 300
           }}>
-
+          
             {/* Handle */}
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-12 h-1 bg-gray-600 rounded-full" />
@@ -109,7 +109,7 @@ export function SubstitutionDrawer({
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 <X className="w-6 h-6 text-white" />
               </motion.button>
             </div>
@@ -134,13 +134,13 @@ export function SubstitutionDrawer({
               whileTap={{
                 scale: 0.98
               }}>
-
+              
                   <div className="flex items-center gap-3">
                     <img
                   src={substitute.image}
                   alt={substitute.name}
                   className="w-20 h-20 rounded-xl object-cover" />
-
+                
 
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-bold text-white mb-1">
@@ -153,7 +153,7 @@ export function SubstitutionDrawer({
                         {substitute.priceDifference !== 0 &&
                     <span
                       className={`text-xs font-bold ${substitute.priceDifference > 0 ? 'text-orange-400' : 'text-green-400'}`}>
-
+                      
                             {substitute.priceDifference > 0 ? '+' : ''}₦
                             {substitute.priceDifference}
                           </span>
@@ -169,7 +169,7 @@ export function SubstitutionDrawer({
                   whileTap={{
                     scale: 0.9
                   }}>
-
+                  
                       <Check className="w-5 h-5 text-cyan-400" />
                     </motion.div>
                   </div>
@@ -185,7 +185,7 @@ export function SubstitutionDrawer({
                 scale: 0.98
               }}
               onClick={onClose}>
-
+              
                 Skip - Mark as Unavailable
               </motion.button>
             </div>

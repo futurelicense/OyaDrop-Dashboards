@@ -35,7 +35,7 @@ export function ProviderRideRequestSheet({
       <div
         className="fixed inset-0 bg-black/50 z-40 transition-opacity"
         onClick={onClose} />
-
+      
 
       {/* Sheet */}
       <div className="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto animate-slide-up">
@@ -45,7 +45,7 @@ export function ProviderRideRequestSheet({
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-
+            
             <XIcon className="w-5 h-5 text-gray-600" />
           </button>
         </div>
@@ -59,7 +59,7 @@ export function ProviderRideRequestSheet({
               destination={destination}
               onPickupChange={setPickup}
               onDestinationChange={setDestination} />
-
+            
           </div>
 
           {/* Ride Mode Selector */}
@@ -90,7 +90,7 @@ export function ProviderRideRequestSheet({
             <PaymentMethodSelector
               selectedMethod={paymentMethod}
               onMethodChange={setPaymentMethod} />
-
+            
           </div>
 
           {/* Confirm Button */}
@@ -98,7 +98,7 @@ export function ProviderRideRequestSheet({
             onClick={handleConfirmRide}
             disabled={!pickup || !destination}
             className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed shadow-lg">
-
+            
             Confirm Ride Request
           </button>
 

@@ -109,7 +109,7 @@ export function FeaturedPartners({ onPartnerSelect }: FeaturedPartnersProps) {
             scale: 0.98
           }}
           onClick={() => onPartnerSelect?.(partner)}>
-
+          
             {/* Featured Badge */}
             {partner.featured &&
           <div className="absolute top-2 right-2">
@@ -122,7 +122,7 @@ export function FeaturedPartners({ onPartnerSelect }: FeaturedPartnersProps) {
                 duration: 2,
                 repeat: Infinity
               }}>
-
+              
                   <Award className="w-3 h-3 text-black" />
                 </motion.div>
               </div>
@@ -134,7 +134,7 @@ export function FeaturedPartners({ onPartnerSelect }: FeaturedPartnersProps) {
               src={partner.logo}
               alt={partner.name}
               className="w-full h-full object-cover" />
-
+            
             </div>
 
             {/* Partner Info */}
@@ -154,7 +154,7 @@ export function FeaturedPartners({ onPartnerSelect }: FeaturedPartnersProps) {
                 backgroundColor: typeColors[partner.type] + '20',
                 color: typeColors[partner.type]
               }}>
-
+              
                 {partner.type}
               </div>
             </div>

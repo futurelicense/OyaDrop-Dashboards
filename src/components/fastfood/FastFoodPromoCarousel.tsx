@@ -71,7 +71,7 @@ export function FastFoodPromoCarousel() {
               whileTap={{
                 scale: 0.98
               }}>
-
+              
               {/* Glow Effect */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl" />
 
@@ -103,7 +103,7 @@ export function FastFoodPromoCarousel() {
                   whileTap={{
                     scale: 0.95
                   }}>
-
+                  
                   Claim Now
                 </motion.button>
               </div>

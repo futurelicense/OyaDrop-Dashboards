@@ -74,7 +74,7 @@ export function KioskProductGrid() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <Grid className="w-4 h-4" />
           </motion.button>
 
@@ -84,7 +84,7 @@ export function KioskProductGrid() {
             whileTap={{
               scale: 0.95
             }}>
-
+            
             <List className="w-4 h-4" />
           </motion.button>
         </div>
@@ -93,7 +93,7 @@ export function KioskProductGrid() {
       {/* Product Grid */}
       <div
         className={viewMode === 'grid' ? 'grid grid-cols-2 gap-3' : 'space-y-3'}>
-
+        
         {mockProducts.map((product, index) =>
         <KioskProductCard key={product.id} product={product} index={index} />
         )}
@@ -119,7 +119,7 @@ export function KioskProductGrid() {
           type: 'spring',
           damping: 15
         }}>
-
+        
           <ShoppingBag className="w-6 h-6 text-white" />
           <motion.span
           className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full text-white text-xs font-bold flex items-center justify-center"
@@ -131,7 +131,7 @@ export function KioskProductGrid() {
             repeat: Infinity,
             repeatDelay: 2
           }}>
-
+          
             {cartCount}
           </motion.span>
         </motion.button>

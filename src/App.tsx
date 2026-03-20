@@ -26,13 +26,24 @@ import { TrackPage } from './pages/TrackPage';
 import { HistoryPage } from './pages/HistoryPage';
 import { PitchDeckPage } from './pages/PitchDeckPage';
 import { PasswordGate } from './components/pitch/PasswordGate';
+import { SplashScreen } from './components/SplashScreen';
 import { Sidebar } from './components/Sidebar';
+import { AuthPage } from './pages/AuthPage';
 export function App() {
+  // Splash screen state
+  const [showSplash, setShowSplash] = useState(true);
   // Check if app is unlocked in this session
   const [isAppUnlocked, setIsAppUnlocked] = useState(false);
   useEffect(() => {
     const unlocked = sessionStorage.getItem('app_unlocked') === 'true';
     setIsAppUnlocked(unlocked);
+  }, []);
+  // Auto-dismiss splash screen after 3.5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 3500);
+    return () => clearTimeout(timer);
   }, []);
   const [activeView, setActiveView] = useState<
     'pitch-deck' |
@@ -59,7 +70,9 @@ export function App() {
     'services' |
     'sidebar' |
     'track' |
-    'history'>(
+    'history' |
+    'splash-screen' |
+    'auth'>(
     'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavigate = (
@@ -88,8 +101,18 @@ export function App() {
   'services' |
   'sidebar' |
   'track' |
-  'history') =>
+  'history' |
+  'splash-screen' |
+  'auth') =>
   {
+    if (view === 'splash-screen') {
+      setSidebarOpen(false);
+      setShowSplash(true);
+      setTimeout(() => {
+        setShowSplash(false);
+      }, 3500);
+      return;
+    }
     setActiveView(view);
     setSidebarOpen(false);
   };
@@ -102,6 +125,10 @@ export function App() {
   const handleUnlock = () => {
     setIsAppUnlocked(true);
   };
+  // Show splash screen first
+  if (showSplash) {
+    return <SplashScreen />;
+  }
   // If not unlocked, show password gate
   if (!isAppUnlocked) {
     return <PasswordGate onUnlock={handleUnlock} />;
@@ -116,6 +143,10 @@ export function App() {
 
 
   }
+  // If viewing auth screens, show standalone
+  if (activeView === 'auth') {
+    return <AuthPage onBack={() => handleNavigate('home')} />;
+  }
   return (
     <>
       <Sidebar
@@ -123,7 +154,7 @@ export function App() {
         onClose={() => setSidebarOpen(false)}
         activeView={activeView}
         onNavigate={handleNavigate} />
-
+      
 
       <AnimatePresence mode="wait">
         {activeView === 'home' ?
@@ -144,11 +175,11 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <HomeDashboardPage
             onMenuClick={toggleSidebar}
             onNavigate={handleNavigate} />
-
+          
           </motion.div> :
         activeView === 'sidebar' ?
         <motion.div
@@ -168,7 +199,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <SidebarPage onNavigate={handleNavigate} />
           </motion.div> :
         activeView === 'track' ?
@@ -189,7 +220,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <TrackPage onBack={() => handleNavigate('home')} />
           </motion.div> :
         activeView === 'history' ?
@@ -210,7 +241,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <HistoryPage onBack={() => handleNavigate('home')} />
           </motion.div> :
         activeView === 'services' ?
@@ -231,11 +262,11 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <ServicesPage
             onBack={() => handleNavigate('home')}
             onNavigate={handleNavigate} />
-
+          
           </motion.div> :
         activeView === 'pharmacy-customer' ?
         <motion.div
@@ -255,7 +286,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <PharmacyCustomerPage onBack={() => handleNavigate('home')} />
           </motion.div> :
         activeView === 'beauty-customer' ?
@@ -276,7 +307,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <BeautyCustomerPage onBack={() => handleNavigate('home')} />
           </motion.div> :
         activeView === 'beauty-provider' ?
@@ -297,7 +328,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <BeautyProviderDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'supermarket-customer' ?
@@ -318,7 +349,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <SupermarketCustomerPage onBack={() => handleNavigate('home')} />
           </motion.div> :
         activeView === 'laundry-customer' ?
@@ -339,7 +370,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <LaundryCustomerPage onBack={() => handleNavigate('home')} />
           </motion.div> :
         activeView === 'laundry' ?
@@ -360,7 +391,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <LaundryDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'pharmacy' ?
@@ -381,7 +412,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <PharmacyDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'supermarket' ?
@@ -402,7 +433,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <SupermarketDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'wallet' ?
@@ -423,7 +454,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <WalletDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'fastfood' ?
@@ -444,11 +475,11 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <FastFoodPage
             onMenuClick={toggleSidebar}
             onOpenChat={handleOpenChat} />
-
+          
           </motion.div> :
         activeView === 'merchant' ?
         <motion.div
@@ -468,7 +499,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <MerchantDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'transport' ?
@@ -489,11 +520,11 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <TransportBookingPage
             onMenuClick={toggleSidebar}
             onOpenChat={handleOpenChat} />
-
+          
           </motion.div> :
         activeView === 'accommodation' ?
         <motion.div
@@ -513,7 +544,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <AccommodationPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'kioskstore' ?
@@ -534,7 +565,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <KioskStorefrontPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'provider' ?
@@ -555,7 +586,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <UniversalProviderDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'messaging' ?
@@ -576,7 +607,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <MessagingPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'kiosk' ?
@@ -597,7 +628,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <DashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'referral' ?
@@ -618,7 +649,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <ReferralDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
 
@@ -639,7 +670,7 @@ export function App() {
           transition={{
             duration: 0.3
           }}>
-
+          
             <MarketplacePage onMenuClick={toggleSidebar} />
           </motion.div>
         }

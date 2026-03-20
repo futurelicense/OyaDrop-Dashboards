@@ -100,7 +100,7 @@ export function LaundryOrderList({ onSelectOrder }: LaundryOrderListProps) {
               whileTap={{
                 scale: 0.95
               }}>
-
+              
                 {filter}
               </motion.button>
 
@@ -135,14 +135,14 @@ export function LaundryOrderList({ onSelectOrder }: LaundryOrderListProps) {
                 scale: 0.98
               }}
               onClick={() => onSelectOrder(order)}>
-
+              
               {/* Urgency Bar */}
               <div
                 className="absolute top-0 left-0 right-0 h-1"
                 style={{
                   backgroundColor: colors.border
                 }} />
-
+              
 
               {/* Header */}
               <div className="flex items-start justify-between mb-3">
@@ -157,7 +157,7 @@ export function LaundryOrderList({ onSelectOrder }: LaundryOrderListProps) {
                         backgroundColor: colors.bg,
                         color: colors.border
                       }}>
-
+                      
                       {order.urgency === 'express' ?
                       'EXPRESS' :
                       order.urgency.toUpperCase()}
@@ -215,7 +215,7 @@ export function LaundryOrderList({ onSelectOrder }: LaundryOrderListProps) {
                       duration: 0.5,
                       delay: index * 0.1
                     }} />
-
+                  
                 </div>
               </div>
 

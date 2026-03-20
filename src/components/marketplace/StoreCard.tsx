@@ -33,7 +33,7 @@ export function StoreCard({ store, index = 0 }: StoreCardProps) {
       whileTap={{
         scale: 0.95
       }}>
-
+      
       {/* Logo */}
       <div className="relative w-16 h-16 mx-auto mb-3">
         <div className="w-full h-full bg-[#0f1f24] rounded-xl overflow-hidden">
@@ -41,7 +41,7 @@ export function StoreCard({ store, index = 0 }: StoreCardProps) {
             src={store.logo}
             alt={store.name}
             className="w-full h-full object-cover" />
-
+          
         </div>
         {store.verified &&
         <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#00ffcc] rounded-full flex items-center justify-center border-2 border-[#1a2a2f]">

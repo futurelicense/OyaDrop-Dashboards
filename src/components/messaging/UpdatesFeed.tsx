@@ -125,13 +125,13 @@ export function UpdatesFeed({
             scale: 0.98
           }}
           onClick={onCreateUpdate}>
-
+          
           <div className="relative">
             <img
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
               alt="You"
               className="w-14 h-14 rounded-full object-cover" />
-
+            
             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center border-2 border-[#0A0E1A]">
               <Plus className="w-4 h-4 text-white" />
             </div>
@@ -167,7 +167,7 @@ export function UpdatesFeed({
               scale: 0.98
             }}
             onClick={() => onViewUpdate(update)}>
-
+            
               {/* Header */}
               <div className="flex items-center gap-3 p-4">
                 <div className="relative">
@@ -175,7 +175,7 @@ export function UpdatesFeed({
                   src={update.user.avatar}
                   alt={update.user.name}
                   className="w-12 h-12 rounded-full object-cover" />
-
+                
                   {update.isNew &&
                 <div
                   className="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-[#131B2E]"
@@ -197,7 +197,7 @@ export function UpdatesFeed({
                       backgroundColor: typeColors[update.type] + '20',
                       color: typeColors[update.type]
                     }}>
-
+                    
                         {update.user.role}
                       </span>
                   }
@@ -237,10 +237,10 @@ export function UpdatesFeed({
                   whileTap={{
                     scale: 0.9
                   }}>
-
+                  
                     <Heart
                     className={`w-4 h-4 ${update.hasLiked ? 'fill-red-400' : ''}`} />
-
+                  
                     <span className="text-xs font-semibold">
                       {update.likes}
                     </span>
@@ -253,7 +253,7 @@ export function UpdatesFeed({
                   whileTap={{
                     scale: 0.9
                   }}>
-
+                  
                     <MessageCircle className="w-4 h-4" />
                     <span className="text-xs font-semibold">Reply</span>
                   </motion.button>

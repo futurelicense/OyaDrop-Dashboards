@@ -114,7 +114,7 @@ export function FastFoodBadges() {
               } :
               {}
               }>
-
+              
               {/* Rarity Badge */}
               <div
                 className="absolute top-1 right-1 px-1.5 py-0.5 rounded-full text-[8px] font-bold"
@@ -122,7 +122,7 @@ export function FastFoodBadges() {
                   backgroundColor: badge.color + '20',
                   color: badge.color
                 }}>
-
+                
                 {badge.rarity[0]}
               </div>
 
@@ -134,19 +134,19 @@ export function FastFoodBadges() {
                   badge.color + '20' :
                   '#1A1A1A'
                 }}>
-
+                
                 <Icon
                   className="w-5 h-5"
                   style={{
                     color: badge.unlocked ? badge.color : '#4A5568'
                   }} />
-
+                
               </div>
 
               {/* Name */}
               <p
                 className={`text-[9px] font-bold text-center leading-tight ${badge.unlocked ? 'text-white' : 'text-gray-600'}`}>
-
+                
                 {badge.name}
               </p>
 

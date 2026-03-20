@@ -25,7 +25,9 @@ import {
   SettingsIcon,
   ClockIcon,
   MenuIcon,
-  PresentationIcon } from
+  PresentationIcon,
+  MonitorPlayIcon,
+  UserPlusIcon } from
 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
@@ -63,6 +65,18 @@ const navItems = [
   label: 'Dashboard',
   icon: HomeIcon,
   color: '#00ffcc'
+},
+{
+  id: 'splash-screen',
+  label: 'Splash Screen',
+  icon: MonitorPlayIcon,
+  color: '#00F0FF'
+},
+{
+  id: 'auth',
+  label: 'Auth Screens',
+  icon: UserPlusIcon,
+  color: '#10B981'
 },
 {
   id: 'pitch-deck',
@@ -220,7 +234,7 @@ export function Sidebar({
             opacity: 0
           }}
           onClick={onClose} />
-
+        
 
           {/* Sidebar */}
           <motion.div
@@ -239,7 +253,7 @@ export function Sidebar({
             damping: 25,
             stiffness: 200
           }}>
-
+          
             {isProviderView ?
           // Universal Provider Sidebar
           <>
@@ -276,7 +290,7 @@ export function Sidebar({
                   whileTap={{
                     scale: 0.95
                   }}>
-
+                  
                       <XIcon className="w-5 h-5 text-white" />
                     </motion.button>
                   </div>
@@ -316,7 +330,7 @@ export function Sidebar({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <div className="flex items-center gap-3">
                       <LayoutDashboardIcon className="w-4 h-4 text-teal-400" />
                       <span>Dashboard</span>
@@ -342,14 +356,14 @@ export function Sidebar({
                   whileTap={{
                     scale: 0.98
                   }}>
-
+                  
                       <div className="flex items-center gap-3">
                         <ShoppingBagIcon className="w-4 h-4 text-gray-400" />
                         <span>Orders (Food & Marketplace)</span>
                       </div>
                       <ChevronDownIcon
                     className={`w-4 h-4 text-gray-400 transition-transform ${expandedSections.orders ? 'rotate-180' : ''}`} />
-
+                  
                     </motion.button>
 
                     <AnimatePresence>
@@ -371,20 +385,20 @@ export function Sidebar({
                     transition={{
                       duration: 0.2
                     }}>
-
+                    
                           {/* Food Orders */}
                           <div>
                             <button
                         className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5 text-white text-sm transition-all"
                         onClick={() => toggleSection('foodOrders')}>
-
+                        
                               <div className="flex items-center gap-2">
                                 <UtensilsIcon className="w-4 h-4 text-orange-400" />
                                 <span>Food Orders</span>
                               </div>
                               <ChevronDownIcon
                           className={`w-3.5 h-3.5 text-gray-400 transition-transform ${expandedSections.foodOrders ? 'rotate-180' : ''}`} />
-
+                        
                             </button>
 
                             <AnimatePresence>
@@ -406,7 +420,7 @@ export function Sidebar({
                           transition={{
                             duration: 0.2
                           }}>
-
+                          
                                   <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 text-sm transition-all">
                                     Food Dashboard
                                   </button>
@@ -423,14 +437,14 @@ export function Sidebar({
                             <button
                         className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-white/5 text-white text-sm transition-all"
                         onClick={() => toggleSection('marketplaceOrders')}>
-
+                        
                               <div className="flex items-center gap-2">
                                 <ShoppingCartIcon className="w-4 h-4 text-blue-400" />
                                 <span>Marketplace Orders</span>
                               </div>
                               <ChevronDownIcon
                           className={`w-3.5 h-3.5 text-gray-400 transition-transform ${expandedSections.marketplaceOrders ? 'rotate-180' : ''}`} />
-
+                        
                             </button>
 
                             <AnimatePresence>
@@ -452,7 +466,7 @@ export function Sidebar({
                           transition={{
                             duration: 0.2
                           }}>
-
+                          
                                   <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 text-sm transition-all">
                                     Marketplace Dashboard
                                   </button>
@@ -488,7 +502,7 @@ export function Sidebar({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <div className="flex items-center gap-3">
                       <TruckIcon className="w-4 h-4 text-gray-400" />
                       <span>Vehicle Management</span>
@@ -512,7 +526,7 @@ export function Sidebar({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <div className="flex items-center gap-3">
                       <SettingsIcon className="w-4 h-4 text-teal-400" />
                       <span>Manage Services</span>
@@ -536,7 +550,7 @@ export function Sidebar({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <MapPinIcon className="w-4 h-4 text-green-400" />
                     <span>Live Location</span>
                   </motion.button>
@@ -558,7 +572,7 @@ export function Sidebar({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <div className="flex items-center gap-3">
                       <UserIcon className="w-4 h-4 text-gray-400" />
                       <span>Profile</span>
@@ -584,7 +598,7 @@ export function Sidebar({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <LogOutIcon className="w-5 h-5" />
                     Logout
                   </motion.button>
@@ -608,7 +622,7 @@ export function Sidebar({
                 transition={{
                   delay: 0.1
                 }}>
-
+                
                     OyaDrop
                   </motion.div>
 
@@ -629,7 +643,7 @@ export function Sidebar({
                 transition={{
                   delay: 0.1
                 }}>
-
+                
                     <XIcon className="w-6 h-6 text-white" />
                   </motion.button>
                 </div>
@@ -649,7 +663,7 @@ export function Sidebar({
                 transition={{
                   delay: 0.2
                 }}>
-
+                
                     Navigation
                   </motion.p>
 
@@ -676,7 +690,7 @@ export function Sidebar({
                       whileTap={{
                         scale: 0.98
                       }}>
-
+                      
                           <div
                         className={`w-10 h-10 rounded-lg flex items-center justify-center ${isActive ? 'shadow-lg' : ''}`}
                         style={{
@@ -687,18 +701,18 @@ export function Sidebar({
                           `0 0 20px ${item.color}40` :
                           'none'
                         }}>
-
+                        
                             <Icon
                           className="w-5 h-5"
                           style={{
                             color: isActive ? item.color : '#6b7280'
                           }} />
-
+                        
                           </div>
 
                           <span
                         className={`text-sm font-semibold ${isActive ? 'text-white' : 'text-gray-400'}`}>
-
+                        
                             {item.label}
                           </span>
 
@@ -740,7 +754,7 @@ export function Sidebar({
                 whileTap={{
                   scale: 0.98
                 }}>
-
+                
                     <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
                       <LogOutIcon className="w-5 h-5 text-red-400" />
                     </div>
