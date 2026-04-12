@@ -27,7 +27,8 @@ import {
   MenuIcon,
   PresentationIcon,
   MonitorPlayIcon,
-  UserPlusIcon } from
+  UserPlusIcon,
+  LinkIcon } from
 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
@@ -56,7 +57,8 @@ interface SidebarProps {
   'sidebar' |
   'track' |
   'history' |
-  'pitch-deck';
+  'pitch-deck' |
+  'beauty-storefront';
   onNavigate: (view: string) => void;
 }
 const navItems = [
@@ -67,21 +69,15 @@ const navItems = [
   color: '#00ffcc'
 },
 {
-  id: 'splash-screen',
-  label: 'Splash Screen',
-  icon: MonitorPlayIcon,
-  color: '#00F0FF'
-},
-{
-  id: 'auth',
-  label: 'Auth Screens',
-  icon: UserPlusIcon,
-  color: '#10B981'
-},
-{
   id: 'pitch-deck',
   label: 'Pitch Deck',
   icon: PresentationIcon,
+  color: '#FF6B00'
+},
+{
+  id: 'beauty-storefront',
+  label: 'Beauty Storefront',
+  icon: LinkIcon,
   color: '#FF6B00'
 },
 {

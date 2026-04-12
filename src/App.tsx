@@ -29,6 +29,7 @@ import { PasswordGate } from './components/pitch/PasswordGate';
 import { SplashScreen } from './components/SplashScreen';
 import { Sidebar } from './components/Sidebar';
 import { AuthPage } from './pages/AuthPage';
+import { BeautyProviderStorefrontPage } from './pages/BeautyProviderStorefrontPage';
 export function App() {
   // Splash screen state
   const [showSplash, setShowSplash] = useState(true);
@@ -72,7 +73,8 @@ export function App() {
     'track' |
     'history' |
     'splash-screen' |
-    'auth'>(
+    'auth' |
+    'beauty-storefront'>(
     'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavigate = (
@@ -103,7 +105,8 @@ export function App() {
   'track' |
   'history' |
   'splash-screen' |
-  'auth') =>
+  'auth' |
+  'beauty-storefront') =>
   {
     if (view === 'splash-screen') {
       setSidebarOpen(false);
@@ -146,6 +149,12 @@ export function App() {
   // If viewing auth screens, show standalone
   if (activeView === 'auth') {
     return <AuthPage onBack={() => handleNavigate('home')} />;
+  }
+  // If viewing beauty storefront, show standalone
+  if (activeView === 'beauty-storefront') {
+    return (
+      <BeautyProviderStorefrontPage onBack={() => handleNavigate('home')} />);
+
   }
   return (
     <>
