@@ -30,6 +30,10 @@ import { SplashScreen } from './components/SplashScreen';
 import { Sidebar } from './components/Sidebar';
 import { AuthPage } from './pages/AuthPage';
 import { BeautyProviderStorefrontPage } from './pages/BeautyProviderStorefrontPage';
+import { LaundryStorefrontPage } from './pages/LaundryStorefrontPage';
+import { PharmacyStorefrontPage } from './pages/PharmacyStorefrontPage';
+import { TransportProviderStorefrontPage } from './pages/TransportProviderStorefrontPage';
+import { StayStorefrontPage } from './pages/StayStorefrontPage';
 export function App() {
   // Splash screen state
   const [showSplash, setShowSplash] = useState(true);
@@ -74,7 +78,11 @@ export function App() {
     'history' |
     'splash-screen' |
     'auth' |
-    'beauty-storefront'>(
+    'beauty-storefront' |
+    'laundry-storefront' |
+    'pharmacy-storefront' |
+    'transport-storefront' |
+    'stay-storefront'>(
     'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavigate = (
@@ -106,7 +114,11 @@ export function App() {
   'history' |
   'splash-screen' |
   'auth' |
-  'beauty-storefront') =>
+  'beauty-storefront' |
+  'laundry-storefront' |
+  'pharmacy-storefront' |
+  'transport-storefront' |
+  'stay-storefront') =>
   {
     if (view === 'splash-screen') {
       setSidebarOpen(false);
@@ -155,6 +167,20 @@ export function App() {
     return (
       <BeautyProviderStorefrontPage onBack={() => handleNavigate('home')} />);
 
+  }
+  if (activeView === 'laundry-storefront') {
+    return <LaundryStorefrontPage onBack={() => handleNavigate('home')} />;
+  }
+  if (activeView === 'pharmacy-storefront') {
+    return <PharmacyStorefrontPage onBack={() => handleNavigate('home')} />;
+  }
+  if (activeView === 'transport-storefront') {
+    return (
+      <TransportProviderStorefrontPage onBack={() => handleNavigate('home')} />);
+
+  }
+  if (activeView === 'stay-storefront') {
+    return <StayStorefrontPage onBack={() => handleNavigate('home')} />;
   }
   return (
     <>

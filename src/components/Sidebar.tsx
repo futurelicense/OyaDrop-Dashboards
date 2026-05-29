@@ -58,7 +58,11 @@ interface SidebarProps {
   'track' |
   'history' |
   'pitch-deck' |
-  'beauty-storefront';
+  'beauty-storefront' |
+  'laundry-storefront' |
+  'pharmacy-storefront' |
+  'transport-storefront' |
+  'stay-storefront';
   onNavigate: (view: string) => void;
 }
 const navItems = [
@@ -77,6 +81,30 @@ const navItems = [
 {
   id: 'beauty-storefront',
   label: 'Beauty Storefront',
+  icon: LinkIcon,
+  color: '#FF6B00'
+},
+{
+  id: 'laundry-storefront',
+  label: 'Laundry Storefront',
+  icon: LinkIcon,
+  color: '#FF6B00'
+},
+{
+  id: 'pharmacy-storefront',
+  label: 'Pharmacy Storefront',
+  icon: LinkIcon,
+  color: '#FF6B00'
+},
+{
+  id: 'transport-storefront',
+  label: 'Driver Storefront',
+  icon: LinkIcon,
+  color: '#FF6B00'
+},
+{
+  id: 'stay-storefront',
+  label: 'Stay Storefront',
   icon: LinkIcon,
   color: '#FF6B00'
 },
