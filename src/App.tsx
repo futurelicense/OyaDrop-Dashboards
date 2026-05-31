@@ -34,6 +34,7 @@ import { LaundryStorefrontPage } from './pages/LaundryStorefrontPage';
 import { PharmacyStorefrontPage } from './pages/PharmacyStorefrontPage';
 import { TransportProviderStorefrontPage } from './pages/TransportProviderStorefrontPage';
 import { StayStorefrontPage } from './pages/StayStorefrontPage';
+import { SupermarketStorefrontPage } from './pages/SupermarketStorefrontPage';
 export function App() {
   // Splash screen state
   const [showSplash, setShowSplash] = useState(true);
@@ -82,7 +83,8 @@ export function App() {
     'laundry-storefront' |
     'pharmacy-storefront' |
     'transport-storefront' |
-    'stay-storefront'>(
+    'stay-storefront' |
+    'supermarket-storefront'>(
     'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavigate = (
@@ -118,7 +120,8 @@ export function App() {
   'laundry-storefront' |
   'pharmacy-storefront' |
   'transport-storefront' |
-  'stay-storefront') =>
+  'stay-storefront' |
+  'supermarket-storefront') =>
   {
     if (view === 'splash-screen') {
       setSidebarOpen(false);
@@ -181,6 +184,9 @@ export function App() {
   }
   if (activeView === 'stay-storefront') {
     return <StayStorefrontPage onBack={() => handleNavigate('home')} />;
+  }
+  if (activeView === 'supermarket-storefront') {
+    return <SupermarketStorefrontPage onBack={() => handleNavigate('home')} />;
   }
   return (
     <>

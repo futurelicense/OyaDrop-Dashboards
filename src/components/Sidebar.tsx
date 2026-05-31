@@ -62,7 +62,8 @@ interface SidebarProps {
   'laundry-storefront' |
   'pharmacy-storefront' |
   'transport-storefront' |
-  'stay-storefront';
+  'stay-storefront' |
+  'supermarket-storefront';
   onNavigate: (view: string) => void;
 }
 const navItems = [
@@ -105,6 +106,12 @@ const navItems = [
 {
   id: 'stay-storefront',
   label: 'Stay Storefront',
+  icon: LinkIcon,
+  color: '#FF6B00'
+},
+{
+  id: 'supermarket-storefront',
+  label: 'Supermarket Storefront',
   icon: LinkIcon,
   color: '#FF6B00'
 },
