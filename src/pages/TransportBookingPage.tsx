@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { TransportHeader } from '../components/transport/TransportHeader';
-import { RideModeSelector } from '../components/transport/RideModeSelector';
-import { LocationInputCards } from '../components/transport/LocationInputCards';
-import { LiveMapPanel } from '../components/transport/LiveMapPanel';
-import { RegularPricingPanel } from '../components/transport/RegularPricingPanel';
-import { NegotiatePricingPanel } from '../components/transport/NegotiatePricingPanel';
-import { PaymentMethodSelector } from '../components/transport/PaymentMethodSelector';
-import { FareSummaryFooter } from '../components/transport/FareSummaryFooter';
-import { ChatButton } from '../components/messaging/ChatButton';
+import { LocationStep } from '../components/transport/LocationStep';
+import { VehicleSelectionStep } from '../components/transport/VehicleSelectionStep';
+import { DriverOffersStep } from '../components/transport/DriverOffersStep';
+import { RideConfirmedStep } from '../components/transport/RideConfirmedStep';
 import { FloatingChatIcon } from '../components/messaging/FloatingChatIcon';
-import { motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 interface TransportBookingPageProps {
   onMenuClick: () => void;
   onOpenChat?: () => void;
@@ -18,124 +14,102 @@ export function TransportBookingPage({
   onMenuClick,
   onOpenChat
 }: TransportBookingPageProps) {
+  // Step State Machine: 0=Location, 1=Vehicle/Pricing, 2=Offers(Negotiate), 3=Confirmed
+  const [step, setStep] = useState(0);
+  // Global Booking State
+  const [pickup, setPickup] = useState('');
+  const [destination, setDestination] = useState('');
+  const [stops, setStops] = useState<string[]>([]);
   const [pricingMode, setPricingMode] = useState<'regular' | 'negotiate'>(
     'regular'
   );
-  const [pickup, setPickup] = useState('');
-  const [destination, setDestination] = useState('');
-  const [selectedVehicle, setSelectedVehicle] = useState('bike');
-  const [paymentMethod, setPaymentMethod] = useState('cash');
-  const [rideBooked, setRideBooked] = useState(false);
-  const handleBookRide = () => {
-    setRideBooked(true);
+  // Negotiate State
+  const [offerAmount, setOfferAmount] = useState(0);
+  const [acceptedOffer, setAcceptedOffer] = useState<any>(null);
+  // Handlers
+  const handleLocationContinue = () => {
+    setStep(1);
   };
-  // Calculate fare based on selected vehicle
-  const getFare = () => {
-    const fares: Record<string, string> = {
-      bike: '₦800',
-      mini: '₦1,200',
-      sedan: '₦1,800',
-      xl: '₦2,500'
-    };
-    return fares[selectedVehicle] || '₦800';
+  const handleBookRegular = (vehicleId: string, paymentMethod: string) => {
+    // In a real app, we'd save these details. For now, just proceed to confirmed.
+    setStep(3);
+  };
+  const handleSendOffer = (
+  offer: number,
+  vehicleType: string,
+  paymentMethod: string) =>
+  {
+    setOfferAmount(offer);
+    setStep(2);
+  };
+  const handleAcceptOffer = (offer: any) => {
+    setAcceptedOffer(offer);
+    setStep(3);
+  };
+  const handleCancel = () => {
+    setStep(0);
+    setAcceptedOffer(null);
   };
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0A0E1A] via-[#0F1520] to-[#0A0E1A] pb-32">
+    <div className="min-h-screen bg-[#0A0E1A] flex flex-col">
       <TransportHeader onMenuClick={onMenuClick} />
 
-      <main className="space-y-6">
-        <RideModeSelector mode={pricingMode} onModeChange={setPricingMode} />
-
-        <LocationInputCards
-          pickup={pickup}
-          destination={destination}
-          onPickupChange={setPickup}
-          onDestinationChange={setDestination} />
-        
-
-        <LiveMapPanel />
-
-        {pricingMode === 'regular' ?
-        <RegularPricingPanel
-          selectedVehicle={selectedVehicle}
-          onVehicleChange={setSelectedVehicle} /> :
-
-
-        <NegotiatePricingPanel />
-        }
-
-        <PaymentMethodSelector
-          selectedMethod={paymentMethod}
-          onMethodChange={setPaymentMethod} />
-        
-
-        {/* Ride Booked Success State */}
-        {rideBooked &&
-        <motion.div
-          className="mx-4 bg-gradient-to-br from-green-500/20 to-teal-500/20 border-2 border-green-500/50 rounded-2xl p-6"
-          initial={{
-            opacity: 0,
-            scale: 0.9
-          }}
-          animate={{
-            opacity: 1,
-            scale: 1
-          }}
-          transition={{
-            type: 'spring',
-            damping: 20
-          }}>
-          
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                <span className="text-2xl">✓</span>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">Ride Booked!</h3>
-                <p className="text-sm text-gray-400">Tunde is on the way</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 mb-4 p-3 bg-[#0A0E1A]/50 rounded-xl">
-              <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
-              alt="Tunde"
-              className="w-12 h-12 rounded-full object-cover" />
-            
-              <div className="flex-1">
-                <p className="text-sm font-bold text-white">Tunde - Rider</p>
-                <p className="text-xs text-gray-400">
-                  Toyota Camry • ABC 123 XY
-                </p>
-                <div className="flex items-center gap-1 mt-1">
-                  <span className="text-xs text-yellow-400">★ 4.8</span>
-                  <span className="text-xs text-gray-500">• 234 trips</span>
-                </div>
-              </div>
-            </div>
-
-            {onOpenChat &&
-          <ChatButton
-            contactName="Tunde"
-            contactType="Rider"
-            variant="primary"
-            size="lg"
-            onClick={onOpenChat} />
+      <main className="flex-1 relative overflow-hidden">
+        <AnimatePresence mode="wait">
+          {step === 0 &&
+          <LocationStep
+            key="step0"
+            pickup={pickup}
+            destination={destination}
+            stops={stops}
+            onPickupChange={setPickup}
+            onDestinationChange={setDestination}
+            onStopsChange={setStops}
+            onContinue={handleLocationContinue} />
 
           }
-          </motion.div>
-        }
+
+          {step === 1 &&
+          <VehicleSelectionStep
+            key="step1"
+            pickup={pickup}
+            destination={destination}
+            stops={stops}
+            pricingMode={pricingMode}
+            onModeChange={setPricingMode}
+            onBookRegular={handleBookRegular}
+            onSendOffer={handleSendOffer} />
+
+          }
+
+          {step === 2 &&
+          <DriverOffersStep
+            key="step2"
+            pickup={pickup}
+            destination={destination}
+            stops={stops}
+            offerAmount={offerAmount}
+            onAcceptOffer={handleAcceptOffer}
+            onCancel={() => setStep(1)} />
+
+          }
+
+          {step === 3 &&
+          <RideConfirmedStep
+            key="step3"
+            pickup={pickup}
+            destination={destination}
+            stops={stops}
+            pricingMode={pricingMode}
+            driverDetails={acceptedOffer}
+            onOpenChat={onOpenChat}
+            onCancel={handleCancel} />
+
+          }
+        </AnimatePresence>
       </main>
 
-      <FareSummaryFooter
-        mode={pricingMode}
-        fare={getFare()}
-        pickup={pickup}
-        destination={destination}
-        onBookRide={handleBookRide} />
-      
-
-      {onOpenChat &&
+      {onOpenChat && step === 3 &&
       <FloatingChatIcon unreadCount={2} onOpenChat={onOpenChat} />
       }
     </div>);
