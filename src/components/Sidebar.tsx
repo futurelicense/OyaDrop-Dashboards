@@ -63,7 +63,9 @@ interface SidebarProps {
   'pharmacy-storefront' |
   'transport-storefront' |
   'stay-storefront' |
-  'supermarket-storefront';
+  'supermarket-storefront' |
+  'cleaners-dashboard' |
+  'cleaners-storefront';
   onNavigate: (view: string) => void;
 }
 const navItems = [
@@ -162,6 +164,18 @@ const navItems = [
   label: 'Laundry Dashboard',
   icon: WashingMachineIcon,
   color: '#00D9C0'
+},
+{
+  id: 'cleaners-dashboard',
+  label: 'Cleaners Dashboard',
+  icon: SparklesIcon,
+  color: '#34D399'
+},
+{
+  id: 'cleaners-storefront',
+  label: 'Cleaners Storefront',
+  icon: LinkIcon,
+  color: '#34D399'
 },
 {
   id: 'pharmacy',

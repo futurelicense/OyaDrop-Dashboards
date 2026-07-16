@@ -35,6 +35,8 @@ import { PharmacyStorefrontPage } from './pages/PharmacyStorefrontPage';
 import { TransportProviderStorefrontPage } from './pages/TransportProviderStorefrontPage';
 import { StayStorefrontPage } from './pages/StayStorefrontPage';
 import { SupermarketStorefrontPage } from './pages/SupermarketStorefrontPage';
+import { CleanersDashboardPage } from './pages/CleanersDashboardPage';
+import { CleanersStorefrontPage } from './pages/CleanersStorefrontPage';
 export function App() {
   // Splash screen state
   const [showSplash, setShowSplash] = useState(true);
@@ -84,7 +86,9 @@ export function App() {
     'pharmacy-storefront' |
     'transport-storefront' |
     'stay-storefront' |
-    'supermarket-storefront'>(
+    'supermarket-storefront' |
+    'cleaners-dashboard' |
+    'cleaners-storefront'>(
     'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavigate = (
@@ -121,7 +125,9 @@ export function App() {
   'pharmacy-storefront' |
   'transport-storefront' |
   'stay-storefront' |
-  'supermarket-storefront') =>
+  'supermarket-storefront' |
+  'cleaners-dashboard' |
+  'cleaners-storefront') =>
   {
     if (view === 'splash-screen') {
       setSidebarOpen(false);
@@ -187,6 +193,9 @@ export function App() {
   }
   if (activeView === 'supermarket-storefront') {
     return <SupermarketStorefrontPage onBack={() => handleNavigate('home')} />;
+  }
+  if (activeView === 'cleaners-storefront') {
+    return <CleanersStorefrontPage onBack={() => handleNavigate('home')} />;
   }
   return (
     <>
@@ -434,6 +443,27 @@ export function App() {
           }}>
           
             <LaundryDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> :
+        activeView === 'cleaners-dashboard' ?
+        <motion.div
+          key="cleaners-dashboard"
+          initial={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+          
+            <CleanersDashboardPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'pharmacy' ?
         <motion.div
