@@ -7,7 +7,8 @@ import {
   Car,
   UtensilsCrossed,
   Shirt,
-  Building } from
+  Building,
+  SprayCan } from
 'lucide-react';
 interface ServicesGridProps {
   onNavigate?: (view: string) => void;
@@ -61,6 +62,13 @@ const services = [
   icon: Building,
   color: '#A855F7',
   gradient: 'from-purple-500 to-indigo-500'
+},
+{
+  id: 'services',
+  name: 'OyaClean',
+  icon: SprayCan,
+  color: '#34D399',
+  gradient: 'from-emerald-500 to-teal-500'
 }];
 
 export function ServicesGrid({ onNavigate }: ServicesGridProps) {

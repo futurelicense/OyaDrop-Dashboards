@@ -8,6 +8,7 @@ import { BeautyRequestSheet } from '../components/home/BeautyRequestSheet';
 import { TransportRequestSheet } from '../components/home/TransportRequestSheet';
 import { FastFoodRequestSheet } from '../components/home/FastFoodRequestSheet';
 import { LaundryRequestSheet } from '../components/home/LaundryRequestSheet';
+import { CleanersRequestSheet } from '../components/home/CleanersRequestSheet';
 import { RequestSuccessSheet } from '../components/home/RequestSuccessSheet';
 interface ServicesPageProps {
   onBack: () => void;
@@ -20,6 +21,7 @@ type ServiceSheet =
 'transport' |
 'fastfood' |
 'laundry' |
+'cleaners' |
 null;
 type SuccessConfig = {
   title: string;
@@ -106,6 +108,18 @@ export function ServicesPage({ onBack, onNavigate }: ServicesPageProps) {
       navigateTo: 'laundry-customer'
     });
   };
+  const handleCleanersSubmit = (data: any) => {
+    console.log('Cleaning request:', data);
+    setActiveSheet(null);
+    setSuccessConfig({
+      title: 'Cleaning Request Sent!',
+      message:
+      "We're matching your home with trusted cleaners near you. You’ll receive a confirmation shortly.",
+      actionLabel: 'View Clean & Co.',
+      color: '#34D399',
+      navigateTo: 'cleaners-storefront'
+    });
+  };
   const handleSuccessAction = () => {
     if (successConfig?.navigateTo && onNavigate) {
       onNavigate(successConfig.navigateTo);
@@ -169,6 +183,11 @@ export function ServicesPage({ onBack, onNavigate }: ServicesPageProps) {
         isOpen={activeSheet === 'laundry'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handleLaundrySubmit} />
+      
+      <CleanersRequestSheet
+        isOpen={activeSheet === 'cleaners'}
+        onClose={() => setActiveSheet(null)}
+        onSubmit={handleCleanersSubmit} />
       
 
       {/* Success Confirmation */}
