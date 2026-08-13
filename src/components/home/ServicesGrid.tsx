@@ -8,7 +8,8 @@ import {
   UtensilsCrossed,
   Shirt,
   Building,
-  SprayCan } from
+  SprayCan,
+  Wrench } from
 'lucide-react';
 interface ServicesGridProps {
   onNavigate?: (view: string) => void;
@@ -69,6 +70,13 @@ const services = [
   icon: SprayCan,
   color: '#34D399',
   gradient: 'from-emerald-500 to-teal-500'
+},
+{
+  id: 'services',
+  name: 'OyaFix',
+  icon: Wrench,
+  color: '#F59E0B',
+  gradient: 'from-amber-500 to-orange-500'
 }];
 
 export function ServicesGrid({ onNavigate }: ServicesGridProps) {
@@ -93,7 +101,7 @@ export function ServicesGrid({ onNavigate }: ServicesGridProps) {
           const Icon = service.icon;
           return (
             <motion.button
-              key={service.id}
+              key={service.name}
               className="flex flex-col items-center gap-2 p-3 rounded-2xl bg-gradient-to-br from-[#131B2E] to-[#0F1520] border border-white/10 hover:border-white/20 transition-all"
               initial={{
                 opacity: 0,

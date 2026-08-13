@@ -7,7 +7,8 @@ import {
   Car,
   UtensilsCrossed,
   Shirt,
-  SprayCan } from
+  SprayCan,
+  Wrench } from
 'lucide-react';
 interface Service {
   id: string;
@@ -73,6 +74,14 @@ const services: Service[] = [
   color: '#34D399',
   gradient: 'from-emerald-500 to-teal-500',
   description: 'Book home care'
+},
+{
+  id: 'mechanic',
+  name: 'OyaFix',
+  icon: Wrench,
+  color: '#F59E0B',
+  gradient: 'from-amber-500 to-orange-500',
+  description: 'Fix my car'
 }];
 
 interface QuickServiceRequestsProps {

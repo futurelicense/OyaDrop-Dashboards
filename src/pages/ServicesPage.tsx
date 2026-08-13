@@ -9,6 +9,7 @@ import { TransportRequestSheet } from '../components/home/TransportRequestSheet'
 import { FastFoodRequestSheet } from '../components/home/FastFoodRequestSheet';
 import { LaundryRequestSheet } from '../components/home/LaundryRequestSheet';
 import { CleanersRequestSheet } from '../components/home/CleanersRequestSheet';
+import { MechanicRequestSheet } from '../components/home/MechanicRequestSheet';
 import { RequestSuccessSheet } from '../components/home/RequestSuccessSheet';
 interface ServicesPageProps {
   onBack: () => void;
@@ -22,6 +23,7 @@ type ServiceSheet =
 'fastfood' |
 'laundry' |
 'cleaners' |
+'mechanic' |
 null;
 type SuccessConfig = {
   title: string;
@@ -120,6 +122,18 @@ export function ServicesPage({ onBack, onNavigate }: ServicesPageProps) {
       navigateTo: 'cleaners-storefront'
     });
   };
+  const handleMechanicSubmit = (data: any) => {
+    console.log('Mechanic request:', data);
+    setActiveSheet(null);
+    setSuccessConfig({
+      title: 'Mechanic Request Sent!',
+      message:
+      "We're matching you with verified OyaFix mechanics nearby. You’ll get a quote to approve before any work starts.",
+      actionLabel: 'View TorqueLine Auto Works',
+      color: '#F59E0B',
+      navigateTo: 'mechanic-kioskfront'
+    });
+  };
   const handleSuccessAction = () => {
     if (successConfig?.navigateTo && onNavigate) {
       onNavigate(successConfig.navigateTo);
@@ -188,6 +202,11 @@ export function ServicesPage({ onBack, onNavigate }: ServicesPageProps) {
         isOpen={activeSheet === 'cleaners'}
         onClose={() => setActiveSheet(null)}
         onSubmit={handleCleanersSubmit} />
+      
+      <MechanicRequestSheet
+        isOpen={activeSheet === 'mechanic'}
+        onClose={() => setActiveSheet(null)}
+        onSubmit={handleMechanicSubmit} />
       
 
       {/* Success Confirmation */}

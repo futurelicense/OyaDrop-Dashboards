@@ -28,7 +28,8 @@ import {
   PresentationIcon,
   MonitorPlayIcon,
   UserPlusIcon,
-  LinkIcon } from
+  LinkIcon,
+  WrenchIcon } from
 'lucide-react';
 interface SidebarProps {
   isOpen: boolean;
@@ -65,7 +66,10 @@ interface SidebarProps {
   'stay-storefront' |
   'supermarket-storefront' |
   'cleaners-dashboard' |
-  'cleaners-storefront';
+  'cleaners-storefront' |
+  'mechanic-dashboard' |
+  'mechanic-kioskfront' |
+  'partner-business-front';
   onNavigate: (view: string) => void;
 }
 const navItems = [
@@ -80,6 +84,12 @@ const navItems = [
   label: 'Pitch Deck',
   icon: PresentationIcon,
   color: '#FF6B00'
+},
+{
+  id: 'partner-business-front',
+  label: 'Partner Business Front',
+  icon: BriefcaseIcon,
+  color: '#00D9C0'
 },
 {
   id: 'beauty-storefront',
@@ -176,6 +186,18 @@ const navItems = [
   label: 'Cleaners Storefront',
   icon: LinkIcon,
   color: '#34D399'
+},
+{
+  id: 'mechanic-dashboard',
+  label: 'Mechanic Dashboard',
+  icon: WrenchIcon,
+  color: '#F59E0B'
+},
+{
+  id: 'mechanic-kioskfront',
+  label: 'Mechanic Kioskfront',
+  icon: LinkIcon,
+  color: '#F59E0B'
 },
 {
   id: 'pharmacy',

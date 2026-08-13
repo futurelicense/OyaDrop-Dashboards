@@ -37,6 +37,9 @@ import { StayStorefrontPage } from './pages/StayStorefrontPage';
 import { SupermarketStorefrontPage } from './pages/SupermarketStorefrontPage';
 import { CleanersDashboardPage } from './pages/CleanersDashboardPage';
 import { CleanersStorefrontPage } from './pages/CleanersStorefrontPage';
+import { MechanicDashboardPage } from './pages/MechanicDashboardPage';
+import { MechanicKioskfrontPage } from './pages/MechanicKioskfrontPage';
+import { PartnerBusinessFrontPage } from './pages/PartnerBusinessFrontPage';
 export function App() {
   // Splash screen state
   const [showSplash, setShowSplash] = useState(true);
@@ -88,7 +91,10 @@ export function App() {
     'stay-storefront' |
     'supermarket-storefront' |
     'cleaners-dashboard' |
-    'cleaners-storefront'>(
+    'cleaners-storefront' |
+    'mechanic-dashboard' |
+    'mechanic-kioskfront' |
+    'partner-business-front'>(
     'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavigate = (
@@ -127,7 +133,10 @@ export function App() {
   'stay-storefront' |
   'supermarket-storefront' |
   'cleaners-dashboard' |
-  'cleaners-storefront') =>
+  'cleaners-storefront' |
+  'mechanic-dashboard' |
+  'mechanic-kioskfront' |
+  'partner-business-front') =>
   {
     if (view === 'splash-screen') {
       setSidebarOpen(false);
@@ -196,6 +205,9 @@ export function App() {
   }
   if (activeView === 'cleaners-storefront') {
     return <CleanersStorefrontPage onBack={() => handleNavigate('home')} />;
+  }
+  if (activeView === 'mechanic-kioskfront') {
+    return <MechanicKioskfrontPage onBack={() => handleNavigate('home')} />;
   }
   return (
     <>
@@ -464,6 +476,48 @@ export function App() {
           }}>
           
             <CleanersDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> :
+        activeView === 'mechanic-dashboard' ?
+        <motion.div
+          key="mechanic-dashboard"
+          initial={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+          
+            <MechanicDashboardPage onMenuClick={toggleSidebar} />
+          </motion.div> :
+        activeView === 'partner-business-front' ?
+        <motion.div
+          key="partner-business-front"
+          initial={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+          
+            <PartnerBusinessFrontPage onMenuClick={toggleSidebar} />
           </motion.div> :
         activeView === 'pharmacy' ?
         <motion.div
