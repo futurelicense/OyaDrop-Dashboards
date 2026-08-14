@@ -55,6 +55,7 @@ interface SidebarProps {
   'supermarket-customer' |
   'pharmacy-customer' |
   'laundry-customer' |
+  'services' |
   'sidebar' |
   'track' |
   'history' |
@@ -69,7 +70,8 @@ interface SidebarProps {
   'cleaners-storefront' |
   'mechanic-dashboard' |
   'mechanic-kioskfront' |
-  'partner-business-front';
+  'partner-business-front' |
+  'partner-business-dashboard';
   onNavigate: (view: string) => void;
 }
 const navItems = [
@@ -87,9 +89,15 @@ const navItems = [
 },
 {
   id: 'partner-business-front',
-  label: 'Partner Business Front',
-  icon: BriefcaseIcon,
+  label: 'Partner OneLink',
+  icon: LinkIcon,
   color: '#00D9C0'
+},
+{
+  id: 'partner-business-dashboard',
+  label: 'Partner Dashboard',
+  icon: BriefcaseIcon,
+  color: '#14B8A6'
 },
 {
   id: 'beauty-storefront',

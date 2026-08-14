@@ -40,6 +40,8 @@ import { CleanersStorefrontPage } from './pages/CleanersStorefrontPage';
 import { MechanicDashboardPage } from './pages/MechanicDashboardPage';
 import { MechanicKioskfrontPage } from './pages/MechanicKioskfrontPage';
 import { PartnerBusinessFrontPage } from './pages/PartnerBusinessFrontPage';
+import { PartnerBusinessDashboardPage } from './pages/PartnerBusinessDashboardPage';
+import { PartnerProvider } from './context/PartnerContext';
 export function App() {
   // Splash screen state
   const [showSplash, setShowSplash] = useState(true);
@@ -94,7 +96,8 @@ export function App() {
     'cleaners-storefront' |
     'mechanic-dashboard' |
     'mechanic-kioskfront' |
-    'partner-business-front'>(
+    'partner-business-front' |
+    'partner-business-dashboard'>(
     'home');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handleNavigate = (
@@ -136,7 +139,8 @@ export function App() {
   'cleaners-storefront' |
   'mechanic-dashboard' |
   'mechanic-kioskfront' |
-  'partner-business-front') =>
+  'partner-business-front' |
+  'partner-business-dashboard') =>
   {
     if (view === 'splash-screen') {
       setSidebarOpen(false);
@@ -210,7 +214,7 @@ export function App() {
     return <MechanicKioskfrontPage onBack={() => handleNavigate('home')} />;
   }
   return (
-    <>
+    <PartnerProvider>
       <Sidebar
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
@@ -519,6 +523,30 @@ export function App() {
           
             <PartnerBusinessFrontPage onMenuClick={toggleSidebar} />
           </motion.div> :
+        activeView === 'partner-business-dashboard' ?
+        <motion.div
+          key="partner-business-dashboard"
+          initial={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.95
+          }}
+          transition={{
+            duration: 0.3
+          }}>
+          
+            <PartnerBusinessDashboardPage
+            onMenuClick={toggleSidebar}
+            onOpenFront={() => handleNavigate('partner-business-front')} />
+          
+          </motion.div> :
         activeView === 'pharmacy' ?
         <motion.div
           key="pharmacy"
@@ -800,6 +828,6 @@ export function App() {
           </motion.div>
         }
       </AnimatePresence>
-    </>);
+    </PartnerProvider>);
 
 }
